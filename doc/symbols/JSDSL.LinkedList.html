@@ -1,0 +1,1032 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - JSDSL.LinkedList</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/JSDSL.html">JSDSL</a></li>
+	
+	<li><a href="../symbols/JSDSL.Dictionary.html">JSDSL.Dictionary</a></li>
+	
+	<li><a href="../symbols/JSDSL.Heap.html">JSDSL.Heap</a></li>
+	
+	<li><a href="../symbols/JSDSL.LinkedList.html">JSDSL.LinkedList</a></li>
+	
+	<li><a href="../symbols/JSDSL.Queue.html">JSDSL.Queue</a></li>
+	
+	<li><a href="../symbols/JSDSL.Stack.html">JSDSL.Stack</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class JSDSL.LinkedList
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				A linked list is a data structure consisting of a group of nodes
+which together represent a sequence. If the elements inside the list are
+not comparable with the === operator a custom equals function should be
+provided to perform searches, the function must receive two arguments and
+return true if they are equal, false otherwise. Example:
+
+<pre>
+var petsAreEqualByName = function(pet1, pet2) {
+	return pet1.name === pet2.name;
+}
+
+var petList = new JSDSL.LinkedList(petsAreEqualByName);
+var numberList = new JSDSL.LinkedList();
+
+</pre>
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/jsdsl.js.html">jsdsl.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JSDSL.LinkedList.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/JSDSL.LinkedList.html#constructor">JSDSL.LinkedList</a></b>(equalsFunction)
+							</div>
+							<div class="description">Creates an empty Linked List.</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class JSDSL.LinkedList.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#add">add</a></b>(element)
+								</div>
+								<div class="description">Adds the given object to the end of this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#addElementAtIndex">addElementAtIndex</a></b>(elem, index)
+								</div>
+								<div class="description">Adds the given object at the specified position in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#clear">clear</a></b>()
+								</div>
+								<div class="description">Removes all of the elements from this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#contains">contains</a></b>(element)
+								</div>
+								<div class="description">Returns true if this list contains the specified element.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#elementAtIndex">elementAtIndex</a></b>(index)
+								</div>
+								<div class="description">Returns the element at the specified position in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#first">first</a></b>()
+								</div>
+								<div class="description">Returns the first element in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#indexOf">indexOf</a></b>(element)
+								</div>
+								<div class="description">Returns the index in this list of the this.firstNode occurrence of the
+specified element, or -1 if the List does not contain this element.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#isEmpty">isEmpty</a></b>()
+								</div>
+								<div class="description">Returns true if this list contains no elements.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#iterator">iterator</a></b>()
+								</div>
+								<div class="description">Returns an iterator of the elements in this list (in proper sequence).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#last">last</a></b>()
+								</div>
+								<div class="description">Returns the last element in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#remove">remove</a></b>(element)
+								</div>
+								<div class="description">Removes the first occurrence of the specified element in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#removeElementAtIndex">removeElementAtIndex</a></b>(index)
+								</div>
+								<div class="description">Removes the element at the specified position in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#size">size</a></b>()
+								</div>
+								<div class="description">Returns the number of elements in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JSDSL.LinkedList.html#toArray">toArray</a></b>()
+								</div>
+								<div class="description">Returns an array containing all of the elements in this list in proper
+sequence.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>JSDSL.LinkedList</b>(equalsFunction)
+				</div>
+				
+				<div class="description">
+					Creates an empty Linked List.
+					
+				</div>
+				
+				
+				
+				
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{function(Object|Object):boolean=}</span>  <b>equalsFunction</b>
+								
+							</dt>
+								<dd>Optional
+function used to check if two elements are equal.</dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="add"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>add</b>(element)
+					
+					</div>
+					<div class="description">
+						Adds the given object to the end of this list.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>Object to be added.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> always returns true.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="addElementAtIndex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>addElementAtIndex</b>(elem, index)
+					
+					</div>
+					<div class="description">
+						Adds the given object at the specified position in this list.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>elem</b>
+									
+								</dt>
+								<dd>object to be added.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>index</b>
+									
+								</dt>
+								<dd>index to add the element.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if the element was added or false if index < 0 ||
+index > this.nElements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="clear"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>clear</b>()
+					
+					</div>
+					<div class="description">
+						Removes all of the elements from this list.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="contains"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>contains</b>(element)
+					
+					</div>
+					<div class="description">
+						Returns true if this list contains the specified element.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>element to search for.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if this list contains the specified element, false
+otherwise.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="elementAtIndex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>elementAtIndex</b>(index)
+					
+					</div>
+					<div class="description">
+						Returns the element at the specified position in this list.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>index</b>
+									
+								</dt>
+								<dd>desired index.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> the element at the given index or undefined if index < 0 ||
+index >= this.nElements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="first"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>first</b>()
+					
+					</div>
+					<div class="description">
+						Returns the first element in this list.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> the first element of the list or undefined if the list is
+empty.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="indexOf"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>indexOf</b>(element)
+					
+					</div>
+					<div class="description">
+						Returns the index in this list of the this.firstNode occurrence of the
+specified element, or -1 if the List does not contain this element.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>element to search for.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the index in this list of the this.firstNode occurrence
+of the specified element, or -1 if the list does not contain this
+element.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="isEmpty"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>isEmpty</b>()
+					
+					</div>
+					<div class="description">
+						Returns true if this list contains no elements.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if this list contains no elements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="iterator"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>iterator</b>()
+					
+					</div>
+					<div class="description">
+						Returns an iterator of the elements in this list (in proper sequence).<br>
+<br>
+The iterator has the following operations:<br>
+<br>
+hasNext() Returns true if this list iterator has more elements when
+traversing the list in the forward direction.<br>
+next() Returns the next element in the list.<br>
+remove() Removes from the list the last element that was returned by
+next.<br>
+replace() Replaces the this.lastNode element returned by next.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> an iterator of the elements in this list.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="last"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>last</b>()
+					
+					</div>
+					<div class="description">
+						Returns the last element in this list.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> the last element of the list or undefined if the list is
+empty.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="remove"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>remove</b>(element)
+					
+					</div>
+					<div class="description">
+						Removes the first occurrence of the specified element in this list.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>element to be removed from this list, if present.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if the list contained the specified element.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="removeElementAtIndex"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>removeElementAtIndex</b>(index)
+					
+					</div>
+					<div class="description">
+						Removes the element at the specified position in this list.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>index</b>
+									
+								</dt>
+								<dd>given index.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> removed element or undefined if index < 0 || index >=
+this.nElements.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="size"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>size</b>()
+					
+					</div>
+					<div class="description">
+						Returns the number of elements in this list.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the number of elements in this list.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toArray"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Array.<*>}</span>
+					<b>toArray</b>()
+					
+					</div>
+					<div class="description">
+						Returns an array containing all of the elements in this list in proper
+sequence.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array.<*>}</span> an array containing all of the elements in this list
+in proper sequence.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Dec 29 2011 06:54:21 GMT-0500 (COT)
+		</div>
+	</body>
+</html>

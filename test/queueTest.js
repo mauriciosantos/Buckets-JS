@@ -45,7 +45,7 @@ function() {
 		expect(head).toEqual('a');
 		queue.dequeue();
 		head = queue.dequeue();
-		expect(head).toEqual('c');
+		expect(head).toEqual('d');
 		expect(queue.isEmpty()).toBeTruthy();
 		head = queue.dequeue();
 		expect(head).toBeUndefined();

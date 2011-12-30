@@ -2,7 +2,7 @@ describe('Dictionary',
 function() {
 
     var dict;
-    var elems = 100;
+    var elems = 99;
     if (!Array.prototype.indexOf) {
         Array.prototype.indexOf = function(needle) {
             for (var i = 0; i < this.length; i++) {

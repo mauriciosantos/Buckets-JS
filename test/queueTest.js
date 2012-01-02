@@ -1,7 +1,7 @@
 describe('Queue',
 function() {
 
-    var queue;
+    var queue=null;
 
     beforeEach(function() {
         queue = new buckets.Queue();
@@ -13,7 +13,7 @@ function() {
         queue.enqueue('c');
     }
 
-    it('Constructor',
+    it('Constructor works',
     function() {
 
         expect(queue.isEmpty()).toEqual(true);
@@ -37,7 +37,7 @@ function() {
 
     });
 
-    it('Enqueues correctly',
+    it('Enqueues',
     function() {
 
 		createQueue();
@@ -51,7 +51,7 @@ function() {
 		expect(head).toBeUndefined();
     });
 
-    it('Peeks correctly',
+    it('Peeks',
     function() {
 	
 		createQueue();

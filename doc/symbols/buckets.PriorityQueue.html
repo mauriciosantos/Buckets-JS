@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - buckets.Heap</title>
+		<title>JsDoc Reference - buckets.PriorityQueue</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -214,7 +214,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.Heap
+				Class buckets.PriorityQueue
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -222,38 +222,9 @@ ul.inheritsList
 				
 				
 			
-				<p>A heap is a binary tree, where the nodes maintain the heap property: each node is smaller than each of its children. This implementation uses an array to store elements.</p> 
-If the inserted elements are custom objects a compare function must be provided, otherwise the <=, === and >= operators are used to compare elements. Example:</p>
-<pre>
-function comparePetsByAge(pet1, pet2) {
-	if (pet1.age &lt; pet2.age) {
-		return -1;
-	}
-	else if (pet1.age &gt; pet2.age) {
-		return 1;
-	}
-	else {
-		return 0;
-	}
-}
-</pre>
-
-If a Max-Heap is wanted (greater elements on top) you can a provide a
-reverse compare function to accomplish this behavior. Example:
-
-<pre>
-function reverseCompareNumbers(a, b) {
-	if (a &lt; b) {
-		return 1;
-	}
-	else if (a &gt; b) {
-		return -1;
-	}
-	else {
-		return 0;
-	}
-}
-</pre>
+				In a priority queue each element is associated with a "priority",
+elements are dequeued in highest-priority-first order (the elements with the highest priority are dequeued first). Priority Queues are implemented as heaps. If the inserted elements are custom objects a compare function must be provided, otherwise the <=, === and >=
+operators are used to compare object priority.
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/buckets.js.html">buckets.js</a>.
@@ -262,7 +233,7 @@ function reverseCompareNumbers(a, b) {
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Heap.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.PriorityQueue.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -275,9 +246,9 @@ function reverseCompareNumbers(a, b) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/buckets.Heap.html#constructor">buckets.Heap</a></b>(compareFunction)
+								<b><a href="../symbols/buckets.PriorityQueue.html#constructor">buckets.PriorityQueue</a></b>(compareFunction)
 							</div>
-							<div class="description">Creates an empty Heap.</div>
+							<div class="description">Creates an empty priority queue.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -291,7 +262,7 @@ function reverseCompareNumbers(a, b) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.Heap.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.PriorityQueue.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -304,63 +275,72 @@ function reverseCompareNumbers(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#add">add</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#add">add</a></b>(element)
 								</div>
-								<div class="description">Adds the given element into the heap.</div>
+								<div class="description">Inserts the specified element into priority queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#clear">clear</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this heap.</div>
+								<div class="description">Removes all of the elements from this priority queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#contains">contains</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#contains">contains</a></b>(element)
 								</div>
-								<div class="description">Returns true if this heap contains the specified element.</div>
+								<div class="description">Returns true if this priority queue contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#dequeue">dequeue</a></b>()
 								</div>
-								<div class="description">Checks if this heap is empty.</div>
+								<div class="description">Retrieves and removes the highest priority element of this queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#peek">peek</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#enqueue">enqueue</a></b>(element)
 								</div>
-								<div class="description">Retrieves but does not remove the root element of this heap.</div>
+								<div class="description">Inserts the specified element into this priority queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#removeRoot">removeRoot</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Retrieves and removes the root element of this heap.</div>
+								<div class="description">Checks if this priority queue is empty.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#size">size</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#peek">peek</a></b>()
 								</div>
-								<div class="description">Returns the number of elements in this heap.</div>
+								<div class="description">Retrieves, but does not remove, the highest priority element of this queue.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#size">size</a></b>()
+								</div>
+								<div class="description">Returns the number of elements in this priority queue.</div>
 							</td>
 						</tr>
 					
@@ -381,11 +361,11 @@ function reverseCompareNumbers(a, b) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>buckets.Heap</b>(compareFunction)
+						<b>buckets.PriorityQueue</b>(compareFunction)
 				</div>
 				
 				<div class="description">
-					Creates an empty Heap.
+					Creates an empty priority queue.
 					
 				</div>
 				
@@ -401,7 +381,7 @@ function reverseCompareNumbers(a, b) {
 								
 							</dt>
 								<dd>optional
-function used to compare two elements. Must return a negative integer,
+function used to compare two element priorities. Must return a negative integer,
 zero, or a positive integer as the first argument is less than, equal to,
 or greater than the second.</dd>
 						
@@ -434,7 +414,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Adds the given element into the heap.
+						Inserts the specified element into priority queue.
 						
 						
 					</div>
@@ -446,10 +426,10 @@ or greater than the second.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{*}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>the element.</dd>
+								<dd>the element to insert.</dd>
 							
 							</dl>
 						
@@ -470,7 +450,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this heap.
+						Removes all of the elements from this priority queue.
 						
 						
 					</div>
@@ -495,7 +475,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Returns true if this heap contains the specified element.
+						Returns true if this priority queue contains the specified element.
 						
 						
 					</div>
@@ -521,8 +501,8 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this Heap contains the specified element, false
-otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this priority queue contains the specified element,
+false otherwise.</dd>
 							
 							</dl>
 						
@@ -531,15 +511,15 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="isEmpty"> </a>
+					<a name="dequeue"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{boolean}</span>
-					<b>isEmpty</b>()
+					<span class="light">{*}</span>
+					<b>dequeue</b>()
 					
 					</div>
 					<div class="description">
-						Checks if this heap is empty.
+						Retrieves and removes the highest priority element of this queue.
 						
 						
 					</div>
@@ -554,7 +534,76 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if and only if this heap contains no items; false
+								<dd><span class="light fixedFont">{*}</span> the the highest priority element of this queue, 
+or undefined if this queue is empty.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="enqueue"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>enqueue</b>(element)
+					
+					</div>
+					<div class="description">
+						Inserts the specified element into this priority queue.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>the element to insert.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="isEmpty"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>isEmpty</b>()
+					
+					</div>
+					<div class="description">
+						Checks if this priority queue is empty.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if and only if this priority queue contains no items; false
 otherwise.</dd>
 							
 							</dl>
@@ -572,7 +621,7 @@ otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Retrieves but does not remove the root element of this heap.
+						Retrieves, but does not remove, the highest priority element of this queue.
 						
 						
 					</div>
@@ -587,41 +636,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The value at the root of the heap. Returns undefined if the
-heap is empty.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="removeRoot"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{*}</span>
-					<b>removeRoot</b>()
-					
-					</div>
-					<div class="description">
-						Retrieves and removes the root element of this heap.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{*}</span> The value removed from the root of the heap. Returns
-undefined if the heap is empty.</dd>
+								<dd><span class="light fixedFont">{*}</span> the highest priority element of this queue, or undefined if this queue is empty.</dd>
 							
 							</dl>
 						
@@ -638,7 +653,7 @@ undefined if the heap is empty.</dd>
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this heap.
+						Returns the number of elements in this priority queue.
 						
 						
 					</div>
@@ -653,7 +668,7 @@ undefined if the heap is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this heap.</dd>
+								<dd><span class="light fixedFont">{number}</span> the number of elements in this priority queue.</dd>
 							
 							</dl>
 						

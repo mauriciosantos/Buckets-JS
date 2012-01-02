@@ -1,8 +1,8 @@
 describe('Dictionary',
 function() {
 
-    var dict;
-    var elems = 99;
+    var dict = null;
+    var elems = 100;
     if (!Array.prototype.indexOf) {
         Array.prototype.indexOf = function(needle) {
             for (var i = 0; i < this.length; i++) {
@@ -18,7 +18,7 @@ function() {
         dict = new buckets.Dictionary();
     });
 
-    it('Maps keys to values correctly',
+    it('Maps keys to values',
     function() {
 
         expect(dict.get("sd")).toBeUndefined();
@@ -50,7 +50,7 @@ function() {
         }
     });
 
-    it('Maps keys to values correctly with cutom toString function',
+    it('Maps keys to values with cutom toString function',
     function() {
 
         var ts = function(obj) {

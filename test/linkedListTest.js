@@ -1,7 +1,7 @@
 describe('Linked List',
 function() {
 
-    var list;
+    var list=null;
     var elems = 100;
 
     beforeEach(function() {
@@ -46,7 +46,7 @@ function() {
     });
 
 
-    it('Doesnt add elements to invalid indexes',
+    it("Doesn't insert elements to invalid indexes",
     function() {
 
         expect(list.addElementAtIndex(0, 1)).toBeFalsy();

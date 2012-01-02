@@ -1,5 +1,6 @@
 #!/usr/bin/python
-# Compiles the js source file using the Closure Compiler API, creating a minified version in the project's root directory.
+# Compiles the js source file using the Closure Compiler API, 
+# creating a minified version in the project's root directory.
 # Must be executed from the directory containing the script.
 
 import httplib, urllib, sys

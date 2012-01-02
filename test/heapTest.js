@@ -1,7 +1,7 @@
 describe('Heap',
 function() {
 	    
-	var heap;
+	var heap=null;
 	
     beforeEach(function() {
         heap = new buckets.Heap();
@@ -39,7 +39,7 @@ function() {
 		expect(heap.size()).toEqual(0);
     });
 
-	it('Peeks Correctly 1',
+	it('Peeks the lowest element',
     function() {
  		Heap1();
 		expect(heap.peek()).toEqual(0);
@@ -47,13 +47,13 @@ function() {
 		expect(heap.peek()).toBeUndefined();
     });
 
-	it('Peeks Correctly 2',
+	it('Peeks the lowest element 2',
     function() {
  		Heap2();
 		expect(heap.peek()).toEqual(0);
     });
 
-	it('Removes Root Correctly 1',
+	it('Removes root',
     function() {
 		Heap1();
 		expect(heap.removeRoot()).toEqual(0);
@@ -62,7 +62,7 @@ function() {
 		expect(heap.removeRoot()).toEqual(3);
     });
 
-	it('Removes Root Correctly 2',
+	it('Removes root 2',
     function() {
 		Heap2();
 		expect(heap.removeRoot()).toEqual(0);
@@ -71,7 +71,7 @@ function() {
 		expect(heap.removeRoot()).toEqual(3);
     });
 
-	it('Adds and peeks correctly 1',
+	it('Adds and peeks',
     function() {
 		heap.add(3);
 		expect(heap.peek()).toEqual(3);
@@ -83,7 +83,7 @@ function() {
 		expect(heap.peek()).toEqual(0);
     });
 
-	it('Adds and peeks correctly 2',
+	it('Adds and peeks 2',
     function() {
 		heap.add(1);
 		expect(heap.peek()).toEqual(1);
@@ -95,7 +95,7 @@ function() {
 		expect(heap.peek()).toEqual(0);
     });
 
-	it('Contains elements that were inserted',
+	it('Contains inserted elements',
     function() {
 		Heap1();
 		for (var i = 0; i < 4; i++) {

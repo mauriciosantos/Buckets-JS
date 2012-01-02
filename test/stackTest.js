@@ -1,13 +1,13 @@
 describe('Stack',
 function() {
 
-    var stack;
+    var stack=null;
 
     beforeEach(function() {
         stack = new buckets.Stack();
     });
 
-    it('Pops Correctly',
+    it('Pops',
     function() {
 
         expect(stack.pop()).toBeUndefined();

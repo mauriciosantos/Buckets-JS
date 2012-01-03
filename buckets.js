@@ -2,8 +2,8 @@
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Some documentation comes from the Java API as it serves the same porpose.
 "use strict";
 
 /**
@@ -49,7 +49,11 @@ buckets.common.defaultToString = function(obj) {
 
     if (Object.prototype.toString.call(obj) === '[object String]') {
         return obj;
-    } else {
+    } else if(obj===null){
+	  return 'BUCKETS_NULL_OBJECT';
+	} else if(obj===undefined) {
+	  return 'BUCKETS_UNDEFINED_OBJECT';
+	} else {
         return obj.toString();
     }
 };
@@ -81,8 +85,8 @@ buckets.common.reverseCompareFunction = function(compareFunction) {
 
 /**
  * Creates an empty Linked List.
- * @class A linked list is a data structure consisting of a group of nodes
- * which together represent a sequence. 
+ * @class <p>A linked list is a data structure consisting of a group of nodes
+ * which together represent a sequence.</p>
  *
  * <p>If the elements inside the list are
  * not comparable with the === operator a custom equals function should be
@@ -138,7 +142,7 @@ buckets.LinkedList = function(equalsFunction) {
 /**
  * Adds the given object to the end of this list.
  * @param {Object} element Object to be added.
- * @return {boolean} always returns true.
+ * @return {boolean} true if the element was inserted or false if the element is undefined.
  */
 buckets.LinkedList.prototype.add = function(element) {
     return this.addElementAtIndex(element, this.nElements);
@@ -150,11 +154,11 @@ buckets.LinkedList.prototype.add = function(element) {
  * @param {Object} elem object to be added.
  * @param {number} index index to add the element.
  * @return {boolean} true if the element was added or false if index < 0 ||
- * index > this.size().
+ * index > this.size() || elem===undefined.
  */
 buckets.LinkedList.prototype.addElementAtIndex = function(elem, index) {
 
-    if (index < 0 || index > this.nElements) {
+    if (index < 0 || index > this.nElements || elem===undefined) {
         return false;
     }
     var newNode = {
@@ -246,6 +250,10 @@ buckets.LinkedList.prototype.elementAtIndex = function(index) {
  */
 buckets.LinkedList.prototype.indexOf = function(element) {
 
+    if(element===undefined){
+		return -1;
+	}
+
     var currentNode = this.firstNode;
     var index = 0;
     while (currentNode !== null) {
@@ -278,7 +286,7 @@ buckets.LinkedList.prototype.contains = function(element) {
  */
 buckets.LinkedList.prototype.remove = function(element) {
 
-    if (this.nElements < 1) {
+    if (this.nElements < 1 || element===undefined) {
         return false;
     } else {
 
@@ -360,7 +368,7 @@ buckets.LinkedList.prototype.removeElementAtIndex = function(index) {
     return r;
 };
 /**
- * Returns an iterator of the elements in this list (in proper sequence).<br>
+ * Returns an iterator over the elements in this list (in proper sequence).<br>
  * <br>
  * The iterator has the following operations:<br>
  * <br>
@@ -370,7 +378,7 @@ buckets.LinkedList.prototype.removeElementAtIndex = function(index) {
  * remove() Removes from the list the last element that was returned by
  * next.<br>
  * replace() Replaces the this.lastNode element returned by next.
- * @return {*} an iterator of the elements in this list.
+ * @return {Object} an iterator over the elements in this list.
  */
 buckets.LinkedList.prototype.iterator = function() {
 
@@ -393,6 +401,9 @@ buckets.LinkedList.prototype.iterator = function() {
         return current.element;
     };
     it.remove = function() {
+		if (current === null) {
+            return undefined;
+        }
         var r = current.element;
         if (current === this.firstNode) {
             if (current === this.lastNode) {
@@ -465,7 +476,7 @@ buckets.LinkedList.prototype.isEmpty = function() {
  * </pre>
  *
  * @constructor
- * @param {function(Object):string} toStringFunction optional function used
+ * @param {function(Object):string=} toStringFunction optional function used
  * to convert keys to strings. If the keys aren't strings or if toString()
  * is not appropriate, a custom function which receives a key and returns a
  * unique string must be provided.
@@ -517,10 +528,14 @@ buckets.Dictionary.prototype.get = function(key) {
  * associated.
  * @param {Object} value value to be associated with the specified key.
  * @return {*} previous value associated with specified key, or undefined if
- * there was no mapping for key.
+ * there was no mapping for the key or if the key||value are undefined.
  */
 buckets.Dictionary.prototype.set = function(key, value) {
-
+    
+    if(key===undefined || value===undefined ){
+		return undefined;
+	}
+	
     var ret;
     var k = this.toStr(key);
     var previousElement = this.table[k];
@@ -554,8 +569,8 @@ buckets.Dictionary.prototype.remove = function(key) {
     return undefined;
 };
 /**
- * Returns an array with the keys contained in this dictionary.
- * @return {Array} an array with the keys contained in this dictionary.
+ * Returns an array containing all of the keys in this dictionary.
+ * @return {Array} an array containing all of the keys in this dictionary.
  */
 buckets.Dictionary.prototype.keys = function() {
     var array = [];
@@ -567,8 +582,8 @@ buckets.Dictionary.prototype.keys = function() {
     return array;
 };
 /**
- * Returns an array with the values contained in this dictionary.
- * @return {Array} an array with the values contained in this dictionary.
+ * Returns an array containing all of the values in this dictionary.
+ * @return {Array} an array containing all of the values in this dictionary.
  */
 buckets.Dictionary.prototype.values = function() {
     var array = [];
@@ -579,6 +594,7 @@ buckets.Dictionary.prototype.values = function() {
     }
     return array;
 };
+
 /**
  * Returns true if this dictionary contains a mapping for the specified key.
  * @param {Object} key key whose presence in this dictionary is to be
@@ -612,11 +628,17 @@ buckets.Dictionary.prototype.size = function() {
 buckets.Dictionary.prototype.isEmpty = function() {
     return this.nElements <= 0;
 };
+
+
 /**
  * Creates an empty Heap.
  * @class 
-<p>A heap is a binary tree, where the nodes maintain the heap property: each node is smaller than each of its children. This implementation uses an array to store elements.</p> 
-If the inserted elements are custom objects a compare function must be provided, otherwise the <=, === and >= operators are used to compare elements. Example:</p>
+ * <p>A heap is a binary tree, where the nodes maintain the heap property: 
+ * each node is smaller than each of its children. 
+ * This implementation uses an array to store elements.</p>
+ * <p>If the inserted elements are custom objects a compare function must be provided, 
+ * otherwise the <=, === and >= operators are used to compare elements. Example:</p>
+ *
  * <pre>
  * function comparePetsByAge(pet1, pet2) {
  * 	if (pet1.age &lt; pet2.age) {
@@ -631,8 +653,8 @@ If the inserted elements are custom objects a compare function must be provided,
  * }
  * </pre>
  *
- * If a Max-Heap is wanted (greater elements on top) you can a provide a
- * reverse compare function to accomplish this behavior. Example:
+ * <p>If a Max-Heap is wanted (greater elements on top) you can a provide a
+ * reverse compare function to accomplish this behavior. Example:</p>
  *
  * <pre>
  * function reverseCompareNumbers(a, b) {
@@ -778,10 +800,15 @@ buckets.Heap.prototype.peek = function() {
 /**
  * Adds the given element into the heap.
  * @param {*} element the element.
+ * @return true if the element was added or fals if it is undefined.
  */
 buckets.Heap.prototype.add = function(element) {
-    this.data.push(element);
+    if(element===undefined){
+		return undefined;
+	}
+	this.data.push(element);
     this.siftUp(this.data.length - 1);
+	return true;
 };
 
 /**
@@ -862,16 +889,18 @@ buckets.Stack = function(equalsFunction) {
 /**
  * Pushes an item onto the top of this stack.
  * @param {Object} elem the element to be pushed onto this stack.
+ * @return {boolean} true if the element was pushed or false if it is undefined.
  */
 buckets.Stack.prototype.push = function(elem) {
-    this.list.addElementAtIndex(elem, 0);
+    return this.list.addElementAtIndex(elem, 0);
 };
 /**
  * Pushes an item onto the top of this stack.
  * @param {Object} elem the element to be pushed onto this stack.
+ * @return {boolean} true if the element was pushed or false if it is undefined.
  */
 buckets.Stack.prototype.add = function(elem) {
-    this.list.addElementAtIndex(elem, 0);
+    return this.list.addElementAtIndex(elem, 0);
 };
 /**
  * Removes the object at the top of this stack and returns that object.
@@ -944,16 +973,18 @@ buckets.Queue = function(equalsFunction) {
 /**
  * Inserts the specified element into the end of this queue.
  * @param {Object} elem the element to insert.
+ * @return {boolean} true if the element was inserted, or false if it is undefined.
  */
 buckets.Queue.prototype.enqueue = function(elem) {
-    this.list.add(elem);
+    return this.list.add(elem);
 };
 /**
  * Inserts the specified element into the end of this queue.
  * @param {Object} elem the element to insert.
+ * @return {boolean} true if the element was inserted, or false if it is undefined.
  */
 buckets.Queue.prototype.add = function(elem) {
-    this.list.add(elem);
+    return this.list.add(elem);
 };
 /**
  * Retrieves and removes the head of this queue.
@@ -1015,9 +1046,11 @@ buckets.Queue.prototype.clear = function() {
 
 /**
  * Creates an empty priority queue.
- * @class In a priority queue each element is associated with a "priority",
-elements are dequeued in highest-priority-first order (the elements with the highest priority are dequeued first). Priority Queues are implemented as heaps. If the inserted elements are custom objects a compare function must be provided, otherwise the <=, === and >=
- * operators are used to compare object priority.
+ * @class <p>In a priority queue each element is associated with a "priority",
+ * elements are dequeued in highest-priority-first order (the elements with the 
+ * highest priority are dequeued first). Priority Queues are implemented as heaps. 
+ * If the inserted elements are custom objects a compare function must be provided, 
+ * otherwise the <=, === and >= operators are used to compare object priority.</p>
  * @constructor
  * @param {function(Object,Object):number=} compareFunction optional
  * function used to compare two element priorities. Must return a negative integer,
@@ -1031,17 +1064,19 @@ buckets.PriorityQueue = function(compareFunction) {
 /**
  * Inserts the specified element into this priority queue.
  * @param {Object} element the element to insert.
+ * @return {boolean} true if the element was inserted, or false if it is undefined.
  */
 buckets.PriorityQueue.prototype.enqueue = function(element) {
     this.heap.add(element);
 };
 
 /**
- * Inserts the specified element into priority queue.
+ * Inserts the specified element into this priority queue.
  * @param {Object} element the element to insert.
+ * @return {boolean} true if the element was inserted, or false if it is undefined.
  */
-buckets.PriorityQueue.prototype.add = function(elem) {
-    this.heap.add(elem);
+buckets.PriorityQueue.prototype.add = function(element) {
+    return this.heap.add(element);
 };
 
 /**
@@ -1101,42 +1136,131 @@ buckets.PriorityQueue.prototype.clear = function() {
 };
 
 
-buckets.Set = function(toStringFunc) {
-    this.dictionary = new buckets.Dictionary();
-    this.toStr = toStringFunc || buckets.commons.defaultToString;
-    this.keys = [];
+/**
+ * Creates an empty set.
+ * @class <p>A set is a data structure that contains no duplicate items.</p>
+ * <p>If the inserted elements are custom objects a function 
+ * which converts elements to strings must be provided. Example:</p>
+ *
+ * <pre>
+ * function petToString(pet) {
+ * 	return pet.name;
+ * }
+ * </pre>
+ *
+ * @constructor
+ * @param {function(Object):string=} toStringFunction optional function used
+ * to convert elements to strings. If the elements aren't strings or if toString()
+ * is not appropriate, a custom function which receives a key and returns a
+ * unique string must be provided.
+ */
+buckets.Set = function(toStringFunction) {
+    this.dictionary = new buckets.Dictionary(toStringFunction);
 };
 
+/**
+ * Returns true if this set contains the specified element.
+ * @param {Object} element element to search for.
+ * @return {boolean} true if this set contains the specified element,
+ * false otherwise.
+ */
 buckets.Set.prototype.contains = function(element) {
-    return this.dictionary.containsKey(this.toStr(element))
+    return this.dictionary.containsKey(element)
 };
 
+/**
+ * Adds the specified element to this set if it is not already present.
+ * @param {Object} element the element to insert.
+ * @return {boolean} true if this set did not already contain the specified element.
+ */
 buckets.Set.prototype.add = function(element) {
-    if (this.contains(element)) {
+    if (this.contains(element) || element ===undefined) {
         return false;
     } else {
-        this.dictionary.set(this.toStr(element), element);
-        return true;
+        this.dictionary.set(element, element);
+		return true;
     }
 };
 
+/**
+ * Removes the specified element from this set if it is present.
+ * @return {boolean} true if this set contained the specified element.
+ */
 buckets.Set.prototype.remove = function(element) {
-    if (this.contains(element)) {
+    if (!this.contains(element)) {
         return false;
     } else {
-        this.dictionary.remove(this.toStr(element));
+        this.dictionary.remove(element);
         return true;
     }
 };
 
+/**
+ * Returns an iterator over the elements in this set. 
+ * The elements are returned in no particular order.<br>
+ * <br>
+ * The iterator has the following operations:<br>
+ * <br>
+ * hasNext() Returns true if this set iterator has more elements.
+ * next() Returns the next element in the set.<br>
+ * remove() Removes from the set the last element that was returned by
+ * next().<br>
+ * @return {Object} an iterator over the elements in this set.
+ */
+buckets.Set.prototype.iterator = function() {
+	
+	var keys = this.dictionary.keys();
+	var set = this;
+    var current = -1;
+    var next = 0;
+    var it = {};
+
+    it.hasNext = function() {
+        return next < keys.length;
+    };
+    it.next = function() {
+        if (next >= keys.length) {
+            return undefined;
+        }
+        current = next;
+        next = current + 1 ;
+        return set.dictionary.get(keys[current]);
+    };
+    it.remove = function() {
+        if (current < keys.length && current >=0 ) {
+            return set.dictionary.remove(keys[current]);
+        }
+    };
+    return it;
+};
+
+/**
+ * Returns an array containing all of the elements in this set in arbitrary order.
+ * @return {Array} an array containing all of the elements in this set.
+ */
 buckets.Set.prototype.toArray = function() {
     return this.dictionary.values();
 };
 
+/**
+ * Returns true if this set contains no elements.
+ * @return {boolean} true if this set contains no elements.
+ */
 buckets.Set.prototype.isEmpty = function() {
     return this.dictionary.isEmpty();
 };
 
+/**
+ * Returns the number of elements in this set.
+ * @return {number} the number of elements in this set.
+ */
 buckets.Set.prototype.size = function() {
     return this.dictionary.size();
+};
+
+/**
+ * Removes all of the elements from this set.
+ */
+buckets.Set.prototype.clear = function() {
+    this.dictionary.clear();
 };

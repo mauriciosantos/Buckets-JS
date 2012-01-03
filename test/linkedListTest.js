@@ -276,6 +276,7 @@ function() {
 
         it = list.iterator();
         var i = 0;
+		expect(it.hasNext()).toBeTruthy();
         while (it.hasNext()) {
             expect(it.next()).toEqual(i);
             i++;
@@ -283,12 +284,15 @@ function() {
 
         it = list.iterator();
         var i = 0;
+		expect(it.hasNext()).toBeTruthy();
         while (it.hasNext()) {
             it.next();
             it.replace(i + 1);
             i++;
         }
         var i = 0;
+		it = list.iterator();
+		expect(it.hasNext()).toBeTruthy();
         while (it.hasNext()) {
             expect(it.next()).toEqual(i + 1);
             i++;

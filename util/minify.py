@@ -5,7 +5,7 @@
 
 import httplib, urllib, sys
 
-print "\nReading source file."
+print "\nReading source file"
 
 text_file = open("../buckets.js", "r")
 whole_thing = text_file.read()

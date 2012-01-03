@@ -4,4 +4,4 @@
 # Must be executed from the directory containing the scipt.
 
 import os
-os.system("java -jar ../lib/jsdoc-toolkit/jsrun.jar ../lib/jsdoc-toolkit/app/run.js ../buckets.js -d=../doc/ -t=../lib/jsdoc-toolkit/templates/jsdoc")
+os.system("java -jar ../lib/jsdoc-toolkit/jsrun.jar ../lib/jsdoc-toolkit/app/run.js ../buckets.js -d=../doc/ -s -D=\"noGlobal:true\" -D=\"title:Buckets\" -t=../lib/jsdoc-toolkit/templates/jsdoc")

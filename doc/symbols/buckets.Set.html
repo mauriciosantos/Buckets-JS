@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - JSDSL.Queue</title>
+		<title>JsDoc Reference - buckets.Set</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,17 +191,21 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/JSDSL.html">JSDSL</a></li>
+	<li><a href="../symbols/buckets.html">buckets</a></li>
 	
-	<li><a href="../symbols/JSDSL.Dictionary.html">JSDSL.Dictionary</a></li>
+	<li><a href="../symbols/buckets.Dictionary.html">buckets.Dictionary</a></li>
 	
-	<li><a href="../symbols/JSDSL.Heap.html">JSDSL.Heap</a></li>
+	<li><a href="../symbols/buckets.Heap.html">buckets.Heap</a></li>
 	
-	<li><a href="../symbols/JSDSL.LinkedList.html">JSDSL.LinkedList</a></li>
+	<li><a href="../symbols/buckets.LinkedList.html">buckets.LinkedList</a></li>
 	
-	<li><a href="../symbols/JSDSL.Queue.html">JSDSL.Queue</a></li>
+	<li><a href="../symbols/buckets.PriorityQueue.html">buckets.PriorityQueue</a></li>
 	
-	<li><a href="../symbols/JSDSL.Stack.html">JSDSL.Stack</a></li>
+	<li><a href="../symbols/buckets.Queue.html">buckets.Queue</a></li>
+	
+	<li><a href="../symbols/buckets.Set.html">buckets.Set</a></li>
+	
+	<li><a href="../symbols/buckets.Stack.html">buckets.Stack</a></li>
 	
 </ul>
 <hr />
@@ -212,7 +216,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class JSDSL.Queue
+				Class buckets.Set
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -220,20 +224,24 @@ ul.inheritsList
 				
 				
 			
-				A queue is a First-In-First-Out (FIFO) data structure, the first
-element added to the queue will be the first one to be removed. This
-implementation uses a linked list as a container. If the elements inside
-the queue are not comparable with the === operator a custom equals
-function should be provided to perform searches with contains().
+				<p>A set is a data structure that contains no duplicate items.</p>
+<p>If the inserted elements are custom objects a function 
+which converts elements to strings must be provided. Example:</p>
+
+<pre>
+function petToString(pet) {
+	return pet.name;
+}
+</pre>
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/jsdsl.js.html">jsdsl.js</a>.
+					<br /><i>Defined in: </i> &lt;../buckets.js&gt;.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JSDSL.Queue.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Set.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -246,9 +254,9 @@ function should be provided to perform searches with contains().
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/JSDSL.Queue.html#constructor">JSDSL.Queue</a></b>(equalsFunction)
+								<b><a href="../symbols/buckets.Set.html#constructor">buckets.Set</a></b>(toStringFunction)
 							</div>
-							<div class="description">Creates an empty Queue.</div>
+							<div class="description">Creates an empty set.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -262,7 +270,7 @@ function should be provided to perform searches with contains().
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class JSDSL.Queue.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.Set.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -275,72 +283,72 @@ function should be provided to perform searches with contains().
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#add">add</a></b>(elem)
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#add">add</a></b>(element)
 								</div>
-								<div class="description">Inserts the specified element into the end of this queue.</div>
+								<div class="description">Adds the specified element to this set if it is not already present.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#clear">clear</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this queue.</div>
+								<div class="description">Removes all of the elements from this set.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#contains">contains</a></b>(elem)
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#contains">contains</a></b>(element)
 								</div>
-								<div class="description">Returns true if this queue contains the specified element.</div>
+								<div class="description">Returns true if this set contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#dequeue">dequeue</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Retrieves and removes the head of this queue.</div>
+								<div class="description">Returns true if this set contains no elements.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#enqueue">enqueue</a></b>(elem)
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#iterator">iterator</a></b>()
 								</div>
-								<div class="description">Inserts the specified element into the end of this queue.</div>
+								<div class="description">Returns an iterator over the elements in this set.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#remove">remove</a></b>(element)
 								</div>
-								<div class="description">Checks if this queue is empty.</div>
+								<div class="description">Removes the specified element from this set if it is present.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#peek">peek</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#size">size</a></b>()
 								</div>
-								<div class="description">Retrieves, but does not remove, the head of this queue.</div>
+								<div class="description">Returns the number of elements in this set.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JSDSL.Queue.html#size">size</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#toArray">toArray</a></b>()
 								</div>
-								<div class="description">Returns the number of elements in this queue.</div>
+								<div class="description">Returns an array containing all of the elements in this set in arbitrary order.</div>
 							</td>
 						</tr>
 					
@@ -361,11 +369,11 @@ function should be provided to perform searches with contains().
 				</div>
 				
 				<div class="fixedFont">
-						<b>JSDSL.Queue</b>(equalsFunction)
+						<b>buckets.Set</b>(toStringFunction)
 				</div>
 				
 				<div class="description">
-					Creates an empty Queue.
+					Creates an empty set.
 					
 				</div>
 				
@@ -377,11 +385,13 @@ function should be provided to perform searches with contains().
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								<span class="light fixedFont">{function(Object|Object):boolean=}</span>  <b>equalsFunction</b>
+								<span class="light fixedFont">{function(Object):string=}</span>  <b>toStringFunction</b>
 								
 							</dt>
-								<dd>Optional
-function used to check if two elements are equal.</dd>
+								<dd>optional function used
+to convert elements to strings. If the elements aren't strings or if toString()
+is not appropriate, a custom function which receives a key and returns a
+unique string must be provided.</dd>
 						
 						</dl>
 					
@@ -407,12 +417,12 @@ function used to check if two elements are equal.</dd>
 					<a name="add"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>add</b>(elem)
+					<span class="light">{boolean}</span>
+					<b>add</b>(element)
 					
 					</div>
 					<div class="description">
-						Inserts the specified element into the end of this queue.
+						Adds the specified element to this set if it is not already present.
 						
 						
 					</div>
@@ -424,7 +434,7 @@ function used to check if two elements are equal.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>elem</b>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
 								<dd>the element to insert.</dd>
@@ -434,6 +444,13 @@ function used to check if two elements are equal.</dd>
 						
 						
 						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if this set did not already contain the specified element.</dd>
+							
+							</dl>
 						
 						
 						
@@ -448,7 +465,7 @@ function used to check if two elements are equal.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this queue.
+						Removes all of the elements from this set.
 						
 						
 					</div>
@@ -469,11 +486,11 @@ function used to check if two elements are equal.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>contains</b>(elem)
+					<b>contains</b>(element)
 					
 					</div>
 					<div class="description">
-						Returns true if this queue contains the specified element.
+						Returns true if this set contains the specified element.
 						
 						
 					</div>
@@ -485,7 +502,7 @@ function used to check if two elements are equal.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>elem</b>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
 								<dd>element to search for.</dd>
@@ -499,78 +516,10 @@ function used to check if two elements are equal.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this queue contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> true if this set contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="dequeue"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{*}</span>
-					<b>dequeue</b>()
-					
-					</div>
-					<div class="description">
-						Retrieves and removes the head of this queue.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{*}</span> the head of this queue, or undefined if this queue is empty.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="enqueue"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>enqueue</b>(elem)
-					
-					</div>
-					<div class="description">
-						Inserts the specified element into the end of this queue.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>elem</b>
-									
-								</dt>
-								<dd>the element to insert.</dd>
-							
-							</dl>
-						
-						
-						
-						
 						
 						
 						
@@ -585,7 +534,7 @@ false otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Checks if this queue is empty.
+						Returns true if this set contains no elements.
 						
 						
 					</div>
@@ -600,8 +549,7 @@ false otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if and only if this queue contains no items; false
-otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this set contains no elements.</dd>
 							
 							</dl>
 						
@@ -610,15 +558,23 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="peek"> </a>
+					<a name="iterator"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{*}</span>
-					<b>peek</b>()
+					<span class="light">{Object}</span>
+					<b>iterator</b>()
 					
 					</div>
 					<div class="description">
-						Retrieves, but does not remove, the head of this queue.
+						Returns an iterator over the elements in this set. 
+The elements are returned in no particular order.<br>
+<br>
+The iterator has the following operations:<br>
+<br>
+hasNext() Returns true if this set iterator has more elements.
+next() Returns the next element in the set.<br>
+remove() Removes from the set the last element that was returned by
+next().<br>
 						
 						
 					</div>
@@ -633,7 +589,50 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the head of this queue, or undefined if this queue is empty.</dd>
+								<dd><span class="light fixedFont">{Object}</span> an iterator over the elements in this set.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="remove"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>remove</b>(element)
+					
+					</div>
+					<div class="description">
+						Removes the specified element from this set if it is present.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>element</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if this set contained the specified element.</dd>
 							
 							</dl>
 						
@@ -650,7 +649,7 @@ otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this queue.
+						Returns the number of elements in this set.
 						
 						
 					</div>
@@ -665,7 +664,39 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this queue.</dd>
+								<dd><span class="light fixedFont">{number}</span> the number of elements in this set.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toArray"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Array}</span>
+					<b>toArray</b>()
+					
+					</div>
+					<div class="description">
+						Returns an array containing all of the elements in this set in arbitrary order.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this set.</dd>
 							
 							</dl>
 						
@@ -686,7 +717,7 @@ otherwise.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Dec 29 2011 06:54:21 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Jan 03 2012 18:15:15 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

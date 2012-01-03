@@ -71,7 +71,7 @@ function() {
 	
 		createQueue();
 		expect(queue.contains('a')).toBeTruthy();
-		expect(queue.contains('foo')).toBeFalsy();
+		expect(queue.contains('z')).toBeFalsy();
 		expect(queue.contains(undefined)).toBeFalsy();
     });
 

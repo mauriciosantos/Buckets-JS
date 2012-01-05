@@ -35,6 +35,23 @@ function() {
 		heap.add('c');
 	};
 	
+	function Heap5() {
+	    heap.add({val:"b"});
+		heap.add({val:"d"});
+		heap.add({val:"a"});
+		heap.add({val:"c"});
+	};
+	
+	function customCompare(a,b){
+		if(a.val<b.val){
+			return -1;
+		} else if(a.val===b.val){
+				return 0;
+		} else{
+			return 1;
+		}
+	}
+	
     it('Gives the right size 1',
     function() {
         Heap1();
@@ -89,6 +106,13 @@ function() {
 		expect(heap.peek()).toEqual('a');
     });
 
+	it('Peeks the lowest element with custom objects',
+    function() {
+		heap = new buckets.Heap(customCompare)
+ 		Heap5();
+		expect(heap.peek().val).toEqual('a');
+    });
+
 	it('Removes root',
     function() {
 		Heap1();
@@ -107,6 +131,16 @@ function() {
 		expect(heap.removeRoot()).toEqual(1);
 		expect(heap.removeRoot()).toEqual(2);
 		expect(heap.removeRoot()).toEqual(3);
+    });
+
+	it('Removes root with custom objects',
+    function() {
+		heap = new buckets.Heap(customCompare);
+ 		Heap5();
+		expect(heap.removeRoot().val).toEqual("a");
+		expect(heap.removeRoot().val).toEqual("b");
+		expect(heap.removeRoot().val).toEqual("c");
+		expect(heap.removeRoot().val).toEqual("d");
     });
 
 	it('Adds and peeks',
@@ -131,6 +165,26 @@ function() {
 		expect(heap.peek()).toEqual(0);
 		heap.add(2);
 		expect(heap.peek()).toEqual(0);
+    });
+
+	it('An empty heap is empty',
+    function() {
+		expect(heap.isEmpty()).toBeTruthy();
+		Heap1();
+		for (var i=0; i < heap.size(); i++) {
+				expect(heap.isEmpty()).toBeFalsy();
+				heap.removeRoot();
+		};
+	
+    });
+
+	it('Clear removes all elements',
+    function() {
+		heap.clear();
+		Heap1();
+		heap.clear();
+		expect(heap.isEmpty()).toBeTruthy();
+		expect(heap.peek()).toBeUndefined();
     });
 
 	it('Contains inserted elements',

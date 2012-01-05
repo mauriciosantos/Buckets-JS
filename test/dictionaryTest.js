@@ -3,22 +3,12 @@ function() {
 
     var dict = null;
     var elems = 100;
-    if (!Array.prototype.indexOf) {
-        Array.prototype.indexOf = function(needle) {
-            for (var i = 0; i < this.length; i++) {
-                if (this[i] === needle) {
-                    return i;
-                }
-            }
-            return - 1;
-        };
-    }
 
     beforeEach(function() {
         dict = new buckets.Dictionary();
     });
 
-    it('Maps keys to values',
+    it('Maps keys to values with string keys',
     function() {
 
         expect(dict.get("sd")).toBeUndefined();
@@ -39,7 +29,11 @@ function() {
         expect(dict.size()).toEqual(elems + 1);
         expect(dict.get("a")).toEqual(21);
 
-        dict.clear();
+    });
+
+    it('Maps keys to values with number keys',
+    function() {
+
         // test with number keys
         for (var i = 0; i < elems; i++) {
             expect(dict.set(i, i + 1)).toBeUndefined();
@@ -50,7 +44,7 @@ function() {
         }
     });
 
-    it('Maps keys to values with cutom toString function',
+    it('Maps keys to values with custom keys',
     function() {
 
         var ts = function(obj) {
@@ -89,39 +83,74 @@ function() {
         expect(dict.size()).toEqual(0);
     });
 
+    it('An empty dictionary is empty',
+    function() {
+
+        expect(dict.isEmpty()).toBeTruthy();
+        dict.set("1", 1);
+        expect(dict.isEmpty()).toBeFalsy();
+        dict.remove("1");
+        expect(dict.isEmpty()).toBeTruthy();
+    });
+
+	it('Clear removes all elements',
+    function() {
+		dict.clear();
+		dict.set(1,1);
+		dict.clear();
+		expect(dict.isEmpty()).toBeTruthy();
+		expect(dict.get(1)).toBeUndefined();
+    });
+
+    it('Contains existing keys',
+    function() {
+
+        expect(dict.containsKey(0)).toBeFalsy();
+        for (var i = 0; i < 10; i++) {
+            dict.set(i, i);
+            expect(dict.containsKey(i)).toBeTruthy();
+        };
+        for (var i = 0; i < 10; i++) {
+            dict.remove(i);
+            expect(dict.containsKey(i)).toBeFalsy();
+        };
+    });
+
+    it('Gives the right size',
+    function() {
+
+        expect(dict.size()).toEqual(0);
+        for (var i = 0; i < 10; i++) {
+            dict.set(i, i);
+            expect(dict.size()).toEqual(i + 1);
+        };
+
+    });
+
     it('Gives all the stored keys',
     function() {
         var k = [];
         for (var i = 0; i < elems; i++) {
             var keys = dict.keys();
-            expect(k.length).toEqual(keys.length);
-            for (var j = 0; j < keys.length; j++) {
-                expect(k.indexOf(keys[j])>=0).toBeTruthy();
-            }
-            for (var j = 0; j < k.length; j++) {
-                expect(keys.indexOf(k[j]) >= 0).toBeTruthy();
-            }
+            k.sort();
+            keys.sort();
+            expect(buckets.arrays.equals(k, keys)).toBeTruthy();
             dict.set("" + i, i);
             k.push("" + i);
         }
     });
 
-	it('Gives all the stored values',
+    it('Gives all the stored values',
     function() {
         var v = [];
-		for(var i = 0; i < elems; i++){
-			var values = dict.values();
-			expect(v.length).toEqual(values.length);
-
-			for(var j=0;j<values.length;j++){
-				expect(v.indexOf(values[j])>=0).toBeTruthy();
-			}
-			for(var j=0;j<v.length;j++){
-				expect(values.indexOf(v[j])>=0).toBeTruthy();
-			}
-			dict.set("" + i,i);
-			v.push(i);
-		 }
+        for (var i = 0; i < elems; i++) {
+            var values = dict.values();
+            v.sort();
+            values.sort();
+            expect(buckets.arrays.equals(v, values)).toBeTruthy();
+            dict.set("" + i, i);
+            v.push(i);
+        }
     });
 
 });

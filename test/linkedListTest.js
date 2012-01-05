@@ -3,6 +3,10 @@ function() {
 
     var list=null;
     var elems = 100;
+	
+	function equals(a, b) {
+        return a.el === b.el;
+    };
 
     beforeEach(function() {
         list = new buckets.LinkedList();
@@ -26,13 +30,33 @@ function() {
         }
     });
 
+	it('Clear removes all elements',
+    function() {
+		for (var i = 0; i < elems; i++) {
+            list.add(i);
+		}
+		list.clear();
+        expect(list.first()).toBeUndefined();
+        expect(list.last()).toBeUndefined();
+        expect(list.size()).toEqual(0);
+    });
+
+	it('Gives the right size',
+    function() {
+
+        expect(list.size()).toEqual(0);
+		list.add(1);
+		expect(list.size()).toEqual(1);
+		list.add(1);
+		expect(list.size()).toEqual(2);
+    });
+
     it('Inserts an element to specified index',
     function() {
 
         expect(list.elementAtIndex( - 1)).toBeUndefined();
         expect(list.elementAtIndex(0)).toBeUndefined();
         expect(list.elementAtIndex(1)).toBeUndefined();
-
 
         for (var i = 0; i < elems; i++) {
             list.add(i);
@@ -114,33 +138,27 @@ function() {
     it('Finds elements with indexOf and custom equals function',
     function() {
 
-        function equals(a, b) {
-            return a.el === b.el;
-        };
-
-        list = new buckets.LinkedList(equals);
-
         expect(list.indexOf({
             el: 1
-        })).toEqual( - 1);
+        },equals)).toEqual( - 1);
         for (var j = 0; j < elems; j++) {
             list.add({
                 el: j + 1
             });
             expect(list.indexOf({
                 el: j + 1
-            })).toEqual(j);
+            },equals)).toEqual(j);
             expect(list.indexOf({
                 el: -200
-            })).toEqual( - 1);
+            },equals)).toEqual( - 1);
         }
         for (var j = 0; j < elems; j++) {
             expect(list.indexOf({
                 el: j + 1
-            })).toEqual(j);
+            },equals)).toEqual(j);
             expect(list.indexOf({
                 el: -200
-            })).toEqual( - 1);
+            },equals)).toEqual( - 1);
         }
     });
 
@@ -168,14 +186,26 @@ function() {
         expect(list.last()).toEqual(2);
         list.clear();
 
+		list.add(1);
+        list.add(2);
+		list.add(3);
+		list.add(4);
+        expect(list.remove(2)).toBeTruthy();
+        expect(list.size() === 3).toBeTruthy();
+        expect(list.first()).toEqual(1);
+        expect(list.last()).toEqual(4);
+		expect(list.elementAtIndex(0)).toEqual(1);
+		expect(list.elementAtIndex(1)).toEqual(3);
+		expect(list.elementAtIndex(2)).toEqual(4);
+		expect(list.elementAtIndex(3)).toEqual(undefined);
+        list.clear();
+
         for (var i = 0; i < elems; i++) {
             list.add(i);
         }
-
         var half = elems / 2;
         list.remove(elems / 2);
         for (var i = 0; i < elems; i++) {
-
             if (i === (half)) {
                 expect(list.indexOf(i)).toEqual( - 1);
             }
@@ -187,7 +217,31 @@ function() {
             }
         }
         expect(list.size() === (elems - 1)).toBeTruthy();
+    });
 
+	it("Doesn't remove non existing elements",
+    function() {
+		expect(list.remove(5)).toBeFalsy();
+		expect(list.size()).toEqual(0);
+		list.add(1);
+        list.add(2);
+		list.add(3);
+		list.add(4);
+		expect(list.remove(5)).toBeFalsy();
+		expect(list.size()).toEqual(4);
+    });
+
+	it('Removes elements with custom equals',
+    function() {
+		expect(list.remove({el:1})).toBeFalsy();
+		for (var i = 0; i < elems; i++) {
+			list.add({el:i});
+		}
+		for (var i = 0; i < elems; i++) {
+			expect(list.remove({el:i})).toBeFalsy();
+			expect(list.remove({el:i},equals)).toBeTruthy();
+		}
+       
     });
 
     it('Removes elements at specified index',
@@ -290,6 +344,7 @@ function() {
             it.replace(i + 1);
             i++;
         }
+		
         var i = 0;
 		it = list.iterator();
 		expect(it.hasNext()).toBeTruthy();

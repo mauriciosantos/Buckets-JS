@@ -3,9 +3,8 @@
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 //
-// Some documentation comes from the Java API as it serves the same porpose.
-"use strict";
-
+// Some documentation is borrowed from the Officieal Java API
+// as it serves the same porpose.
 /**
  * @namespace Top level namespace for Buckets, a JavaScript data structure library.
  */
@@ -49,11 +48,11 @@ buckets.common.defaultToString = function(obj) {
 
     if (Object.prototype.toString.call(obj) === '[object String]') {
         return obj;
-    } else if(obj===null){
-	  return 'BUCKETS_NULL_OBJECT';
-	} else if(obj===undefined) {
-	  return 'BUCKETS_UNDEFINED_OBJECT';
-	} else {
+    } else if (obj === null) {
+        return 'BUCKETS_NULL_OBJECT';
+    } else if (obj === undefined) {
+        return 'BUCKETS_UNDEFINED_OBJECT';
+    } else {
         return obj.toString();
     }
 };
@@ -82,60 +81,182 @@ buckets.common.reverseCompareFunction = function(compareFunction) {
     }
 };
 
+/**
+ * Returns an equal function given a compare function.
+ * @function
+ * @private
+ */
+buckets.common.compareToEquals = function(compareFunction) {
+    return function(a, b) {
+        return compareFunction(a, b) === 0;
+    };
+};
+
+
+/**
+ * @namespace Contains various functions for manipulating arrays.
+ */
+buckets.arrays = {};
+
+/**
+ * Returns the position of the first occurrence of the specified element
+ * within the specified array.
+ * @param {Array} array the array in which to search element.
+ * @param {Object} element the element to search.
+ * @param {Function=} equalsFunction optional function used to 
+ * check equality between 2 elements.
+ * @return {number} the position of the first occurrence of the specified element
+ * within the specified array.
+ */
+buckets.arrays.indexOf = function(array, element, equalsFunction) {
+    var equals = equalsFunction || buckets.common.defaultEquals;
+    var length = array.length;
+    for (var i = 0; i < length; i++) {
+        if (equals(array[i], element)) {
+            return i;
+        }
+    }
+    return - 1;
+};
+
+/**
+ * Returns the position of the last occurrence of the specified element
+ * within the specified array.
+ * @param {Array} array the array in which to search element.
+ * @param {Object} element the element to search.
+ * @param {Function=} equalsFunction optional function used to 
+ * check equality between 2 elements.
+ * @return {number} the position of the last occurrence of the specified element
+ * within the specified array.
+ */
+buckets.arrays.lastIndexOf = function(array, element, equalsFunction) {
+    var equals = equalsFunction || buckets.common.defaultEquals;
+    var length = array.length;
+    var index = -1;
+    for (var i = 0; i < length; i++) {
+        if (equals(array[i], element)) {
+            index = i;
+        }
+    }
+    return index;
+};
+
+/**
+ * Returns true if the specified array contains the specified element.
+ * @param {Array} array the array in which to search element.
+ * @param {Object} element the element to search.
+ * @param {Function=} equalsFunction optional function used to 
+ * check equality between 2 elements.
+ * @return {boolean} true if the specified array contains the specified element.
+ */
+buckets.arrays.contains = function(array, element, equalsFunction) {
+    return buckets.arrays.indexOf(array, element, equalsFunction) >= 0;
+};
+
+/**
+ * Returns the number of elements in the specified array equal
+ * to the specified object.
+ * @param {Array} array the array in which to determine the frequency of element.
+ * @param {Object} element the element whose frequency is to be determined.
+ * @param {Function=} equalsFunction optional function used to 
+ * check equality between 2 elements.
+ * @return {number} the number of elements in the specified array 
+ * equal to the specified object or -1 if the array or element are undefined.
+ */
+buckets.arrays.frequency = function(array, element, equalsFunction) {
+    var equals = equalsFunction || buckets.common.defaultEquals;
+    var length = array.length;
+    var freq = 0;
+    for (var i = 0; i < length; i++) {
+        if (equals(array[i], element)) {
+            freq++;
+        }
+    }
+    return freq;
+};
+
+/**
+ * Returns true if the two specified arrays of booleans are equal to one another.
+ * Two arrays are considered equal if both arrays contain the same number
+ * of elements, and all corresponding pairs of elements in the two 
+ * arrays are equal and are in the same order. 
+ * @param {Array} array1 one array to be tested for equality.
+ * @param {Array} array2 the other array to be tested for equality.
+ * @param {Function=} equalsFunction optional function used to 
+ * check equality between elemements in the arrays.
+ * @return {boolean} true if the two arrays are equal
+ */
+buckets.arrays.equals = function(array1, array2, equalsFunction) {
+    var equals = equalsFunction || buckets.common.defaultEquals;
+    if (array1 === array2) {
+        return true;
+    }
+    if (array1.length !== array2.length) {
+        return false;
+    }
+    var length = array1.length;
+    for (var i = 0; i < length; i++) {
+        if (!equals(array1[i], array2[i])) {
+            return false;
+        }
+    }
+    return true;
+};
+
+/**
+ * Returns a copy of the specified array.
+ * @param {Array} array the array to copy.
+ * @return {Array} a copy of the specified array
+ */
+buckets.arrays.copy = function(array) {
+    return array.concat();
+};
+
+/**
+ * Swaps the elements at the specified positions in the specified array.
+ * @param {Array} array The array in which to swap elements.
+ * @param {number} i the index of one element to be swapped.
+ * @param {number} j the index of the other element to be swapped.
+ * @return {boolean} true if the array is defined and the indexes are valid.
+ */
+buckets.arrays.swap = function(array, i, j) {
+    if (i < 0 || i >= array.length || j < 0 || j >= array.length) {
+        return false;
+    }
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+    return true;
+};
 
 /**
  * Creates an empty Linked List.
- * @class <p>A linked list is a data structure consisting of a group of nodes
- * which together represent a sequence.</p>
- *
- * <p>If the elements inside the list are
- * not comparable with the === operator a custom equals function should be
- * provided to perform searches, the function must receive two arguments and
- * return true if they are equal, false otherwise. Example:</p>
- *
- * <pre>
- * var petsAreEqualByName = function(pet1, pet2) {
- * 	return pet1.name === pet2.name;
- * }
- *
- * var petList = new buckets.LinkedList(petsAreEqualByName);
- * var numberList = new buckets.LinkedList();
- *
- * </pre>
- *
+ * @class A linked list is a data structure consisting of a group of nodes
+ * which together represent a sequence.
  * @constructor
- * @param {function(Object,Object):boolean=} equalsFunction Optional
- * function used to check if two elements are equal.
  */
-buckets.LinkedList = function(equalsFunction) {
+buckets.LinkedList = function() {
 
     /**
-	 * First node in the list
-	 * @type {Object}
-	 * @private
-	 */
+     * First node in the list
+     * @type {Object}
+     * @private
+     */
     this.firstNode = null;
 
     /**
-	 * Last node in the list
-	 * @type {Object}
-	 * @private
-	 */
+     * Last node in the list
+     * @type {Object}
+     * @private
+     */
     this.lastNode = null;
 
     /**
-	 * Number of elements in the list
-	 * @type {number}
-	 * @private
-	 */
+     * Number of elements in the list
+     * @type {number}
+     * @private
+     */
     this.nElements = 0;
-
-    /**
-	 * Function used to check if two elements are equal.
-	 * @type {function(Object,Object):boolean}
-	 * @private
-	 */
-    this.equalsF = equalsFunction || buckets.common.defaultEquals;
 };
 
 
@@ -158,7 +279,7 @@ buckets.LinkedList.prototype.add = function(element) {
  */
 buckets.LinkedList.prototype.addElementAtIndex = function(elem, index) {
 
-    if (index < 0 || index > this.nElements || elem===undefined) {
+    if (index < 0 || index > this.nElements || elem === undefined) {
         return false;
     }
     var newNode = {
@@ -243,22 +364,36 @@ buckets.LinkedList.prototype.elementAtIndex = function(index) {
 /**
  * Returns the index in this list of the this.firstNode occurrence of the
  * specified element, or -1 if the List does not contain this element.
+ * <p>If the elements inside the list are
+ * not comparable with the === operator a custom equals function should be
+ * provided to perform searches, the function must receive two arguments and
+ * return true if they are equal, false otherwise. Example:</p>
+ *
+ * <pre>
+ * var petsAreEqualByName = function(pet1, pet2) {
+ *  return pet1.name === pet2.name;
+ * }
+ * </pre>
  * @param {Object} element element to search for.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional
+ * function used to check if two elements are equal.
  * @return {number} the index in this list of the this.firstNode occurrence
  * of the specified element, or -1 if the list does not contain this
  * element.
  */
-buckets.LinkedList.prototype.indexOf = function(element) {
+buckets.LinkedList.prototype.indexOf = function(element, equalsFunction) {
 
-    if(element===undefined){
-		return -1;
-	}
+    var equalsF = equalsFunction || buckets.common.defaultEquals;
+
+    if (element === undefined) {
+        return - 1;
+    }
 
     var currentNode = this.firstNode;
     var index = 0;
     while (currentNode !== null) {
 
-        if (this.equalsF(currentNode.element, element)) {
+        if (equalsF(currentNode.element, element)) {
             return index;
         }
         index++;
@@ -270,52 +405,73 @@ buckets.LinkedList.prototype.indexOf = function(element) {
 
 /**
  * Returns true if this list contains the specified element.
+ * <p>If the elements inside the list are
+ * not comparable with the === operator a custom equals function should be
+ * provided to perform searches, the function must receive two arguments and
+ * return true if they are equal, false otherwise. Example:</p>
+ *
+ * <pre>
+ * var petsAreEqualByName = function(pet1, pet2) {
+ *  return pet1.name === pet2.name;
+ * }
+ * </pre>
  * @param {Object} element element to search for.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional
+ * function used to check if two elements are equal.
  * @return {boolean} true if this list contains the specified element, false
  * otherwise.
  */
-buckets.LinkedList.prototype.contains = function(element) {
-    return (this.indexOf(element) >= 0);
+buckets.LinkedList.prototype.contains = function(element, equalsFunction) {
+    return (this.indexOf(element, equalsFunction) >= 0);
 };
 
 
 /**
  * Removes the first occurrence of the specified element in this list.
+ * <p>If the elements inside the list are
+ * not comparable with the === operator a custom equals function should be
+ * provided to perform searches, the function must receive two arguments and
+ * return true if they are equal, false otherwise. Example:</p>
+ *
+ * <pre>
+ * var petsAreEqualByName = function(pet1, pet2) {
+ *  return pet1.name === pet2.name;
+ * }
+ * </pre>
  * @param {Object} element element to be removed from this list, if present.
  * @return {boolean} true if the list contained the specified element.
  */
-buckets.LinkedList.prototype.remove = function(element) {
-
-    if (this.nElements < 1 || element===undefined) {
+buckets.LinkedList.prototype.remove = function(element, equalsFunction) {
+    var equalsF = equalsFunction || buckets.common.defaultEquals;
+    if (this.nElements < 1 || element === undefined) {
         return false;
-    } else {
-
-        var previous = null;
-        var currentNode = this.firstNode;
-        while (currentNode !== null) {
-
-            if (this.equalsF(currentNode.element, element)) {
-
-                if (currentNode === this.firstNode) {
-                    this.firstNode = this.firstNode.next;
-                    if (currentNode === this.lastNode) {
-                        this.lastNode = null;
-                    }
-                    break;
-                } else if (currentNode === this.lastNode) {
-                    this.lastNode = previous;
-                }
-                previous.next = currentNode.next;
-                currentNode.next = null;
-                break;
-            }
-            previous = currentNode;
-            currentNode = currentNode.next;
-        }
     }
+    var previous = null;
+    var currentNode = this.firstNode;
+    while (currentNode !== null) {
 
-    this.nElements--;
-    return true;
+        if (equalsF(currentNode.element, element)) {
+
+            if (currentNode === this.firstNode) {
+                this.firstNode = this.firstNode.next;
+                if (currentNode === this.lastNode) {
+                    this.lastNode = null;
+                }
+            } else if (currentNode === this.lastNode) {
+                this.lastNode = previous;
+				previous.next = currentNode.next;
+	            currentNode.next = null;
+            } else{
+			  	previous.next = currentNode.next;
+	            currentNode.next = null;
+			}
+            this.nElements--;
+            return true;
+        }
+        previous = currentNode;
+        currentNode = currentNode.next;
+    }
+    return false;
 };
 
 /**
@@ -367,6 +523,8 @@ buckets.LinkedList.prototype.removeElementAtIndex = function(index) {
     this.nElements--;
     return r;
 };
+
+
 /**
  * Returns an iterator over the elements in this list (in proper sequence).<br>
  * <br>
@@ -401,7 +559,7 @@ buckets.LinkedList.prototype.iterator = function() {
         return current.element;
     };
     it.remove = function() {
-		if (current === null) {
+        if (current === null) {
             return undefined;
         }
         var r = current.element;
@@ -431,6 +589,24 @@ buckets.LinkedList.prototype.iterator = function() {
     };
     return it;
 };
+
+buckets.LinkedList.prototype.reverse = function() {
+
+    var previous = null;
+    var current = this.firstNode;
+    var temp = null;
+    while (current !== null) {
+        temp = current.next;
+        current.next = previous;
+        previous = current;
+        current = temp;
+    }
+    temp = this.firstNode;
+    this.firstNode = this.lastNode;
+    this.lastNode = temp;
+};
+
+
 /**
  * Returns an array containing all of the elements in this list in proper
  * sequence.
@@ -453,6 +629,7 @@ buckets.LinkedList.prototype.toArray = function() {
 buckets.LinkedList.prototype.size = function() {
     return this.nElements;
 };
+
 /**
  * Returns true if this list contains no elements.
  * @return {boolean} true if this list contains no elements.
@@ -471,10 +648,9 @@ buckets.LinkedList.prototype.isEmpty = function() {
  *
  * <pre>
  * function petToString(pet) {
- * 	return pet.name;
+ *  return pet.name;
  * }
  * </pre>
- *
  * @constructor
  * @param {function(Object):string=} toStringFunction optional function used
  * to convert keys to strings. If the keys aren't strings or if toString()
@@ -484,24 +660,24 @@ buckets.LinkedList.prototype.isEmpty = function() {
 buckets.Dictionary = function(toStringFunction) {
 
     /**
-	 * Object holding the key-value pairs.
-	 * @type {Object}
-	 * @private
-	 */
+     * Object holding the key-value pairs.
+     * @type {Object}
+     * @private
+     */
     this.table = {};
 
     /**
-	 * Number of elements in the list.
-	 * @type {number}
-	 * @private
-	 */
+     * Number of elements in the list.
+     * @type {number}
+     * @private
+     */
     this.nElements = 0;
 
     /**
-	 * Function used to convert keys to strings.
-	 * @type {function(Object):string}
-	 * @private
-	 */
+     * Function used to convert keys to strings.
+     * @type {function(Object):string}
+     * @private
+     */
     this.toStr = toStringFunction || buckets.common.defaultToString;
 };
 
@@ -531,11 +707,11 @@ buckets.Dictionary.prototype.get = function(key) {
  * there was no mapping for the key or if the key||value are undefined.
  */
 buckets.Dictionary.prototype.set = function(key, value) {
-    
-    if(key===undefined || value===undefined ){
-		return undefined;
-	}
-	
+
+    if (key === undefined || value === undefined) {
+        return undefined;
+    }
+
     var ret;
     var k = this.toStr(key);
     var previousElement = this.table[k];
@@ -637,19 +813,20 @@ buckets.Dictionary.prototype.isEmpty = function() {
  * each node is smaller than each of its children. 
  * This implementation uses an array to store elements.</p>
  * <p>If the inserted elements are custom objects a compare function must be provided, 
- * otherwise the <=, === and >= operators are used to compare elements. Example:</p>
+ *  at construction time, otherwise the <=, === and >= operators are 
+ * used to compare elements. Example:</p>
  *
  * <pre>
  * function comparePetsByAge(pet1, pet2) {
- * 	if (pet1.age &lt; pet2.age) {
- * 		return -1;
- * 	}
- * 	else if (pet1.age &gt; pet2.age) {
- * 		return 1;
- * 	}
- * 	else {
- * 		return 0;
- * 	}
+ *  if (pet1.age &lt; pet2.age) {
+ *      return -1;
+ *  }
+ *  else if (pet1.age &gt; pet2.age) {
+ *      return 1;
+ *  }
+ *  else {
+ *      return 0;
+ *  }
  * }
  * </pre>
  *
@@ -658,15 +835,15 @@ buckets.Dictionary.prototype.isEmpty = function() {
  *
  * <pre>
  * function reverseCompareNumbers(a, b) {
- * 	if (a &lt; b) {
- * 		return 1;
- * 	}
- * 	else if (a &gt; b) {
- * 		return -1;
- * 	}
- * 	else {
- * 		return 0;
- * 	}
+ *  if (a &lt; b) {
+ *      return 1;
+ *  }
+ *  else if (a &gt; b) {
+ *      return -1;
+ *  }
+ *  else {
+ *      return 0;
+ *  }
  * }
  * </pre>
  *
@@ -679,17 +856,17 @@ buckets.Dictionary.prototype.isEmpty = function() {
 buckets.Heap = function(compareFunction) {
 
     /**
-	 * Array used to store the elements od the heap.
-	 * @type {Array.<Object>}
-	 * @private
-	 */
+     * Array used to store the elements od the heap.
+     * @type {Array.<Object>}
+     * @private
+     */
     this.data = [];
 
     /**
-	 * Function used to compare elements.
-	 * @type {function(Object,Object):number}
-	 * @private
-	 */
+     * Function used to compare elements.
+     * @type {function(Object,Object):number}
+     * @private
+     */
     this.compare = compareFunction || buckets.common.defaultCompare;
 };
 /**
@@ -803,12 +980,12 @@ buckets.Heap.prototype.peek = function() {
  * @return true if the element was added or fals if it is undefined.
  */
 buckets.Heap.prototype.add = function(element) {
-    if(element===undefined){
-		return undefined;
-	}
-	this.data.push(element);
+    if (element === undefined) {
+        return undefined;
+    }
+    this.data.push(element);
     this.siftUp(this.data.length - 1);
-	return true;
+    return true;
 };
 
 /**
@@ -836,14 +1013,8 @@ buckets.Heap.prototype.removeRoot = function() {
  * otherwise.
  */
 buckets.Heap.prototype.contains = function(element) {
-
-    var l = this.data.length;
-    for (var i = 0; i < l; i++) {
-        if (this.compare(this.data[i], element) === 0) {
-            return true;
-        }
-    }
-    return false;
+    var equF = buckets.common.compareToEquals(this.compare);
+    return buckets.arrays.contains(this.data, element, equF);
 };
 /**
  * Returns the number of elements in this heap.
@@ -870,21 +1041,17 @@ buckets.Heap.prototype.clear = function() {
  * Creates an empty Stack.
  * @class A Stack is a Last-In-First-Out (LIFO) data structure, the last
  * element added to the stack will be the first one to be removed. This
- * implementation uses a linked list as a container. If the elements inside
- * the stack are not comparable with the === operator, a custom equals
- * function should be provided to perform searches.
+ * implementation uses a linked list as a container.
  * @constructor
- * @param {function(Object,Object):boolean=} equalsFunction Optional
- * function used to check if two elements are equal.
  */
-buckets.Stack = function(equalsFunction) {
+buckets.Stack = function() {
 
     /**
-	 * List containing the elements.
-	 * @type buckets.LinkedList
-	 * @private
-	 */
-    this.list = new buckets.LinkedList(equalsFunction);
+     * List containing the elements.
+     * @type buckets.LinkedList
+     * @private
+     */
+    this.list = new buckets.LinkedList();
 };
 /**
  * Pushes an item onto the top of this stack.
@@ -926,14 +1093,27 @@ buckets.Stack.prototype.peek = function() {
 buckets.Stack.prototype.size = function() {
     return this.list.size();
 };
+
 /**
  * Returns true if this stack contains the specified element.
+ * <p>If the elements inside this stack are
+ * not comparable with the === operator, a custom equals function should be
+ * provided to perform searches, the function must receive two arguments and
+ * return true if they are equal, false otherwise. Example:</p>
+ *
+ * <pre>
+ * var petsAreEqualByName = function(pet1, pet2) {
+ *  return pet1.name === pet2.name;
+ * }
+ * </pre>
  * @param {Object} elem element to search for.
+ * @param {function(Object,Object):boolean=} equalsFunction optional
+ * function to check if two elements are equal.
  * @return {boolean} true if this stack contains the specified element,
  * false otherwise.
  */
-buckets.Stack.prototype.contains = function(elem) {
-    return this.list.contains(elem);
+buckets.Stack.prototype.contains = function(elem, equalsFunction) {
+    return this.list.contains(elem, equalsFunction);
 };
 /**
  * Checks if this stack is empty.
@@ -954,21 +1134,17 @@ buckets.Stack.prototype.clear = function() {
  * Creates an empty queue.
  * @class A queue is a First-In-First-Out (FIFO) data structure, the first
  * element added to the queue will be the first one to be removed. This
- * implementation uses a linked list as a container. If the elements inside
- * the queue are not comparable with the === operator a custom equals
- * function should be provided to perform searches.
+ * implementation uses a linked list as a container.
  * @constructor
- * @param {function(Object,Object):boolean=} equalsFunction Optional
- * function used to check if two elements are equal.
  */
-buckets.Queue = function(equalsFunction) {
+buckets.Queue = function() {
 
     /**
-	 * List containing the elements.
-	 * @type buckets.LinkedList
-	 * @private
-	 */
-    this.list = new buckets.LinkedList(equalsFunction);
+     * List containing the elements.
+     * @type buckets.LinkedList
+     * @private
+     */
+    this.list = new buckets.LinkedList();
 };
 /**
  * Inserts the specified element into the end of this queue.
@@ -1020,12 +1196,24 @@ buckets.Queue.prototype.size = function() {
 
 /**
  * Returns true if this queue contains the specified element.
+ * <p>If the elements inside this stack are
+ * not comparable with the === operator, a custom equals function should be
+ * provided to perform searches, the function must receive two arguments and
+ * return true if they are equal, false otherwise. Example:</p>
+ *
+ * <pre>
+ * var petsAreEqualByName = function(pet1, pet2) {
+ *  return pet1.name === pet2.name;
+ * }
+ * </pre>
  * @param {Object} elem element to search for.
+ * @param {function(Object,Object):boolean=} equalsFunction optional
+ * function to check if two elements are equal.
  * @return {boolean} true if this queue contains the specified element,
  * false otherwise.
  */
-buckets.Queue.prototype.contains = function(elem) {
-    return this.list.contains(elem);
+buckets.Queue.prototype.contains = function(elem, equalsFunction) {
+    return this.list.contains(elem, equalsFunction);
 };
 
 /**
@@ -1067,7 +1255,7 @@ buckets.PriorityQueue = function(compareFunction) {
  * @return {boolean} true if the element was inserted, or false if it is undefined.
  */
 buckets.PriorityQueue.prototype.enqueue = function(element) {
-    this.heap.add(element);
+    return this.heap.add(element);
 };
 
 /**
@@ -1144,7 +1332,7 @@ buckets.PriorityQueue.prototype.clear = function() {
  *
  * <pre>
  * function petToString(pet) {
- * 	return pet.name;
+ *  return pet.name;
  * }
  * </pre>
  *
@@ -1165,7 +1353,7 @@ buckets.Set = function(toStringFunction) {
  * false otherwise.
  */
 buckets.Set.prototype.contains = function(element) {
-    return this.dictionary.containsKey(element)
+    return this.dictionary.containsKey(element);
 };
 
 /**
@@ -1174,11 +1362,11 @@ buckets.Set.prototype.contains = function(element) {
  * @return {boolean} true if this set did not already contain the specified element.
  */
 buckets.Set.prototype.add = function(element) {
-    if (this.contains(element) || element ===undefined) {
+    if (this.contains(element) || element === undefined) {
         return false;
     } else {
         this.dictionary.set(element, element);
-		return true;
+        return true;
     }
 };
 
@@ -1208,9 +1396,9 @@ buckets.Set.prototype.remove = function(element) {
  * @return {Object} an iterator over the elements in this set.
  */
 buckets.Set.prototype.iterator = function() {
-	
-	var keys = this.dictionary.keys();
-	var set = this;
+
+    var keys = this.dictionary.keys();
+    var set = this;
     var current = -1;
     var next = 0;
     var it = {};
@@ -1223,11 +1411,11 @@ buckets.Set.prototype.iterator = function() {
             return undefined;
         }
         current = next;
-        next = current + 1 ;
+        next = current + 1;
         return set.dictionary.get(keys[current]);
     };
     it.remove = function() {
-        if (current < keys.length && current >=0 ) {
+        if (current < keys.length && current >= 0) {
             return set.dictionary.remove(keys[current]);
         }
     };
@@ -1262,5 +1450,127 @@ buckets.Set.prototype.size = function() {
  * Removes all of the elements from this set.
  */
 buckets.Set.prototype.clear = function() {
+    this.dictionary.clear();
+};
+
+
+buckets.Bag = function(toStringFunction) {
+    this.dictionary = new buckets.Dictionary(toStringFunction);
+    this.nElements = 0;
+};
+
+
+
+buckets.Bag.prototype.add = function(element, nCopies) {
+
+    if (isNaN(nCopies) || nCopies === undefined) {
+        nCopies = 1;
+    }
+    if (element === undefined || nCopies <= 0) {
+        return false;
+    }
+
+    if (!this.contains(element)) {
+        var node = {
+            value: element,
+            copies: nCopies
+        };
+        this.dictionary.set(element, node);
+    } else {
+        this.dictionary.get(element).copies += nCopies;
+    }
+    this.nElements += nCopies;
+    return true;
+};
+
+buckets.Bag.prototype.contains = function(element) {
+    return this.dictionary.containsKey(element);
+};
+
+buckets.Bag.prototype.remove = function(element, nCopies) {
+
+    if (isNaN(nCopies) || nCopies === undefined) {
+        nCopies = 1;
+    }
+    if (element === undefined || nCopies <= 0) {
+        return false;
+    }
+
+    if (!this.contains(element)) {
+        return false;
+    } else {
+        var node = this.dictionary.get(element);
+        if (nCopies > node.copies) {
+            this.nElements -= node.copies;
+        } else {
+            this.nElements -= nCopies;
+        }
+        node.copies -= nCopies;
+        if (node.copies <= 0) {
+            this.dictionary.remove(element);
+        }
+        return true;
+    }
+};
+
+buckets.Bag.prototype.toArray = function() {
+    var a = [];
+    var values = this.dictionary.values();
+    var vl = values.length;
+    for (var i = 0; i < vl; i++) {
+        var node = values[i];
+        var element = node.value;
+        var copies = node.copies;
+        for (var j = 0; j < copies; j++) {
+            a.push(element);
+        }
+    }
+    return a;
+};
+
+buckets.Bag.prototype.iterator = function() {
+
+    var values = this.dictionary.values();
+    var bag = this;
+    var copies = 0;
+    var current = -1;
+    var next = 0;
+    var it = {};
+
+    it.hasNext = function() {
+        return copies > 0 || next < values.length;
+    };
+    it.next = function() {
+        if (copies <= 0 || next >= values.length) {
+            return undefined;
+        }
+        if (copies <= 0) {
+            current = next;
+            next = current + 1;
+            copies = values[current].copies - 1;
+            return values[current].value;
+        } else {
+            copies--;
+            return values[current].value;
+        }
+    };
+    it.remove = function() {
+        if (current < values.length && current >= 0) {
+            return bag.remove(values[current].value);
+        }
+    };
+    return it;
+};
+
+buckets.Bag.prototype.size = function() {
+    return this.nElements;
+};
+
+buckets.Bag.prototype.isEmpty = function() {
+    return this.nElements === 0;
+};
+
+buckets.Bag.prototype.clear = function() {
+    this.nElements = 0;
     this.dictionary.clear();
 };

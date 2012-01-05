@@ -193,6 +193,8 @@ ul.inheritsList
 	
 	<li><a href="../symbols/buckets.html">buckets</a></li>
 	
+	<li><a href="../symbols/buckets.arrays.html">buckets.arrays</a></li>
+	
 	<li><a href="../symbols/buckets.Dictionary.html">buckets.Dictionary</a></li>
 	
 	<li><a href="../symbols/buckets.Heap.html">buckets.Heap</a></li>
@@ -224,23 +226,8 @@ ul.inheritsList
 				
 				
 			
-				<p>A linked list is a data structure consisting of a group of nodes
-which together represent a sequence.</p>
-
-<p>If the elements inside the list are
-not comparable with the === operator a custom equals function should be
-provided to perform searches, the function must receive two arguments and
-return true if they are equal, false otherwise. Example:</p>
-
-<pre>
-var petsAreEqualByName = function(pet1, pet2) {
-	return pet1.name === pet2.name;
-}
-
-var petList = new buckets.LinkedList(petsAreEqualByName);
-var numberList = new buckets.LinkedList();
-
-</pre>
+				A linked list is a data structure consisting of a group of nodes
+which together represent a sequence.
 				
 				
 					<br /><i>Defined in: </i> &lt;../buckets.js&gt;.
@@ -262,7 +249,7 @@ var numberList = new buckets.LinkedList();
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/buckets.LinkedList.html#constructor">buckets.LinkedList</a></b>(equalsFunction)
+								<b><a href="../symbols/buckets.LinkedList.html#constructor">buckets.LinkedList</a></b>()
 							</div>
 							<div class="description">Creates an empty Linked List.</div>
 						</td>
@@ -318,7 +305,7 @@ var numberList = new buckets.LinkedList();
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#contains">contains</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#contains">contains</a></b>(element, equalsFunction)
 								</div>
 								<div class="description">Returns true if this list contains the specified element.</div>
 							</td>
@@ -345,7 +332,7 @@ var numberList = new buckets.LinkedList();
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#indexOf">indexOf</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#indexOf">indexOf</a></b>(element, equalsFunction)
 								</div>
 								<div class="description">Returns the index in this list of the this.firstNode occurrence of the
 specified element, or -1 if the List does not contain this element.</div>
@@ -382,7 +369,7 @@ specified element, or -1 if the List does not contain this element.</div>
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#remove">remove</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#remove">remove</a></b>(element, equalsFunction)
 								</div>
 								<div class="description">Removes the first occurrence of the specified element in this list.</div>
 							</td>
@@ -433,7 +420,7 @@ sequence.</div>
 				</div>
 				
 				<div class="fixedFont">
-						<b>buckets.LinkedList</b>(equalsFunction)
+						<b>buckets.LinkedList</b>()
 				</div>
 				
 				<div class="description">
@@ -444,18 +431,6 @@ sequence.</div>
 				
 				
 				
-					
-						<dl class="detailList">
-						<dt class="heading">Parameters:</dt>
-						
-							<dt>
-								<span class="light fixedFont">{function(Object|Object):boolean=}</span>  <b>equalsFunction</b>
-								
-							</dt>
-								<dd>Optional
-function used to check if two elements are equal.</dd>
-						
-						</dl>
 					
 					
 					
@@ -598,11 +573,21 @@ index > this.size() || elem===undefined.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>contains</b>(element)
+					<b>contains</b>(element, equalsFunction)
 					
 					</div>
 					<div class="description">
 						Returns true if this list contains the specified element.
+<p>If the elements inside the list are
+not comparable with the === operator a custom equals function should be
+provided to perform searches, the function must receive two arguments and
+return true if they are equal, false otherwise. Example:</p>
+
+<pre>
+var petsAreEqualByName = function(pet1, pet2) {
+ return pet1.name === pet2.name;
+}
+</pre>
 						
 						
 					</div>
@@ -618,6 +603,13 @@ index > this.size() || elem===undefined.</dd>
 									
 								</dt>
 								<dd>element to search for.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>Optional
+function used to check if two elements are equal.</dd>
 							
 							</dl>
 						
@@ -719,12 +711,22 @@ empty.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{number}</span>
-					<b>indexOf</b>(element)
+					<b>indexOf</b>(element, equalsFunction)
 					
 					</div>
 					<div class="description">
 						Returns the index in this list of the this.firstNode occurrence of the
 specified element, or -1 if the List does not contain this element.
+<p>If the elements inside the list are
+not comparable with the === operator a custom equals function should be
+provided to perform searches, the function must receive two arguments and
+return true if they are equal, false otherwise. Example:</p>
+
+<pre>
+var petsAreEqualByName = function(pet1, pet2) {
+ return pet1.name === pet2.name;
+}
+</pre>
 						
 						
 					</div>
@@ -740,6 +742,13 @@ specified element, or -1 if the List does not contain this element.
 									
 								</dt>
 								<dd>element to search for.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>Optional
+function used to check if two elements are equal.</dd>
 							
 							</dl>
 						
@@ -871,11 +880,21 @@ empty.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>remove</b>(element)
+					<b>remove</b>(element, equalsFunction)
 					
 					</div>
 					<div class="description">
 						Removes the first occurrence of the specified element in this list.
+<p>If the elements inside the list are
+not comparable with the === operator a custom equals function should be
+provided to perform searches, the function must receive two arguments and
+return true if they are equal, false otherwise. Example:</p>
+
+<pre>
+var petsAreEqualByName = function(pet1, pet2) {
+ return pet1.name === pet2.name;
+}
+</pre>
 						
 						
 					</div>
@@ -891,6 +910,12 @@ empty.</dd>
 									
 								</dt>
 								<dd>element to be removed from this list, if present.</dd>
+							
+								<dt>
+									<b>equalsFunction</b>
+									
+								</dt>
+								<dd></dd>
 							
 							</dl>
 						
@@ -1032,7 +1057,7 @@ in proper sequence.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Jan 03 2012 18:15:15 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed Jan 04 2012 20:26:59 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

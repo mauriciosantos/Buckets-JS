@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - buckets.Set</title>
+		<title>JsDoc Reference - buckets.arrays</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -218,7 +218,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.Set
+				Namespace buckets.arrays
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -226,15 +226,7 @@ ul.inheritsList
 				
 				
 			
-				<p>A set is a data structure that contains no duplicate items.</p>
-<p>If the inserted elements are custom objects a function 
-which converts elements to strings must be provided. Example:</p>
-
-<pre>
-function petToString(pet) {
- return pet.name;
-}
-</pre>
+				Contains various functions for manipulating arrays.
 				
 				
 					<br /><i>Defined in: </i> &lt;../buckets.js&gt;.
@@ -243,8 +235,8 @@ function petToString(pet) {
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Set.">
-				<caption>Class Summary</caption>
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.arrays.">
+				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Attributes</th>
@@ -256,9 +248,9 @@ function petToString(pet) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/buckets.Set.html#constructor">buckets.Set</a></b>(toStringFunction)
+								<b><a href="../symbols/buckets.arrays.html#constructor">buckets.arrays</a></b>
 							</div>
-							<div class="description">Creates an empty set.</div>
+							<div class="description"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -272,7 +264,7 @@ function petToString(pet) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.Set.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.arrays.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -283,74 +275,68 @@ function petToString(pet) {
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#add">add</a></b>(element)
+								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.contains">contains</a></b>(array, element, equalsFunction)
 								</div>
-								<div class="description">Adds the specified element to this set if it is not already present.</div>
+								<div class="description">Returns true if the specified array contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#clear">clear</a></b>()
+								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.copy">copy</a></b>(array)
 								</div>
-								<div class="description">Removes all of the elements from this set.</div>
+								<div class="description">Returns a copy of the specified array.</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#contains">contains</a></b>(element)
+								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.equals">equals</a></b>(array1, array2, equalsFunction)
 								</div>
-								<div class="description">Returns true if this set contains the specified element.</div>
+								<div class="description">Returns true if the two specified arrays of booleans are equal to one another.</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.frequency">frequency</a></b>(array, element, equalsFunction)
 								</div>
-								<div class="description">Returns true if this set contains no elements.</div>
+								<div class="description">Returns the number of elements in the specified array equal
+to the specified object.</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#iterator">iterator</a></b>()
+								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.indexOf">indexOf</a></b>(array, element, equalsFunction)
 								</div>
-								<div class="description">Returns an iterator over the elements in this set.</div>
+								<div class="description">Returns the position of the first occurrence of the specified element
+within the specified array.</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#remove">remove</a></b>(element)
+								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.lastIndexOf">lastIndexOf</a></b>(array, element, equalsFunction)
 								</div>
-								<div class="description">Removes the specified element from this set if it is present.</div>
+								<div class="description">Returns the position of the last occurrence of the specified element
+within the specified array.</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#size">size</a></b>()
+								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.swap">swap</a></b>(array, i, j)
 								</div>
-								<div class="description">Returns the number of elements in this set.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#toArray">toArray</a></b>()
-								</div>
-								<div class="description">Returns an array containing all of the elements in this set in arbitrary order.</div>
+								<div class="description">Swaps the elements at the specified positions in the specified array.</div>
 							</td>
 						</tr>
 					
@@ -367,35 +353,21 @@ function petToString(pet) {
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Class Detail
+					Namespace Detail
 				</div>
 				
 				<div class="fixedFont">
-						<b>buckets.Set</b>(toStringFunction)
+						<b>buckets.arrays</b>
 				</div>
 				
 				<div class="description">
-					Creates an empty set.
+					
 					
 				</div>
 				
 				
 				
 				
-					
-						<dl class="detailList">
-						<dt class="heading">Parameters:</dt>
-						
-							<dt>
-								<span class="light fixedFont">{function(Object):string=}</span>  <b>toStringFunction</b>
-								
-							</dt>
-								<dd>optional function used
-to convert elements to strings. If the elements aren't strings or if toString()
-is not appropriate, a custom function which receives a key and returns a
-unique string must be provided.</dd>
-						
-						</dl>
 					
 					
 					
@@ -416,15 +388,15 @@ unique string must be provided.</dd>
 					Method Detail
 				</div>
 				
-					<a name="add"> </a>
-					<div class="fixedFont">
+					<a name=".contains"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(element)
+					<span class="light">buckets.arrays.</span><b>contains</b>(array, element, equalsFunction)
 					
 					</div>
 					<div class="description">
-						Adds the specified element to this set if it is not already present.
+						Returns true if the specified array contains the specified element.
 						
 						
 					</div>
@@ -434,80 +406,25 @@ unique string must be provided.</dd>
 						
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>the array in which to search element.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>the element to insert.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set did not already contain the specified element.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="clear"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>clear</b>()
-					
-					</div>
-					<div class="description">
-						Removes all of the elements from this set.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="contains"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{boolean}</span>
-					<b>contains</b>(element)
-					
-					</div>
-					<div class="description">
-						Returns true if this set contains the specified element.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
+								<dd>the element to search.</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Function=}</span> <b>equalsFunction</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>optional function used to 
+check equality between 2 elements.</dd>
 							
 							</dl>
 						
@@ -518,8 +435,7 @@ unique string must be provided.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contains the specified element,
-false otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if the specified array contains the specified element.</dd>
 							
 							</dl>
 						
@@ -528,168 +444,32 @@ false otherwise.</dd>
 
 					<hr />
 				
-					<a name="isEmpty"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{boolean}</span>
-					<b>isEmpty</b>()
-					
-					</div>
-					<div class="description">
-						Returns true if this set contains no elements.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contains no elements.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="iterator"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{Object}</span>
-					<b>iterator</b>()
-					
-					</div>
-					<div class="description">
-						Returns an iterator over the elements in this set. 
-The elements are returned in no particular order.<br>
-<br>
-The iterator has the following operations:<br>
-<br>
-hasNext() Returns true if this set iterator has more elements.
-next() Returns the next element in the set.<br>
-remove() Removes from the set the last element that was returned by
-next().<br>
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Object}</span> an iterator over the elements in this set.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="remove"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{boolean}</span>
-					<b>remove</b>(element)
-					
-					</div>
-					<div class="description">
-						Removes the specified element from this set if it is present.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<b>element</b>
-									
-								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contained the specified element.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="size"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{number}</span>
-					<b>size</b>()
-					
-					</div>
-					<div class="description">
-						Returns the number of elements in this set.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this set.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="toArray"> </a>
-					<div class="fixedFont">
+					<a name=".copy"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Array}</span>
-					<b>toArray</b>()
+					<span class="light">buckets.arrays.</span><b>copy</b>(array)
 					
 					</div>
 					<div class="description">
-						Returns an array containing all of the elements in this set in arbitrary order.
+						Returns a copy of the specified array.
 						
 						
 					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>the array to copy.</dd>
+							
+							</dl>
 						
 						
 						
@@ -698,7 +478,295 @@ next().<br>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this set.</dd>
+								<dd><span class="light fixedFont">{Array}</span> a copy of the specified array</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".equals"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.arrays.</span><b>equals</b>(array1, array2, equalsFunction)
+					
+					</div>
+					<div class="description">
+						Returns true if the two specified arrays of booleans are equal to one another.
+Two arrays are considered equal if both arrays contain the same number
+of elements, and all corresponding pairs of elements in the two 
+arrays are equal and are in the same order.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array1</b>
+									
+								</dt>
+								<dd>one array to be tested for equality.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array2</b>
+									
+								</dt>
+								<dd>the other array to be tested for equality.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>optional function used to 
+check equality between elemements in the arrays.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if the two arrays are equal</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".frequency"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{number}</span>
+					<span class="light">buckets.arrays.</span><b>frequency</b>(array, element, equalsFunction)
+					
+					</div>
+					<div class="description">
+						Returns the number of elements in the specified array equal
+to the specified object.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>the array in which to determine the frequency of element.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>the element whose frequency is to be determined.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>optional function used to 
+check equality between 2 elements.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the number of elements in the specified array 
+equal to the specified object or -1 if the array or element are undefined.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".indexOf"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{number}</span>
+					<span class="light">buckets.arrays.</span><b>indexOf</b>(array, element, equalsFunction)
+					
+					</div>
+					<div class="description">
+						Returns the position of the first occurrence of the specified element
+within the specified array.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>the array in which to search element.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>the element to search.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>optional function used to 
+check equality between 2 elements.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the position of the first occurrence of the specified element
+within the specified array.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".lastIndexOf"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{number}</span>
+					<span class="light">buckets.arrays.</span><b>lastIndexOf</b>(array, element, equalsFunction)
+					
+					</div>
+					<div class="description">
+						Returns the position of the last occurrence of the specified element
+within the specified array.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>the array in which to search element.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>the element to search.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>optional function used to 
+check equality between 2 elements.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the position of the last occurrence of the specified element
+within the specified array.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".swap"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.arrays.</span><b>swap</b>(array, i, j)
+					
+					</div>
+					<div class="description">
+						Swaps the elements at the specified positions in the specified array.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>The array in which to swap elements.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>i</b>
+									
+								</dt>
+								<dd>the index of one element to be swapped.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>j</b>
+									
+								</dt>
+								<dd>the index of the other element to be swapped.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if the array is defined and the indexes are valid.</dd>
 							
 							</dl>
 						

@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - buckets.Heap</title>
+		<title>JsDoc Reference - buckets.Bag</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -220,7 +220,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.Heap
+				Class buckets.Bag
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -228,41 +228,14 @@ ul.inheritsList
 				
 				
 			
-				<p>A heap is a binary tree, where the nodes maintain the heap property: 
-each node is smaller than each of its children. 
-This implementation uses an array to store elements.</p>
-<p>If the inserted elements are custom objects a compare function must be provided, 
- at construction time, otherwise the <=, === and >= operators are 
-used to compare elements. Example:</p>
+				<p>A bag is a special kind of set in which members are 
+allowed to appear more than once.</p>
+<p>If the inserted elements are custom objects a function 
+which converts elements to strings must be provided. Example:</p>
 
 <pre>
-function comparePetsByAge(pet1, pet2) {
- if (pet1.age &lt; pet2.age) {
-     return -1;
- }
- else if (pet1.age &gt; pet2.age) {
-     return 1;
- }
- else {
-     return 0;
- }
-}
-</pre>
-
-<p>If a Max-Heap is wanted (greater elements on top) you can a provide a
-reverse compare function to accomplish this behavior. Example:</p>
-
-<pre>
-function reverseCompareNumbers(a, b) {
- if (a &lt; b) {
-     return 1;
- }
- else if (a &gt; b) {
-     return -1;
- }
- else {
-     return 0;
- }
+function petToString(pet) {
+ return pet.name;
 }
 </pre>
 				
@@ -273,7 +246,7 @@ function reverseCompareNumbers(a, b) {
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Heap.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Bag.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -286,9 +259,9 @@ function reverseCompareNumbers(a, b) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/buckets.Heap.html#constructor">buckets.Heap</a></b>(compareFunction)
+								<b><a href="../symbols/buckets.Bag.html#constructor">buckets.Bag</a></b>(toStringFunction)
 							</div>
-							<div class="description">Creates an empty Heap.</div>
+							<div class="description">Creates an empty bag.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -302,7 +275,7 @@ function reverseCompareNumbers(a, b) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.Heap.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.Bag.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -315,63 +288,91 @@ function reverseCompareNumbers(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#add">add</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#add">add</a></b>(element, nCopies)
 								</div>
-								<div class="description">Adds the given element into the heap.</div>
+								<div class="description">Adds nCopies of the specified object to this bag.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#clear">clear</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this heap.</div>
+								<div class="description">Removes all of the elements from this bag.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#contains">contains</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#contains">contains</a></b>(element)
 								</div>
-								<div class="description">Returns true if this heap contains the specified element.</div>
+								<div class="description">Returns true if this bag contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#count">count</a></b>(element)
 								</div>
-								<div class="description">Checks if this heap is empty.</div>
+								<div class="description">Counts the number of copies of the specified object in this bag.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#peek">peek</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Retrieves but does not remove the root element of this heap.</div>
+								<div class="description">Returns true if this bag contains no elements.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#removeRoot">removeRoot</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#iterator">iterator</a></b>()
 								</div>
-								<div class="description">Retrieves and removes the root element of this heap.</div>
+								<div class="description">Returns an iterator over the elements in this bag, including multiple copies.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#size">size</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#remove">remove</a></b>(element, nCopies)
 								</div>
-								<div class="description">Returns the number of elements in this heap.</div>
+								<div class="description">Removes nCopies of the specified object to this bag.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#size">size</a></b>()
+								</div>
+								<div class="description">Returns the number of elements in this bag.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#toArray">toArray</a></b>()
+								</div>
+								<div class="description">Returns an array containing all of the elements in this big in arbitrary order, 
+including multiple copies.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#toSet">toSet</a></b>()
+								</div>
+								<div class="description">Returns a set of unique elements in this bag.</div>
 							</td>
 						</tr>
 					
@@ -392,11 +393,11 @@ function reverseCompareNumbers(a, b) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>buckets.Heap</b>(compareFunction)
+						<b>buckets.Bag</b>(toStringFunction)
 				</div>
 				
 				<div class="description">
-					Creates an empty Heap.
+					Creates an empty bag.
 					
 				</div>
 				
@@ -408,13 +409,13 @@ function reverseCompareNumbers(a, b) {
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								<span class="light fixedFont">{function(Object|Object):number=}</span>  <b>compareFunction</b>
+								<span class="light fixedFont">{function(Object):string=}</span>  <b>toStringFunction</b>
 								
 							</dt>
-								<dd>optional
-function used to compare two elements. Must return a negative integer,
-zero, or a positive integer as the first argument is less than, equal to,
-or greater than the second.</dd>
+								<dd>optional function used
+to convert elements to strings. If the elements aren't strings or if toString()
+is not appropriate, a custom function which receives an object and returns a
+unique string must be provided.</dd>
 						
 						</dl>
 					
@@ -440,12 +441,12 @@ or greater than the second.</dd>
 					<a name="add"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>add</b>(element)
+					<span class="light">{boolean}</span>
+					<b>add</b>(element, nCopies)
 					
 					</div>
 					<div class="description">
-						Adds the given element into the heap.
+						Adds nCopies of the specified object to this bag.
 						
 						
 					</div>
@@ -457,10 +458,17 @@ or greater than the second.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{*}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>the element.</dd>
+								<dd>element to add.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number=}</span> <b>nCopies</b>
+									
+								</dt>
+								<dd>the number of copies to add, if this argument is
+undefined 1 copy is added.</dd>
 							
 							</dl>
 						
@@ -471,7 +479,7 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>true if the element was added or fals if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true unless element is undefined.</dd>
 							
 							</dl>
 						
@@ -488,7 +496,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this heap.
+						Removes all of the elements from this bag.
 						
 						
 					</div>
@@ -513,7 +521,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Returns true if this heap contains the specified element.
+						Returns true if this bag contains the specified element.
 						
 						
 					</div>
@@ -539,8 +547,51 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this Heap contains the specified element, false
-otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this bag contains the specified element,
+false otherwise.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="count"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{number}</span>
+					<b>count</b>(element)
+					
+					</div>
+					<div class="description">
+						Counts the number of copies of the specified object in this bag.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>the object to search for..</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the number of copies of the object, 0 if not found</dd>
 							
 							</dl>
 						
@@ -557,7 +608,7 @@ otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Checks if this heap is empty.
+						Returns true if this bag contains no elements.
 						
 						
 					</div>
@@ -572,8 +623,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if and only if this heap contains no items; false
-otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this bag contains no elements.</dd>
 							
 							</dl>
 						
@@ -582,15 +632,23 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="peek"> </a>
+					<a name="iterator"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{*}</span>
-					<b>peek</b>()
+					<span class="light">{Object}</span>
+					<b>iterator</b>()
 					
 					</div>
 					<div class="description">
-						Retrieves but does not remove the root element of this heap.
+						Returns an iterator over the elements in this bag, including multiple copies. 
+The elements are returned in no particular order.
+
+<p>The iterator has the following operations:</p>
+
+<p>hasNext() Returns true if this bag iterator has more elements.</p>
+<p>next() Returns the next element in this bag.</p>
+<p>remove() Removes from this bag the last element that was returned by
+next().</p>
 						
 						
 					</div>
@@ -605,8 +663,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The value at the root of the heap. Returns undefined if the
-heap is empty.</dd>
+								<dd><span class="light fixedFont">{Object}</span> an iterator over the elements in this bag.</dd>
 							
 							</dl>
 						
@@ -615,21 +672,41 @@ heap is empty.</dd>
 
 					<hr />
 				
-					<a name="removeRoot"> </a>
+					<a name="remove"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{*}</span>
-					<b>removeRoot</b>()
+					<span class="light">{boolean}</span>
+					<b>remove</b>(element, nCopies)
 					
 					</div>
 					<div class="description">
-						Retrieves and removes the root element of this heap.
+						Removes nCopies of the specified object to this bag.
+If the number of copies to remove is greater than the actual number 
+of copies in the Bag, all copies are removed.
 						
 						
 					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>element to remove.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number=}</span> <b>nCopies</b>
+									
+								</dt>
+								<dd>the number of copies to remove, if this argument is
+undefined 1 copy is removed.</dd>
+							
+							</dl>
 						
 						
 						
@@ -638,8 +715,7 @@ heap is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The value removed from the root of the heap. Returns
-undefined if the heap is empty.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if at least 1 element was removed.</dd>
 							
 							</dl>
 						
@@ -656,7 +732,7 @@ undefined if the heap is empty.</dd>
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this heap.
+						Returns the number of elements in this bag.
 						
 						
 					</div>
@@ -671,7 +747,72 @@ undefined if the heap is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this heap.</dd>
+								<dd><span class="light fixedFont">{number}</span> the number of elements in this bag.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toArray"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Array}</span>
+					<b>toArray</b>()
+					
+					</div>
+					<div class="description">
+						Returns an array containing all of the elements in this big in arbitrary order, 
+including multiple copies.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this bag.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toSet"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span>
+					<b>toSet</b>()
+					
+					</div>
+					<div class="description">
+						Returns a set of unique elements in this bag.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> a set of unique elements in this bag.</dd>
 							
 							</dl>
 						
@@ -692,7 +833,7 @@ undefined if the heap is empty.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jan 05 2012 20:43:57 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jan 05 2012 20:43:56 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

@@ -5,9 +5,12 @@
 //
 // Some documentation is borrowed from the Officieal Java API
 // as it serves the same porpose.
+
+
 /**
  * @namespace Top level namespace for Buckets, a JavaScript data structure library.
  */
+"use strict";
 var buckets = {};
 
 /**
@@ -188,9 +191,7 @@ buckets.arrays.frequency = function(array, element, equalsFunction) {
  */
 buckets.arrays.equals = function(array1, array2, equalsFunction) {
     var equals = equalsFunction || buckets.common.defaultEquals;
-    if (array1 === array2) {
-        return true;
-    }
+
     if (array1.length !== array2.length) {
         return false;
     }
@@ -459,12 +460,12 @@ buckets.LinkedList.prototype.remove = function(element, equalsFunction) {
                 }
             } else if (currentNode === this.lastNode) {
                 this.lastNode = previous;
-				previous.next = currentNode.next;
-	            currentNode.next = null;
+                previous.next = currentNode.next;
+                currentNode.next = null;
             } else{
-			  	previous.next = currentNode.next;
-	            currentNode.next = null;
-			}
+                previous.next = currentNode.next;
+                currentNode.next = null;
+            }
             this.nElements--;
             return true;
         }
@@ -1339,7 +1340,7 @@ buckets.PriorityQueue.prototype.clear = function() {
  * @constructor
  * @param {function(Object):string=} toStringFunction optional function used
  * to convert elements to strings. If the elements aren't strings or if toString()
- * is not appropriate, a custom function which receives a key and returns a
+ * is not appropriate, a custom function which receives a onject and returns a
  * unique string must be provided.
  */
 buckets.Set = function(toStringFunction) {
@@ -1453,14 +1454,38 @@ buckets.Set.prototype.clear = function() {
     this.dictionary.clear();
 };
 
-
+/**
+ * Creates an empty bag.
+ * @class <p>A bag is a special kind of set in which members are 
+ * allowed to appear more than once.</p>
+ * <p>If the inserted elements are custom objects a function 
+ * which converts elements to strings must be provided. Example:</p>
+ *
+ * <pre>
+ * function petToString(pet) {
+ *  return pet.name;
+ * }
+ * </pre>
+ *
+ * @constructor
+ * @param {function(Object):string=} toStringFunction optional function used
+ * to convert elements to strings. If the elements aren't strings or if toString()
+ * is not appropriate, a custom function which receives an object and returns a
+ * unique string must be provided.
+ */
 buckets.Bag = function(toStringFunction) {
-    this.dictionary = new buckets.Dictionary(toStringFunction);
+	this.toStrF = toStringFunction || buckets.common.defaultToString;
+    this.dictionary = new buckets.Dictionary(this.toStrF);
     this.nElements = 0;
 };
 
-
-
+/**
+* Adds nCopies of the specified object to this bag.
+* @param {Object} element element to add.
+* @param {number=} nCopies the number of copies to add, if this argument is
+* undefined 1 copy is added.
+* @return {boolean} true unless element is undefined.
+*/
 buckets.Bag.prototype.add = function(element, nCopies) {
 
     if (isNaN(nCopies) || nCopies === undefined) {
@@ -1483,10 +1508,39 @@ buckets.Bag.prototype.add = function(element, nCopies) {
     return true;
 };
 
+/**
+* Counts the number of copies of the specified object in this bag.
+* @param {Object} element the object to search for..
+* @return {number} the number of copies of the object, 0 if not found
+*/
+buckets.Bag.prototype.count = function(element) {
+
+    if (!this.contains(element)) {
+        return 0;
+    } else {
+        return this.dictionary.get(element).copies;
+    }
+};
+
+/**
+ * Returns true if this bag contains the specified element.
+ * @param {Object} element element to search for.
+ * @return {boolean} true if this bag contains the specified element,
+ * false otherwise.
+ */
 buckets.Bag.prototype.contains = function(element) {
     return this.dictionary.containsKey(element);
 };
 
+/**
+* Removes nCopies of the specified object to this bag.
+* If the number of copies to remove is greater than the actual number 
+* of copies in the Bag, all copies are removed. 
+* @param {Object} element element to remove.
+* @param {number=} nCopies the number of copies to remove, if this argument is
+* undefined 1 copy is removed.
+* @return {boolean} true if at least 1 element was removed.
+*/
 buckets.Bag.prototype.remove = function(element, nCopies) {
 
     if (isNaN(nCopies) || nCopies === undefined) {
@@ -1513,6 +1567,11 @@ buckets.Bag.prototype.remove = function(element, nCopies) {
     }
 };
 
+/**
+ * Returns an array containing all of the elements in this big in arbitrary order, 
+ * including multiple copies.
+ * @return {Array} an array containing all of the elements in this bag.
+ */
 buckets.Bag.prototype.toArray = function() {
     var a = [];
     var values = this.dictionary.values();
@@ -1528,6 +1587,33 @@ buckets.Bag.prototype.toArray = function() {
     return a;
 };
 
+/**
+ * Returns a set of unique elements in this bag. 
+ * @return {buckets.Set} a set of unique elements in this bag.
+ */
+buckets.Bag.prototype.toSet = function() {
+    var set = new buckets.Set(this.toStrF);
+    var elements = this.dictionary.values();
+    var l = elements.length;
+    for (var i = 0; i < l; i++) {
+        var value = elements[i].value;
+        set.add(value);
+    }
+    return set;
+};
+
+/**
+ * Returns an iterator over the elements in this bag, including multiple copies. 
+ * The elements are returned in no particular order.
+ * 
+ * <p>The iterator has the following operations:</p>
+ * 
+ * <p>hasNext() Returns true if this bag iterator has more elements.</p>
+ * <p>next() Returns the next element in this bag.</p>
+ * <p>remove() Removes from this bag the last element that was returned by
+ * next().</p>
+ * @return {Object} an iterator over the elements in this bag.
+ */
 buckets.Bag.prototype.iterator = function() {
 
     var values = this.dictionary.values();
@@ -1541,7 +1627,7 @@ buckets.Bag.prototype.iterator = function() {
         return copies > 0 || next < values.length;
     };
     it.next = function() {
-        if (copies <= 0 || next >= values.length) {
+        if (copies <= 0 && next >= values.length) {
             return undefined;
         }
         if (copies <= 0) {
@@ -1562,14 +1648,25 @@ buckets.Bag.prototype.iterator = function() {
     return it;
 };
 
+/**
+ * Returns the number of elements in this bag.
+ * @return {number} the number of elements in this bag.
+ */
 buckets.Bag.prototype.size = function() {
     return this.nElements;
 };
 
+/**
+ * Returns true if this bag contains no elements.
+ * @return {boolean} true if this bag contains no elements.
+ */
 buckets.Bag.prototype.isEmpty = function() {
     return this.nElements === 0;
 };
 
+/**
+ * Removes all of the elements from this bag.
+ */
 buckets.Bag.prototype.clear = function() {
     this.nElements = 0;
     this.dictionary.clear();

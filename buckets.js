@@ -5,8 +5,6 @@
 //
 // Some documentation is borrowed from the Officieal Java API
 // as it serves the same porpose.
-
-
 /**
  * @namespace Top level namespace for Buckets, a JavaScript data structure library.
  */
@@ -95,7 +93,6 @@ buckets.common.compareToEquals = function(compareFunction) {
     };
 };
 
-
 /**
  * @namespace Contains various functions for manipulating arrays.
  */
@@ -104,7 +101,7 @@ buckets.arrays = {};
 /**
  * Returns the position of the first occurrence of the specified element
  * within the specified array.
- * @param {Array} array the array in which to search element.
+ * @param {*} array the array in which to search element.
  * @param {Object} element the element to search.
  * @param {Function=} equalsFunction optional function used to 
  * check equality between 2 elements.
@@ -125,7 +122,7 @@ buckets.arrays.indexOf = function(array, element, equalsFunction) {
 /**
  * Returns the position of the last occurrence of the specified element
  * within the specified array.
- * @param {Array} array the array in which to search element.
+ * @param {*} array the array in which to search element.
  * @param {Object} element the element to search.
  * @param {Function=} equalsFunction optional function used to 
  * check equality between 2 elements.
@@ -146,14 +143,32 @@ buckets.arrays.lastIndexOf = function(array, element, equalsFunction) {
 
 /**
  * Returns true if the specified array contains the specified element.
- * @param {Array} array the array in which to search element.
+ * @param {*} array the array in which to search element.
  * @param {Object} element the element to search.
- * @param {Function=} equalsFunction optional function used to 
+ * @param {Function=} equalsFunction optional function to 
  * check equality between 2 elements.
  * @return {boolean} true if the specified array contains the specified element.
  */
 buckets.arrays.contains = function(array, element, equalsFunction) {
     return buckets.arrays.indexOf(array, element, equalsFunction) >= 0;
+};
+
+
+/**
+ * Removes the first ocurrence of the specified element from the specified array.
+ * @param {*} array the array in which to search element.
+ * @param {Object} element the element to search.
+ * @param {Function=} equalsFunction optional function to 
+ * check equality between 2 elements.
+ * @return {boolean} true if the array changed after this call.
+ */
+buckets.arrays.remove = function(array, element, equalsFunction) {
+    var index = buckets.arrays.indexOf(array, element, equalsFunction);
+    if (index < 0) {
+        return false;
+    }
+    array.splice(index, 1);
+    return true;
 };
 
 /**
@@ -206,7 +221,7 @@ buckets.arrays.equals = function(array1, array2, equalsFunction) {
 
 /**
  * Returns a copy of the specified array.
- * @param {Array} array the array to copy.
+ * @param {*} array the array to copy.
  * @return {Array} a copy of the specified array
  */
 buckets.arrays.copy = function(array) {
@@ -462,7 +477,7 @@ buckets.LinkedList.prototype.remove = function(element, equalsFunction) {
                 this.lastNode = previous;
                 previous.next = currentNode.next;
                 currentNode.next = null;
-            } else{
+            } else {
                 previous.next = currentNode.next;
                 currentNode.next = null;
             }
@@ -684,7 +699,7 @@ buckets.Dictionary = function(toStringFunction) {
 
 /**
  * Returns the value to which this dictionary maps the specified key.
- * Returns undefined if the map contains no mapping for this key.
+ * Returns undefined if this dictionary contains no mapping for this key.
  * @param {Object} key key whose associated value is to be returned.
  * @return {*} the value to which this dictionary maps the specified key or
  * undefined if the map contains no mapping for this key.
@@ -792,12 +807,13 @@ buckets.Dictionary.prototype.clear = function() {
     this.nElements = 0;
 };
 /**
- * Returns the number of key-value mappings in this dictionary.
+ * Returns the number of keys in this dictionary.
  * @return {number} the number of key-value mappings in this dictionary.
  */
 buckets.Dictionary.prototype.size = function() {
     return this.nElements;
 };
+
 /**
  * Returns true if this dictionary contains no mappings.
  * @return {boolean} true if this dictionary contains no mappings.
@@ -806,6 +822,172 @@ buckets.Dictionary.prototype.isEmpty = function() {
     return this.nElements <= 0;
 };
 
+/**
+ * Creates an empty multi dictionary. 
+ * @class <p>A multi dictionary is a special kind of dictionary that holds
+ * multiple values against each key. Setting a value into the dictionary will 
+ * add the value to an array at that key. Getting a key will return an array,
+ * holding all the values set to that key.
+ * This implementation accepts any kind of objects as keys.</p>
+ *
+ * <p>If the keys are custom objects a function which converts keys to strings must be
+ * provided. Example:</p>
+ *
+ * <pre>
+ * function petToString(pet) {
+ *  return pet.name;
+ * }
+ * </pre>
+ * <p>If the values are custom objects a function to check equality between values
+ * must be provided. Example:</p>
+ *
+ * <pre>
+ * function petsAreEqualByAge(pet1,pet2) {
+ *  return pet1.age===pet2.age;
+ * }
+ * </pre>
+ * @constructor
+ * @param {function(Object):string=} keysStringFunction optional function used
+ * to convert keys to strings. If the keys aren't strings or if toString()
+ * is not appropriate, a custom function which receives a key and returns a
+ * unique string must be provided.
+ * @param {function(Object,Object):boolean=} valuesEqualsFunction optional
+ * function used to check if two values are equal.
+ * 
+ */
+buckets.MultiDictionary = function(keysStringFunction, valuesEqualsFunction) {
+    // Call the parent's constructor
+    this.parent = new buckets.Dictionary(keysStringFunction);
+    this.equalsF = valuesEqualsFunction || buckets.common.defaultEquals;
+};
+
+/**
+ * Returns an array holding the values to which this dictionary maps
+ * the specified key.
+ * Returns an empty array if this dictionary contains no mappings for this key.
+ * @param {Object} key key whose associated values are to be returned.
+ * @return {Array} an array holding the values to which this dictionary maps
+ * the specified key.
+ */
+buckets.MultiDictionary.prototype.get = function(key) {
+    var values = this.parent.get(key);
+    if (values === undefined) {
+        return [];
+    }
+    return buckets.arrays.copy(values);
+};
+
+/**
+ * Adds the value to the array associated with the specified key, if 
+ * it is not already present.
+ * @param {Object} key key with which the specified value is to be
+ * associated.
+ * @param {Object} value the value to add to the array at the key
+ * @return {boolean} true if the value was not already associated with that key.
+ */
+buckets.MultiDictionary.prototype.set = function(key, value) {
+
+    if (key === undefined || value === undefined) {
+        return false;
+    }
+    if (!this.containsKey(key)) {
+        this.parent.set(key, [value]);
+        return true;
+    }
+    var array = this.parent.get(key);
+    if (buckets.arrays.contains(array, value, this.equalsF)) {
+        return false;
+    }
+    array.push(value);
+    return true;
+};
+
+/**
+ * Removes the specified values from the array of values associated with the
+ * specified key. If a value isn't given, all values associated with the specified 
+ * key are removed.
+ * @param {Object} key key whose mapping is to be removed from the
+ * dictionary.
+ * @param {Object=} value optional argument to specify the value to remove 
+ * from the array associated with the specified key.
+ * @return {*} true if the dictionary changed, false if the key doesn't exist or 
+ * if the specified value isn't associated with the specified key.
+ */
+buckets.MultiDictionary.prototype.remove = function(key, value) {
+    if (value === undefined) {
+        var v = this.parent.remove(key);
+        if (v === undefined) {
+            return false;
+        }
+        return true;
+    }
+    var array = this.parent.get(key);
+    if (buckets.arrays.remove(array, value, this.equalsF)) {
+        if (array.length === 0) {
+            this.parent.remove(key);
+        }
+        return true;
+    }
+    return false;
+};
+
+/**
+ * Returns an array containing all of the keys in this dictionary.
+ * @return {Array} an array containing all of the keys in this dictionary.
+ */
+buckets.MultiDictionary.prototype.keys = function() {
+    return this.parent.keys();
+};
+
+/**
+ * Returns an array containing all of the values in this dictionary.
+ * @return {Array} an array containing all of the values in this dictionary.
+ */
+buckets.MultiDictionary.prototype.values = function() {
+    var values = this.parent.values();
+    var array = [];
+    for (var i = 0; i < values.length; i++) {
+        var v = values[i];
+        for (var j = 0; j < v.length; j++) {
+            array.push(v[j]);
+        }
+    }
+    return array;
+};
+
+/**
+ * Returns true if this dictionary at least one value associatted the specified key.
+ * @param {Object} key key whose presence in this dictionary is to be
+ * tested.
+ * @return {boolean} true if this dictionary at least one value associatted 
+ * the specified key.
+ */
+buckets.MultiDictionary.prototype.containsKey = function(key) {
+    return this.parent.containsKey(key);
+};
+
+/**
+ * Removes all mappings from this dictionary.
+ */
+buckets.MultiDictionary.prototype.clear = function() {
+    return this.parent.clear();
+};
+
+/**
+ * Returns the number of keys in this dictionary.
+ * @return {number} the number of key-value mappings in this dictionary.
+ */
+buckets.MultiDictionary.prototype.size = function() {
+    return this.parent.size();
+};
+
+/**
+ * Returns true if this dictionary contains no mappings.
+ * @return {boolean} true if this dictionary contains no mappings.
+ */
+buckets.MultiDictionary.prototype.isEmpty = function() {
+    return this.parent.isEmpty();
+};
 
 /**
  * Creates an empty Heap.
@@ -832,7 +1014,7 @@ buckets.Dictionary.prototype.isEmpty = function() {
  * </pre>
  *
  * <p>If a Max-Heap is wanted (greater elements on top) you can a provide a
- * reverse compare function to accomplish this behavior. Example:</p>
+ * reverse compare function to accomplish that behavior. Example:</p>
  *
  * <pre>
  * function reverseCompareNumbers(a, b) {
@@ -1474,7 +1656,7 @@ buckets.Set.prototype.clear = function() {
  * unique string must be provided.
  */
 buckets.Bag = function(toStringFunction) {
-	this.toStrF = toStringFunction || buckets.common.defaultToString;
+    this.toStrF = toStringFunction || buckets.common.defaultToString;
     this.dictionary = new buckets.Dictionary(this.toStrF);
     this.nElements = 0;
 };

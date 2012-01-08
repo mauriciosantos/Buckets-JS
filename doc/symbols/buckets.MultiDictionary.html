@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - buckets.Heap</title>
+		<title>JsDoc Reference - buckets.MultiDictionary</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -222,7 +222,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.Heap
+				Class buckets.MultiDictionary
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -230,41 +230,26 @@ ul.inheritsList
 				
 				
 			
-				<p>A heap is a binary tree, where the nodes maintain the heap property: 
-each node is smaller than each of its children. 
-This implementation uses an array to store elements.</p>
-<p>If the inserted elements are custom objects a compare function must be provided, 
- at construction time, otherwise the <=, === and >= operators are 
-used to compare elements. Example:</p>
+				<p>A multi dictionary is a special kind of dictionary that holds
+multiple values against each key. Setting a value into the dictionary will 
+add the value to an array at that key. Getting a key will return an array,
+holding all the values set to that key.
+This implementation accepts any kind of objects as keys.</p>
+
+<p>If the keys are custom objects a function which converts keys to strings must be
+provided. Example:</p>
 
 <pre>
-function comparePetsByAge(pet1, pet2) {
- if (pet1.age &lt; pet2.age) {
-     return -1;
- }
- else if (pet1.age &gt; pet2.age) {
-     return 1;
- }
- else {
-     return 0;
- }
+function petToString(pet) {
+ return pet.name;
 }
 </pre>
-
-<p>If a Max-Heap is wanted (greater elements on top) you can a provide a
-reverse compare function to accomplish that behavior. Example:</p>
+<p>If the values are custom objects a function to check equality between values
+must be provided. Example:</p>
 
 <pre>
-function reverseCompareNumbers(a, b) {
- if (a &lt; b) {
-     return 1;
- }
- else if (a &gt; b) {
-     return -1;
- }
- else {
-     return 0;
- }
+function petsAreEqualByAge(pet1,pet2) {
+ return pet1.age===pet2.age;
 }
 </pre>
 				
@@ -275,7 +260,7 @@ function reverseCompareNumbers(a, b) {
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Heap.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.MultiDictionary.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -288,9 +273,9 @@ function reverseCompareNumbers(a, b) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/buckets.Heap.html#constructor">buckets.Heap</a></b>(compareFunction)
+								<b><a href="../symbols/buckets.MultiDictionary.html#constructor">buckets.MultiDictionary</a></b>(keysStringFunction, valuesEqualsFunction)
 							</div>
-							<div class="description">Creates an empty Heap.</div>
+							<div class="description">Creates an empty multi dictionary.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -304,7 +289,7 @@ function reverseCompareNumbers(a, b) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.Heap.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.MultiDictionary.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -317,63 +302,84 @@ function reverseCompareNumbers(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#add">add</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Adds the given element into the heap.</div>
+								<div class="description">Removes all mappings from this dictionary.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#clear">clear</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#containsKey">containsKey</a></b>(key)
 								</div>
-								<div class="description">Removes all of the elements from this heap.</div>
+								<div class="description">Returns true if this dictionary at least one value associatted the specified key.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#contains">contains</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#get">get</a></b>(key)
 								</div>
-								<div class="description">Returns true if this heap contains the specified element.</div>
+								<div class="description">Returns an array holding the values to which this dictionary maps
+the specified key.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Checks if this heap is empty.</div>
+								<div class="description">Returns true if this dictionary contains no mappings.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#peek">peek</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#keys">keys</a></b>()
 								</div>
-								<div class="description">Retrieves but does not remove the root element of this heap.</div>
+								<div class="description">Returns an array containing all of the keys in this dictionary.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#removeRoot">removeRoot</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#remove">remove</a></b>(key, value)
 								</div>
-								<div class="description">Retrieves and removes the root element of this heap.</div>
+								<div class="description">Removes the specified values from the array of values associated with the
+specified key.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#size">size</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#set">set</a></b>(key, value)
 								</div>
-								<div class="description">Returns the number of elements in this heap.</div>
+								<div class="description">Adds the value to the array associated with the specified key, if 
+it is not already present.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#size">size</a></b>()
+								</div>
+								<div class="description">Returns the number of keys in this dictionary.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#values">values</a></b>()
+								</div>
+								<div class="description">Returns an array containing all of the values in this dictionary.</div>
 							</td>
 						</tr>
 					
@@ -394,11 +400,11 @@ function reverseCompareNumbers(a, b) {
 				</div>
 				
 				<div class="fixedFont">
-						<b>buckets.Heap</b>(compareFunction)
+						<b>buckets.MultiDictionary</b>(keysStringFunction, valuesEqualsFunction)
 				</div>
 				
 				<div class="description">
-					Creates an empty Heap.
+					Creates an empty multi dictionary.
 					
 				</div>
 				
@@ -410,13 +416,20 @@ function reverseCompareNumbers(a, b) {
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								<span class="light fixedFont">{function(Object|Object):number=}</span>  <b>compareFunction</b>
+								<span class="light fixedFont">{function(Object):string=}</span>  <b>keysStringFunction</b>
+								
+							</dt>
+								<dd>optional function used
+to convert keys to strings. If the keys aren't strings or if toString()
+is not appropriate, a custom function which receives a key and returns a
+unique string must be provided.</dd>
+						
+							<dt>
+								<span class="light fixedFont">{function(Object|Object):boolean=}</span>  <b>valuesEqualsFunction</b>
 								
 							</dt>
 								<dd>optional
-function used to compare two elements. Must return a negative integer,
-zero, or a positive integer as the first argument is less than, equal to,
-or greater than the second.</dd>
+function used to check if two values are equal.</dd>
 						
 						</dl>
 					
@@ -439,49 +452,6 @@ or greater than the second.</dd>
 					Method Detail
 				</div>
 				
-					<a name="add"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>add</b>(element)
-					
-					</div>
-					<div class="description">
-						Adds the given element into the heap.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{*}</span> <b>element</b>
-									
-								</dt>
-								<dd>the element.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd>true if the element was added or fals if it is undefined.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
 					<a name="clear"> </a>
 					<div class="fixedFont">
 					
@@ -490,7 +460,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this heap.
+						Removes all mappings from this dictionary.
 						
 						
 					</div>
@@ -507,15 +477,15 @@ or greater than the second.</dd>
 
 					<hr />
 				
-					<a name="contains"> </a>
+					<a name="containsKey"> </a>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>contains</b>(element)
+					<b>containsKey</b>(key)
 					
 					</div>
 					<div class="description">
-						Returns true if this heap contains the specified element.
+						Returns true if this dictionary at least one value associatted the specified key.
 						
 						
 					</div>
@@ -527,10 +497,11 @@ or greater than the second.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>key whose presence in this dictionary is to be
+tested.</dd>
 							
 							</dl>
 						
@@ -541,8 +512,54 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this Heap contains the specified element, false
-otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this dictionary at least one value associatted 
+the specified key.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="get"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Array}</span>
+					<b>get</b>(key)
+					
+					</div>
+					<div class="description">
+						Returns an array holding the values to which this dictionary maps
+the specified key.
+Returns an empty array if this dictionary contains no mappings for this key.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
+									
+								</dt>
+								<dd>key whose associated values are to be returned.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> an array holding the values to which this dictionary maps
+the specified key.</dd>
 							
 							</dl>
 						
@@ -559,7 +576,7 @@ otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Checks if this heap is empty.
+						Returns true if this dictionary contains no mappings.
 						
 						
 					</div>
@@ -574,8 +591,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if and only if this heap contains no items; false
-otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this dictionary contains no mappings.</dd>
 							
 							</dl>
 						
@@ -584,15 +600,15 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="peek"> </a>
+					<a name="keys"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{*}</span>
-					<b>peek</b>()
+					<span class="light">{Array}</span>
+					<b>keys</b>()
 					
 					</div>
 					<div class="description">
-						Retrieves but does not remove the root element of this heap.
+						Returns an array containing all of the keys in this dictionary.
 						
 						
 					</div>
@@ -607,8 +623,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The value at the root of the heap. Returns undefined if the
-heap is empty.</dd>
+								<dd><span class="light fixedFont">{Array}</span> an array containing all of the keys in this dictionary.</dd>
 							
 							</dl>
 						
@@ -617,21 +632,42 @@ heap is empty.</dd>
 
 					<hr />
 				
-					<a name="removeRoot"> </a>
+					<a name="remove"> </a>
 					<div class="fixedFont">
 					
 					<span class="light">{*}</span>
-					<b>removeRoot</b>()
+					<b>remove</b>(key, value)
 					
 					</div>
 					<div class="description">
-						Retrieves and removes the root element of this heap.
+						Removes the specified values from the array of values associated with the
+specified key. If a value isn't given, all values associated with the specified 
+key are removed.
 						
 						
 					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
+									
+								</dt>
+								<dd>key whose mapping is to be removed from the
+dictionary.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object=}</span> <b>value</b>
+									
+								</dt>
+								<dd>optional argument to specify the value to remove 
+from the array associated with the specified key.</dd>
+							
+							</dl>
 						
 						
 						
@@ -640,8 +676,59 @@ heap is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The value removed from the root of the heap. Returns
-undefined if the heap is empty.</dd>
+								<dd><span class="light fixedFont">{*}</span> true if the dictionary changed, false if the key doesn't exist or 
+if the specified value isn't associated with the specified key.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="set"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>set</b>(key, value)
+					
+					</div>
+					<div class="description">
+						Adds the value to the array associated with the specified key, if 
+it is not already present.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>key</b>
+									
+								</dt>
+								<dd>key with which the specified value is to be
+associated.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>value</b>
+									
+								</dt>
+								<dd>the value to add to the array at the key</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if the value was not already associated with that key.</dd>
 							
 							</dl>
 						
@@ -658,7 +745,7 @@ undefined if the heap is empty.</dd>
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this heap.
+						Returns the number of keys in this dictionary.
 						
 						
 					</div>
@@ -673,7 +760,39 @@ undefined if the heap is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this heap.</dd>
+								<dd><span class="light fixedFont">{number}</span> the number of key-value mappings in this dictionary.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="values"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Array}</span>
+					<b>values</b>()
+					
+					</div>
+					<div class="description">
+						Returns an array containing all of the values in this dictionary.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> an array containing all of the values in this dictionary.</dd>
 							
 							</dl>
 						
@@ -694,7 +813,7 @@ undefined if the heap is empty.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Jan 08 2012 02:40:14 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Jan 08 2012 02:40:15 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

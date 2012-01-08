@@ -216,6 +216,41 @@ function() {
         expect(buckets.arrays.equals(a, b)).toBeFalsy();
     });
 
+    it('Removes elements',
+    function() {
+        var a = [];
+        expect(buckets.arrays.remove(a, 1)).toBeFalsy();
+        a = [4, 9, 9, 10];
+        expect(buckets.arrays.remove(a, 9)).toBeTruthy();
+        expect(buckets.arrays.indexOf(a, 9)).toEqual(1);
+        expect(buckets.arrays.indexOf(a, 10)).toEqual(2);
+        expect(buckets.arrays.remove(a, 9)).toBeTruthy();
+        expect(buckets.arrays.remove(a, 9)).toBeFalsy();
+        expect(buckets.arrays.remove(a, 9)).toBeFalsy();
+    });
+
+    it('Removes elements with custom equals function',
+    function() {
+        var c = {
+            val: 8
+        };
+        var d = {
+            val: 10
+        };
+        var eq = function(arg1, arg2) {
+            return arg1.val === arg2.val;
+        };
+
+        var a = [c, d];
+        expect(buckets.arrays.remove(a, {
+            val: 10
+        })).toBeFalsy();
+        expect(buckets.arrays.remove(a, {
+            val: 10
+        },
+        eq)).toBeTruthy();
+    });
+
     it('Copies existing arrays',
     function() {
         var a = [1, 8, 8, 8, 10, 10];
@@ -223,16 +258,16 @@ function() {
         expect(buckets.arrays.equals(a, b)).toBeTruthy();
         expect(a === b).toBeFalsy();
     });
-	
-	it('Swaps elements',
+
+    it('Swaps elements',
     function() {
         var a = [1, 8, 8, 8, 10, 10];
-		expect(buckets.arrays.swap(a,0,5)).toEqual(true);
-		expect(a[0]).toEqual(10);
-		expect(a[5]).toEqual(1);
-		expect(buckets.arrays.swap(a,0,6)).toEqual(false);
-		expect(buckets.arrays.swap(a,7,2)).toEqual(false);
-		expect(buckets.arrays.swap(a,-1,9)).toEqual(false);
+        expect(buckets.arrays.swap(a, 0, 5)).toEqual(true);
+        expect(a[0]).toEqual(10);
+        expect(a[5]).toEqual(1);
+        expect(buckets.arrays.swap(a, 0, 6)).toEqual(false);
+        expect(buckets.arrays.swap(a, 7, 2)).toEqual(false);
+        expect(buckets.arrays.swap(a, -1, 9)).toEqual(false);
     });
 
 });

@@ -13,19 +13,9 @@ function() {
         queue.enqueue('c');
     }
 
-    it('Constructor works',
-    function() {
-
-        expect(queue.isEmpty()).toEqual(true);
-        expect(queue.size()).toEqual(0);
-        expect(queue.peek()).toBeUndefined();
-
-    });
-
-
     it('Gives the right size',
     function() {
-
+		expect(queue.size()).toEqual(0);
         createQueue();
         expect(queue.size()).toEqual(3);
         queue.enqueue('d');
@@ -39,7 +29,6 @@ function() {
 
     it('Enqueues',
     function() {
-
 		createQueue();
 		var head = queue.dequeue();
 		expect(head).toEqual('a');
@@ -53,7 +42,6 @@ function() {
 
     it('Peeks',
     function() {
-	
 		createQueue();
 		var head = queue.peek();
 		expect(head).toEqual('a');
@@ -68,7 +56,6 @@ function() {
 
     it('Contains previously added items',
     function() {
-	
 		createQueue();
 		expect(queue.contains('a')).toBeTruthy();
 		expect(queue.contains('z')).toBeFalsy();

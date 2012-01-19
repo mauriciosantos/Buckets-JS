@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - buckets.Set</title>
+		<title>JsDoc Reference - buckets.BSTree</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -224,7 +224,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.Set
+				Class buckets.BSTree
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -232,13 +232,31 @@ ul.inheritsList
 				
 				
 			
-				<p>A set is a data structure that contains no duplicate items.</p>
-<p>If the inserted elements are custom objects a function 
-which converts elements to strings must be provided. Example:</p>
-
+				<p>A binary search tree is a binary tree in which each 
+internal node stores an element such that the elements stored in the 
+left subtree are less than it and the elements 
+stored in the right subtree are greater.</p>
+<p>Formally, a binary search tree is a node-based binary tree data structure which 
+has the following properties:</p>
+<ul>
+<li>The left subtree of a node contains only nodes with elements less 
+than the node's element</li>
+<li>The right subtree of a node contains only nodes with elements greater 
+than the node's element</li>
+<li>Both the left and right subtrees must also be binary search trees.</li>
+</ul>
+<p>If the inserted elements are custom objects a compare function must 
+be provided at construction time, otherwise the <=, === and >= operators are 
+used to compare elements. Example:</p>
 <pre>
-function petToString(pet) {
- return pet.name;
+function compare(a, b) {
+ if (a is less than b by some ordering criterion) {
+    return -1;
+ } if (a is greater than b by the ordering criterion) {
+    return 1;
+ } 
+ // a must be equal to b
+ return 0;
 }
 </pre>
 				
@@ -249,7 +267,7 @@ function petToString(pet) {
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Set.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.BSTree.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -262,9 +280,9 @@ function petToString(pet) {
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/buckets.Set.html#constructor">buckets.Set</a></b>(toStringFunction)
+								<b><a href="../symbols/buckets.BSTree.html#constructor">buckets.BSTree</a></b>(compareFunction)
 							</div>
-							<div class="description">Creates an empty set.</div>
+							<div class="description">Creates an empty binary search tree.</div>
 						</td>
 					</tr>
 				</tbody>
@@ -278,7 +296,7 @@ function petToString(pet) {
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.Set.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class buckets.BSTree.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -291,109 +309,137 @@ function petToString(pet) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#add">add</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#add">add</a></b>(element)
 								</div>
-								<div class="description">Adds the specified element to this set if it is not already present.</div>
+								<div class="description">Adds the specified element to this tree if it is not already present.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#clear">clear</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this set.</div>
+								<div class="description">Removes all of the elements from this tree.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#contains">contains</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#contains">contains</a></b>(element)
 								</div>
-								<div class="description">Returns true if this set contains the specified element.</div>
+								<div class="description">Returns true if this tree contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#difference">difference</a></b>(otherSet)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#forEach">forEach</a></b>(callback)
 								</div>
-								<div class="description">Performs a difference between this an another set.</div>
+								<div class="description">Executes the provided function once for each element present in this tree in inorder.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#forEach">forEach</a></b>(callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#height">height</a></b>()
 								</div>
-								<div class="description">Executes the provided function once for each element 
-present in this set.</div>
+								<div class="description">Returns the height of this tree.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#intersection">intersection</a></b>(otherSet)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#inorderTraversal">inorderTraversal</a></b>(callback)
 								</div>
-								<div class="description">Performs an intersecion between this an another set.</div>
+								<div class="description">Executes the provided function once for each element present in this tree in 
+in-order.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Returns true if this set contains no elements.</div>
+								<div class="description">Returns true if this tree contains no elements.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#isSubsetOf">isSubsetOf</a></b>(otherSet)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#levelTraversal">levelTraversal</a></b>(callback)
 								</div>
-								<div class="description">Checks whether the given set contains all the elements in this set.</div>
+								<div class="description">Executes the provided function once for each element present in this tree in 
+level-order.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#remove">remove</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#maximum">maximum</a></b>()
 								</div>
-								<div class="description">Removes the specified element from this set if it is present.</div>
+								<div class="description">Returns the maximum element of this tree.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#size">size</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#minimum">minimum</a></b>()
 								</div>
-								<div class="description">Returns the number of elements in this set.</div>
+								<div class="description">Returns the minimum element of this tree.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#toArray">toArray</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#postorderTraversal">postorderTraversal</a></b>(callback)
 								</div>
-								<div class="description">Returns an array containing all of the elements in this set in arbitrary order.</div>
+								<div class="description">Executes the provided function once for each element present in this tree in post-order.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#union">union</a></b>(otherSet)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#preorderTraversal">preorderTraversal</a></b>(callback)
 								</div>
-								<div class="description">Performs a union between this an another set.</div>
+								<div class="description">Executes the provided function once for each element present in this tree in pre-order.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#remove">remove</a></b>(element)
+								</div>
+								<div class="description">Removes the specified element from this tree if it is present.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#size">size</a></b>()
+								</div>
+								<div class="description">Returns the number of elements in this tree.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#toArray">toArray</a></b>()
+								</div>
+								<div class="description">Returns an array containing all of the elements in this tree in in-order.</div>
 							</td>
 						</tr>
 					
@@ -414,11 +460,11 @@ present in this set.</div>
 				</div>
 				
 				<div class="fixedFont">
-						<b>buckets.Set</b>(toStringFunction)
+						<b>buckets.BSTree</b>(compareFunction)
 				</div>
 				
 				<div class="description">
-					Creates an empty set.
+					Creates an empty binary search tree.
 					
 				</div>
 				
@@ -430,13 +476,13 @@ present in this set.</div>
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								<span class="light fixedFont">{function(Object):string=}</span>  <b>toStringFunction</b>
+								<span class="light fixedFont">{function(Object|Object):number=}</span>  <b>compareFunction</b>
 								
 							</dt>
-								<dd>optional function used
-to convert elements to strings. If the elements aren't strings or if toString()
-is not appropriate, a custom function which receives a onject and returns a
-unique string must be provided.</dd>
+								<dd>optional
+function used to compare two elements. Must return a negative integer,
+zero, or a positive integer as the first argument is less than, equal to,
+or greater than the second.</dd>
 						
 						</dl>
 					
@@ -467,7 +513,7 @@ unique string must be provided.</dd>
 					
 					</div>
 					<div class="description">
-						Adds the specified element to this set if it is not already present.
+						Adds the specified element to this tree if it is not already present.
 						
 						
 					</div>
@@ -493,7 +539,7 @@ unique string must be provided.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set did not already contain the specified element.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this tree did not already contain the specified element.</dd>
 							
 							</dl>
 						
@@ -510,7 +556,7 @@ unique string must be provided.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this set.
+						Removes all of the elements from this tree.
 						
 						
 					</div>
@@ -535,7 +581,7 @@ unique string must be provided.</dd>
 					
 					</div>
 					<div class="description">
-						Returns true if this set contains the specified element.
+						Returns true if this tree contains the specified element.
 						
 						
 					</div>
@@ -561,47 +607,10 @@ unique string must be provided.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> true if this tree contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="difference"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>difference</b>(otherSet)
-					
-					</div>
-					<div class="description">
-						Performs a difference between this an another set.
-Removes from this set all the values that are present in the given set.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> <b>otherSet</b>
-									
-								</dt>
-								<dd>other set.</dd>
-							
-							</dl>
-						
-						
-						
-						
 						
 						
 						
@@ -616,8 +625,8 @@ Removes from this set all the values that are present in the given set.
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element 
-present in this set.
+						Executes the provided function once for each element present in this tree in inorder.
+Equivalent to inorderTraversal.
 						
 						
 					</div>
@@ -633,7 +642,7 @@ present in this set.
 									
 								</dt>
 								<dd>function to execute, it is
-invoked with one arguments: the element. To break the iteration you can 
+invoked with one argument: the element value, to break the iteration you can 
 optionally return false.</dd>
 							
 							</dl>
@@ -647,16 +656,48 @@ optionally return false.</dd>
 
 					<hr />
 				
-					<a name="intersection"> </a>
+					<a name="height"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>intersection</b>(otherSet)
+					<span class="light">{number}</span>
+					<b>height</b>()
 					
 					</div>
 					<div class="description">
-						Performs an intersecion between this an another set.
-Removes all values that are not present this set and the given set.
+						Returns the height of this tree.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> the height of this tree or -1 if is empty.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="inorderTraversal"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>inorderTraversal</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once for each element present in this tree in 
+in-order.
 						
 						
 					</div>
@@ -668,10 +709,11 @@ Removes all values that are not present this set and the given set.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> <b>otherSet</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>other set.</dd>
+								<dd>function to execute, it is invoked with one 
+argument: the element value, to break the iteration you can optionally return false.</dd>
 							
 							</dl>
 						
@@ -692,7 +734,7 @@ Removes all values that are not present this set and the given set.
 					
 					</div>
 					<div class="description">
-						Returns true if this set contains no elements.
+						Returns true if this tree contains no elements.
 						
 						
 					</div>
@@ -707,7 +749,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contains no elements.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this tree contains no elements.</dd>
 							
 							</dl>
 						
@@ -716,15 +758,16 @@ Removes all values that are not present this set and the given set.
 
 					<hr />
 				
-					<a name="isSubsetOf"> </a>
+					<a name="levelTraversal"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{boolean}</span>
-					<b>isSubsetOf</b>(otherSet)
+					
+					<b>levelTraversal</b>(callback)
 					
 					</div>
 					<div class="description">
-						Checks whether the given set contains all the elements in this set.
+						Executes the provided function once for each element present in this tree in 
+level-order.
 						
 						
 					</div>
@@ -736,12 +779,38 @@ Removes all values that are not present this set and the given set.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> <b>otherSet</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>other set.</dd>
+								<dd>function to execute, it is invoked with one 
+argument: the element value, to break the iteration you can optionally return false.</dd>
 							
 							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="maximum"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>maximum</b>()
+					
+					</div>
+					<div class="description">
+						Returns the maximum element of this tree.
+						
+						
+					</div>
+					
+					
+					
 						
 						
 						
@@ -750,9 +819,117 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> truw if this set is a subset of the given set.</dd>
+								<dd><span class="light fixedFont">{*}</span> the maximum element of this tree or undefined if this tree is
+is empty.</dd>
 							
 							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="minimum"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{*}</span>
+					<b>minimum</b>()
+					
+					</div>
+					<div class="description">
+						Returns the minimum element of this tree.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> the minimum element of this tree or undefined if this tree is
+is empty.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="postorderTraversal"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>postorderTraversal</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once for each element present in this tree in post-order.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
+									
+								</dt>
+								<dd>function to execute, it is invoked with one 
+argument: the element value, to break the iteration you can optionally return false.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="preorderTraversal"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>preorderTraversal</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once for each element present in this tree in pre-order.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
+									
+								</dt>
+								<dd>function to execute, it is invoked with one 
+argument: the element value, to break the iteration you can optionally return false.</dd>
+							
+							</dl>
+						
+						
+						
+						
 						
 						
 						
@@ -767,7 +944,7 @@ Removes all values that are not present this set and the given set.
 					
 					</div>
 					<div class="description">
-						Removes the specified element from this set if it is present.
+						Removes the specified element from this tree if it is present.
 						
 						
 					</div>
@@ -793,7 +970,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contained the specified element.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if this tree contained the specified element.</dd>
 							
 							</dl>
 						
@@ -810,7 +987,7 @@ Removes all values that are not present this set and the given set.
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this set.
+						Returns the number of elements in this tree.
 						
 						
 					</div>
@@ -825,7 +1002,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this set.</dd>
+								<dd><span class="light fixedFont">{number}</span> the number of elements in this tree.</dd>
 							
 							</dl>
 						
@@ -842,7 +1019,7 @@ Removes all values that are not present this set and the given set.
 					
 					</div>
 					<div class="description">
-						Returns an array containing all of the elements in this set in arbitrary order.
+						Returns an array containing all of the elements in this tree in in-order.
 						
 						
 					</div>
@@ -857,46 +1034,9 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this set.</dd>
+								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this tree in in-order.</dd>
 							
 							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="union"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>union</b>(otherSet)
-					
-					</div>
-					<div class="description">
-						Performs a union between this an another set.
-Adds all values from the given set to this set.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> <b>otherSet</b>
-									
-								</dt>
-								<dd>other set.</dd>
-							
-							</dl>
-						
-						
-						
-						
 						
 						
 						
@@ -915,7 +1055,7 @@ Adds all values from the given set to this set.
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jan 19 2012 01:59:50 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jan 19 2012 01:59:49 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

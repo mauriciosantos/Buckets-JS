@@ -1,10 +1,10 @@
 describe('Linked List',
 function() {
 
-    var list=null;
+    var list = null;
     var elems = 100;
 	
-	function equals(a, b) {
+	var equals = function(a, b) {
         return a.el === b.el;
     };
 
@@ -14,7 +14,6 @@ function() {
 
     it('Inserts elements',
     function() {
-
         expect(list.first()).toBeUndefined();
         expect(list.last()).toBeUndefined();
         expect(list.size()).toEqual(0);
@@ -30,6 +29,34 @@ function() {
         }
     });
 
+	it('Reverses the list 1',
+    function() {
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.reverse();
+		expect(list.elementAtIndex(0)).toEqual(3);
+		expect(list.elementAtIndex(1)).toEqual(2);
+		expect(list.elementAtIndex(2)).toEqual(1);
+    });
+
+	it('Reverses the list 2',
+    function() {
+		list.add(1);
+		list.add(2);
+		list.reverse();
+		expect(list.elementAtIndex(0)).toEqual(2);
+		expect(list.elementAtIndex(1)).toEqual(1);
+    });
+
+	it('Reverses the list 2',
+    function() {
+		list.add(1);
+		list.reverse();
+		expect(list.elementAtIndex(0)).toEqual(1);
+		expect(list.elementAtIndex(1)).toBeUndefined();
+    });
+
 	it('Clear removes all elements',
     function() {
 		for (var i = 0; i < elems; i++) {
@@ -43,7 +70,6 @@ function() {
 
 	it('Gives the right size',
     function() {
-
         expect(list.size()).toEqual(0);
 		list.add(1);
 		expect(list.size()).toEqual(1);
@@ -53,7 +79,6 @@ function() {
 
     it('Inserts an element to specified index',
     function() {
-
         expect(list.elementAtIndex( - 1)).toBeUndefined();
         expect(list.elementAtIndex(0)).toBeUndefined();
         expect(list.elementAtIndex(1)).toBeUndefined();
@@ -72,7 +97,6 @@ function() {
 
     it("Doesn't insert elements to invalid indexes",
     function() {
-
         expect(list.addElementAtIndex(0, 1)).toBeFalsy();
         expect(list.size() === 0).toBeTruthy();
         expect(list.first()).toBeUndefined();
@@ -82,7 +106,6 @@ function() {
 
     it('Inserts elements to the last index',
     function() {
-
         for (var i = 0; i < elems; i++) {
             expect(list.addElementAtIndex(i, i)).toBeTruthy();
             expect(list.elementAtIndex(i)).toEqual(i);
@@ -97,7 +120,6 @@ function() {
 
     it('Inserts elements at the first index',
     function() {
-
         for (var j = 0; j < elems; j++) {
 
             for (var i = 0; i < j; i++) {
@@ -111,7 +133,6 @@ function() {
 
     it('Inserts elements to custom index',
     function() {
-
         for (var j = 0; j < elems; j++) {
             list.add(j);
         }
@@ -137,7 +158,6 @@ function() {
 
     it('Finds elements with indexOf and custom equals function',
     function() {
-
         expect(list.indexOf({
             el: 1
         },equals)).toEqual( - 1);
@@ -164,7 +184,6 @@ function() {
 
     it('Removes elements',
     function() {
-
         expect(list.remove(1)).toBeFalsy();
         expect(list.size() === 0).toBeTruthy();
         expect(list.last()).toBeUndefined();
@@ -246,12 +265,10 @@ function() {
 
     it('Removes elements at specified index',
     function() {
-
         expect(list.removeElementAtIndex(0)).toBeUndefined();
         expect(list.removeElementAtIndex( - 1)).toBeUndefined();
         expect(list.removeElementAtIndex(1)).toBeUndefined();
         expect(list.size() === 0).toBeTruthy();
-
 
         list.add(1);
 
@@ -264,7 +281,6 @@ function() {
         expect(list.first()).toBeUndefined();
         expect(list.last()).toBeUndefined();
         expect(list.elementAtIndex(0)).toBeUndefined();
-
 
         list.add(1);
         list.add(2);
@@ -301,7 +317,6 @@ function() {
 
     it('Converts the list to an array',
     function() {
-
         expect(list.toArray().length).toEqual(0);
 
         list.add(5);
@@ -316,42 +331,39 @@ function() {
         expect(arr.length).toEqual(2);
     });
 
-    it('The iterator works properly',
+    it('For each gives the right ordering',
     function() {
 
-        var it = list.iterator();
-        expect(it.hasNext()).toBeFalsy();
-        expect(it.next()).toBeUndefined();
-
+        list.forEach(function(e) {
+			expect(true).toEqual(false); // should not enter here
+		});
 
         for (var i = 0; i < elems; i++) {
             list.add(i);
         }
 
-        it = list.iterator();
         var i = 0;
-		expect(it.hasNext()).toBeTruthy();
-        while (it.hasNext()) {
-            expect(it.next()).toEqual(i);
+		list.forEach(function(e) {
+			expect(e).toEqual(i);
             i++;
-        }
+		});
+    });
 
-        it = list.iterator();
-        var i = 0;
-		expect(it.hasNext()).toBeTruthy();
-        while (it.hasNext()) {
-            it.next();
-            it.replace(i + 1);
-            i++;
-        }
+	it('For each can be interrupted',
+    function() {
+		var array = [0,1,2,3,4];
+		var b =[];
+        for (var i = 0; i < elems; i++) {
+	            list.add(i);
+	    }
+		list.forEach(function(e) {
+			b.push(e);
+            if(e===4){
+				return false;
+			}
+		});
 		
-        var i = 0;
-		it = list.iterator();
-		expect(it.hasNext()).toBeTruthy();
-        while (it.hasNext()) {
-            expect(it.next()).toEqual(i + 1);
-            i++;
-        }
+     	expect(array).toEqual(b);
     });
 
 });

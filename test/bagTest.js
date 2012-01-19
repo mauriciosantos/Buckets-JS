@@ -2,13 +2,17 @@ describe('Bag',
 function() {
 
     var bag = null;
+
+    beforeEach(function() {
+        bag = new buckets.Bag();
+    });
+
     var toStringF = function(f) {
         return f.description;
     };
 
     it('Gives the right size',
     function() {
-        bag = new buckets.Bag();
         bag.add("a");
         bag.add("b");
         bag.add("c");
@@ -31,7 +35,6 @@ function() {
 
     it('Gives the right size with duplicated elements',
     function() {
-        bag = new buckets.Bag();
         bag.add("a");
         bag.add("a");
         bag.add("b");
@@ -49,7 +52,6 @@ function() {
 
     it('Contains existing elements',
     function() {
-        bag = new buckets.Bag();
         bag.add("a");
         bag.add("b");
         bag.add("c");
@@ -96,7 +98,6 @@ function() {
 
     it('An empty bag is empty',
     function() {
-        bag = new buckets.Bag();
         expect(bag.isEmpty()).toBeTruthy();
         bag.add(1);
         bag.add(1);
@@ -109,7 +110,6 @@ function() {
 
     it('Adds',
     function() {
-        bag = new buckets.Bag();
         expect(bag.add('a')).toBeTruthy();
         expect(bag.add('b')).toBeTruthy();
         expect(bag.contains('a')).toBeTruthy();
@@ -125,7 +125,6 @@ function() {
     });
     it('Adds multiple copies',
     function() {
-        bag = new buckets.Bag();
         expect(bag.add('a', 1)).toBeTruthy();
         expect(bag.add('a')).toBeTruthy();
         expect(bag.add('b', 3)).toBeTruthy();
@@ -141,7 +140,6 @@ function() {
 
     it('Removes',
     function() {
-        bag = new buckets.Bag();
         expect(bag.add('a')).toBeTruthy();
         expect(bag.add('a')).toBeTruthy();
         expect(bag.add('b')).toBeTruthy();
@@ -154,7 +152,6 @@ function() {
 
     it('Removes multiple copies',
     function() {
-        bag = new buckets.Bag();
         expect(bag.add('a', 1)).toBeTruthy();
         expect(bag.add('a')).toBeTruthy();
         expect(bag.add('b', 3)).toBeTruthy();
@@ -170,74 +167,78 @@ function() {
         expect(bag.size()).toEqual(0);
     });
 
-	it('Clear removes all elements',
+    it('Clear removes all elements',
     function() {
-        bag = new buckets.Bag();
         expect(bag.add('b', 3)).toBeTruthy();
-		bag.clear();
+        bag.clear();
         expect(bag.count('b')).toEqual(0);
-		expect(bag.size()).toEqual(0);
+        expect(bag.size()).toEqual(0);
     });
 
-	it('Converts to an array',
+    it('Converts to an array',
     function() {
-        bag = new buckets.Bag();
-		var arr = bag.toArray();
-		expect(arr.length).toEqual(0);
-		expect(bag.add('b', 3)).toBeTruthy();
-		expect(bag.add('a', 2)).toBeTruthy();
-		expect(bag.add('c')).toBeTruthy();
-		arr = bag.toArray();
-		expect(buckets.arrays.frequency(arr,"b")).toEqual(3);
-		expect(buckets.arrays.frequency(arr,"a")).toEqual(2);
-		expect(buckets.arrays.frequency(arr,"c")).toEqual(1);
+        var arr = bag.toArray();
+        expect(arr.length).toEqual(0);
+        expect(bag.add('b', 3)).toBeTruthy();
+        expect(bag.add('a', 2)).toBeTruthy();
+        expect(bag.add('c')).toBeTruthy();
+        arr = bag.toArray();
+        expect(buckets.arrays.frequency(arr, "b")).toEqual(3);
+        expect(buckets.arrays.frequency(arr, "a")).toEqual(2);
+        expect(buckets.arrays.frequency(arr, "c")).toEqual(1);
     });
 
-	it('Converts to a set',
+    it('Converts to a set',
     function() {
-        bag = new buckets.Bag();
-		var set = bag.toSet();
-		expect(set.size()).toEqual(0);
-		expect(bag.add('b', 3)).toBeTruthy();
-		expect(bag.add('a', 2)).toBeTruthy();
-		expect(bag.add('c')).toBeTruthy();
-		set = bag.toSet();
-		expect(set.contains("b")).toBeTruthy();
-		expect(set.contains("a")).toBeTruthy();
-		expect(set.contains("c")).toBeTruthy();
+        var set = bag.toSet();
+        expect(set.size()).toEqual(0);
+        expect(bag.add('b', 3)).toBeTruthy();
+        expect(bag.add('a', 2)).toBeTruthy();
+        expect(bag.add('c')).toBeTruthy();
+        set = bag.toSet();
+        expect(set.contains("b")).toBeTruthy();
+        expect(set.contains("a")).toBeTruthy();
+        expect(set.contains("c")).toBeTruthy();
     });
 
-    it('Iterator works',
+    it('For each gives all the elements',
     function() {
-        bag = new buckets.Bag();
+        bag.forEach(function(e) {
+            expect(false).toBeTruthy();
+        });
         var a = [1, 5, 5, 6];
-        var it = bag.iterator();
-        expect(it.hasNext()).toBeFalsy();
-        expect(it.next()).toBeUndefined();
         bag.add(1);
         bag.add(5);
         bag.add(5);
         bag.add(6);
-        it = bag.iterator();
-        expect(it.hasNext()).toBeTruthy();
-        while (it.hasNext()) {
-            var next = it.next();
-            expect(buckets.arrays.contains(a, next)).toBeTruthy();
-        }
+        bag.forEach(function(e) {
+            expect(buckets.arrays.contains(a, e)).toBeTruthy();
+        });
 
-        it = bag.iterator();
-        expect(it.hasNext()).toBeTruthy();
-		var count = 0;
-        while (it.hasNext()) {
-            var next = it.next();
-            if (next == 5) {
-				count++;
-                it.remove();
+        var count = 0;
+        bag.forEach(function(e) {
+            expect(buckets.arrays.contains(a, e)).toBeTruthy();
+            if (e === 5) {
+                count++;
+                bag.remove(e);
             }
-        }
-		expect(count).toEqual(2);
+        });
+        expect(count).toEqual(2);
         expect(bag.contains(5)).toBeFalsy();
         expect(bag.contains(1)).toBeTruthy();
         expect(bag.contains(6)).toBeTruthy();
+    });
+
+    it('For each can be interrupted',
+    function() {
+        for (var i = 0; i < 5; i++) {
+            bag.add(i);
+        }
+        var t = 0;
+        bag.forEach(function(e) {
+            t++;
+            return false;
+        });
+        expect(t).toEqual(1);
     });
 });

@@ -244,7 +244,7 @@ function() {
         var a = [c, d];
         expect(buckets.arrays.remove(a, {
             val: 10
-        })).toBeFalsy();
+        })).toBeFalsy();																															
         expect(buckets.arrays.remove(a, {
             val: 10
         },

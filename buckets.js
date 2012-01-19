@@ -3,7 +3,7 @@
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 //
-// Some documentation is borrowed from the Officieal Java API
+// Some documentation is borrowed from the official Java API
 // as it serves the same porpose.
 /**
  * @namespace Top level namespace for Buckets, a JavaScript data structure library.
@@ -47,13 +47,14 @@ buckets.common.defaultEquals = function(a, b) {
  */
 buckets.common.defaultToString = function(obj) {
 
-    if (Object.prototype.toString.call(obj) === '[object String]') {
-        return obj;
-    } else if (obj === null) {
+    if (obj === null) {
         return 'BUCKETS_NULL_OBJECT';
     } else if (obj === undefined) {
         return 'BUCKETS_UNDEFINED_OBJECT';
-    } else {
+    } else if (Object.prototype.toString.call(obj) === '[object String]') {
+        return obj;
+    }
+    else {
         return obj.toString();
     }
 };
@@ -63,9 +64,7 @@ buckets.common.defaultToString = function(obj) {
  * @private
  */
 buckets.common.reverseCompareFunction = function(compareFunction) {
-
     if (compareFunction === null || compareFunction === undefined) {
-
         return function(a, b) {
             if (a < b) {
                 return 1;
@@ -106,7 +105,7 @@ buckets.arrays = {};
  * @param {Function=} equalsFunction optional function used to 
  * check equality between 2 elements.
  * @return {number} the position of the first occurrence of the specified element
- * within the specified array.
+ * within the specified array, or -1 if not found.
  */
 buckets.arrays.indexOf = function(array, element, equalsFunction) {
     var equals = equalsFunction || buckets.common.defaultEquals;
@@ -127,18 +126,17 @@ buckets.arrays.indexOf = function(array, element, equalsFunction) {
  * @param {Function=} equalsFunction optional function used to 
  * check equality between 2 elements.
  * @return {number} the position of the last occurrence of the specified element
- * within the specified array.
+ * within the specified array or -1 if not found.
  */
 buckets.arrays.lastIndexOf = function(array, element, equalsFunction) {
     var equals = equalsFunction || buckets.common.defaultEquals;
     var length = array.length;
-    var index = -1;
-    for (var i = 0; i < length; i++) {
+    for (var i = length - 1; i >= 0; i--) {
         if (equals(array[i], element)) {
-            index = i;
+            return i;
         }
     }
-    return index;
+    return - 1;
 };
 
 /**
@@ -179,7 +177,7 @@ buckets.arrays.remove = function(array, element, equalsFunction) {
  * @param {Function=} equalsFunction optional function used to 
  * check equality between 2 elements.
  * @return {number} the number of elements in the specified array 
- * equal to the specified object or -1 if the array or element are undefined.
+ * equal to the specified object.
  */
 buckets.arrays.frequency = function(array, element, equalsFunction) {
     var equals = equalsFunction || buckets.common.defaultEquals;
@@ -290,38 +288,31 @@ buckets.LinkedList.prototype.add = function(element) {
  * Adds the given object at the specified position in this list.
  * @param {Object} elem object to be added.
  * @param {number} index index to add the element.
- * @return {boolean} true if the element was added or false if index < 0 ||
- * index > this.size() || elem===undefined.
+ * @return {boolean} true if the element was added or false if the index is invalid
+ * or if the element is undefined.
  */
 buckets.LinkedList.prototype.addElementAtIndex = function(elem, index) {
 
     if (index < 0 || index > this.nElements || elem === undefined) {
         return false;
     }
-    var newNode = {
-        element: elem,
-        next: null
-    };
+    var newNode = this.createNode(elem);
     if (this.nElements === 0) {
         // First node in the list.
         this.firstNode = newNode;
         this.lastNode = newNode;
     } else if (index === this.nElements) {
-        // Change this.lastNode node.
+        // Insert at the end.
         this.lastNode.next = newNode;
         this.lastNode = newNode;
     } else if (index === 0) {
-        // Change this.firstNode node.
+        // Change first node.
         newNode.next = this.firstNode;
         this.firstNode = newNode;
     } else {
-        var currentNode = this.firstNode;
-        var i = 0;
-        for (; i < (index - 1); i++) {
-            currentNode = currentNode.next;
-        }
-        newNode.next = currentNode.next;
-        currentNode.next = newNode;
+        var prev = this.nodeAtIndex(index - 1);
+        newNode.next = prev.next;
+        prev.next = newNode;
     }
     this.nElements++;
     return true;
@@ -358,23 +349,16 @@ buckets.LinkedList.prototype.last = function() {
 /**
  * Returns the element at the specified position in this list.
  * @param {number} index desired index.
- * @return {*} the element at the given index or undefined if index < 0 ||
- * index >= this.nElements.
+ * @return {*} the element at the given index or undefined if index the index is
+ * out of bounds.
  */
 buckets.LinkedList.prototype.elementAtIndex = function(index) {
 
-    if (index < 0 || index >= this.nElements) {
+    var node = this.nodeAtIndex(index);
+    if (node === null) {
         return undefined;
     }
-    if (index === (this.nElements - 1)) {
-        return this.lastNode.element;
-    }
-
-    var currentNode = this.firstNode;
-    for (var i = 0; i < index; i++) {
-        currentNode = currentNode.next;
-    }
-    return currentNode.element;
+    return node.element;
 };
 
 /**
@@ -393,29 +377,25 @@ buckets.LinkedList.prototype.elementAtIndex = function(index) {
  * @param {Object} element element to search for.
  * @param {function(Object,Object):boolean=} equalsFunction Optional
  * function used to check if two elements are equal.
- * @return {number} the index in this list of the this.firstNode occurrence
- * of the specified element, or -1 if the list does not contain this
+ * @return {number} the index in this list of the first occurrence
+ * of the specified element, or -1 if this list does not contain the
  * element.
  */
 buckets.LinkedList.prototype.indexOf = function(element, equalsFunction) {
 
     var equalsF = equalsFunction || buckets.common.defaultEquals;
-
     if (element === undefined) {
         return - 1;
     }
-
     var currentNode = this.firstNode;
     var index = 0;
     while (currentNode !== null) {
-
         if (equalsF(currentNode.element, element)) {
             return index;
         }
         index++;
         currentNode = currentNode.next;
     }
-
     return - 1;
 };
 
@@ -502,112 +482,58 @@ buckets.LinkedList.prototype.clear = function() {
 /**
  * Removes the element at the specified position in this list.
  * @param {number} index given index.
- * @return {*} removed element or undefined if index < 0 || index >=
- * this.nElements.
+ * @return {*} removed element or undefined if the index is out of bounds.
  */
 buckets.LinkedList.prototype.removeElementAtIndex = function(index) {
 
     if (index < 0 || index >= this.nElements) {
         return undefined;
     }
-    var r;
+    var element;
     if (this.nElements === 1) {
         //First node in the list.
-        r = this.firstNode.element;
+        element = this.firstNode.element;
         this.firstNode = null;
         this.lastNode = null;
     } else {
-
-        var previous = null;
-        var current = this.firstNode;
-
-        for (var i = 0; i < index; i++) {
-            previous = current;
-            current = current.next;
-        }
-        r = current.element;
-        if (current === this.lastNode) {
+        var previous = this.nodeAtIndex(index - 1);
+        if (previous === null) {
+            element = this.firstNode.element;
+            this.firstNode = this.firstNode.next;
+        } else if (previous.next === this.lastNode) {
+            element = this.lastNode.element;
             this.lastNode = previous;
-        } else if (current === this.firstNode) {
-            this.firstNode = current.next;
         }
         if (previous !== null) {
-            previous.next = current.next;
-            current.next = null;
+            element = previous.next.element;
+            previous.next = previous.next.next;
         }
     }
     this.nElements--;
-    return r;
+    return element;
 };
-
 
 /**
- * Returns an iterator over the elements in this list (in proper sequence).<br>
- * <br>
- * The iterator has the following operations:<br>
- * <br>
- * hasNext() Returns true if this list iterator has more elements when
- * traversing the list in the forward direction.<br>
- * next() Returns the next element in the list.<br>
- * remove() Removes from the list the last element that was returned by
- * next.<br>
- * replace() Replaces the this.lastNode element returned by next.
- * @return {Object} an iterator over the elements in this list.
+ * Executes the provided function once for each element present in this list in order.
+ * @param {function(Object):*} callback function to execute, it is
+ * invoked with one argument: the element value, to break the iteration you can 
+ * optionally return false.
  */
-buckets.LinkedList.prototype.iterator = function() {
-
-    var previous = null;
-    var current = null;
-    var next = this.firstNode;
-    var it = {};
-
-    it.hasNext = function() {
-        return next !== null;
-    };
-    it.next = function() {
-
-        if (next === null) {
-            return undefined;
+buckets.LinkedList.prototype.forEach = function(callback) {
+    var currentNode = this.firstNode;
+    while (currentNode !== null) {
+        if (callback(currentNode.element) === false) {
+            break;
         }
-        previous = current;
-        current = next;
-        next = current.next;
-        return current.element;
-    };
-    it.remove = function() {
-        if (current === null) {
-            return undefined;
-        }
-        var r = current.element;
-        if (current === this.firstNode) {
-            if (current === this.lastNode) {
-                this.firstNode = null;
-                this.lastNode = null;
-            } else {
-                this.firstNode = next;
-            }
-        } else if (current === this.lastNode) {
-            this.lastNode = previous;
-            previous.next = null;
-        } else {
-            previous.next = current.next;
-        }
-        this.nElements--;
-        return r;
-    };
-    it.replace = function(elem) {
-        if (current !== null) {
-            var temp = current.element;
-            current.element = elem;
-            return temp;
-        }
-        return undefined;
-    };
-    return it;
+        currentNode = currentNode.next;
+    }
 };
 
+/**
+ * Reverses the order of the elements in this linked list (makes the last 
+ * element first, and the first element last).
+ */
 buckets.LinkedList.prototype.reverse = function() {
-
     var previous = null;
     var current = this.firstNode;
     var temp = null;
@@ -626,7 +552,7 @@ buckets.LinkedList.prototype.reverse = function() {
 /**
  * Returns an array containing all of the elements in this list in proper
  * sequence.
- * @return {Array.<*>} an array containing all of the elements in this list
+ * @return {Array.<*>} an array containing all of the elements in this list,
  * in proper sequence.
  */
 buckets.LinkedList.prototype.toArray = function() {
@@ -655,13 +581,40 @@ buckets.LinkedList.prototype.isEmpty = function() {
 };
 
 /**
+ * @private
+ */
+buckets.LinkedList.prototype.nodeAtIndex = function(index) {
+
+    if (index < 0 || index >= this.nElements) {
+        return null;
+    }
+    if (index === (this.nElements - 1)) {
+        return this.lastNode;
+    }
+    var node = this.firstNode;
+    for (var i = 0; i < index; i++) {
+        node = node.next;
+    }
+    return node;
+};
+/**
+ * @private
+ */
+buckets.LinkedList.prototype.createNode = function(element) {
+    return {
+        element: element,
+        next: null
+    };
+};
+
+
+/**
  * Creates an empty dictionary. 
  * @class <p>Dictionaries map keys to values; each key can map to at most one value.
  * This implementation accepts any kind of objects as keys.</p>
  *
- * <p>If the keys are custom objects a function which converts keys to strings must be
- * provided. Example:</p>
- *
+ * <p>If the keys are custom objects a function which converts keys to unique
+ * strings must be provided. Example:</p>
  * <pre>
  * function petToString(pet) {
  *  return pet.name;
@@ -719,7 +672,7 @@ buckets.Dictionary.prototype.get = function(key) {
  * @param {Object} key key with which the specified value is to be
  * associated.
  * @param {Object} value value to be associated with the specified key.
- * @return {*} previous value associated with specified key, or undefined if
+ * @return {*} previous value associated with the specified key, or undefined if
  * there was no mapping for the key or if the key||value are undefined.
  */
 buckets.Dictionary.prototype.set = function(key, value) {
@@ -785,6 +738,25 @@ buckets.Dictionary.prototype.values = function() {
         }
     }
     return array;
+};
+
+/**
+ * Executes the provided function once for each key-value pair 
+ * present in this dictionary.
+ * @param {function(Object,Object):*} callback function to execute, it is
+ * invoked with two arguments: key and value. To break the iteration you can 
+ * optionally return false.
+ */
+buckets.Dictionary.prototype.forEach = function(callback) {
+    for (var name in this.table) {
+        if (this.table.hasOwnProperty(name)) {
+            var pair = this.table[name];
+            var ret = callback(pair.key, pair.value);
+            if (ret === false) {
+                return;
+            }
+        }
+    }
 };
 
 /**
@@ -1000,16 +972,14 @@ buckets.MultiDictionary.prototype.isEmpty = function() {
  * used to compare elements. Example:</p>
  *
  * <pre>
- * function comparePetsByAge(pet1, pet2) {
- *  if (pet1.age &lt; pet2.age) {
- *      return -1;
- *  }
- *  else if (pet1.age &gt; pet2.age) {
- *      return 1;
- *  }
- *  else {
- *      return 0;
- *  }
+ * function compare(a, b) {
+ *  if (a is less than b by some ordering criterion) {
+ *     return -1;
+ *  } if (a is greater than b by the ordering criterion) {
+ *     return 1;
+ *  } 
+ *  // a must be equal to b
+ *  return 0;
  * }
  * </pre>
  *
@@ -1017,16 +987,14 @@ buckets.MultiDictionary.prototype.isEmpty = function() {
  * reverse compare function to accomplish that behavior. Example:</p>
  *
  * <pre>
- * function reverseCompareNumbers(a, b) {
- *  if (a &lt; b) {
- *      return 1;
- *  }
- *  else if (a &gt; b) {
- *      return -1;
- *  }
- *  else {
- *      return 0;
- *  }
+ * function reverseCompare(a, b) {
+ *  if (a is less than b by some ordering criterion) {
+ *     return 1;
+ *  } if (a is greater than b by the ordering criterion) {
+ *     return -1;
+ *  } 
+ *  // a must be equal to b
+ *  return 0;
  * }
  * </pre>
  *
@@ -1112,17 +1080,12 @@ buckets.Heap.prototype.minIndex = function(leftChild, rightChild) {
  */
 buckets.Heap.prototype.siftUp = function(index) {
 
-    var value = this.data[index];
-    while (index > 0) {
-        var parent = this.parentIndex(index);
-        if (this.compare(this.data[parent], value) > 0) {
-            this.data[index] = this.data[parent];
-            index = parent;
-        } else {
-            break;
-        }
+    var parent = this.parentIndex(index);
+    while (index > 0 && this.compare(this.data[parent], this.data[index]) > 0) {
+        buckets.arrays.swap(this.data, parent, index);
+        index = parent;
+        parent = this.parentIndex(index);
     }
-    this.data[index] = value;
 };
 /**
  * Moves the node at the given index down to its proper place in the heap.
@@ -1131,14 +1094,13 @@ buckets.Heap.prototype.siftUp = function(index) {
  */
 buckets.Heap.prototype.siftDown = function(nodeIndex) {
 
+    //smaller child index
     var min = this.minIndex(this.leftChildIndex(nodeIndex),
     this.rightChildIndex(nodeIndex));
 
     while (min >= 0 && this.compare(this.data[nodeIndex],
     this.data[min]) > 0) {
-        var tmp = this.data[min];
-        this.data[min] = this.data[nodeIndex];
-        this.data[nodeIndex] = tmp;
+        buckets.arrays.swap(this.data, min, nodeIndex);
         nodeIndex = min;
         min = this.minIndex(this.leftChildIndex(nodeIndex),
         this.rightChildIndex(nodeIndex));
@@ -1422,6 +1384,17 @@ buckets.Queue.prototype.clear = function() {
  * highest priority are dequeued first). Priority Queues are implemented as heaps. 
  * If the inserted elements are custom objects a compare function must be provided, 
  * otherwise the <=, === and >= operators are used to compare object priority.</p>
+ * <pre>
+ * function compare(a, b) {
+ *  if (a is less than b by some ordering criterion) {
+ *     return -1;
+ *  } if (a is greater than b by the ordering criterion) {
+ *     return 1;
+ *  } 
+ *  // a must be equal to b
+ *  return 0;
+ * }
+ * </pre>
  * @constructor
  * @param {function(Object,Object):number=} compareFunction optional
  * function used to compare two element priorities. Must return a negative integer,
@@ -1554,6 +1527,62 @@ buckets.Set.prototype.add = function(element) {
 };
 
 /**
+ * Performs an intersecion between this an another set.
+ * Removes all values that are not present this set and the given set.
+ * @param {buckets.Set} otherSet other set.
+ */
+buckets.Set.prototype.intersection = function(otherSet) {
+    var set = this;
+    this.forEach(function(element) {
+        if(!otherSet.contains(element)){
+            set.remove(element);
+        }
+    });
+};
+
+/**
+ * Performs a union between this an another set.
+ * Adds all values from the given set to this set.
+ * @param {buckets.Set} otherSet other set.
+ */
+buckets.Set.prototype.union = function(otherSet) {
+    var set = this;
+    otherSet.forEach(function(element) {
+        set.add(element);
+    });
+};
+
+/**
+ * Performs a difference between this an another set.
+ * Removes from this set all the values that are present in the given set.
+ * @param {buckets.Set} otherSet other set.
+ */
+buckets.Set.prototype.difference = function(otherSet) {
+    var set = this;
+    otherSet.forEach(function(element) {
+            set.remove(element);
+    });
+};
+
+/**
+ * Checks whether the given set contains all the elements in this set.
+ * @param {buckets.Set} otherSet other set.
+ * @return {boolean} truw if this set is a subset of the given set.
+ */
+buckets.Set.prototype.isSubsetOf = function(otherSet) {
+    if(this.size()>otherSet.size()){
+        return false;
+    }   
+    
+    this.forEach(function(element) {
+        if(!otherSet.contains(element)){
+            return false;
+        }
+    });
+    return true;
+};
+
+/**
  * Removes the specified element from this set if it is present.
  * @return {boolean} true if this set contained the specified element.
  */
@@ -1567,42 +1596,16 @@ buckets.Set.prototype.remove = function(element) {
 };
 
 /**
- * Returns an iterator over the elements in this set. 
- * The elements are returned in no particular order.<br>
- * <br>
- * The iterator has the following operations:<br>
- * <br>
- * hasNext() Returns true if this set iterator has more elements.
- * next() Returns the next element in the set.<br>
- * remove() Removes from the set the last element that was returned by
- * next().<br>
- * @return {Object} an iterator over the elements in this set.
+ * Executes the provided function once for each element 
+ * present in this set.
+ * @param {function(Object):*} callback function to execute, it is
+ * invoked with one arguments: the element. To break the iteration you can 
+ * optionally return false.
  */
-buckets.Set.prototype.iterator = function() {
-
-    var keys = this.dictionary.keys();
-    var set = this;
-    var current = -1;
-    var next = 0;
-    var it = {};
-
-    it.hasNext = function() {
-        return next < keys.length;
-    };
-    it.next = function() {
-        if (next >= keys.length) {
-            return undefined;
-        }
-        current = next;
-        next = current + 1;
-        return set.dictionary.get(keys[current]);
-    };
-    it.remove = function() {
-        if (current < keys.length && current >= 0) {
-            return set.dictionary.remove(keys[current]);
-        }
-    };
-    return it;
+buckets.Set.prototype.forEach = function(callback) {
+    this.dictionary.forEach(function(k,v) {
+        return callback(v);
+    });
 };
 
 /**
@@ -1641,7 +1644,7 @@ buckets.Set.prototype.clear = function() {
  * @class <p>A bag is a special kind of set in which members are 
  * allowed to appear more than once.</p>
  * <p>If the inserted elements are custom objects a function 
- * which converts elements to strings must be provided. Example:</p>
+ * which converts elements to unique strings must be provided. Example:</p>
  *
  * <pre>
  * function petToString(pet) {
@@ -1785,51 +1788,24 @@ buckets.Bag.prototype.toSet = function() {
 };
 
 /**
- * Returns an iterator over the elements in this bag, including multiple copies. 
- * The elements are returned in no particular order.
- * 
- * <p>The iterator has the following operations:</p>
- * 
- * <p>hasNext() Returns true if this bag iterator has more elements.</p>
- * <p>next() Returns the next element in this bag.</p>
- * <p>remove() Removes from this bag the last element that was returned by
- * next().</p>
- * @return {Object} an iterator over the elements in this bag.
+ * Executes the provided function once for each element 
+ * present in this bag, including multiple copies.
+ * @param {function(Object):*} callback function to execute, it is
+ * invoked with one argument: the element. To break the iteration you can 
+ * optionally return false.
  */
-buckets.Bag.prototype.iterator = function() {
-
-    var values = this.dictionary.values();
-    var bag = this;
-    var copies = 0;
-    var current = -1;
-    var next = 0;
-    var it = {};
-
-    it.hasNext = function() {
-        return copies > 0 || next < values.length;
-    };
-    it.next = function() {
-        if (copies <= 0 && next >= values.length) {
-            return undefined;
+buckets.Bag.prototype.forEach = function(callback) {
+    this.dictionary.forEach(function(k,v) {
+        var value = v.value;
+        var copies = v.copies;
+        for (var i=0; i < copies; i++) {
+            if(callback(value)===false){
+                return false;
+            }
         }
-        if (copies <= 0) {
-            current = next;
-            next = current + 1;
-            copies = values[current].copies - 1;
-            return values[current].value;
-        } else {
-            copies--;
-            return values[current].value;
-        }
-    };
-    it.remove = function() {
-        if (current < values.length && current >= 0) {
-            return bag.remove(values[current].value);
-        }
-    };
-    return it;
+        return true;
+    });
 };
-
 /**
  * Returns the number of elements in this bag.
  * @return {number} the number of elements in this bag.
@@ -1853,3 +1829,433 @@ buckets.Bag.prototype.clear = function() {
     this.nElements = 0;
     this.dictionary.clear();
 };
+
+
+
+/**
+ * Creates an empty binary search tree.
+ * @class <p>A binary search tree is a binary tree in which each 
+ * internal node stores an element such that the elements stored in the 
+ * left subtree are less than it and the elements 
+ * stored in the right subtree are greater.</p>
+ * <p>Formally, a binary search tree is a node-based binary tree data structure which 
+ * has the following properties:</p>
+ * <ul>
+ * <li>The left subtree of a node contains only nodes with elements less 
+ * than the node's element</li>
+ * <li>The right subtree of a node contains only nodes with elements greater 
+ * than the node's element</li>
+ * <li>Both the left and right subtrees must also be binary search trees.</li>
+ * </ul>
+ * <p>If the inserted elements are custom objects a compare function must 
+ * be provided at construction time, otherwise the <=, === and >= operators are 
+ * used to compare elements. Example:</p>
+ * <pre>
+ * function compare(a, b) {
+ *  if (a is less than b by some ordering criterion) {
+ *     return -1;
+ *  } if (a is greater than b by the ordering criterion) {
+ *     return 1;
+ *  } 
+ *  // a must be equal to b
+ *  return 0;
+ * }
+ * </pre>
+ * @constructor
+ * @param {function(Object,Object):number=} compareFunction optional
+ * function used to compare two elements. Must return a negative integer,
+ * zero, or a positive integer as the first argument is less than, equal to,
+ * or greater than the second.
+ */
+buckets.BSTree = function(compareFunction) {
+    this.root = null;
+    this.compare = compareFunction || buckets.common.defaultCompare;
+    this.nElements = 0;
+};
+
+
+/**
+ * Adds the specified element to this tree if it is not already present.
+ * @param {Object} element the element to insert.
+ * @return {boolean} true if this tree did not already contain the specified element.
+ */
+buckets.BSTree.prototype.add = function(element) {
+    if (element === undefined) {
+        return false;
+    }
+
+    if (this.insertNode(this.createNode(element)) !== null) {
+        this.nElements++;
+        return true;
+    }
+    return false;
+};
+
+/**
+ * Removes all of the elements from this tree.
+ */
+buckets.BSTree.prototype.clear = function() {
+    this.root = null;
+    this.nElements = 0;
+};
+
+/**
+ * Returns true if this tree contains no elements.
+ * @return {boolean} true if this tree contains no elements.
+ */
+buckets.BSTree.prototype.isEmpty = function() {
+    return this.nElements === 0;
+};
+
+/**
+ * Returns the number of elements in this tree.
+ * @return {number} the number of elements in this tree.
+ */
+buckets.BSTree.prototype.size = function() {
+    return this.nElements;
+};
+
+/**
+ * Returns true if this tree contains the specified element.
+ * @param {Object} element element to search for.
+ * @return {boolean} true if this tree contains the specified element,
+ * false otherwise.
+ */
+buckets.BSTree.prototype.contains = function(element) {
+    if (element === undefined) {
+        return false;
+    }
+    return this.searchNode(this.root, element) !== null;
+};
+
+/**
+ * Removes the specified element from this tree if it is present.
+ * @return {boolean} true if this tree contained the specified element.
+ */
+buckets.BSTree.prototype.remove = function(element) {
+    var node = this.searchNode(this.root, element);
+    if (node === null) {
+        return false;
+    }
+    this.removeNode(node);
+    this.nElements--;
+    return true;
+};
+
+/**
+ * Executes the provided function once for each element present in this tree in 
+ * in-order.
+ * @param {function(Object):*} callback function to execute, it is invoked with one 
+ * argument: the element value, to break the iteration you can optionally return false.
+ */
+buckets.BSTree.prototype.inorderTraversal = function(callback) {
+    this.inorderTraversalAux(this.root, callback, {
+        stop: false
+    });
+};
+
+/**
+ * Executes the provided function once for each element present in this tree in pre-order.
+ * @param {function(Object):*} callback function to execute, it is invoked with one 
+ * argument: the element value, to break the iteration you can optionally return false.
+ */
+buckets.BSTree.prototype.preorderTraversal = function(callback) {
+    this.preorderTraversalAux(this.root, callback, {
+        stop: false
+    });
+};
+
+/**
+ * Executes the provided function once for each element present in this tree in post-order.
+ * @param {function(Object):*} callback function to execute, it is invoked with one 
+ * argument: the element value, to break the iteration you can optionally return false.
+ */
+buckets.BSTree.prototype.postorderTraversal = function(callback) {
+    this.postorderTraversalAux(this.root, callback, {
+        stop: false
+    });
+};
+
+/**
+ * Executes the provided function once for each element present in this tree in 
+ * level-order.
+ * @param {function(Object):*} callback function to execute, it is invoked with one 
+ * argument: the element value, to break the iteration you can optionally return false.
+ */
+buckets.BSTree.prototype.levelTraversal = function(callback) {
+    this.levelTraversalAux(this.root, callback);
+};
+
+/**
+ * Returns the minimum element of this tree.
+ * @return {*} the minimum element of this tree or undefined if this tree is
+ * is empty.
+ */
+buckets.BSTree.prototype.minimum = function() {
+    if (this.isEmpty()) {
+        return undefined;
+    }
+    return this.minimumAux(this.root).element;
+};
+
+/**
+ * Returns the maximum element of this tree.
+ * @return {*} the maximum element of this tree or undefined if this tree is
+ * is empty.
+ */
+buckets.BSTree.prototype.maximum = function() {
+    if (this.isEmpty()) {
+        return undefined;
+    }
+    return this.maximumAux(this.root).element;
+};
+
+/**
+ * Executes the provided function once for each element present in this tree in inorder.
+ * Equivalent to inorderTraversal.
+ * @param {function(Object):*} callback function to execute, it is
+ * invoked with one argument: the element value, to break the iteration you can 
+ * optionally return false.
+ */
+buckets.BSTree.prototype.forEach = function(callback) {
+    this.inorderTraversal(callback);
+};
+
+/**
+ * Returns an array containing all of the elements in this tree in in-order.
+ * @return {Array} an array containing all of the elements in this tree in in-order.
+ */
+buckets.BSTree.prototype.toArray = function() {
+    var array = [];
+    this.inorderTraversal(function(element) {
+        array.push(element);
+    });
+    return array;
+};
+
+/**
+ * Returns the height of this tree.
+ * @return {number} the height of this tree or -1 if is empty.
+ */
+buckets.BSTree.prototype.height = function() {
+    return this.heightAux(this.root);
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.searchNode = function(node, element) {
+    var cmp = null;
+    while (node !== null && cmp !== 0) {
+        cmp = this.compare(element, node.element);
+        if (cmp < 0) {
+            node = node.leftCh;
+        } else if (cmp > 0) {
+            node = node.rightCh;
+        }
+    }
+    return node;
+};
+
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.transplant = function(n1, n2) {
+    if (n1.parent === null) {
+        this.root = n2;
+    } else if (n1 === n1.parent.leftCh) {
+        n1.parent.leftCh = n2;
+    } else {
+        n1.parent.rightCh = n2;
+    }
+    if (n2 !== null) {
+        n2.parent = n1.parent;
+    }
+};
+
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.removeNode = function(node) {
+    if (node.leftCh === null) {
+        this.transplant(node, node.rightCh);
+    } else if (node.rightCh === null) {
+        this.transplant(node, node.leftCh);
+    } else {
+        var y = this.minimumAux(node.rightCh);
+        if (y.parent !== node) {
+            this.transplant(y, y.rightCh);
+            y.rightCh = node.rightCh;
+            y.rightCh.parent = y;
+        }
+        this.transplant(node, y);
+        y.leftCh = node.leftCh;
+        y.leftCh.parent = y;
+    }
+};
+/**
+* @private
+*/
+buckets.BSTree.prototype.inorderTraversalAux = function(node, callback, signal) {
+    if (node === null || signal.stop) {
+        return;
+    }
+    this.inorderTraversalAux(node.leftCh, callback, signal);
+    if (signal.stop) {
+        return;
+    }
+    signal.stop = callback(node.element) === false;
+    if (signal.stop) {
+        return;
+    }
+    this.inorderTraversalAux(node.rightCh, callback, signal);
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.levelTraversalAux = function(node, callback) {
+    var queue = new buckets.Queue();
+    if (node !== null) {
+        queue.enqueue(node);
+    }
+    while (!queue.isEmpty()) {
+        node = queue.dequeue();
+        if (callback(node.element) === false) {
+            return;
+        }
+        if (node.leftCh !== null) {
+            queue.enqueue(node.leftCh);
+        }
+        if (node.rightCh !== null) {
+            queue.enqueue(node.rightCh);
+        }
+    }
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.preorderTraversalAux = function(node, callback, signal) {
+    if (node === null || signal.stop) {
+        return;
+    }
+    signal.stop = callback(node.element) === false;
+    if (signal.stop) {
+        return;
+    }
+    this.preorderTraversalAux(node.leftCh, callback, signal);
+    if (signal.stop) {
+        return;
+    }
+    this.preorderTraversalAux(node.rightCh, callback, signal);
+};
+/**
+* @private
+*/
+buckets.BSTree.prototype.postorderTraversalAux = function(node, callback, signal) {
+    if (node === null || signal.stop) {
+        return;
+    }
+    this.postorderTraversalAux(node.leftCh, callback, signal);
+    if (signal.stop) {
+        return;
+    }
+    this.postorderTraversalAux(node.rightCh, callback, signal);
+    if (signal.stop) {
+        return;
+    }
+    signal.stop = callback(node.element) === false;
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.minimumAux = function(node) {
+    while (node.leftCh !== null) {
+        node = node.leftCh;
+    }
+    return node;
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.maximumAux = function(node) {
+    while (node.rightCh !== null) {
+        node = node.rightCh;
+    }
+    return node;
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.successorNode = function(node) {
+    if (node.rightCh !== null) {
+        return this.minimumAux(node.rightCh);
+    }
+    var successor = node.parent;
+    while (successor !== null && node === successor.rightCh) {
+        node = successor;
+        successor = node.parent;
+    }
+    return successor;
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.heightAux = function(node) {
+    if (node === null) {
+        return - 1;
+    }
+    return Math.max(this.heightAux(node.leftCh), this.heightAux(node.rightCh)) + 1;
+};
+
+/*
+* @private
+*/
+buckets.BSTree.prototype.insertNode = function(node) {
+
+    var parent = null;
+    var position = this.root;
+    var cmp = null;
+    while (position !== null) {
+        cmp = this.compare(node.element, position.element);
+        if (cmp === 0) {
+            return null;
+        } else if (cmp < 0) {
+            parent = position;
+            position = position.leftCh;
+        } else {
+            parent = position;
+            position = position.rightCh;
+        }
+    }
+    node.parent = parent;
+    if (parent === null) {
+        // tree is empty
+        this.root = node;
+    } else if (this.compare(node.element, parent.element) < 0) {
+        parent.leftCh = node;
+    } else {
+        parent.rightCh = node;
+    }
+    return node;
+};
+
+/**
+* @private
+*/
+buckets.BSTree.prototype.createNode = function(element) {
+    return {
+        element: element,
+        leftCh: null,
+        rightCh: null,
+        parent: null
+    };
+};
+

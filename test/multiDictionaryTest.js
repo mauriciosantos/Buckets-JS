@@ -153,11 +153,11 @@ function() {
         for (var i = 0; i < 10; i++) {
             dict.set(i, i);
             expect(dict.containsKey(i)).toBeTruthy();
-        };
+        }
         for (var i = 0; i < 10; i++) {
             dict.remove(i);
             expect(dict.containsKey(i)).toBeFalsy();
-        };
+        }
     });
 
     it('Gives the right size',
@@ -167,8 +167,7 @@ function() {
         for (var i = 0; i < 10; i++) {
             dict.set(i, i);
             expect(dict.size()).toEqual(i + 1);
-        };
-
+        }
     });
 
     it('Gives all the stored keys',
@@ -178,7 +177,7 @@ function() {
             var keys = dict.keys();
             k.sort();
             keys.sort();
-            expect(buckets.arrays.equals(k, keys)).toBeTruthy();
+			expect(k).toEqual(keys);
             dict.set("" + i, i);
             k.push("" + i);
         }
@@ -191,15 +190,10 @@ function() {
             var values = dict.values();
             v.sort();
             values.sort();
-            expect(buckets.arrays.equals(v, values)).toBeTruthy();
+			expect(v).toEqual(values);
             dict.set("" + i, i);
             v.push(i);
         }
-    });
-
-    it('Stores multiple values per key',
-    function() {
-		dict.set
     });
 
 });

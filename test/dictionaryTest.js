@@ -152,5 +152,34 @@ function() {
             v.push(i);
         }
     });
+	
+	it('For each gives all the pairs',
+    function() {
+        for (var i = 0; i < elems; i++) {
+            dict.set("" + i, i);
+        }
+		var keys = dict.keys();
+		var values = dict.values();
+		dict.forEach(function(k,v) {
+			expect(buckets.arrays.remove(keys, k)).toBeTruthy();
+			expect(buckets.arrays.remove(values, v)).toBeTruthy();
+		});
+		expect(keys.length).toEqual(0);
+		expect(values.length).toEqual(0);
+    });
+	
+	
+	it('For each can be interrupted',
+    function() {
+        for (var i = 0; i < elems; i++) {
+            dict.set("" + i, i);
+        }
+		var t = 0;
+		dict.forEach(function(k,v) {
+			t++;
+			return false;
+		});
+		expect(t).toEqual(1);
+    });
 
 });

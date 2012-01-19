@@ -1,16 +1,21 @@
 describe('Priority Queue',
 function() {
 
-    function getPriorityQueue() {
-        var queue = new buckets.PriorityQueue();
+	var queue = null;
+	
+	beforeEach(function() {
+        queue = new buckets.PriorityQueue();
+    });
+
+    var createPriorityQueue1 = function () {
         queue.enqueue(0);
         queue.enqueue(1);
         queue.enqueue(2);
         queue.enqueue(3);
         return queue;
-    }
-    function getPriorityQueue2() {
-        var queue = new buckets.PriorityQueue();
+    };
+
+    var createPriorityQueue2 = function() {
         queue.enqueue(1);
         queue.enqueue(3);
         queue.enqueue(0);
@@ -20,7 +25,7 @@ function() {
 
     it('Gives the right size',
     function() {
-        var queue = getPriorityQueue();
+        createPriorityQueue1();
         expect(queue.size()).toEqual(4);
         queue.dequeue();
         expect(queue.size()).toEqual(3);
@@ -28,7 +33,7 @@ function() {
 
     it('Gives the right size 2',
     function() {
-        var queue = getPriorityQueue2();
+        createPriorityQueue2();
         expect(queue.size()).toEqual(4);
         queue.dequeue();
         expect(queue.size()).toEqual(3);
@@ -36,7 +41,7 @@ function() {
 
     it('Gives the right size 3',
     function() {
-        var queue = getPriorityQueue();
+        createPriorityQueue1();
         queue.dequeue();
         queue.dequeue();
         queue.dequeue();
@@ -46,7 +51,7 @@ function() {
 
     it('Contains inserted elements',
     function() {
-        var queue = getPriorityQueue();
+        createPriorityQueue1();
         for (var i = 0; i < 4; i++) {
             expect(queue.contains(i)).toBeTruthy();
         }
@@ -55,7 +60,7 @@ function() {
 
     it('An empty queue is empty',
     function() {
-        var queue = getPriorityQueue();
+        createPriorityQueue1();
         expect(queue.isEmpty()).toBeFalsy();
         queue.dequeue();
         queue.dequeue();
@@ -67,26 +72,26 @@ function() {
 
     it('Peeks the highest priority item',
     function() {
-        var queue = getPriorityQueue();
+        createPriorityQueue1();
         expect(queue.peek()).toEqual(3);
     });
 
     it('Peeks the highest priority item 2',
     function() {
-        var queue = getPriorityQueue2();
+        createPriorityQueue2();
         expect(queue.peek()).toEqual(3);
     });
 
 	it('Peeking an empty queue returns undefined',
     function() {
-        var queue = getPriorityQueue();
+        createPriorityQueue1();
 		queue.clear();
         expect(queue.peek()).toEqual(undefined);
     });
 
 	it('Dequeues the highest priority item',
     function() {
-        var queue = getPriorityQueue();
+        createPriorityQueue1();
  		expect(queue.dequeue()).toEqual(3);
  		expect(queue.dequeue()).toEqual(2);
  		expect(queue.dequeue()).toEqual(1);
@@ -95,7 +100,7 @@ function() {
 
 	it('Dequeues the highest priority item 2',
     function() {
-        var queue = getPriorityQueue2();
+        createPriorityQueue2();
  		expect(queue.dequeue()).toEqual(3);
  		expect(queue.dequeue()).toEqual(2);
  		expect(queue.dequeue()).toEqual(1);
@@ -104,7 +109,6 @@ function() {
 
 	it('Peek and enqueue are consistent',
     function() {
-        var queue = new buckets.PriorityQueue();
 		queue.enqueue(0);
  		expect(queue.peek()).toEqual(0);
 		queue.enqueue(1);
@@ -117,7 +121,6 @@ function() {
 
 	it('Peek and enqueue are consistent 2',
     function() {
-        var queue = new buckets.PriorityQueue();
 		queue.enqueue(1);
  		expect(queue.peek()).toEqual(1);
 		queue.enqueue(3);

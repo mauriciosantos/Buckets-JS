@@ -7,35 +7,35 @@ function() {
         heap = new buckets.Heap();
     });
 
-    function Heap1() {
+    var createHeap1 = function() {
         heap.add(0);
         heap.add(1);
         heap.add(2);
         heap.add(3);
     };
 
-	function Heap2() {
+	var createHeap2 = function() {
 		heap.add(1);
 		heap.add(3);
 		heap.add(0);
 		heap.add(2);
 	};
 	
-	function Heap3() {
+	var createHeap3 = function() {
 		heap.add("a");
 		heap.add("b");
 		heap.add('c');
 		heap.add('d');
 	};
 	
-	function Heap4() {
+	var createHeap4 = function() {
 	    heap.add("b");
 		heap.add('d');
 		heap.add("a");
 		heap.add('c');
 	};
 	
-	function Heap5() {
+	var createHeap5 = function() {
 	    heap.add({val:"b"});
 		heap.add({val:"d"});
 		heap.add({val:"a"});
@@ -54,7 +54,7 @@ function() {
 	
     it('Gives the right size 1',
     function() {
-        Heap1();
+        createHeap1();
         expect(heap.size()).toEqual(4);
         heap.removeRoot();
         expect(heap.size()).toEqual(3);
@@ -62,7 +62,7 @@ function() {
 
     it('Gives the right size 2',
     function() {
-        Heap1();
+        createHeap1();
 		heap.removeRoot();
 		heap.removeRoot();
 		heap.removeRoot();
@@ -72,7 +72,7 @@ function() {
 
     it('Gives the right size with strings',
     function() {
-        Heap3();
+        createHeap3();
 		heap.removeRoot();
 		heap.removeRoot();
 		heap.removeRoot();
@@ -82,7 +82,7 @@ function() {
 
 	it('Peeks the lowest element',
     function() {
- 		Heap1();
+ 		createHeap1();
 		expect(heap.peek()).toEqual(0);
 		heap.clear();
 		expect(heap.peek()).toBeUndefined();
@@ -90,32 +90,32 @@ function() {
 
 	it('Peeks the lowest element 2',
     function() {
- 		Heap2();
+ 		createHeap2();
 		expect(heap.peek()).toEqual(0);
     });
 
 	it('Peeks the lowest element with strings',
     function() {
- 		Heap3();
+ 		createHeap3();
 		expect(heap.peek()).toEqual('a');
     });
 
 	it('Peeks the lowest element with strings 2',
     function() {
- 		Heap4();
+ 		createHeap4();
 		expect(heap.peek()).toEqual('a');
     });
 
 	it('Peeks the lowest element with custom objects',
     function() {
 		heap = new buckets.Heap(customCompare)
- 		Heap5();
+ 		createHeap5();
 		expect(heap.peek().val).toEqual('a');
     });
 
 	it('Removes root',
     function() {
-		Heap1();
+		createHeap1();
 		expect(heap.removeRoot()).toEqual(0);
 		expect(heap.removeRoot()).toEqual(1);
 		expect(heap.removeRoot()).toEqual(2);
@@ -124,7 +124,7 @@ function() {
 
 	it('Removes root 2',
     function() {
-		Heap2();
+		createHeap2();
 		heap.add(1);
 		expect(heap.removeRoot()).toEqual(0);
 		expect(heap.removeRoot()).toEqual(1);
@@ -136,7 +136,7 @@ function() {
 	it('Removes root with custom objects',
     function() {
 		heap = new buckets.Heap(customCompare);
- 		Heap5();
+ 		createHeap5();
 		expect(heap.removeRoot().val).toEqual("a");
 		expect(heap.removeRoot().val).toEqual("b");
 		expect(heap.removeRoot().val).toEqual("c");
@@ -170,18 +170,17 @@ function() {
 	it('An empty heap is empty',
     function() {
 		expect(heap.isEmpty()).toBeTruthy();
-		Heap1();
+		createHeap1();
 		for (var i=0; i < heap.size(); i++) {
 				expect(heap.isEmpty()).toBeFalsy();
 				heap.removeRoot();
-		};
-	
+		}
     });
 
 	it('Clear removes all elements',
     function() {
 		heap.clear();
-		Heap1();
+		createHeap1();
 		heap.clear();
 		expect(heap.isEmpty()).toBeTruthy();
 		expect(heap.peek()).toBeUndefined();
@@ -189,7 +188,7 @@ function() {
 
 	it('Contains inserted elements',
     function() {
-		Heap1();
+		createHeap1();
 		for (var i = 0; i < 4; i++) {
 		  expect(heap.contains(i)).toBeTruthy();
 		}

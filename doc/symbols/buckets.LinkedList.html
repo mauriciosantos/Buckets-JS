@@ -197,6 +197,8 @@ ul.inheritsList
 	
 	<li><a href="../symbols/buckets.Bag.html">buckets.Bag</a></li>
 	
+	<li><a href="../symbols/buckets.BSTree.html">buckets.BSTree</a></li>
+	
 	<li><a href="../symbols/buckets.Dictionary.html">buckets.Dictionary</a></li>
 	
 	<li><a href="../symbols/buckets.Heap.html">buckets.Heap</a></li>
@@ -336,6 +338,15 @@ which together represent a sequence.
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#forEach">forEach</a></b>(callback)
+								</div>
+								<div class="description">Executes the provided function once for each element present in this list in order.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#indexOf">indexOf</a></b>(element, equalsFunction)
 								</div>
 								<div class="description">Returns the index in this list of the this.firstNode occurrence of the
@@ -349,15 +360,6 @@ specified element, or -1 if the List does not contain this element.</div>
 								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#isEmpty">isEmpty</a></b>()
 								</div>
 								<div class="description">Returns true if this list contains no elements.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#iterator">iterator</a></b>()
-								</div>
-								<div class="description">Returns an iterator over the elements in this list (in proper sequence).</div>
 							</td>
 						</tr>
 					
@@ -385,6 +387,16 @@ specified element, or -1 if the List does not contain this element.</div>
 								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#removeElementAtIndex">removeElementAtIndex</a></b>(index)
 								</div>
 								<div class="description">Removes the element at the specified position in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#reverse">reverse</a></b>()
+								</div>
+								<div class="description">Reverses the order of the elements in this linked list (makes the last 
+element first, and the first element last).</div>
 							</td>
 						</tr>
 					
@@ -538,8 +550,8 @@ sequence.</div>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the element was added or false if index < 0 ||
-index > this.size() || elem===undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true if the element was added or false if the index is invalid
+or if the element is undefined.</dd>
 							
 							</dl>
 						
@@ -668,8 +680,8 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the element at the given index or undefined if index < 0 ||
-index >= this.nElements.</dd>
+								<dd><span class="light fixedFont">{*}</span> the element at the given index or undefined if index the index is
+out of bounds.</dd>
 							
 							</dl>
 						
@@ -705,6 +717,44 @@ index >= this.nElements.</dd>
 empty.</dd>
 							
 							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="forEach"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>forEach</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once for each element present in this list in order.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
+									
+								</dt>
+								<dd>function to execute, it is
+invoked with one argument: the element value, to break the iteration you can 
+optionally return false.</dd>
+							
+							</dl>
+						
+						
+						
+						
 						
 						
 						
@@ -763,8 +813,8 @@ function used to check if two elements are equal.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the index in this list of the this.firstNode occurrence
-of the specified element, or -1 if the list does not contain this
+								<dd><span class="light fixedFont">{number}</span> the index in this list of the first occurrence
+of the specified element, or -1 if this list does not contain the
 element.</dd>
 							
 							</dl>
@@ -798,47 +848,6 @@ element.</dd>
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{boolean}</span> true if this list contains no elements.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="iterator"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{Object}</span>
-					<b>iterator</b>()
-					
-					</div>
-					<div class="description">
-						Returns an iterator over the elements in this list (in proper sequence).<br>
-<br>
-The iterator has the following operations:<br>
-<br>
-hasNext() Returns true if this list iterator has more elements when
-traversing the list in the forward direction.<br>
-next() Returns the next element in the list.<br>
-remove() Removes from the list the last element that was returned by
-next.<br>
-replace() Replaces the this.lastNode element returned by next.
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Object}</span> an iterator over the elements in this list.</dd>
 							
 							</dl>
 						
@@ -973,10 +982,35 @@ var petsAreEqualByName = function(pet1, pet2) {
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> removed element or undefined if index < 0 || index >=
-this.nElements.</dd>
+								<dd><span class="light fixedFont">{*}</span> removed element or undefined if the index is out of bounds.</dd>
 							
 							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="reverse"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>reverse</b>()
+					
+					</div>
+					<div class="description">
+						Reverses the order of the elements in this linked list (makes the last 
+element first, and the first element last).
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
 						
 						
 						
@@ -1039,7 +1073,7 @@ sequence.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array.<*>}</span> an array containing all of the elements in this list
+								<dd><span class="light fixedFont">{Array.<*>}</span> an array containing all of the elements in this list,
 in proper sequence.</dd>
 							
 							</dl>
@@ -1061,7 +1095,7 @@ in proper sequence.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Jan 08 2012 02:40:15 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jan 19 2012 01:59:49 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

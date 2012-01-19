@@ -9,7 +9,6 @@ function() {
 
     it('Pops',
     function() {
-
         expect(stack.pop()).toBeUndefined();
         stack.push(1);
         stack.push(2);
@@ -23,7 +22,6 @@ function() {
 
     it('Pushes and pops',
     function() {
-
         stack.push(1);
         expect(stack.pop()).toEqual(1);
         stack.push(2);

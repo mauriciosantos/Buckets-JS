@@ -79,6 +79,172 @@ function() {
         expect(set.isEmpty()).toBeFalsy();
     });
 
+    it('Intersection is commutative',
+    function() {
+        //Two empty sets
+        set = new buckets.Set();
+        set2 = new buckets.Set();
+        set.intersection(set2);
+        expect(set.isEmpty()).toBeTruthy();
+        set2.intersection(set);
+        expect(set2.isEmpty()).toBeTruthy();
+
+        // non empty with empty
+        set = new buckets.Set();
+        set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.intersection(set2);
+        expect(set.isEmpty()).toBeTruthy();
+        set2.intersection(set);
+        expect(set2.isEmpty()).toBeTruthy();
+
+        // non empty sets with common elements
+        set = new buckets.Set();
+        set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+        set2.add(1);
+        set2.add(2);
+        set2.add(3);
+
+        set.intersection(set2);
+        var s1 = set.toArray().sort();
+        expect(s1).toEqual([1, 2]);
+        set = new buckets.Set();
+        set.add(1);
+        set.add(2);
+
+        set2.intersection(set);
+        var s2 = set2.toArray().sort();
+        expect(s2).toEqual([1, 2]);
+
+        // non empty sets with  no common elements
+        set = new buckets.Set();
+        set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+        set2.add(3);
+        set2.add(4);
+        set2.add(5);
+
+        set.intersection(set2);
+        expect(set.isEmpty()).toBeTruthy();
+        set.add(1);
+        set.add(2);
+        set2.intersection(set);
+        expect(set2.isEmpty()).toBeTruthy();
+    });
+
+    it('Union is commutative',
+    function() {
+        set = new buckets.Set();
+        var set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+        set2.add(2);
+        set2.add(4);
+        set2.add(5);
+        set.union(set2);
+        var s1 = set.toArray().sort();
+        expect(s1).toEqual([1, 2, 4, 5]);
+        set.clear()
+        set.add(1);
+        set.add(2);
+        set2.union(set);
+        var s2 = set2.toArray().sort();
+        expect(s2).toEqual([1, 2, 4, 5]);
+    });
+
+    it('Difference works as expected',
+    function() {
+
+        //Two empty sets
+        set = new buckets.Set();
+        var set2 = new buckets.Set();
+        set.difference(set2);
+        expect(set.isEmpty()).toBeTruthy();
+
+        //Non empty and empty set
+        set = new buckets.Set();
+        var set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+        set.difference(set2);
+        var s1 = set.toArray().sort();
+        expect(s1).toEqual([1, 2]);
+
+        //Non empty sets with common elements
+        set = new buckets.Set();
+        var set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+		set.add(3);
+		set.add(4);
+		set2.add(2);
+		set2.add(3);
+        set.difference(set2);
+		var s1 = set.toArray().sort();
+        expect(s1).toEqual([1, 4]);
+		
+		// Two equal sets
+		set = new buckets.Set();
+        var set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+		set.add(3);
+		set2.add(1);
+		set2.add(3);
+		set2.add(2);
+        set.difference(set2);
+		expect(set.isEmpty()).toBeTruthy();
+		
+		//Non empty sets with no common elements
+		set = new buckets.Set();
+        var set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+		set.add(3);
+		set.add(4);
+		set2.add(6);
+		set2.add(9);
+        set.difference(set2);
+		var s1 = set.toArray().sort();
+        expect(s1).toEqual([1, 2,3,4]);
+    });
+
+	it('isSubsetOf works as expected',
+    function() {
+
+        //Two empty sets
+        set = new buckets.Set();
+        var set2 = new buckets.Set();
+        expect(set.isSubsetOf(set2)).toBeTruthy();
+		
+		// Two equal sets
+        set = new buckets.Set();
+        var set2 = new buckets.Set();
+		set.add(1);
+        set.add(2);
+		set2.add(2);
+        set2.add(1);
+        expect(set.isSubsetOf(set2)).toBeTruthy();
+		expect(set2.isSubsetOf(set)).toBeTruthy();
+		
+		//Non empty sets with common elements
+        set = new buckets.Set();
+        var set2 = new buckets.Set();
+        set.add(1);
+        set.add(2);
+		set.add(3);
+		set.add(4);
+		set2.add(2);
+		set2.add(3);
+		expect(set2.isSubsetOf(set)).toBeTruthy();
+		expect(set.isSubsetOf(set2)).toBeFalsy();
+    });
+
     it('Adds',
     function() {
         set = new buckets.Set();
@@ -96,40 +262,34 @@ function() {
         expect(set.contains(undefined)).toBeFalsy();
     });
 
-    it('Iterator works',
+    it('For each gives all the elements',
     function() {
         set = new buckets.Set();
-        var a = [1, 5, 6];
-        var it = set.iterator();
-        expect(it.hasNext()).toBeFalsy();
-        expect(it.next()).toBeUndefined();
-        set.add(1);
-        set.add(5);
-        set.add(6);
-        it = set.iterator();
-        expect(it.hasNext()).toBeTruthy();
-        while (it.hasNext()) {
-            var next = it.next();
-            expect(buckets.arrays.contains(a, next)).toBeTruthy();
+        set.forEach(function(e) {
+            expect(false).toBeTruthy();
+        });
+        for (var i = 0; i < 100; i++) {
+            set.add(i);
         }
+        var values = set.toArray();
+        expect(values.length).toEqual(100);
+        set.forEach(function(e) {
+            expect(buckets.arrays.remove(values, e)).toBeTruthy();
+        });
+        expect(values.length).toEqual(0);
+    });
 
-        it = set.iterator();
-        expect(it.hasNext()).toBeTruthy();
-        while (it.hasNext()) {
-            var next = it.next();
-            if (next == 5) {
-                it.remove();
-            }
+    it('For each can be interrupted',
+    function() {
+        set = new buckets.Set();
+        for (var i = 0; i < 5; i++) {
+            set.add(i);
         }
-        expect(set.contains(5)).toBeFalsy();
-        expect(set.contains(1)).toBeTruthy();
-        expect(set.contains(6)).toBeTruthy();
-
-        it = set.iterator();
-        expect(it.hasNext()).toBeTruthy();
-        while (it.hasNext()) {
-            var next = it.next();
-            expect(next !== 5).toBeTruthy();
-        }
+        var t = 0;
+        set.forEach(function(e) {
+            t++;
+            return false;
+        });
+        expect(t).toEqual(1);
     });
 });

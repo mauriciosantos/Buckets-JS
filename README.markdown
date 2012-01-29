@@ -1,8 +1,6 @@
-[Buckets](github.com/mauriciosantos/buckets/)
-====================
- 
 What is it?
 ---------------------
+
 Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.
 
 Included data structures
@@ -32,15 +30,15 @@ If it supports JavaScript, it probably supports buckets.
 How to use?
 --------------------
 
-###Download
+Download:
 
 - [buckets.js](https://github.com/downloads/mauriciosantos/buckets/buckets.js) (for development) or
 - [buckets-minified.js](https://github.com/downloads/mauriciosantos/buckets/buckets-minified.js) (for production)
 
 Include the script and start coding.
 
-###Example
-```javascript
+Example
+```
 var setA = new buckets.Set();
 var setB = new buckets.Set();
 setA.add(1);

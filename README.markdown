@@ -1,11 +1,8 @@
 What is it?
 ---------------------
-
 Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.
-
 Included data structures
 ---------------------
-
 - [Linked List](http://mauriciosantos.github.com/buckets/symbols/buckets.LinkedList.html)
 - [Dictionary](http://mauriciosantos.github.com/buckets/symbols/buckets.Dictionary.html)
 - [Multi Dictionary](http://mauriciosantos.github.com/buckets/symbols/buckets.MultiDictionary.html)

@@ -1,7 +1,6 @@
 [Buckets](github.com/mauriciosantos/buckets/)
 ====================
-
-
+ 
 What is it?
 ---------------------
 Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.

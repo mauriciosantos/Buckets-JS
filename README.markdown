@@ -1,6 +1,7 @@
 What is it?
 ---------------------
 Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.
+
 Included data structures
 ---------------------
 - [Linked List](http://mauriciosantos.github.com/buckets/symbols/buckets.LinkedList.html)
@@ -18,7 +19,6 @@ Buckets also includes several functions for manipulating [arrays](http://maurici
 
 Supported platforms
 --------------------
-
 - Pretty much every desktop and mobile browser (including IE6)
 - Node.js
 
@@ -26,7 +26,6 @@ If it supports JavaScript, it probably supports buckets.
 
 How to use?
 --------------------
-
 Download:
 
 - [buckets.js](https://github.com/downloads/mauriciosantos/buckets/buckets.js) (for development) or
@@ -46,5 +45,4 @@ Read the [full documentation](http://mauriciosantos.github.com/buckets/).
 
 Support
 --------------------
-
 Mauricio Santos, [mauriciosantoss@gmail.com](mailto:mauriciosantoss@gmail.com)

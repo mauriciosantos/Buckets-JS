@@ -40,7 +40,7 @@ Include the script and start coding.
 
 Example
 
-```
+```javascript
 var setA = new buckets.Set();
 var setB = new buckets.Set();
 setA.add(1);

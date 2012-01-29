@@ -251,6 +251,41 @@ function() {
         eq)).toBeTruthy();
     });
 
+	it('For each gives the right ordering',
+    function() {
+		var a = [];
+        buckets.arrays.forEach(a,function(e) {
+			expect(true).toEqual(false); // should not enter here
+		});
+
+        for (var i = 0; i < 10; i++) {
+            a.push(i);
+        }
+
+        var i = 0;
+		 buckets.arrays.forEach(a,function(e) {
+			expect(e).toEqual(i);
+            i++;
+		});
+    });
+
+	it('For each can be interrupted',
+    function() {
+		var a = [];
+		var b = [];
+        for (var i = 0; i < 5; i++) {
+	            a.push(i);
+	    }
+		buckets.arrays.forEach(a,function(e) {
+			b.push(e);
+            if(e===3){
+				return false;
+			}
+		});
+		
+     	expect([0,1,2,3]).toEqual(b);
+    });
+
     it('Copies existing arrays',
     function() {
         var a = [1, 8, 8, 8, 10, 10];

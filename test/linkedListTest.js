@@ -94,10 +94,27 @@ function() {
         }
     });
 
+	it('Two equal lists are equal',
+    function() {
+		list.add(1);
+		list.add(2);
+		
+		var list2 = new buckets.LinkedList();
+		list2.add(1);
+		list2.add(2);
+
+        expect(list.equals(list2)).toBeTruthy();
+		list2.clear();
+		list2.add(2);
+		list2.add(1);
+		expect(list.equals(list2)).toBeFalsy();
+		expect(list.equals([1,2])).toBeFalsy();
+    });
+
 
     it("Doesn't insert elements to invalid indexes",
     function() {
-        expect(list.addElementAtIndex(0, 1)).toBeFalsy();
+        expect(list.add(0, 1)).toBeFalsy();
         expect(list.size() === 0).toBeTruthy();
         expect(list.first()).toBeUndefined();
         expect(list.last()).toBeUndefined();
@@ -107,7 +124,7 @@ function() {
     it('Inserts elements to the last index',
     function() {
         for (var i = 0; i < elems; i++) {
-            expect(list.addElementAtIndex(i, i)).toBeTruthy();
+            expect(list.add(i, i)).toBeTruthy();
             expect(list.elementAtIndex(i)).toEqual(i);
             expect(list.first()).toEqual(0);
             expect(list.last()).toEqual(i);
@@ -125,7 +142,7 @@ function() {
             for (var i = 0; i < j; i++) {
                 list.add(i);
             }
-            list.addElementAtIndex( - i, 0);
+            list.add( - i, 0);
             expect(list.elementAtIndex(0)).toEqual( - i);
             expect(list.first()).toEqual( - i);
         }
@@ -137,7 +154,7 @@ function() {
             list.add(j);
         }
 
-        list.addElementAtIndex( - 100, elems / 2);
+        list.add( - 100, elems / 2);
         expect(list.elementAtIndex(elems / 2)).toEqual( - 100);
     });
 
@@ -329,6 +346,23 @@ function() {
         expect(arr[0]).toEqual(5);
         expect(arr[1]).toEqual(8);
         expect(arr.length).toEqual(2);
+    });
+
+    it('Two identical linked lists are equal',
+    function() {
+        var list2 = new buckets.LinkedList();
+		expect(list.equals(list2)).toBeTruthy();
+		
+		list.add(1);
+		list.add(2);
+		expect(list.equals(list2)).toBeFalsy();
+		list2.add(2);
+		list2.add(1);
+		expect(list.equals(list2)).toBeFalsy();
+		list2.clear();
+		list2.add(1);
+		list2.add(2);
+		expect(list.equals(list2)).toBeTruthy();	
     });
 
     it('For each gives the right ordering',

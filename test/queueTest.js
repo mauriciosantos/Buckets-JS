@@ -54,6 +54,40 @@ function() {
 		expect(head).toBeUndefined();
     });
 
+	it('For each gives the right ordering',
+    function() {
+
+        queue.forEach(function(e) {
+			expect(true).toEqual(false); // should not enter here
+		});
+
+        for (var i = 0; i < 10; i++) {
+            queue.add(i);
+        }
+
+        var i = 0;
+		queue.forEach(function(e) {
+			expect(e).toEqual(i);
+            i++;
+		});
+    });
+
+	it('For each can be interrupted',
+    function() {
+		var array = [0,1,2,3,4];
+		var b =[];
+        for (var i = 0; i < 5; i++) {
+	            queue.add(i);
+	    }
+		queue.forEach(function(e) {
+			b.push(e);
+            if(e===3){
+				return false;
+			}
+		});
+		
+     	expect([0,1,2,3]).toEqual(b);
+    });
     it('Contains previously added items',
     function() {
 		createQueue();

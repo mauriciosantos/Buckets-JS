@@ -70,4 +70,40 @@ function() {
         stack.pop();
         expect(stack.size()).toEqual(0);
     });
+	
+	it('For each gives the right ordering',
+    function() {
+
+        stack.forEach(function(e) {
+			expect(true).toEqual(false); // should not enter here
+		});
+
+        for (var i = 0; i < 10; i++) {
+            stack.add(i);
+        }
+
+        var i = 10 - 1;
+		stack.forEach(function(e) {
+			expect(e).toEqual(i);
+            i--;
+		});
+    });
+
+	it('For each can be interrupted',
+    function() {
+		var array = [0,1,2,3,4];
+		var b =[];
+        for (var i = 0; i < 5; i++) {
+	            stack.add(i);
+	    }
+		stack.forEach(function(e) {
+			b.push(e);
+            if(e===4){
+				return false;
+			}
+		});
+		
+     	expect([4]).toEqual(b);
+    });
+	
 });

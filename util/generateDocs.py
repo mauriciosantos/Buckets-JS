@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # Creates/updates the documantation in the doc directory using JSDoc-Toolkit 
 # to parse the js source file.
+# Requires Java 1.5+.
 # Must be executed from the directory containing the scipt.
 
 import os

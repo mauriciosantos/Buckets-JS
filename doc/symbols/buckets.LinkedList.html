@@ -284,18 +284,9 @@ which together represent a sequence.
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#add">add</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#add">add</a></b>(item, index)
 								</div>
-								<div class="description">Adds the given object to the end of this list.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#addElementAtIndex">addElementAtIndex</a></b>(elem, index)
-								</div>
-								<div class="description">Adds the given object at the specified position in this list.</div>
+								<div class="description">Adds an element to this list.</div>
 							</td>
 						</tr>
 					
@@ -311,7 +302,7 @@ which together represent a sequence.
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#contains">contains</a></b>(element, equalsFunction)
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#contains">contains</a></b>(item, equalsFunction)
 								</div>
 								<div class="description">Returns true if this list contains the specified element.</div>
 							</td>
@@ -323,6 +314,15 @@ which together represent a sequence.
 								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#elementAtIndex">elementAtIndex</a></b>(index)
 								</div>
 								<div class="description">Returns the element at the specified position in this list.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#equals">equals</a></b>(other, equalsFunction)
+								</div>
+								<div class="description">Returns true if this list is equal to the given list.</div>
 							</td>
 						</tr>
 					
@@ -347,9 +347,9 @@ which together represent a sequence.
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#indexOf">indexOf</a></b>(element, equalsFunction)
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#indexOf">indexOf</a></b>(item, equalsFunction)
 								</div>
-								<div class="description">Returns the index in this list of the this.firstNode occurrence of the
+								<div class="description">Returns the index in this list of the first occurrence of the
 specified element, or -1 if the List does not contain this element.</div>
 							</td>
 						</tr>
@@ -375,7 +375,7 @@ specified element, or -1 if the List does not contain this element.</div>
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#remove">remove</a></b>(element, equalsFunction)
+								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#remove">remove</a></b>(item, equalsFunction)
 								</div>
 								<div class="description">Removes the first occurrence of the specified element in this list.</div>
 							</td>
@@ -471,11 +471,11 @@ sequence.</div>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(element)
+					<b>add</b>(item, index)
 					
 					</div>
 					<div class="description">
-						Adds the given object to the end of this list.
+						Adds an element to this list.
 						
 						
 					</div>
@@ -487,59 +487,17 @@ sequence.</div>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
-								<dd>Object to be added.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> true if the element was inserted or false if the element is undefined.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="addElementAtIndex"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{boolean}</span>
-					<b>addElementAtIndex</b>(elem, index)
-					
-					</div>
-					<div class="description">
-						Adds the given object at the specified position in this list.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
+								<dd>element to be added.</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>elem</b>
+									<span class="light fixedFont">{number=}</span> <b>index</b>
 									
 								</dt>
-								<dd>object to be added.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{number}</span> <b>index</b>
-									
-								</dt>
-								<dd>index to add the element.</dd>
+								<dd>optional index to add the element. If no index is specified
+the element is added to the end of this list.</dd>
 							
 							</dl>
 						
@@ -589,7 +547,7 @@ or if the element is undefined.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>contains</b>(element, equalsFunction)
+					<b>contains</b>(item, equalsFunction)
 					
 					</div>
 					<div class="description">
@@ -615,7 +573,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
 								<dd>element to search for.</dd>
@@ -680,8 +638,61 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the element at the given index or undefined if index the index is
+								<dd><span class="light fixedFont">{*}</span> the element at the given index or undefined if the index is
 out of bounds.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="equals"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{boolean}</span>
+					<b>equals</b>(other, equalsFunction)
+					
+					</div>
+					<div class="description">
+						Returns true if this list is equal to the given list.
+Two lists are equal if they have the same elements in the same order.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/buckets.LinkedList.html">buckets.LinkedList</a>}</span> <b>other</b>
+									
+								</dt>
+								<dd>the other list.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>optional
+function used to check if two elements are equal. If the elements in the lists
+are custom objects you should provide a function, otherwise the
+the === operator is used to check equality between elements.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> true if this list is equal to the given list.</dd>
 							
 							</dl>
 						
@@ -765,13 +776,13 @@ optionally return false.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{number}</span>
-					<b>indexOf</b>(element, equalsFunction)
+					<b>indexOf</b>(item, equalsFunction)
 					
 					</div>
 					<div class="description">
-						Returns the index in this list of the this.firstNode occurrence of the
+						Returns the index in this list of the first occurrence of the
 specified element, or -1 if the List does not contain this element.
-<p>If the elements inside the list are
+<p>If the elements inside this list are
 not comparable with the === operator a custom equals function should be
 provided to perform searches, the function must receive two arguments and
 return true if they are equal, false otherwise. Example:</p>
@@ -792,7 +803,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
 								<dd>element to search for.</dd>
@@ -879,7 +890,7 @@ element.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the last element of the list or undefined if the list is
+								<dd><span class="light fixedFont">{*}</span> the last element in the list or undefined if the list is
 empty.</dd>
 							
 							</dl>
@@ -893,7 +904,7 @@ empty.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>remove</b>(element, equalsFunction)
+					<b>remove</b>(item, equalsFunction)
 					
 					</div>
 					<div class="description">
@@ -919,7 +930,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
 								<dd>element to be removed from this list, if present.</dd>
@@ -1095,7 +1106,7 @@ in proper sequence.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jan 19 2012 01:59:49 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Jan 29 2012 14:10:49 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

@@ -8,33 +8,34 @@ Buckets is a complete, fully tested and documented data structure library writte
 Included Data structures
 ---------------------
 
-- Linked List
-- Dictionary
-- Multi Dictionary
-- Binary Search Tree
-- Stack
-- Queue
-- Set
-- Bag
-- Binary Heap
-- Priority Queue
+- [Linked List](http://mauriciosantos.github.com/buckets/symbols/buckets.LinkedList.html)
+- [Dictionary](http://mauriciosantos.github.com/buckets/symbols/buckets.Dictionary.html)
+- [Multi Dictionary](http://mauriciosantos.github.com/buckets/symbols/buckets.MultiDictionary.html)
+- [Binary Search Tree](http://mauriciosantos.github.com/buckets/symbols/buckets.BSTree.html)
+- [Stack](http://mauriciosantos.github.com/buckets/symbols/buckets.Stack.html)
+- [Queue](http://mauriciosantos.github.com/buckets/symbols/buckets.Queue.html)
+- [Set](http://mauriciosantos.github.com/buckets/symbols/buckets.Set.html)
+- [Bag](http://mauriciosantos.github.com/buckets/symbols/buckets.Bag.html)
+- [Binary Heap](http://mauriciosantos.github.com/buckets/symbols/buckets.Heap.html)
+- [Priority Queue](http://mauriciosantos.github.com/buckets/symbols/buckets.PriorityQueue.html)
 
-Buckets also includes several functions for manipulating arrays.
+Buckets also includes several functions for manipulating [arrays](http://mauriciosantos.github.com/buckets/symbols/buckets.arrays.html).
 
 Supported platforms
 --------------------
 
 - Pretty much every desktop and mobile browser (including IE6)
 - Node.js
-- And more... (if it supports JavaScript, it probably supports buckets)
+
+If it supports JavaScript, it probably supports buckets.
 
 How to use?
 --------------------
 
 Download
 
-- buckets.js (for developmnet) or
-- buckets-minified.js (for production)
+- [buckets.js](https://github.com/downloads/mauriciosantos/buckets/buckets.js) (for development) or
+- [buckets-minified.js](https://github.com/downloads/mauriciosantos/buckets/buckets-minified.js) (for production)
 
 Include the script and start coding!
 
@@ -46,7 +47,7 @@ setB.add(2);
 setA.union(setB); // {1,2}
 ```
 
-Read the documentation.
+Read the [full documentation](http://mauriciosantos.github.com/buckets/).
 
 Support
 --------------------

@@ -1698,16 +1698,19 @@ buckets.Set.prototype.difference = function(otherSet) {
  * @return {boolean} true if this set is a subset of the given set.
  */
 buckets.Set.prototype.isSubsetOf = function(otherSet) {
-    if (this.size() > otherSet.size()) {
+    
+	if (this.size() > otherSet.size()) {
         return false;
     }
-
+	
+	var isSub = true;
     this.forEach(function(element) {
         if (!otherSet.contains(element)) {
-            return false;
+			isSub = false;
+			return false;
         }
     });
-    return true;
+    return isSub;
 };
 
 /**

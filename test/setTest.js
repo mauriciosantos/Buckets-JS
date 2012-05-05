@@ -243,6 +243,14 @@ function() {
 		set2.add(3);
 		expect(set2.isSubsetOf(set)).toBeTruthy();
 		expect(set.isSubsetOf(set2)).toBeFalsy();
+		
+		//Non empty sets with no common elements
+		set = new buckets.Set();
+		set2 = new buckets.Set();
+		set.add(3);
+		set2.add(4);
+		expect(set.isSubsetOf(set2)).toBeFalsy();
+		expect(set2.isSubsetOf(set)).toBeFalsy();
     });
 
     it('Adds',

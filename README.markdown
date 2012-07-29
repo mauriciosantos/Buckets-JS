@@ -33,8 +33,8 @@ How to use?
 
 Download
 
-- [buckets.js](https://github.com/downloads/mauriciosantos/buckets/buckets.js) (for development) or
-- [buckets-minified.js](https://github.com/downloads/mauriciosantos/buckets/buckets-minified.js) (for production)
+- [buckets.js](https://raw.github.com/mauriciosantos/buckets/master/buckets.js) (for development) or
+- [buckets-minified.js](https://raw.github.com/mauriciosantos/buckets/master/buckets-minified.js) (for production)
 
 Include the script and start coding.
 

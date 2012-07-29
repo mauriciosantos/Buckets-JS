@@ -23,7 +23,7 @@ Buckets also includes several functions for manipulating [arrays](http://maurici
 Supported platforms
 --------------------
 
-- Pretty much every desktop and mobile browser (including IE6)
+- Every desktop and mobile browser (including IE6)
 - Node.js
 
 If it supports JavaScript, it probably supports buckets.

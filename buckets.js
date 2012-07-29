@@ -515,7 +515,7 @@ buckets.LinkedList.prototype.clear = function() {
  * @param {buckets.LinkedList} other the other list.
  * @param {function(Object,Object):boolean=} equalsFunction optional
  * function used to check if two elements are equal. If the elements in the lists
- * are custom objects you should provide a function, otherwise the
+ * are custom objects you should provide a function, otherwise 
  * the === operator is used to check equality between elements.
  * @return {boolean} true if this list is equal to the given list.
  */
@@ -1604,7 +1604,7 @@ buckets.PriorityQueue.prototype.clear = function() {
  * optionally return false.
  */
 buckets.PriorityQueue.prototype.forEach = function(callback) {
-   buckets.heap.forEach(callback);
+   this.heap.forEach(callback);
 };
 
 
@@ -1784,7 +1784,7 @@ buckets.Set.prototype.clear = function() {
  * </pre>
  *
  * @constructor
- * @param {function(Object):string=} toStringFunction optional function used
+ * @param {function(Object):string=} toStrFunction optional function used
  * to convert elements to strings. If the elements aren't strings or if toString()
  * is not appropriate, a custom function which receives an object and returns a
  * unique string must be provided.
@@ -2389,3 +2389,5 @@ buckets.BSTree.prototype.createNode = function(element) {
         parent: null
     };
 };
+
+

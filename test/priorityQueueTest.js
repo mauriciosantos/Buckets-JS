@@ -131,4 +131,34 @@ function() {
  		expect(queue.peek()).toEqual(3);
     });
 
+	it('For each gives the right elements',
+    function() {
+
+        queue.forEach(function(e) {
+			expect(true).toEqual(false); // should not enter here
+		});
+		createPriorityQueue1();
+		
+		var elements = [];
+		queue.forEach(function(e) {
+			elements.push(e);
+		});
+		
+		expect(buckets.arrays.contains(elements,0)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,1)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,2)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,3)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,4)).toBeFalsy();
+    });
+
+	it('For each can be interrupted',
+	function() {
+	    createPriorityQueue1();
+		var elements = [];
+		queue.forEach(function(e) {
+			elements.push(e);
+			return false;
+		});
+		expect(elements.length).toEqual(1);
+	 });
 });

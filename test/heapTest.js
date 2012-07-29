@@ -194,4 +194,35 @@ function() {
 		}
 		expect(heap.contains(i)).toBeFalsy();
     });
+
+	it('For each gives the right elements',
+    function() {
+
+        heap.forEach(function(e) {
+			expect(true).toEqual(false); // should not enter here
+		});
+		createHeap1();
+		
+		var elements = [];
+		heap.forEach(function(e) {
+			elements.push(e);
+		});
+		
+		expect(buckets.arrays.contains(elements,0)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,1)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,2)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,3)).toBeTruthy();
+		expect(buckets.arrays.contains(elements,4)).toBeFalsy();
+    });
+
+	it('For each can be interrupted',
+	function() {
+	    createHeap1();
+		var elements = [];
+		heap.forEach(function(e) {
+			elements.push(e);
+			return false;
+		});
+		expect(elements.length).toEqual(1);
+	 });
 });

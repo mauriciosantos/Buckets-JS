@@ -2390,4 +2390,5 @@ buckets.BSTree.prototype.createNode = function(element) {
     };
 };
 
-
+// Make it a NodeJS module. 
+if (typeof module !== "undefined") { module.exports = buckets }

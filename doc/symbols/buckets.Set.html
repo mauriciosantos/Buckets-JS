@@ -234,11 +234,11 @@ ul.inheritsList
 			
 				<p>A set is a data structure that contains no duplicate items.</p>
 <p>If the inserted elements are custom objects a function 
-which converts elements to strings must be provided. Example:</p>
+which converts elements to unique strings must be provided. Example:</p>
 
 <pre>
 function petToString(pet) {
- return pet.name;
+ return pet.type + ' ' + pet.name;
 }
 </pre>
 				
@@ -302,7 +302,7 @@ function petToString(pet) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this set.</div>
+								<div class="description">Removes all the elements from this set.</div>
 							</td>
 						</tr>
 					
@@ -320,7 +320,7 @@ function petToString(pet) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#difference">difference</a></b>(otherSet)
 								</div>
-								<div class="description">Performs a difference between this an another set.</div>
+								<div class="description">Performs a difference between this and another set.</div>
 							</td>
 						</tr>
 					
@@ -329,7 +329,7 @@ function petToString(pet) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#forEach">forEach</a></b>(callback)
 								</div>
-								<div class="description">Executes the provided function once for each element 
+								<div class="description">Executes the provided function once per element 
 present in this set.</div>
 							</td>
 						</tr>
@@ -339,7 +339,7 @@ present in this set.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#intersection">intersection</a></b>(otherSet)
 								</div>
-								<div class="description">Performs an intersecion between this an another set.</div>
+								<div class="description">Performs an intersection between this and another set.</div>
 							</td>
 						</tr>
 					
@@ -357,7 +357,7 @@ present in this set.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#isSubsetOf">isSubsetOf</a></b>(otherSet)
 								</div>
-								<div class="description">Checks whether the given set contains all the elements in this set.</div>
+								<div class="description">Checks whether the given set contains all the elements of this set.</div>
 							</td>
 						</tr>
 					
@@ -384,7 +384,7 @@ present in this set.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#toArray">toArray</a></b>()
 								</div>
-								<div class="description">Returns an array containing all of the elements in this set in arbitrary order.</div>
+								<div class="description">Returns an array containing all the elements in this set in arbitrary order.</div>
 							</td>
 						</tr>
 					
@@ -393,7 +393,7 @@ present in this set.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Set.html#union">union</a></b>(otherSet)
 								</div>
-								<div class="description">Performs a union between this an another set.</div>
+								<div class="description">Performs a union between this and another set.</div>
 							</td>
 						</tr>
 					
@@ -433,8 +433,8 @@ present in this set.</div>
 								<span class="light fixedFont">{function(Object):string=}</span>  <b>toStringFunction</b>
 								
 							</dt>
-								<dd>optional function used
-to convert elements to strings. If the elements aren't strings or if toString()
+								<dd>Optional function used
+to convert elements to unique strings. If the elements aren't strings or if toString()
 is not appropriate, a custom function which receives a onject and returns a
 unique string must be provided.</dd>
 						
@@ -482,7 +482,7 @@ unique string must be provided.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>the element to insert.</dd>
+								<dd>The element to insert.</dd>
 							
 							</dl>
 						
@@ -493,7 +493,7 @@ unique string must be provided.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set did not already contain the specified element.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this set did not already contain the specified element.</dd>
 							
 							</dl>
 						
@@ -510,7 +510,7 @@ unique string must be provided.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this set.
+						Removes all the elements from this set.
 						
 						
 					</div>
@@ -550,7 +550,7 @@ unique string must be provided.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>Element to search for.</dd>
 							
 							</dl>
 						
@@ -561,7 +561,7 @@ unique string must be provided.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> True if this set contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
@@ -579,7 +579,7 @@ false otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Performs a difference between this an another set.
+						Performs a difference between this and another set.
 Removes from this set all the values that are present in the given set.
 						
 						
@@ -616,7 +616,7 @@ Removes from this set all the values that are present in the given set.
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element 
+						Executes the provided function once per element 
 present in this set.
 						
 						
@@ -632,9 +632,9 @@ present in this set.
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is
-invoked with one arguments: the element. To break the iteration you can 
-optionally return false.</dd>
+								<dd>Function to execute, it is
+invoked with one argument: the element. To break the iteration you can 
+optionally return false inside the callback.</dd>
 							
 							</dl>
 						
@@ -655,8 +655,8 @@ optionally return false.</dd>
 					
 					</div>
 					<div class="description">
-						Performs an intersecion between this an another set.
-Removes all values that are not present this set and the given set.
+						Performs an intersection between this and another set.
+Removes all values that are not present in this set and the given set.
 						
 						
 					</div>
@@ -671,7 +671,7 @@ Removes all values that are not present this set and the given set.
 									<span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> <b>otherSet</b>
 									
 								</dt>
-								<dd>other set.</dd>
+								<dd>Other set.</dd>
 							
 							</dl>
 						
@@ -707,7 +707,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contains no elements.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this set contains no elements.</dd>
 							
 							</dl>
 						
@@ -724,7 +724,7 @@ Removes all values that are not present this set and the given set.
 					
 					</div>
 					<div class="description">
-						Checks whether the given set contains all the elements in this set.
+						Checks whether the given set contains all the elements of this set.
 						
 						
 					</div>
@@ -739,7 +739,7 @@ Removes all values that are not present this set and the given set.
 									<span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> <b>otherSet</b>
 									
 								</dt>
-								<dd>other set.</dd>
+								<dd>Other set.</dd>
 							
 							</dl>
 						
@@ -750,7 +750,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set is a subset of the given set.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this set is a subset of the given set.</dd>
 							
 							</dl>
 						
@@ -793,7 +793,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this set contained the specified element.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this set contained the specified element.</dd>
 							
 							</dl>
 						
@@ -825,7 +825,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this set.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in this set.</dd>
 							
 							</dl>
 						
@@ -842,7 +842,7 @@ Removes all values that are not present this set and the given set.
 					
 					</div>
 					<div class="description">
-						Returns an array containing all of the elements in this set in arbitrary order.
+						Returns an array containing all the elements in this set in arbitrary order.
 						
 						
 					</div>
@@ -857,7 +857,7 @@ Removes all values that are not present this set and the given set.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this set.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all the elements in this set.</dd>
 							
 							</dl>
 						
@@ -874,7 +874,7 @@ Removes all values that are not present this set and the given set.
 					
 					</div>
 					<div class="description">
-						Performs a union between this an another set.
+						Performs a union between this and another set.
 Adds all values from the given set to this set.
 						
 						
@@ -890,7 +890,7 @@ Adds all values from the given set to this set.
 									<span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> <b>otherSet</b>
 									
 								</dt>
-								<dd>other set.</dd>
+								<dd>Other set.</dd>
 							
 							</dl>
 						
@@ -915,7 +915,7 @@ Adds all values from the given set to this set.
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:23 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:02 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

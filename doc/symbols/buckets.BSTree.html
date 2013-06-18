@@ -232,17 +232,13 @@ ul.inheritsList
 				
 				
 			
-				<p>A binary search tree is a binary tree in which each 
-internal node stores an element such that the elements stored in the 
-left subtree are less than it and the elements 
-stored in the right subtree are greater.</p>
-<p>Formally, a binary search tree is a node-based binary tree data structure which 
+				<p>Formally, a binary search tree is a node-based binary tree data structure which 
 has the following properties:</p>
 <ul>
 <li>The left subtree of a node contains only nodes with elements less 
-than the node's element</li>
+than the node's element.</li>
 <li>The right subtree of a node contains only nodes with elements greater 
-than the node's element</li>
+than the node's element.</li>
 <li>Both the left and right subtrees must also be binary search trees.</li>
 </ul>
 <p>If the inserted elements are custom objects a compare function must 
@@ -309,7 +305,7 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#add">add</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#add">add</a></b>(Element)
 								</div>
 								<div class="description">Adds the specified element to this tree if it is not already present.</div>
 							</td>
@@ -320,7 +316,7 @@ function compare(a, b) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this tree.</div>
+								<div class="description">Removes all the elements from this tree.</div>
 							</td>
 						</tr>
 					
@@ -336,9 +332,9 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#forEach">forEach</a></b>(callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#forEach">forEach</a></b>(Callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this tree in inorder.</div>
+								<div class="description">Executes the provided function once per element present in this tree in in-order.</div>
 							</td>
 						</tr>
 					
@@ -354,10 +350,9 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#inorderTraversal">inorderTraversal</a></b>(callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#inorderTraversal">inorderTraversal</a></b>(Callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this tree in 
-in-order.</div>
+								<div class="description">Executes the provided function once per element present in this tree in in-order.</div>
 							</td>
 						</tr>
 					
@@ -373,9 +368,9 @@ in-order.</div>
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#levelTraversal">levelTraversal</a></b>(callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#levelTraversal">levelTraversal</a></b>(Callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this tree in 
+								<div class="description">Executes the provided function once per element present in this tree in 
 level-order.</div>
 							</td>
 						</tr>
@@ -401,9 +396,9 @@ level-order.</div>
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#postorderTraversal">postorderTraversal</a></b>(callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#postorderTraversal">postorderTraversal</a></b>(Callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this tree in post-order.</div>
+								<div class="description">Executes the provided function once per element present in this tree in post-order.</div>
 							</td>
 						</tr>
 					
@@ -412,7 +407,7 @@ level-order.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#preorderTraversal">preorderTraversal</a></b>(callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this tree in pre-order.</div>
+								<div class="description">Executes the provided function once per element present in this tree in pre-order.</div>
 							</td>
 						</tr>
 					
@@ -479,7 +474,7 @@ level-order.</div>
 								<span class="light fixedFont">{function(Object|Object):number=}</span>  <b>compareFunction</b>
 								
 							</dt>
-								<dd>optional
+								<dd>Optional
 function used to compare two elements. Must return a negative integer,
 zero, or a positive integer as the first argument is less than, equal to,
 or greater than the second.</dd>
@@ -509,7 +504,7 @@ or greater than the second.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(element)
+					<b>add</b>(Element)
 					
 					</div>
 					<div class="description">
@@ -525,7 +520,7 @@ or greater than the second.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>Element</b>
 									
 								</dt>
 								<dd>the element to insert.</dd>
@@ -539,7 +534,7 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this tree did not already contain the specified element.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true If this tree did not already contain the specified element.</dd>
 							
 							</dl>
 						
@@ -556,7 +551,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this tree.
+						Removes all the elements from this tree.
 						
 						
 					</div>
@@ -596,7 +591,7 @@ or greater than the second.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>Element to search for.</dd>
 							
 							</dl>
 						
@@ -607,7 +602,7 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this tree contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> True if this tree contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
@@ -621,11 +616,11 @@ false otherwise.</dd>
 					<div class="fixedFont">
 					
 					
-					<b>forEach</b>(callback)
+					<b>forEach</b>(Callback)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this tree in inorder.
+						Executes the provided function once per element present in this tree in in-order.
 Equivalent to inorderTraversal.
 						
 						
@@ -638,7 +633,7 @@ Equivalent to inorderTraversal.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
 									
 								</dt>
 								<dd>function to execute, it is
@@ -679,7 +674,7 @@ optionally return false.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the height of this tree or -1 if is empty.</dd>
+								<dd><span class="light fixedFont">{number}</span> The height of this tree or -1 if is empty.</dd>
 							
 							</dl>
 						
@@ -692,12 +687,11 @@ optionally return false.</dd>
 					<div class="fixedFont">
 					
 					
-					<b>inorderTraversal</b>(callback)
+					<b>inorderTraversal</b>(Callback)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this tree in 
-in-order.
+						Executes the provided function once per element present in this tree in in-order.
 						
 						
 					</div>
@@ -709,11 +703,11 @@ in-order.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
 									
 								</dt>
 								<dd>function to execute, it is invoked with one 
-argument: the element value, to break the iteration you can optionally return false.</dd>
+argument: the element value, to break the iteration you can optionally return false inside the calback.</dd>
 							
 							</dl>
 						
@@ -749,7 +743,7 @@ argument: the element value, to break the iteration you can optionally return fa
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this tree contains no elements.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this tree contains no elements.</dd>
 							
 							</dl>
 						
@@ -762,11 +756,11 @@ argument: the element value, to break the iteration you can optionally return fa
 					<div class="fixedFont">
 					
 					
-					<b>levelTraversal</b>(callback)
+					<b>levelTraversal</b>(Callback)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this tree in 
+						Executes the provided function once per element present in this tree in 
 level-order.
 						
 						
@@ -779,11 +773,11 @@ level-order.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
 									
 								</dt>
 								<dd>function to execute, it is invoked with one 
-argument: the element value, to break the iteration you can optionally return false.</dd>
+argument: the element value, to break the iteration you can optionally return false inside the calback..</dd>
 							
 							</dl>
 						
@@ -819,7 +813,7 @@ argument: the element value, to break the iteration you can optionally return fa
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the maximum element of this tree or undefined if this tree is
+								<dd><span class="light fixedFont">{*}</span> The maximum element of this tree or undefined if this tree is
 is empty.</dd>
 							
 							</dl>
@@ -852,7 +846,7 @@ is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the minimum element of this tree or undefined if this tree is
+								<dd><span class="light fixedFont">{*}</span> The minimum element of this tree or undefined if this tree is
 is empty.</dd>
 							
 							</dl>
@@ -866,11 +860,11 @@ is empty.</dd>
 					<div class="fixedFont">
 					
 					
-					<b>postorderTraversal</b>(callback)
+					<b>postorderTraversal</b>(Callback)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this tree in post-order.
+						Executes the provided function once per element present in this tree in post-order.
 						
 						
 					</div>
@@ -882,7 +876,7 @@ is empty.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
 									
 								</dt>
 								<dd>function to execute, it is invoked with one 
@@ -907,7 +901,7 @@ argument: the element value, to break the iteration you can optionally return fa
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this tree in pre-order.
+						Executes the provided function once per element present in this tree in pre-order.
 						
 						
 					</div>
@@ -923,7 +917,7 @@ argument: the element value, to break the iteration you can optionally return fa
 									
 								</dt>
 								<dd>function to execute, it is invoked with one 
-argument: the element value, to break the iteration you can optionally return false.</dd>
+argument: the element value, to break the iteration you can optionally return false inside the calback.</dd>
 							
 							</dl>
 						
@@ -970,7 +964,7 @@ argument: the element value, to break the iteration you can optionally return fa
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this tree contained the specified element.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this tree contained the specified element.</dd>
 							
 							</dl>
 						
@@ -1002,7 +996,7 @@ argument: the element value, to break the iteration you can optionally return fa
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this tree.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in this tree.</dd>
 							
 							</dl>
 						
@@ -1034,7 +1028,7 @@ argument: the element value, to break the iteration you can optionally return fa
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this tree in in-order.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all of the elements in this tree in in-order.</dd>
 							
 							</dl>
 						
@@ -1055,7 +1049,7 @@ argument: the element value, to break the iteration you can optionally return fa
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:22 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:01 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

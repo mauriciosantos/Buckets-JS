@@ -314,7 +314,7 @@ implementation uses a linked list as a container.
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#forEach">forEach</a></b>(callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this stack in 
+								<div class="description">Executes the provided function once per element present in this stack in 
 LIFO order.</div>
 							</td>
 						</tr>
@@ -436,7 +436,7 @@ stack.</div>
 									<span class="light fixedFont">{Object}</span> <b>elem</b>
 									
 								</dt>
-								<dd>the element to be pushed onto this stack.</dd>
+								<dd>The element to be pushed onto this stack.</dd>
 							
 							</dl>
 						
@@ -447,7 +447,7 @@ stack.</div>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the element was pushed or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true If the element was pushed or false if it is undefined.</dd>
 							
 							</dl>
 						
@@ -491,7 +491,7 @@ stack.</div>
 					<div class="description">
 						Returns true if this stack contains the specified element.
 <p>If the elements inside this stack are
-not comparable with the === operator, a custom equals function should be
+not comparable with the === operator, a custom equals function must be
 provided to perform searches, the function must receive two arguments and
 return true if they are equal, false otherwise. Example:</p>
 
@@ -514,13 +514,13 @@ var petsAreEqualByName = function(pet1, pet2) {
 									<span class="light fixedFont">{Object}</span> <b>elem</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>Element to search for.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
 									
 								</dt>
-								<dd>optional
+								<dd>Optional
 function to check if two elements are equal.</dd>
 							
 							</dl>
@@ -532,7 +532,7 @@ function to check if two elements are equal.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this stack contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> True if this stack contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
@@ -550,7 +550,7 @@ false otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this stack in 
+						Executes the provided function once per element present in this stack in 
 LIFO order.
 						
 						
@@ -566,9 +566,9 @@ LIFO order.
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is
+								<dd>Function to execute, it is
 invoked with one argument: the element value, to break the iteration you can 
-optionally return false.</dd>
+optionally return false inside the callback.</dd>
 							
 							</dl>
 						
@@ -604,7 +604,7 @@ optionally return false.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if and only if this stack contains no items; false
+								<dd><span class="light fixedFont">{boolean}</span> True if and only if this stack contains no items; false
 otherwise.</dd>
 							
 							</dl>
@@ -638,7 +638,7 @@ stack.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the object at the top of this stack or undefined if the
+								<dd><span class="light fixedFont">{*}</span> The object at the top of this stack or undefined if the
 stack is empty.</dd>
 							
 							</dl>
@@ -671,7 +671,7 @@ stack is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the object at the top of this stack or undefined if the
+								<dd><span class="light fixedFont">{*}</span> The object at the top of this stack or undefined if the
 stack is empty.</dd>
 							
 							</dl>
@@ -704,7 +704,7 @@ stack is empty.</dd>
 									<span class="light fixedFont">{Object}</span> <b>elem</b>
 									
 								</dt>
-								<dd>the element to be pushed onto this stack.</dd>
+								<dd>The element to be pushed onto this stack.</dd>
 							
 							</dl>
 						
@@ -715,7 +715,7 @@ stack is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the element was pushed or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was pushed or false if it is undefined.</dd>
 							
 							</dl>
 						
@@ -747,7 +747,7 @@ stack is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this stack.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in this stack.</dd>
 							
 							</dl>
 						
@@ -768,7 +768,7 @@ stack is empty.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:23 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:02 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

@@ -235,11 +235,11 @@ ul.inheritsList
 				<p>A bag is a special kind of set in which members are 
 allowed to appear more than once.</p>
 <p>If the inserted elements are custom objects a function 
-which converts elements to unique strings must be provided. Example:</p>
+that maps elements to unique strings must be provided at construction time. Example:</p>
 
 <pre>
-function petToString(pet) {
- return pet.name;
+function petToUniqueString(pet) {
+ return pet.type + ' ' + pet.name;
 }
 </pre>
 				
@@ -303,7 +303,7 @@ function petToString(pet) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this bag.</div>
+								<div class="description">Removes all the elements from this bag.</div>
 							</td>
 						</tr>
 					
@@ -330,7 +330,7 @@ function petToString(pet) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#forEach">forEach</a></b>(callback)
 								</div>
-								<div class="description">Executes the provided function once for each element 
+								<div class="description">Executes the provided function once per element 
 present in this bag, including multiple copies.</div>
 							</td>
 						</tr>
@@ -349,7 +349,7 @@ present in this bag, including multiple copies.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#remove">remove</a></b>(element, nCopies)
 								</div>
-								<div class="description">Removes nCopies of the specified object to this bag.</div>
+								<div class="description">Removes nCopies of the specified object in this bag.</div>
 							</td>
 						</tr>
 					
@@ -367,7 +367,7 @@ present in this bag, including multiple copies.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Bag.html#toArray">toArray</a></b>()
 								</div>
-								<div class="description">Returns an array containing all of the elements in this big in arbitrary order, 
+								<div class="description">Returns an array containing all of the elements in this bag in arbitrary order, 
 including multiple copies.</div>
 							</td>
 						</tr>
@@ -417,7 +417,7 @@ including multiple copies.</div>
 								<span class="light fixedFont">{function(Object):string=}</span>  <b>toStrFunction</b>
 								
 							</dt>
-								<dd>optional function used
+								<dd>Optional function used
 to convert elements to strings. If the elements aren't strings or if toString()
 is not appropriate, a custom function which receives an object and returns a
 unique string must be provided.</dd>
@@ -466,13 +466,13 @@ unique string must be provided.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>element to add.</dd>
+								<dd>Element to add.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{number=}</span> <b>nCopies</b>
 									
 								</dt>
-								<dd>the number of copies to add, if this argument is
+								<dd>The number of copies to add, if this argument is
 undefined 1 copy is added.</dd>
 							
 							</dl>
@@ -484,7 +484,7 @@ undefined 1 copy is added.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true unless element is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True unless element is undefined.</dd>
 							
 							</dl>
 						
@@ -501,7 +501,7 @@ undefined 1 copy is added.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this bag.
+						Removes all the elements from this bag.
 						
 						
 					</div>
@@ -541,7 +541,7 @@ undefined 1 copy is added.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>Rlement to search for.</dd>
 							
 							</dl>
 						
@@ -552,7 +552,7 @@ undefined 1 copy is added.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this bag contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> True if this bag contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
@@ -585,7 +585,7 @@ false otherwise.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>the object to search for..</dd>
+								<dd>The object to search for</dd>
 							
 							</dl>
 						
@@ -596,7 +596,7 @@ false otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of copies of the object, 0 if not found</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of copies of the object, 0 if not found.</dd>
 							
 							</dl>
 						
@@ -613,7 +613,7 @@ false otherwise.</dd>
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element 
+						Executes the provided function once per element 
 present in this bag, including multiple copies.
 						
 						
@@ -629,9 +629,9 @@ present in this bag, including multiple copies.
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is
+								<dd>Function to execute, it is
 invoked with one argument: the element. To break the iteration you can 
-optionally return false.</dd>
+optionally return false inside the callback.</dd>
 							
 							</dl>
 						
@@ -667,7 +667,7 @@ optionally return false.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this bag contains no elements.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true If this bag contains no elements.</dd>
 							
 							</dl>
 						
@@ -684,9 +684,9 @@ optionally return false.</dd>
 					
 					</div>
 					<div class="description">
-						Removes nCopies of the specified object to this bag.
+						Removes nCopies of the specified object in this bag.
 If the number of copies to remove is greater than the actual number 
-of copies in the Bag, all copies are removed.
+of copies in the bag, all copies are removed.
 						
 						
 					</div>
@@ -701,13 +701,13 @@ of copies in the Bag, all copies are removed.
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>element to remove.</dd>
+								<dd>Element to remove.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{number=}</span> <b>nCopies</b>
 									
 								</dt>
-								<dd>the number of copies to remove, if this argument is
+								<dd>The number of copies to remove, if this argument is
 undefined 1 copy is removed.</dd>
 							
 							</dl>
@@ -719,7 +719,7 @@ undefined 1 copy is removed.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if at least 1 element was removed.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if at least 1 element was removed.</dd>
 							
 							</dl>
 						
@@ -751,7 +751,7 @@ undefined 1 copy is removed.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this bag.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in this bag.</dd>
 							
 							</dl>
 						
@@ -768,7 +768,7 @@ undefined 1 copy is removed.</dd>
 					
 					</div>
 					<div class="description">
-						Returns an array containing all of the elements in this big in arbitrary order, 
+						Returns an array containing all of the elements in this bag in arbitrary order, 
 including multiple copies.
 						
 						
@@ -784,7 +784,7 @@ including multiple copies.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the elements in this bag.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all of the elements in this bag.</dd>
 							
 							</dl>
 						
@@ -816,7 +816,7 @@ including multiple copies.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> a set of unique elements in this bag.</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/buckets.Set.html">buckets.Set</a>}</span> A set of unique elements in this bag.</dd>
 							
 							</dl>
 						
@@ -837,7 +837,7 @@ including multiple copies.
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:22 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:01 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

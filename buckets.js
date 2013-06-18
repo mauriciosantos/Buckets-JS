@@ -118,14 +118,14 @@ buckets.compareToEquals = function(compareFunction) {
 buckets.arrays = {};
 
 /**
- * Returns the position of the first occurrence of the specified item
+ * Returns the index of the first occurrence of the specified item
  * within the specified array.
- * @param {*} array the array in which to search the element.
- * @param {Object} item the element to search.
- * @param {function(Object,Object):boolean=} equalsFunction optional function used to 
- * check equality between 2 elements.
- * @return {number} the position of the first occurrence of the specified element
- * within the specified array, or -1 if not found.
+ * @param {*} array The array to search.
+ * @param {Object} item The array in which to search the element.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional function to 
+ * check equality between two elements. Receives two arguments and returns true if they are equal.
+ * @return {number} The index of the first occurrence of the specified element
+ * or -1 if not found.
  */
 buckets.arrays.indexOf = function(array, item, equalsFunction) {
     var equals = equalsFunction || buckets.defaultEquals;
@@ -139,13 +139,13 @@ buckets.arrays.indexOf = function(array, item, equalsFunction) {
 };
 
 /**
- * Returns the position of the last occurrence of the specified element
+ * Returns the index of the last occurrence of the specified element
  * within the specified array.
- * @param {*} array the array in which to search the element.
- * @param {Object} item the element to search.
- * @param {function(Object,Object):boolean=} equalsFunction optional function used to 
- * check equality between 2 elements.
- * @return {number} the position of the last occurrence of the specified element
+ * @param {*} array The array in which to search the element.
+ * @param {Object} item The element to search.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional function to 
+ * check equality between two elements. Receives two arguments and returns true if they are equal.
+ * @return {number} The position of the last occurrence of the specified element
  * within the specified array or -1 if not found.
  */
 buckets.arrays.lastIndexOf = function(array, item, equalsFunction) {
@@ -160,12 +160,12 @@ buckets.arrays.lastIndexOf = function(array, item, equalsFunction) {
 };
 
 /**
- * Returns true if the specified array contains the specified element.
- * @param {*} array the array in which to search the element.
- * @param {Object} item the element to search.
- * @param {function(Object,Object):boolean=} equalsFunction optional function to 
- * check equality between 2 elements.
- * @return {boolean} true if the specified array contains the specified element.
+ * Returns true if the array contains the specified element.
+ * @param {*} array The array in which to search the element.
+ * @param {Object} item The element to search.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional function to 
+ * check equality between two elements. Receives two arguments and returns true if they are equal.
+ * @return {boolean} True if the specified array contains the specified element.
  */
 buckets.arrays.contains = function(array, item, equalsFunction) {
     return buckets.arrays.indexOf(array, item, equalsFunction) >= 0;
@@ -174,11 +174,11 @@ buckets.arrays.contains = function(array, item, equalsFunction) {
 
 /**
  * Removes the first ocurrence of the specified element from the specified array.
- * @param {*} array the array in which to search element.
- * @param {Object} item the element to search.
- * @param {function(Object,Object):boolean=} equalsFunction optional function to 
- * check equality between 2 elements.
- * @return {boolean} true if the array changed after this call.
+ * @param {*} array The array in which to remove the element.
+ * @param {Object} item The element to remove.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional function to 
+ * check equality between two elements. Receives two arguments and returns true if they are equal.
+ * @return {boolean} True If the array changed after this call.
  */
 buckets.arrays.remove = function(array, item, equalsFunction) {
     var index = buckets.arrays.indexOf(array, item, equalsFunction);
@@ -190,13 +190,13 @@ buckets.arrays.remove = function(array, item, equalsFunction) {
 };
 
 /**
- * Returns the number of elements in the specified array equal
- * to the specified object.
- * @param {Array} array the array in which to determine the frequency of the element.
- * @param {Object} item the element whose frequency is to be determined.
- * @param {function(Object,Object):boolean=} equalsFunction optional function used to 
- * check equality between 2 elements.
- * @return {number} the number of elements in the specified array 
+ * Returns the number of elements in the array equal
+ * to the specified item.
+ * @param {Array} array The array in which to determine the frequency of the element.
+ * @param {Object} item The element whose frequency is to be determined.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional function to 
+ * check equality between two elements. Receives two arguments and returns true if they are equal.
+ * @return {number} The number of elements in the specified array. 
  * equal to the specified object.
  */
 buckets.arrays.frequency = function(array, item, equalsFunction) {
@@ -212,15 +212,15 @@ buckets.arrays.frequency = function(array, item, equalsFunction) {
 };
 
 /**
- * Returns true if the two specified arrays are equal to one another.
+ * Returns true if the two arrays are equal to one another.
  * Two arrays are considered equal if both arrays contain the same number
- * of elements, and all corresponding pairs of elements in the two 
+ * of elements, all corresponding pairs of elements in the two 
  * arrays are equal and are in the same order. 
- * @param {Array} array1 one array to be tested for equality.
- * @param {Array} array2 the other array to be tested for equality.
- * @param {function(Object,Object):boolean=} equalsFunction optional function used to 
- * check equality between elemements in the arrays.
- * @return {boolean} true if the two arrays are equal
+ * @param {Array} array1 
+ * @param {Array} array2
+ * @param {function(Object,Object):boolean=} equalsFunction Optional function to 
+ * check equality between two elements. Receives two arguments and returns true if they are equal.
+ * @return {boolean} True if the two arrays are equal.
  */
 buckets.arrays.equals = function(array1, array2, equalsFunction) {
     var equals = equalsFunction || buckets.defaultEquals;
@@ -238,9 +238,9 @@ buckets.arrays.equals = function(array1, array2, equalsFunction) {
 };
 
 /**
- * Returns shallow a copy of the specified array.
- * @param {*} array the array to copy.
- * @return {Array} a copy of the specified array
+ * Returns a shallow copy of the specified array.
+ * @param {*} array The array to copy.
+ * @return {Array} A copy of the specified array
  */
 buckets.arrays.copy = function(array) {
     return array.concat();
@@ -249,9 +249,9 @@ buckets.arrays.copy = function(array) {
 /**
  * Swaps the elements at the specified positions in the specified array.
  * @param {Array} array The array in which to swap elements.
- * @param {number} i the index of one element to be swapped.
- * @param {number} j the index of the other element to be swapped.
- * @return {boolean} true if the array is defined and the indexes are valid.
+ * @param {number} i The index of one element to be swapped.
+ * @param {number} j The index of the other element to be swapped.
+ * @return {boolean} True if the array is defined and the indexes are valid.
  */
 buckets.arrays.swap = function(array, i, j) {
     if (i < 0 || i >= array.length || j < 0 || j >= array.length) {
@@ -264,12 +264,11 @@ buckets.arrays.swap = function(array, i, j) {
 };
 
 /**
- * Executes the provided function once for each element present in this array 
- * starting from index 0 to length - 1.
+ * Executes a provided function once per array element.
  * @param {Array} array The array in which to iterate.
- * @param {function(Object):*} callback function to execute, it is
- * invoked with one argument: the element value, to break the iteration you can 
- * optionally return false.
+ * @param {function(Object):*} Callback function to execute, it is
+ * invoked with one argument: the element value. To break the iteration you can 
+ * optionally return false inside the callback.
  */
 buckets.arrays.forEach = function(array, callback) {
    var lenght = array.length;
@@ -313,14 +312,13 @@ buckets.LinkedList = function() {
 
 /**
  * Adds an element to this list.
- * @param {Object} item element to be added.
- * @param {number=} index optional index to add the element. If no index is specified
+ * @param {Object} item Element to be added.
+ * @param {number=} index Optional index to add the element. If no index is specified
  * the element is added to the end of this list.
- * @return {boolean} true if the element was added or false if the index is invalid
+ * @return {boolean} True if the element was added or false if the index is invalid
  * or if the element is undefined.
  */
 buckets.LinkedList.prototype.add = function(item, index) {
-
     if (buckets.isUndefined(index)) {
         index = this.nElements;
     }
@@ -349,14 +347,12 @@ buckets.LinkedList.prototype.add = function(item, index) {
     return true;
 };
 
-
 /**
  * Returns the first element in this list.
- * @return {*} the first element of the list or undefined if the list is
+ * @return {*} The first element of the list or undefined if the list is
  * empty.
  */
 buckets.LinkedList.prototype.first = function() {
-
     if (this.firstNode !== null) {
         return this.firstNode.element;
     }
@@ -365,11 +361,10 @@ buckets.LinkedList.prototype.first = function() {
 
 /**
  * Returns the last element in this list.
- * @return {*} the last element in the list or undefined if the list is
+ * @return {*} The last element in the list or undefined if the list is
  * empty.
  */
 buckets.LinkedList.prototype.last = function() {
-
     if (this.lastNode !== null) {
         return this.lastNode.element;
     }
@@ -379,8 +374,8 @@ buckets.LinkedList.prototype.last = function() {
 
 /**
  * Returns the element at the specified position in this list.
- * @param {number} index desired index.
- * @return {*} the element at the given index or undefined if the index is
+ * @param {number} index Desired index.
+ * @return {*} The element at the given index or undefined if the index is
  * out of bounds.
  */
 buckets.LinkedList.prototype.elementAtIndex = function(index) {
@@ -393,7 +388,7 @@ buckets.LinkedList.prototype.elementAtIndex = function(index) {
 };
 
 /**
- * Returns the index in this list of the first occurrence of the
+ * Returns the index of the first occurrence of the
  * specified element, or -1 if the List does not contain this element.
  * <p>If the elements inside this list are
  * not comparable with the === operator a custom equals function should be
@@ -405,10 +400,10 @@ buckets.LinkedList.prototype.elementAtIndex = function(index) {
  *  return pet1.name === pet2.name;
  * }
  * </pre>
- * @param {Object} item element to search for.
+ * @param {Object} item Element to search for.
  * @param {function(Object,Object):boolean=} equalsFunction Optional
  * function used to check if two elements are equal.
- * @return {number} the index in this list of the first occurrence
+ * @return {number} The index in this list of the first occurrence
  * of the specified element, or -1 if this list does not contain the
  * element.
  */
@@ -442,10 +437,10 @@ buckets.LinkedList.prototype.indexOf = function(item, equalsFunction) {
  *  return pet1.name === pet2.name;
  * }
  * </pre>
- * @param {Object} item element to search for.
+ * @param {Object} item Element to search for.
  * @param {function(Object,Object):boolean=} equalsFunction Optional
  * function used to check if two elements are equal.
- * @return {boolean} true if this list contains the specified element, false
+ * @return {boolean} True if this list contains the specified element, false
  * otherwise.
  */
 buckets.LinkedList.prototype.contains = function(item, equalsFunction) {
@@ -464,8 +459,8 @@ buckets.LinkedList.prototype.contains = function(item, equalsFunction) {
  *  return pet1.name === pet2.name;
  * }
  * </pre>
- * @param {Object} item element to be removed from this list, if present.
- * @return {boolean} true if the list contained the specified element.
+ * @param {Object} item Element to be removed from this list, if present.
+ * @return {boolean} True if the list contained the specified element.
  */
 buckets.LinkedList.prototype.remove = function(item, equalsFunction) {
     var equalsF = equalsFunction || buckets.defaultEquals;
@@ -501,7 +496,7 @@ buckets.LinkedList.prototype.remove = function(item, equalsFunction) {
 };
 
 /**
- * Removes all of the elements from this list.
+ * Removes all the elements from this list.
  */
 buckets.LinkedList.prototype.clear = function() {
     this.firstNode = null;
@@ -512,9 +507,9 @@ buckets.LinkedList.prototype.clear = function() {
 /**
  * Returns true if this list is equal to the given list.
  * Two lists are equal if they have the same elements in the same order.
- * @param {buckets.LinkedList} other the other list.
- * @param {function(Object,Object):boolean=} equalsFunction optional
- * function used to check if two elements are equal. If the elements in the lists
+ * @param {buckets.LinkedList} other The other list.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional
+ * function to check if two elements are equal. If the elements in the lists
  * are custom objects you should provide a function, otherwise 
  * the === operator is used to check equality between elements.
  * @return {boolean} true if this list is equal to the given list.
@@ -546,8 +541,8 @@ buckets.LinkedList.prototype.equalsAux = function(n1, n2, eqF) {
 
 /**
  * Removes the element at the specified position in this list.
- * @param {number} index given index.
- * @return {*} removed element or undefined if the index is out of bounds.
+ * @param {number} index Given index.
+ * @return {*} Removed element or undefined if the index is out of bounds.
  */
 buckets.LinkedList.prototype.removeElementAtIndex = function(index) {
 
@@ -579,10 +574,10 @@ buckets.LinkedList.prototype.removeElementAtIndex = function(index) {
 };
 
 /**
- * Executes the provided function once for each element present in this list in order.
- * @param {function(Object):*} callback function to execute, it is
+ * Executes the provided function once per  element present in this list in order.
+ * @param {function(Object):*} callback Function to execute, it is
  * invoked with one argument: the element value, to break the iteration you can 
- * optionally return false.
+ * optionally return false inside the callback.
  */
 buckets.LinkedList.prototype.forEach = function(callback) {
     var currentNode = this.firstNode;
@@ -617,7 +612,7 @@ buckets.LinkedList.prototype.reverse = function() {
 /**
  * Returns an array containing all of the elements in this list in proper
  * sequence.
- * @return {Array.<*>} an array containing all of the elements in this list,
+ * @return {Array.<*>} An array containing all of the elements in this list,
  * in proper sequence.
  */
 buckets.LinkedList.prototype.toArray = function() {
@@ -686,7 +681,7 @@ buckets.LinkedList.prototype.createNode = function(item) {
  * }
  * </pre>
  * @constructor
- * @param {function(Object):string=} toStrFunction optional function used
+ * @param {function(Object):string=} toStrFunction Optional function used
  * to convert keys to strings. If the keys aren't strings or if toString()
  * is not appropriate, a custom function which receives a key and returns a
  * unique string must be provided.
@@ -718,8 +713,8 @@ buckets.Dictionary = function(toStrFunction) {
 /**
  * Returns the value to which this dictionary maps the specified key.
  * Returns undefined if this dictionary contains no mapping for this key.
- * @param {Object} key key whose associated value is to be returned.
- * @return {*} the value to which this dictionary maps the specified key or
+ * @param {Object} key Key whose associated value is to be returned.
+ * @return {*} The value to which this dictionary maps the specified key or
  * undefined if the map contains no mapping for this key.
  */
 buckets.Dictionary.prototype.get = function(key) {
@@ -734,10 +729,10 @@ buckets.Dictionary.prototype.get = function(key) {
  * Associates the specified value with the specified key in this dictionary.
  * If the dictionary previously contained a mapping for this key, the old
  * value is replaced by the specified value.
- * @param {Object} key key with which the specified value is to be
+ * @param {Object} key Key with which the specified value is to be
  * associated.
- * @param {Object} value value to be associated with the specified key.
- * @return {*} previous value associated with the specified key, or undefined if
+ * @param {Object} value Value to be associated with the specified key.
+ * @return {*} Previous value associated with the specified key, or undefined if
  * there was no mapping for the key or if the key/value are undefined.
  */
 buckets.Dictionary.prototype.set = function(key, value) {
@@ -763,9 +758,9 @@ buckets.Dictionary.prototype.set = function(key, value) {
 };
 /**
  * Removes the mapping for this key from this dictionary if it is present.
- * @param {Object} key key whose mapping is to be removed from the
+ * @param {Object} key Key whose mapping is to be removed from the
  * dictionary.
- * @return {*} previous value associated with specified key, or undefined if
+ * @return {*} Previous value associated with specified key, or undefined if
  * there was no mapping for key.
  */
 buckets.Dictionary.prototype.remove = function(key) {
@@ -780,7 +775,7 @@ buckets.Dictionary.prototype.remove = function(key) {
 };
 /**
  * Returns an array containing all of the keys in this dictionary.
- * @return {Array} an array containing all of the keys in this dictionary.
+ * @return {Array} An array containing all of the keys in this dictionary.
  */
 buckets.Dictionary.prototype.keys = function() {
     var array = [];
@@ -793,7 +788,7 @@ buckets.Dictionary.prototype.keys = function() {
 };
 /**
  * Returns an array containing all of the values in this dictionary.
- * @return {Array} an array containing all of the values in this dictionary.
+ * @return {Array} An array containing all of the values in this dictionary.
  */
 buckets.Dictionary.prototype.values = function() {
     var array = [];
@@ -806,11 +801,11 @@ buckets.Dictionary.prototype.values = function() {
 };
 
 /**
- * Executes the provided function once for each key-value pair 
+ * Executes the provided function once per key-value pair 
  * present in this dictionary.
- * @param {function(Object,Object):*} callback function to execute, it is
+ * @param {function(Object,Object):*} Callback function to execute, it is
  * invoked with two arguments: key and value. To break the iteration you can 
- * optionally return false.
+ * optionally return false inside the callback.
  */
 buckets.Dictionary.prototype.forEach = function(callback) {
     for (var name in this.table) {
@@ -826,9 +821,9 @@ buckets.Dictionary.prototype.forEach = function(callback) {
 
 /**
  * Returns true if this dictionary contains a mapping for the specified key.
- * @param {Object} key key whose presence in this dictionary is to be
+ * @param {Object} key Key whose presence in this dictionary is to be
  * tested.
- * @return {boolean} true if this dictionary contains a mapping for the
+ * @return {boolean} True if this dictionary contains a mapping for the
  * specified key.
  */
 buckets.Dictionary.prototype.containsKey = function(key) {
@@ -845,7 +840,7 @@ buckets.Dictionary.prototype.clear = function() {
 };
 /**
  * Returns the number of keys in this dictionary.
- * @return {number} the number of key-value mappings in this dictionary.
+ * @return {number} The number of key-value mappings in this dictionary.
  */
 buckets.Dictionary.prototype.size = function() {
     return this.nElements;
@@ -853,44 +848,26 @@ buckets.Dictionary.prototype.size = function() {
 
 /**
  * Returns true if this dictionary contains no mappings.
- * @return {boolean} true if this dictionary contains no mappings.
+ * @return {boolean} True if this dictionary contains no mappings.
  */
 buckets.Dictionary.prototype.isEmpty = function() {
     return this.nElements <= 0;
 };
 
-// /**
-//  * Returns true if this dictionary is equal to the given dictionary.
-//  * Two dictionaries are equal if they contain the same mappings.
-//  * @param {buckets.Dictionary} other the other dictionary.
-//  * @param {function(Object,Object):boolean=} valuesEqualFunction optional
-//  * function used to check if two values are equal.
-//  * @return {boolean} true if this dictionary is equal to the given dictionary.
-//  */
-// buckets.Dictionary.prototype.equals = function(other,valuesEqualFunction) {
-// 	var eqF = valuesEqualFunction || buckets.defaultEquals;
-// 	if(!(other instanceof buckets.Dictionary)){
-// 		return false;
-// 	}
-// 	if(this.size() !== other.size()){
-// 		return false;
-// 	}
-// 	return this.equalsAux(this.firstNode,other.firstNode,eqF);
-// };
 /**
  * Creates an empty multi dictionary. 
  * @class <p>A multi dictionary is a special kind of dictionary that holds
  * multiple values against each key. Setting a value into the dictionary will 
- * add the value to an array at that key. Getting a key will return an array,
- * holding all the values set to that key.
+ * add the value to an array at that key. Getting a key will return an array
+ * holding all of the values set to that key.
  * This implementation accepts any kind of objects as keys.</p>
  *
- * <p>If the keys are custom objects a function which converts keys to strings must be
+ * <p>If the keys are custom objects a function which converts keys to unique strings must be
  * provided. Example:</p>
  *
  * <pre>
  * function petToString(pet) {
- *  return pet.name;
+ *  return pet.type + ' ' + pet.name;
  * }
  * </pre>
  * <p>If the values are custom objects a function to check equality between values
@@ -920,8 +897,8 @@ buckets.MultiDictionary = function(toStrFunction, valuesEqualsFunction) {
  * Returns an array holding the values to which this dictionary maps
  * the specified key.
  * Returns an empty array if this dictionary contains no mappings for this key.
- * @param {Object} key key whose associated values are to be returned.
- * @return {Array} an array holding the values to which this dictionary maps
+ * @param {Object} key Key whose associated values are to be returned.
+ * @return {Array} An array holding the values to which this dictionary maps
  * the specified key.
  */
 buckets.MultiDictionary.prototype.get = function(key) {
@@ -933,12 +910,12 @@ buckets.MultiDictionary.prototype.get = function(key) {
 };
 
 /**
- * Adds the value to the array associated with the specified key, if 
+ * Adds the value to an array associated with the specified key, if 
  * it is not already present.
- * @param {Object} key key with which the specified value is to be
+ * @param {Object} key Key which the specified value is to be
  * associated.
- * @param {Object} value the value to add to the array at the key
- * @return {boolean} true if the value was not already associated with that key.
+ * @param {Object} value The value to add to the array at the key
+ * @return {boolean} True if the value was not already associated with that key.
  */
 buckets.MultiDictionary.prototype.set = function(key, value) {
 
@@ -958,14 +935,14 @@ buckets.MultiDictionary.prototype.set = function(key, value) {
 };
 
 /**
- * Removes the specified values from the array of values associated with the
+ * Removes the specified value from the array of values associated with the
  * specified key. If a value isn't given, all values associated with the specified 
  * key are removed.
- * @param {Object} key key whose mapping is to be removed from the
+ * @param {Object} key Key whose mapping is to be removed from the
  * dictionary.
- * @param {Object=} value optional argument to specify the value to remove 
+ * @param {Object=} value Optional argument to specify the value to remove 
  * from the array associated with the specified key.
- * @return {*} true if the dictionary changed, false if the key doesn't exist or 
+ * @return {*} True if the dictionary changed, false if the key doesn't exist or 
  * if the specified value isn't associated with the specified key.
  */
 buckets.MultiDictionary.prototype.remove = function(key, value) {
@@ -996,7 +973,7 @@ buckets.MultiDictionary.prototype.keys = function() {
 
 /**
  * Returns an array containing all of the values in this dictionary.
- * @return {Array} an array containing all of the values in this dictionary.
+ * @return {Array} An array containing all of the values in this dictionary.
  */
 buckets.MultiDictionary.prototype.values = function() {
     var values = this.parent.values();
@@ -1011,10 +988,10 @@ buckets.MultiDictionary.prototype.values = function() {
 };
 
 /**
- * Returns true if this dictionary at least one value associatted the specified key.
- * @param {Object} key key whose presence in this dictionary is to be
+ * Returns true if this dictionary has at least one value associatted the specified key.
+ * @param {Object} key Key whose presence in this dictionary is to be
  * tested.
- * @return {boolean} true if this dictionary at least one value associatted 
+ * @return {boolean} True if this dictionary has at least one value associatted 
  * the specified key.
  */
 buckets.MultiDictionary.prototype.containsKey = function(key) {
@@ -1030,7 +1007,7 @@ buckets.MultiDictionary.prototype.clear = function() {
 
 /**
  * Returns the number of keys in this dictionary.
- * @return {number} the number of key-value mappings in this dictionary.
+ * @return {number} The number of key-value mappings in this dictionary.
  */
 buckets.MultiDictionary.prototype.size = function() {
     return this.parent.size();
@@ -1038,7 +1015,7 @@ buckets.MultiDictionary.prototype.size = function() {
 
 /**
  * Returns true if this dictionary contains no mappings.
- * @return {boolean} true if this dictionary contains no mappings.
+ * @return {boolean} True if this dictionary contains no mappings.
  */
 buckets.MultiDictionary.prototype.isEmpty = function() {
     return this.parent.isEmpty();
@@ -1082,7 +1059,7 @@ buckets.MultiDictionary.prototype.isEmpty = function() {
  * </pre>
  *
  * @constructor
- * @param {function(Object,Object):number=} compareFunction optional
+ * @param {function(Object,Object):number=} compareFunction Optional
  * function used to compare two elements. Must return a negative integer,
  * zero, or a positive integer as the first argument is less than, equal to,
  * or greater than the second.
@@ -1204,8 +1181,8 @@ buckets.Heap.prototype.peek = function() {
 };
 /**
  * Adds the given element into the heap.
- * @param {*} element the element.
- * @return true if the element was added or fals if it is undefined.
+ * @param {*} element The element.
+ * @return True if the element was added or false if it is undefined.
  */
 buckets.Heap.prototype.add = function(element) {
     if (buckets.isUndefined(element)) {
@@ -1236,8 +1213,8 @@ buckets.Heap.prototype.removeRoot = function() {
 };
 /**
  * Returns true if this heap contains the specified element.
- * @param {Object} element element to search for.
- * @return {boolean} true if this Heap contains the specified element, false
+ * @param {Object} element Element to search for.
+ * @return {boolean} True if this Heap contains the specified element, false
  * otherwise.
  */
 buckets.Heap.prototype.contains = function(element) {
@@ -1246,14 +1223,14 @@ buckets.Heap.prototype.contains = function(element) {
 };
 /**
  * Returns the number of elements in this heap.
- * @return {number} the number of elements in this heap.
+ * @return {number} The number of elements in this heap.
  */
 buckets.Heap.prototype.size = function() {
     return this.data.length;
 };
 /**
  * Checks if this heap is empty.
- * @return {boolean} true if and only if this heap contains no items; false
+ * @return {boolean} True if and only if this heap contains no items; false
  * otherwise.
  */
 buckets.Heap.prototype.isEmpty = function() {
@@ -1267,9 +1244,9 @@ buckets.Heap.prototype.clear = function() {
 };
 
 /**
- * Executes the provided function once for each element present in this heap in 
+ * Executes the provided function once per element present in this heap in 
  * no particular order.
- * @param {function(Object):*} callback function to execute, it is
+ * @param {function(Object):*} callback Function to execute, it is
  * invoked with one argument: the element value, to break the iteration you can 
  * optionally return false.
  */
@@ -1295,23 +1272,23 @@ buckets.Stack = function() {
 };
 /**
  * Pushes an item onto the top of this stack.
- * @param {Object} elem the element to be pushed onto this stack.
- * @return {boolean} true if the element was pushed or false if it is undefined.
+ * @param {Object} elem The element to be pushed onto this stack.
+ * @return {boolean} True if the element was pushed or false if it is undefined.
  */
 buckets.Stack.prototype.push = function(elem) {
     return this.list.add(elem, 0);
 };
 /**
  * Pushes an item onto the top of this stack.
- * @param {Object} elem the element to be pushed onto this stack.
- * @return {boolean} true if the element was pushed or false if it is undefined.
+ * @param {Object} elem The element to be pushed onto this stack.
+ * @return {boolean} true If the element was pushed or false if it is undefined.
  */
 buckets.Stack.prototype.add = function(elem) {
     return this.list.add(elem, 0);
 };
 /**
  * Removes the object at the top of this stack and returns that object.
- * @return {*} the object at the top of this stack or undefined if the
+ * @return {*} The object at the top of this stack or undefined if the
  * stack is empty.
  */
 buckets.Stack.prototype.pop = function() {
@@ -1320,7 +1297,7 @@ buckets.Stack.prototype.pop = function() {
 /**
  * Looks at the object at the top of this stack without removing it from the
  * stack.
- * @return {*} the object at the top of this stack or undefined if the
+ * @return {*} The object at the top of this stack or undefined if the
  * stack is empty.
  */
 buckets.Stack.prototype.peek = function() {
@@ -1328,7 +1305,7 @@ buckets.Stack.prototype.peek = function() {
 };
 /**
  * Returns the number of elements in this stack.
- * @return {number} the number of elements in this stack.
+ * @return {number} The number of elements in this stack.
  */
 buckets.Stack.prototype.size = function() {
     return this.list.size();
@@ -1337,7 +1314,7 @@ buckets.Stack.prototype.size = function() {
 /**
  * Returns true if this stack contains the specified element.
  * <p>If the elements inside this stack are
- * not comparable with the === operator, a custom equals function should be
+ * not comparable with the === operator, a custom equals function must be
  * provided to perform searches, the function must receive two arguments and
  * return true if they are equal, false otherwise. Example:</p>
  *
@@ -1346,10 +1323,10 @@ buckets.Stack.prototype.size = function() {
  *  return pet1.name === pet2.name;
  * }
  * </pre>
- * @param {Object} elem element to search for.
- * @param {function(Object,Object):boolean=} equalsFunction optional
+ * @param {Object} elem Element to search for.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional
  * function to check if two elements are equal.
- * @return {boolean} true if this stack contains the specified element,
+ * @return {boolean} True if this stack contains the specified element,
  * false otherwise.
  */
 buckets.Stack.prototype.contains = function(elem, equalsFunction) {
@@ -1357,7 +1334,7 @@ buckets.Stack.prototype.contains = function(elem, equalsFunction) {
 };
 /**
  * Checks if this stack is empty.
- * @return {boolean} true if and only if this stack contains no items; false
+ * @return {boolean} True if and only if this stack contains no items; false
  * otherwise.
  */
 buckets.Stack.prototype.isEmpty = function() {
@@ -1371,11 +1348,11 @@ buckets.Stack.prototype.clear = function() {
 };
 
 /**
- * Executes the provided function once for each element present in this stack in 
+ * Executes the provided function once per element present in this stack in 
  * LIFO order.
- * @param {function(Object):*} callback function to execute, it is
+ * @param {function(Object):*} callback Function to execute, it is
  * invoked with one argument: the element value, to break the iteration you can 
- * optionally return false.
+ * optionally return false inside the callback.
  */
 buckets.Stack.prototype.forEach = function(callback) {
    this.list.forEach(callback);
@@ -1398,24 +1375,24 @@ buckets.Queue = function() {
     this.list = new buckets.LinkedList();
 };
 /**
- * Inserts the specified element into the end of this queue.
- * @param {Object} elem the element to insert.
- * @return {boolean} true if the element was inserted, or false if it is undefined.
+ * Inserts the specified element into the end of this queue. 
+ * @param {Object} elem The element to insert.
+ * @return {boolean} True if the element was inserted, or false if it is undefined.
  */
 buckets.Queue.prototype.enqueue = function(elem) {
     return this.list.add(elem);
 };
 /**
- * Inserts the specified element into the end of this queue.
- * @param {Object} elem the element to insert.
- * @return {boolean} true if the element was inserted, or false if it is undefined.
+ * Inserts the specified element into the end of this queue. Equivalent to enqueue.
+ * @param {Object} elem The element to insert.
+ * @return {boolean} True if the element was inserted, or false if it is undefined.
  */
 buckets.Queue.prototype.add = function(elem) {
     return this.list.add(elem);
 };
 /**
  * Retrieves and removes the head of this queue.
- * @return {*} the head of this queue, or undefined if this queue is empty.
+ * @return {*} The head of this queue, or undefined if this queue is empty.
  */
 buckets.Queue.prototype.dequeue = function() {
     if (this.list.size() !== 0) {
@@ -1427,7 +1404,7 @@ buckets.Queue.prototype.dequeue = function() {
 };
 /**
  * Retrieves, but does not remove, the head of this queue.
- * @return {*} the head of this queue, or undefined if this queue is empty.
+ * @return {*} The head of this queue, or undefined if this queue is empty.
  */
 buckets.Queue.prototype.peek = function() {
 
@@ -1439,7 +1416,7 @@ buckets.Queue.prototype.peek = function() {
 
 /**
  * Returns the number of elements in this queue.
- * @return {number} the number of elements in this queue.
+ * @return {number} The number of elements in this queue.
  */
 buckets.Queue.prototype.size = function() {
     return this.list.size();
@@ -1457,10 +1434,10 @@ buckets.Queue.prototype.size = function() {
  *  return pet1.name === pet2.name;
  * }
  * </pre>
- * @param {Object} elem element to search for.
- * @param {function(Object,Object):boolean=} equalsFunction optional
+ * @param {Object} elem Element to search for.
+ * @param {function(Object,Object):boolean=} equalsFunction Optional
  * function to check if two elements are equal.
- * @return {boolean} true if this queue contains the specified element,
+ * @return {boolean} True if this queue contains the specified element,
  * false otherwise.
  */
 buckets.Queue.prototype.contains = function(elem, equalsFunction) {
@@ -1469,7 +1446,7 @@ buckets.Queue.prototype.contains = function(elem, equalsFunction) {
 
 /**
  * Checks if this queue is empty.
- * @return {boolean} true if and only if this queue contains no items; false
+ * @return {boolean} True if and only if this queue contains no items; false
  * otherwise.
  */
 buckets.Queue.prototype.isEmpty = function() {
@@ -1477,7 +1454,7 @@ buckets.Queue.prototype.isEmpty = function() {
 };
 
 /**
- * Removes all of the elements from this queue.
+ * Removes all the elements from this queue.
  */
 buckets.Queue.prototype.clear = function() {
     this.list.clear();
@@ -1486,9 +1463,9 @@ buckets.Queue.prototype.clear = function() {
 /**
  * Executes the provided function once for each element present in this queue in 
  * FIFO order.
- * @param {function(Object):*} callback function to execute, it is
+ * @param {function(Object):*} callback Function to execute, it is
  * invoked with one argument: the element value, to break the iteration you can 
- * optionally return false.
+ * optionally return false inside the callback.
  */
 buckets.Queue.prototype.forEach = function(callback) {
    this.list.forEach(callback);
@@ -1513,7 +1490,7 @@ buckets.Queue.prototype.forEach = function(callback) {
  * }
  * </pre>
  * @constructor
- * @param {function(Object,Object):number=} compareFunction optional
+ * @param {function(Object,Object):number=} compareFunction Optional
  * function used to compare two element priorities. Must return a negative integer,
  * zero, or a positive integer as the first argument is less than, equal to,
  * or greater than the second.
@@ -1524,17 +1501,17 @@ buckets.PriorityQueue = function(compareFunction) {
 
 /**
  * Inserts the specified element into this priority queue.
- * @param {Object} element the element to insert.
- * @return {boolean} true if the element was inserted, or false if it is undefined.
+ * @param {Object} element The element to insert.
+ * @return {boolean} True if the element was inserted, or false if it is undefined.
  */
 buckets.PriorityQueue.prototype.enqueue = function(element) {
     return this.heap.add(element);
 };
 
 /**
- * Inserts the specified element into this priority queue.
- * @param {Object} element the element to insert.
- * @return {boolean} true if the element was inserted, or false if it is undefined.
+ * Inserts the specified element into this priority queue, it is equivalent to enqueue.
+ * @param {Object} Element the element to insert.
+ * @return {boolean} True if the element was inserted, or false if it is undefined.
  */
 buckets.PriorityQueue.prototype.add = function(element) {
     return this.heap.add(element);
@@ -1542,7 +1519,7 @@ buckets.PriorityQueue.prototype.add = function(element) {
 
 /**
  * Retrieves and removes the highest priority element of this queue.
- * @return {*} the the highest priority element of this queue, 
+ * @return {*} The highest priority element of this queue, 
 or undefined if this queue is empty.
  */
 buckets.PriorityQueue.prototype.dequeue = function() {
@@ -1556,7 +1533,7 @@ buckets.PriorityQueue.prototype.dequeue = function() {
 
 /**
  * Retrieves, but does not remove, the highest priority element of this queue.
- * @return {*} the highest priority element of this queue, or undefined if this queue is empty.
+ * @return {*} The highest priority element of this queue, or undefined if this queue is empty.
  */
 buckets.PriorityQueue.prototype.peek = function() {
     return this.heap.peek();
@@ -1564,8 +1541,8 @@ buckets.PriorityQueue.prototype.peek = function() {
 
 /**
  * Returns true if this priority queue contains the specified element.
- * @param {Object} element element to search for.
- * @return {boolean} true if this priority queue contains the specified element,
+ * @param {Object} element Element to search for.
+ * @return {boolean} True if this priority queue contains the specified element,
  * false otherwise.
  */
 buckets.PriorityQueue.prototype.contains = function(element) {
@@ -1574,7 +1551,7 @@ buckets.PriorityQueue.prototype.contains = function(element) {
 
 /**
  * Checks if this priority queue is empty.
- * @return {boolean} true if and only if this priority queue contains no items; false
+ * @return {boolean} True if and only if this priority queue contains no items; false
  * otherwise.
  */
 buckets.PriorityQueue.prototype.isEmpty = function() {
@@ -1583,25 +1560,25 @@ buckets.PriorityQueue.prototype.isEmpty = function() {
 
 /**
  * Returns the number of elements in this priority queue.
- * @return {number} the number of elements in this priority queue.
+ * @return {number} The number of elements in this priority queue.
  */
 buckets.PriorityQueue.prototype.size = function() {
     return this.heap.size();
 };
 
 /**
- * Removes all of the elements from this priority queue.
+ * Removes all elements from this priority queue.
  */
 buckets.PriorityQueue.prototype.clear = function() {
     this.heap.clear();
 };
 
 /**
- * Executes the provided function once for each element present in this queue in 
+ * Executes the provided function once per element present in this queue in 
  * no particular order.
- * @param {function(Object):*} callback function to execute, it is
+ * @param {function(Object):*} callback Function to execute, it is
  * invoked with one argument: the element value, to break the iteration you can 
- * optionally return false.
+ * optionally return false inside the callback.
  */
 buckets.PriorityQueue.prototype.forEach = function(callback) {
    this.heap.forEach(callback);
@@ -1612,17 +1589,17 @@ buckets.PriorityQueue.prototype.forEach = function(callback) {
  * Creates an empty set.
  * @class <p>A set is a data structure that contains no duplicate items.</p>
  * <p>If the inserted elements are custom objects a function 
- * which converts elements to strings must be provided. Example:</p>
+ * which converts elements to unique strings must be provided. Example:</p>
  *
  * <pre>
  * function petToString(pet) {
- *  return pet.name;
+ *  return pet.type + ' ' + pet.name;
  * }
  * </pre>
  *
  * @constructor
- * @param {function(Object):string=} toStringFunction optional function used
- * to convert elements to strings. If the elements aren't strings or if toString()
+ * @param {function(Object):string=} toStringFunction Optional function used
+ * to convert elements to unique strings. If the elements aren't strings or if toString()
  * is not appropriate, a custom function which receives a onject and returns a
  * unique string must be provided.
  */
@@ -1632,8 +1609,8 @@ buckets.Set = function(toStringFunction) {
 
 /**
  * Returns true if this set contains the specified element.
- * @param {Object} element element to search for.
- * @return {boolean} true if this set contains the specified element,
+ * @param {Object} element Element to search for.
+ * @return {boolean} True if this set contains the specified element,
  * false otherwise.
  */
 buckets.Set.prototype.contains = function(element) {
@@ -1642,8 +1619,8 @@ buckets.Set.prototype.contains = function(element) {
 
 /**
  * Adds the specified element to this set if it is not already present.
- * @param {Object} element the element to insert.
- * @return {boolean} true if this set did not already contain the specified element.
+ * @param {Object} element The element to insert.
+ * @return {boolean} True if this set did not already contain the specified element.
  */
 buckets.Set.prototype.add = function(element) {
     if (this.contains(element) || buckets.isUndefined(element)) {
@@ -1655,9 +1632,9 @@ buckets.Set.prototype.add = function(element) {
 };
 
 /**
- * Performs an intersecion between this an another set.
- * Removes all values that are not present this set and the given set.
- * @param {buckets.Set} otherSet other set.
+ * Performs an intersection between this and another set.
+ * Removes all values that are not present in this set and the given set.
+ * @param {buckets.Set} otherSet Other set.
  */
 buckets.Set.prototype.intersection = function(otherSet) {
     var set = this;
@@ -1669,9 +1646,9 @@ buckets.Set.prototype.intersection = function(otherSet) {
 };
 
 /**
- * Performs a union between this an another set.
+ * Performs a union between this and another set.
  * Adds all values from the given set to this set.
- * @param {buckets.Set} otherSet other set.
+ * @param {buckets.Set} otherSet Other set.
  */
 buckets.Set.prototype.union = function(otherSet) {
     var set = this;
@@ -1681,7 +1658,7 @@ buckets.Set.prototype.union = function(otherSet) {
 };
 
 /**
- * Performs a difference between this an another set.
+ * Performs a difference between this and another set.
  * Removes from this set all the values that are present in the given set.
  * @param {buckets.Set} otherSet other set.
  */
@@ -1693,9 +1670,9 @@ buckets.Set.prototype.difference = function(otherSet) {
 };
 
 /**
- * Checks whether the given set contains all the elements in this set.
- * @param {buckets.Set} otherSet other set.
- * @return {boolean} true if this set is a subset of the given set.
+ * Checks whether the given set contains all the elements of this set.
+ * @param {buckets.Set} otherSet Other set.
+ * @return {boolean} True if this set is a subset of the given set.
  */
 buckets.Set.prototype.isSubsetOf = function(otherSet) {
     
@@ -1715,7 +1692,7 @@ buckets.Set.prototype.isSubsetOf = function(otherSet) {
 
 /**
  * Removes the specified element from this set if it is present.
- * @return {boolean} true if this set contained the specified element.
+ * @return {boolean} True if this set contained the specified element.
  */
 buckets.Set.prototype.remove = function(element) {
     if (!this.contains(element)) {
@@ -1727,11 +1704,11 @@ buckets.Set.prototype.remove = function(element) {
 };
 
 /**
- * Executes the provided function once for each element 
+ * Executes the provided function once per element 
  * present in this set.
- * @param {function(Object):*} callback function to execute, it is
- * invoked with one arguments: the element. To break the iteration you can 
- * optionally return false.
+ * @param {function(Object):*} callback Function to execute, it is
+ * invoked with one argument: the element. To break the iteration you can 
+ * optionally return false inside the callback.
  */
 buckets.Set.prototype.forEach = function(callback) {
     this.dictionary.forEach(function(k, v) {
@@ -1740,8 +1717,8 @@ buckets.Set.prototype.forEach = function(callback) {
 };
 
 /**
- * Returns an array containing all of the elements in this set in arbitrary order.
- * @return {Array} an array containing all of the elements in this set.
+ * Returns an array containing all the elements in this set in arbitrary order.
+ * @return {Array} An array containing all the elements in this set.
  */
 buckets.Set.prototype.toArray = function() {
     return this.dictionary.values();
@@ -1749,7 +1726,7 @@ buckets.Set.prototype.toArray = function() {
 
 /**
  * Returns true if this set contains no elements.
- * @return {boolean} true if this set contains no elements.
+ * @return {boolean} True if this set contains no elements.
  */
 buckets.Set.prototype.isEmpty = function() {
     return this.dictionary.isEmpty();
@@ -1757,14 +1734,14 @@ buckets.Set.prototype.isEmpty = function() {
 
 /**
  * Returns the number of elements in this set.
- * @return {number} the number of elements in this set.
+ * @return {number} The number of elements in this set.
  */
 buckets.Set.prototype.size = function() {
     return this.dictionary.size();
 };
 
 /**
- * Removes all of the elements from this set.
+ * Removes all the elements from this set.
  */
 buckets.Set.prototype.clear = function() {
     this.dictionary.clear();
@@ -1775,16 +1752,16 @@ buckets.Set.prototype.clear = function() {
  * @class <p>A bag is a special kind of set in which members are 
  * allowed to appear more than once.</p>
  * <p>If the inserted elements are custom objects a function 
- * which converts elements to unique strings must be provided. Example:</p>
+ * that maps elements to unique strings must be provided at construction time. Example:</p>
  *
  * <pre>
- * function petToString(pet) {
- *  return pet.name;
+ * function petToUniqueString(pet) {
+ *  return pet.type + ' ' + pet.name;
  * }
  * </pre>
  *
  * @constructor
- * @param {function(Object):string=} toStrFunction optional function used
+ * @param {function(Object):string=} toStrFunction Optional function used
  * to convert elements to strings. If the elements aren't strings or if toString()
  * is not appropriate, a custom function which receives an object and returns a
  * unique string must be provided.
@@ -1797,10 +1774,10 @@ buckets.Bag = function(toStrFunction) {
 
 /**
 * Adds nCopies of the specified object to this bag.
-* @param {Object} element element to add.
-* @param {number=} nCopies the number of copies to add, if this argument is
+* @param {Object} element Element to add.
+* @param {number=} nCopies The number of copies to add, if this argument is
 * undefined 1 copy is added.
-* @return {boolean} true unless element is undefined.
+* @return {boolean} True unless element is undefined.
 */
 buckets.Bag.prototype.add = function(element, nCopies) {
 
@@ -1826,8 +1803,8 @@ buckets.Bag.prototype.add = function(element, nCopies) {
 
 /**
 * Counts the number of copies of the specified object in this bag.
-* @param {Object} element the object to search for..
-* @return {number} the number of copies of the object, 0 if not found
+* @param {Object} element The object to search for
+* @return {number} The number of copies of the object, 0 if not found.
 */
 buckets.Bag.prototype.count = function(element) {
 
@@ -1840,8 +1817,8 @@ buckets.Bag.prototype.count = function(element) {
 
 /**
  * Returns true if this bag contains the specified element.
- * @param {Object} element element to search for.
- * @return {boolean} true if this bag contains the specified element,
+ * @param {Object} element Rlement to search for.
+ * @return {boolean} True if this bag contains the specified element,
  * false otherwise.
  */
 buckets.Bag.prototype.contains = function(element) {
@@ -1849,13 +1826,13 @@ buckets.Bag.prototype.contains = function(element) {
 };
 
 /**
-* Removes nCopies of the specified object to this bag.
+* Removes nCopies of the specified object in this bag.
 * If the number of copies to remove is greater than the actual number 
-* of copies in the Bag, all copies are removed. 
-* @param {Object} element element to remove.
-* @param {number=} nCopies the number of copies to remove, if this argument is
+* of copies in the bag, all copies are removed. 
+* @param {Object} element Element to remove.
+* @param {number=} nCopies The number of copies to remove, if this argument is
 * undefined 1 copy is removed.
-* @return {boolean} true if at least 1 element was removed.
+* @return {boolean} True if at least 1 element was removed.
 */
 buckets.Bag.prototype.remove = function(element, nCopies) {
 
@@ -1884,9 +1861,9 @@ buckets.Bag.prototype.remove = function(element, nCopies) {
 };
 
 /**
- * Returns an array containing all of the elements in this big in arbitrary order, 
+ * Returns an array containing all of the elements in this bag in arbitrary order, 
  * including multiple copies.
- * @return {Array} an array containing all of the elements in this bag.
+ * @return {Array} An array containing all of the elements in this bag.
  */
 buckets.Bag.prototype.toArray = function() {
     var a = [];
@@ -1905,7 +1882,7 @@ buckets.Bag.prototype.toArray = function() {
 
 /**
  * Returns a set of unique elements in this bag. 
- * @return {buckets.Set} a set of unique elements in this bag.
+ * @return {buckets.Set} A set of unique elements in this bag.
  */
 buckets.Bag.prototype.toSet = function() {
     var set = new buckets.Set(this.toStrF);
@@ -1919,11 +1896,11 @@ buckets.Bag.prototype.toSet = function() {
 };
 
 /**
- * Executes the provided function once for each element 
+ * Executes the provided function once per element 
  * present in this bag, including multiple copies.
- * @param {function(Object):*} callback function to execute, it is
+ * @param {function(Object):*} callback Function to execute, it is
  * invoked with one argument: the element. To break the iteration you can 
- * optionally return false.
+ * optionally return false inside the callback.
  */
 buckets.Bag.prototype.forEach = function(callback) {
     this.dictionary.forEach(function(k, v) {
@@ -1939,7 +1916,7 @@ buckets.Bag.prototype.forEach = function(callback) {
 };
 /**
  * Returns the number of elements in this bag.
- * @return {number} the number of elements in this bag.
+ * @return {number} The number of elements in this bag.
  */
 buckets.Bag.prototype.size = function() {
     return this.nElements;
@@ -1947,35 +1924,29 @@ buckets.Bag.prototype.size = function() {
 
 /**
  * Returns true if this bag contains no elements.
- * @return {boolean} true if this bag contains no elements.
+ * @return {boolean} true If this bag contains no elements.
  */
 buckets.Bag.prototype.isEmpty = function() {
     return this.nElements === 0;
 };
 
 /**
- * Removes all of the elements from this bag.
+ * Removes all the elements from this bag.
  */
 buckets.Bag.prototype.clear = function() {
     this.nElements = 0;
     this.dictionary.clear();
 };
 
-
-
 /**
  * Creates an empty binary search tree.
- * @class <p>A binary search tree is a binary tree in which each 
- * internal node stores an element such that the elements stored in the 
- * left subtree are less than it and the elements 
- * stored in the right subtree are greater.</p>
- * <p>Formally, a binary search tree is a node-based binary tree data structure which 
+ * @class <p>Formally, a binary search tree is a node-based binary tree data structure which 
  * has the following properties:</p>
  * <ul>
  * <li>The left subtree of a node contains only nodes with elements less 
- * than the node's element</li>
+ * than the node's element.</li>
  * <li>The right subtree of a node contains only nodes with elements greater 
- * than the node's element</li>
+ * than the node's element.</li>
  * <li>Both the left and right subtrees must also be binary search trees.</li>
  * </ul>
  * <p>If the inserted elements are custom objects a compare function must 
@@ -1993,7 +1964,7 @@ buckets.Bag.prototype.clear = function() {
  * }
  * </pre>
  * @constructor
- * @param {function(Object,Object):number=} compareFunction optional
+ * @param {function(Object,Object):number=} compareFunction Optional
  * function used to compare two elements. Must return a negative integer,
  * zero, or a positive integer as the first argument is less than, equal to,
  * or greater than the second.
@@ -2004,11 +1975,10 @@ buckets.BSTree = function(compareFunction) {
     this.nElements = 0;
 };
 
-
 /**
  * Adds the specified element to this tree if it is not already present.
- * @param {Object} element the element to insert.
- * @return {boolean} true if this tree did not already contain the specified element.
+ * @param {Object} Element the element to insert.
+ * @return {boolean} true If this tree did not already contain the specified element.
  */
 buckets.BSTree.prototype.add = function(element) {
     if (buckets.isUndefined(element)) {
@@ -2023,7 +1993,7 @@ buckets.BSTree.prototype.add = function(element) {
 };
 
 /**
- * Removes all of the elements from this tree.
+ * Removes all the elements from this tree.
  */
 buckets.BSTree.prototype.clear = function() {
     this.root = null;
@@ -2032,7 +2002,7 @@ buckets.BSTree.prototype.clear = function() {
 
 /**
  * Returns true if this tree contains no elements.
- * @return {boolean} true if this tree contains no elements.
+ * @return {boolean} True if this tree contains no elements.
  */
 buckets.BSTree.prototype.isEmpty = function() {
     return this.nElements === 0;
@@ -2040,7 +2010,7 @@ buckets.BSTree.prototype.isEmpty = function() {
 
 /**
  * Returns the number of elements in this tree.
- * @return {number} the number of elements in this tree.
+ * @return {number} The number of elements in this tree.
  */
 buckets.BSTree.prototype.size = function() {
     return this.nElements;
@@ -2048,8 +2018,8 @@ buckets.BSTree.prototype.size = function() {
 
 /**
  * Returns true if this tree contains the specified element.
- * @param {Object} element element to search for.
- * @return {boolean} true if this tree contains the specified element,
+ * @param {Object} element Element to search for.
+ * @return {boolean} True if this tree contains the specified element,
  * false otherwise.
  */
 buckets.BSTree.prototype.contains = function(element) {
@@ -2061,7 +2031,7 @@ buckets.BSTree.prototype.contains = function(element) {
 
 /**
  * Removes the specified element from this tree if it is present.
- * @return {boolean} true if this tree contained the specified element.
+ * @return {boolean} True if this tree contained the specified element.
  */
 buckets.BSTree.prototype.remove = function(element) {
     var node = this.searchNode(this.root, element);
@@ -2074,10 +2044,9 @@ buckets.BSTree.prototype.remove = function(element) {
 };
 
 /**
- * Executes the provided function once for each element present in this tree in 
- * in-order.
- * @param {function(Object):*} callback function to execute, it is invoked with one 
- * argument: the element value, to break the iteration you can optionally return false.
+ * Executes the provided function once per element present in this tree in in-order.
+ * @param {function(Object):*} Callback function to execute, it is invoked with one 
+ * argument: the element value, to break the iteration you can optionally return false inside the calback.
  */
 buckets.BSTree.prototype.inorderTraversal = function(callback) {
     this.inorderTraversalAux(this.root, callback, {
@@ -2086,9 +2055,9 @@ buckets.BSTree.prototype.inorderTraversal = function(callback) {
 };
 
 /**
- * Executes the provided function once for each element present in this tree in pre-order.
+ * Executes the provided function once per element present in this tree in pre-order.
  * @param {function(Object):*} callback function to execute, it is invoked with one 
- * argument: the element value, to break the iteration you can optionally return false.
+ * argument: the element value, to break the iteration you can optionally return false inside the calback.
  */
 buckets.BSTree.prototype.preorderTraversal = function(callback) {
     this.preorderTraversalAux(this.root, callback, {
@@ -2097,8 +2066,8 @@ buckets.BSTree.prototype.preorderTraversal = function(callback) {
 };
 
 /**
- * Executes the provided function once for each element present in this tree in post-order.
- * @param {function(Object):*} callback function to execute, it is invoked with one 
+ * Executes the provided function once per element present in this tree in post-order.
+ * @param {function(Object):*} Callback function to execute, it is invoked with one 
  * argument: the element value, to break the iteration you can optionally return false.
  */
 buckets.BSTree.prototype.postorderTraversal = function(callback) {
@@ -2108,10 +2077,10 @@ buckets.BSTree.prototype.postorderTraversal = function(callback) {
 };
 
 /**
- * Executes the provided function once for each element present in this tree in 
+ * Executes the provided function once per element present in this tree in 
  * level-order.
- * @param {function(Object):*} callback function to execute, it is invoked with one 
- * argument: the element value, to break the iteration you can optionally return false.
+ * @param {function(Object):*} Callback function to execute, it is invoked with one 
+ * argument: the element value, to break the iteration you can optionally return false inside the calback..
  */
 buckets.BSTree.prototype.levelTraversal = function(callback) {
     this.levelTraversalAux(this.root, callback);
@@ -2119,7 +2088,7 @@ buckets.BSTree.prototype.levelTraversal = function(callback) {
 
 /**
  * Returns the minimum element of this tree.
- * @return {*} the minimum element of this tree or undefined if this tree is
+ * @return {*} The minimum element of this tree or undefined if this tree is
  * is empty.
  */
 buckets.BSTree.prototype.minimum = function() {
@@ -2131,7 +2100,7 @@ buckets.BSTree.prototype.minimum = function() {
 
 /**
  * Returns the maximum element of this tree.
- * @return {*} the maximum element of this tree or undefined if this tree is
+ * @return {*} The maximum element of this tree or undefined if this tree is
  * is empty.
  */
 buckets.BSTree.prototype.maximum = function() {
@@ -2142,9 +2111,9 @@ buckets.BSTree.prototype.maximum = function() {
 };
 
 /**
- * Executes the provided function once for each element present in this tree in inorder.
+ * Executes the provided function once per element present in this tree in in-order.
  * Equivalent to inorderTraversal.
- * @param {function(Object):*} callback function to execute, it is
+ * @param {function(Object):*} Callback function to execute, it is
  * invoked with one argument: the element value, to break the iteration you can 
  * optionally return false.
  */
@@ -2154,7 +2123,7 @@ buckets.BSTree.prototype.forEach = function(callback) {
 
 /**
  * Returns an array containing all of the elements in this tree in in-order.
- * @return {Array} an array containing all of the elements in this tree in in-order.
+ * @return {Array} An array containing all of the elements in this tree in in-order.
  */
 buckets.BSTree.prototype.toArray = function() {
     var array = [];
@@ -2166,7 +2135,7 @@ buckets.BSTree.prototype.toArray = function() {
 
 /**
  * Returns the height of this tree.
- * @return {number} the height of this tree or -1 if is empty.
+ * @return {number} The height of this tree or -1 if is empty.
  */
 buckets.BSTree.prototype.height = function() {
     return this.heightAux(this.root);

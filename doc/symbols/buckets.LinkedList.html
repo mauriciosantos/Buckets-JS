@@ -295,7 +295,7 @@ which together represent a sequence.
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this list.</div>
+								<div class="description">Removes all the elements from this list.</div>
 							</td>
 						</tr>
 					
@@ -340,7 +340,7 @@ which together represent a sequence.
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#forEach">forEach</a></b>(callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this list in order.</div>
+								<div class="description">Executes the provided function once per  element present in this list in order.</div>
 							</td>
 						</tr>
 					
@@ -349,7 +349,7 @@ which together represent a sequence.
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.LinkedList.html#indexOf">indexOf</a></b>(item, equalsFunction)
 								</div>
-								<div class="description">Returns the index in this list of the first occurrence of the
+								<div class="description">Returns the index of the first occurrence of the
 specified element, or -1 if the List does not contain this element.</div>
 							</td>
 						</tr>
@@ -490,13 +490,13 @@ sequence.</div>
 									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
-								<dd>element to be added.</dd>
+								<dd>Element to be added.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{number=}</span> <b>index</b>
 									
 								</dt>
-								<dd>optional index to add the element. If no index is specified
+								<dd>Optional index to add the element. If no index is specified
 the element is added to the end of this list.</dd>
 							
 							</dl>
@@ -508,7 +508,7 @@ the element is added to the end of this list.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the element was added or false if the index is invalid
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was added or false if the index is invalid
 or if the element is undefined.</dd>
 							
 							</dl>
@@ -526,7 +526,7 @@ or if the element is undefined.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this list.
+						Removes all the elements from this list.
 						
 						
 					</div>
@@ -576,7 +576,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>Element to search for.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
@@ -594,7 +594,7 @@ function used to check if two elements are equal.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this list contains the specified element, false
+								<dd><span class="light fixedFont">{boolean}</span> True if this list contains the specified element, false
 otherwise.</dd>
 							
 							</dl>
@@ -627,7 +627,7 @@ otherwise.</dd>
 									<span class="light fixedFont">{number}</span> <b>index</b>
 									
 								</dt>
-								<dd>desired index.</dd>
+								<dd>Desired index.</dd>
 							
 							</dl>
 						
@@ -638,7 +638,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the element at the given index or undefined if the index is
+								<dd><span class="light fixedFont">{*}</span> The element at the given index or undefined if the index is
 out of bounds.</dd>
 							
 							</dl>
@@ -672,14 +672,14 @@ Two lists are equal if they have the same elements in the same order.
 									<span class="light fixedFont">{<a href="../symbols/buckets.LinkedList.html">buckets.LinkedList</a>}</span> <b>other</b>
 									
 								</dt>
-								<dd>the other list.</dd>
+								<dd>The other list.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
 									
 								</dt>
-								<dd>optional
-function used to check if two elements are equal. If the elements in the lists
+								<dd>Optional
+function to check if two elements are equal. If the elements in the lists
 are custom objects you should provide a function, otherwise 
 the === operator is used to check equality between elements.</dd>
 							
@@ -724,7 +724,7 @@ the === operator is used to check equality between elements.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the first element of the list or undefined if the list is
+								<dd><span class="light fixedFont">{*}</span> The first element of the list or undefined if the list is
 empty.</dd>
 							
 							</dl>
@@ -742,7 +742,7 @@ empty.</dd>
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this list in order.
+						Executes the provided function once per  element present in this list in order.
 						
 						
 					</div>
@@ -757,9 +757,9 @@ empty.</dd>
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is
+								<dd>Function to execute, it is
 invoked with one argument: the element value, to break the iteration you can 
-optionally return false.</dd>
+optionally return false inside the callback.</dd>
 							
 							</dl>
 						
@@ -780,7 +780,7 @@ optionally return false.</dd>
 					
 					</div>
 					<div class="description">
-						Returns the index in this list of the first occurrence of the
+						Returns the index of the first occurrence of the
 specified element, or -1 if the List does not contain this element.
 <p>If the elements inside this list are
 not comparable with the === operator a custom equals function should be
@@ -806,7 +806,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>Element to search for.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
@@ -824,7 +824,7 @@ function used to check if two elements are equal.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the index in this list of the first occurrence
+								<dd><span class="light fixedFont">{number}</span> The index in this list of the first occurrence
 of the specified element, or -1 if this list does not contain the
 element.</dd>
 							
@@ -890,7 +890,7 @@ element.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the last element in the list or undefined if the list is
+								<dd><span class="light fixedFont">{*}</span> The last element in the list or undefined if the list is
 empty.</dd>
 							
 							</dl>
@@ -933,7 +933,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 									<span class="light fixedFont">{Object}</span> <b>item</b>
 									
 								</dt>
-								<dd>element to be removed from this list, if present.</dd>
+								<dd>Element to be removed from this list, if present.</dd>
 							
 								<dt>
 									<b>equalsFunction</b>
@@ -950,7 +950,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the list contained the specified element.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the list contained the specified element.</dd>
 							
 							</dl>
 						
@@ -982,7 +982,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 									<span class="light fixedFont">{number}</span> <b>index</b>
 									
 								</dt>
-								<dd>given index.</dd>
+								<dd>Given index.</dd>
 							
 							</dl>
 						
@@ -993,7 +993,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> removed element or undefined if the index is out of bounds.</dd>
+								<dd><span class="light fixedFont">{*}</span> Removed element or undefined if the index is out of bounds.</dd>
 							
 							</dl>
 						
@@ -1084,7 +1084,7 @@ sequence.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array.<*>}</span> an array containing all of the elements in this list,
+								<dd><span class="light fixedFont">{Array.<*>}</span> An array containing all of the elements in this list,
 in proper sequence.</dd>
 							
 							</dl>
@@ -1106,7 +1106,7 @@ in proper sequence.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:23 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:01 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

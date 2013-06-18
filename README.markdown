@@ -47,7 +47,7 @@ setA.add(1);
 setB.add(2);
 setA.union(setB); // {1,2}
 ```
-Read the [documentation](http://mauriciosantos.github.com/buckets/).
+Read the [documentation](http://htmlpreview.github.io/?https://github.com/mauriciosantos/buckets/blob/master/doc/index.html).
 
 Support
 --------------------

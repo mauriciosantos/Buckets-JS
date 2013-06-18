@@ -310,9 +310,9 @@ function petToString(pet) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Dictionary.html#forEach">forEach</a></b>(callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.Dictionary.html#forEach">forEach</a></b>(Callback)
 								</div>
-								<div class="description">Executes the provided function once for each key-value pair 
+								<div class="description">Executes the provided function once per key-value pair 
 present in this dictionary.</div>
 							</td>
 						</tr>
@@ -416,7 +416,7 @@ present in this dictionary.</div>
 								<span class="light fixedFont">{function(Object):string=}</span>  <b>toStrFunction</b>
 								
 							</dt>
-								<dd>optional function used
+								<dd>Optional function used
 to convert keys to strings. If the keys aren't strings or if toString()
 is not appropriate, a custom function which receives a key and returns a
 unique string must be provided.</dd>
@@ -490,7 +490,7 @@ unique string must be provided.</dd>
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key whose presence in this dictionary is to be
+								<dd>Key whose presence in this dictionary is to be
 tested.</dd>
 							
 							</dl>
@@ -502,7 +502,7 @@ tested.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this dictionary contains a mapping for the
+								<dd><span class="light fixedFont">{boolean}</span> True if this dictionary contains a mapping for the
 specified key.</dd>
 							
 							</dl>
@@ -516,11 +516,11 @@ specified key.</dd>
 					<div class="fixedFont">
 					
 					
-					<b>forEach</b>(callback)
+					<b>forEach</b>(Callback)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each key-value pair 
+						Executes the provided function once per key-value pair 
 present in this dictionary.
 						
 						
@@ -533,12 +533,12 @@ present in this dictionary.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object|Object):*}</span> <b>callback</b>
+									<span class="light fixedFont">{function(Object|Object):*}</span> <b>Callback</b>
 									
 								</dt>
 								<dd>function to execute, it is
 invoked with two arguments: key and value. To break the iteration you can 
-optionally return false.</dd>
+optionally return false inside the callback.</dd>
 							
 							</dl>
 						
@@ -575,7 +575,7 @@ Returns undefined if this dictionary contains no mapping for this key.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key whose associated value is to be returned.</dd>
+								<dd>Key whose associated value is to be returned.</dd>
 							
 							</dl>
 						
@@ -586,7 +586,7 @@ Returns undefined if this dictionary contains no mapping for this key.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the value to which this dictionary maps the specified key or
+								<dd><span class="light fixedFont">{*}</span> The value to which this dictionary maps the specified key or
 undefined if the map contains no mapping for this key.</dd>
 							
 							</dl>
@@ -619,7 +619,7 @@ undefined if the map contains no mapping for this key.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this dictionary contains no mappings.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this dictionary contains no mappings.</dd>
 							
 							</dl>
 						
@@ -651,7 +651,7 @@ undefined if the map contains no mapping for this key.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the keys in this dictionary.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all of the keys in this dictionary.</dd>
 							
 							</dl>
 						
@@ -683,7 +683,7 @@ undefined if the map contains no mapping for this key.</dd>
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key whose mapping is to be removed from the
+								<dd>Key whose mapping is to be removed from the
 dictionary.</dd>
 							
 							</dl>
@@ -695,7 +695,7 @@ dictionary.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> previous value associated with specified key, or undefined if
+								<dd><span class="light fixedFont">{*}</span> Previous value associated with specified key, or undefined if
 there was no mapping for key.</dd>
 							
 							</dl>
@@ -730,14 +730,14 @@ value is replaced by the specified value.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key with which the specified value is to be
+								<dd>Key with which the specified value is to be
 associated.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Object}</span> <b>value</b>
 									
 								</dt>
-								<dd>value to be associated with the specified key.</dd>
+								<dd>Value to be associated with the specified key.</dd>
 							
 							</dl>
 						
@@ -748,7 +748,7 @@ associated.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> previous value associated with the specified key, or undefined if
+								<dd><span class="light fixedFont">{*}</span> Previous value associated with the specified key, or undefined if
 there was no mapping for the key or if the key/value are undefined.</dd>
 							
 							</dl>
@@ -781,7 +781,7 @@ there was no mapping for the key or if the key/value are undefined.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of key-value mappings in this dictionary.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of key-value mappings in this dictionary.</dd>
 							
 							</dl>
 						
@@ -813,7 +813,7 @@ there was no mapping for the key or if the key/value are undefined.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the values in this dictionary.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all of the values in this dictionary.</dd>
 							
 							</dl>
 						
@@ -834,7 +834,7 @@ there was no mapping for the key or if the key/value are undefined.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:22 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:01 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

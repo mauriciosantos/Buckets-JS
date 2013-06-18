@@ -234,16 +234,16 @@ ul.inheritsList
 			
 				<p>A multi dictionary is a special kind of dictionary that holds
 multiple values against each key. Setting a value into the dictionary will 
-add the value to an array at that key. Getting a key will return an array,
-holding all the values set to that key.
+add the value to an array at that key. Getting a key will return an array
+holding all of the values set to that key.
 This implementation accepts any kind of objects as keys.</p>
 
-<p>If the keys are custom objects a function which converts keys to strings must be
+<p>If the keys are custom objects a function which converts keys to unique strings must be
 provided. Example:</p>
 
 <pre>
 function petToString(pet) {
- return pet.name;
+ return pet.type + ' ' + pet.name;
 }
 </pre>
 <p>If the values are custom objects a function to check equality between values
@@ -315,7 +315,7 @@ function petsAreEqualByAge(pet1,pet2) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#containsKey">containsKey</a></b>(key)
 								</div>
-								<div class="description">Returns true if this dictionary at least one value associatted the specified key.</div>
+								<div class="description">Returns true if this dictionary has at least one value associatted the specified key.</div>
 							</td>
 						</tr>
 					
@@ -352,7 +352,7 @@ the specified key.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#remove">remove</a></b>(key, value)
 								</div>
-								<div class="description">Removes the specified values from the array of values associated with the
+								<div class="description">Removes the specified value from the array of values associated with the
 specified key.</div>
 							</td>
 						</tr>
@@ -362,7 +362,7 @@ specified key.</div>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#set">set</a></b>(key, value)
 								</div>
-								<div class="description">Adds the value to the array associated with the specified key, if 
+								<div class="description">Adds the value to an array associated with the specified key, if 
 it is not already present.</div>
 							</td>
 						</tr>
@@ -487,7 +487,7 @@ function to check if two values are equal.</dd>
 					
 					</div>
 					<div class="description">
-						Returns true if this dictionary at least one value associatted the specified key.
+						Returns true if this dictionary has at least one value associatted the specified key.
 						
 						
 					</div>
@@ -502,7 +502,7 @@ function to check if two values are equal.</dd>
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key whose presence in this dictionary is to be
+								<dd>Key whose presence in this dictionary is to be
 tested.</dd>
 							
 							</dl>
@@ -514,7 +514,7 @@ tested.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this dictionary at least one value associatted 
+								<dd><span class="light fixedFont">{boolean}</span> True if this dictionary has at least one value associatted 
 the specified key.</dd>
 							
 							</dl>
@@ -549,7 +549,7 @@ Returns an empty array if this dictionary contains no mappings for this key.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key whose associated values are to be returned.</dd>
+								<dd>Key whose associated values are to be returned.</dd>
 							
 							</dl>
 						
@@ -560,7 +560,7 @@ Returns an empty array if this dictionary contains no mappings for this key.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array holding the values to which this dictionary maps
+								<dd><span class="light fixedFont">{Array}</span> An array holding the values to which this dictionary maps
 the specified key.</dd>
 							
 							</dl>
@@ -593,7 +593,7 @@ the specified key.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this dictionary contains no mappings.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if this dictionary contains no mappings.</dd>
 							
 							</dl>
 						
@@ -642,7 +642,7 @@ the specified key.</dd>
 					
 					</div>
 					<div class="description">
-						Removes the specified values from the array of values associated with the
+						Removes the specified value from the array of values associated with the
 specified key. If a value isn't given, all values associated with the specified 
 key are removed.
 						
@@ -659,14 +659,14 @@ key are removed.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key whose mapping is to be removed from the
+								<dd>Key whose mapping is to be removed from the
 dictionary.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Object=}</span> <b>value</b>
 									
 								</dt>
-								<dd>optional argument to specify the value to remove 
+								<dd>Optional argument to specify the value to remove 
 from the array associated with the specified key.</dd>
 							
 							</dl>
@@ -678,7 +678,7 @@ from the array associated with the specified key.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> true if the dictionary changed, false if the key doesn't exist or 
+								<dd><span class="light fixedFont">{*}</span> True if the dictionary changed, false if the key doesn't exist or 
 if the specified value isn't associated with the specified key.</dd>
 							
 							</dl>
@@ -696,7 +696,7 @@ if the specified value isn't associated with the specified key.</dd>
 					
 					</div>
 					<div class="description">
-						Adds the value to the array associated with the specified key, if 
+						Adds the value to an array associated with the specified key, if 
 it is not already present.
 						
 						
@@ -712,14 +712,14 @@ it is not already present.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>key with which the specified value is to be
+								<dd>Key which the specified value is to be
 associated.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Object}</span> <b>value</b>
 									
 								</dt>
-								<dd>the value to add to the array at the key</dd>
+								<dd>The value to add to the array at the key</dd>
 							
 							</dl>
 						
@@ -730,7 +730,7 @@ associated.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the value was not already associated with that key.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the value was not already associated with that key.</dd>
 							
 							</dl>
 						
@@ -762,7 +762,7 @@ associated.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of key-value mappings in this dictionary.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of key-value mappings in this dictionary.</dd>
 							
 							</dl>
 						
@@ -794,7 +794,7 @@ associated.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the values in this dictionary.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all of the values in this dictionary.</dd>
 							
 							</dl>
 						
@@ -815,7 +815,7 @@ associated.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:23 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:02 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

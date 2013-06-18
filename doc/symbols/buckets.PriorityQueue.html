@@ -298,9 +298,9 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#add">add</a></b>(element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#add">add</a></b>(Element)
 								</div>
-								<div class="description">Inserts the specified element into this priority queue.</div>
+								<div class="description">Inserts the specified element into this priority queue, it is equivalent to enqueue.</div>
 							</td>
 						</tr>
 					
@@ -309,7 +309,7 @@ function compare(a, b) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this priority queue.</div>
+								<div class="description">Removes all elements from this priority queue.</div>
 							</td>
 						</tr>
 					
@@ -345,7 +345,7 @@ function compare(a, b) {
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#forEach">forEach</a></b>(callback)
 								</div>
-								<div class="description">Executes the provided function once for each element present in this queue in 
+								<div class="description">Executes the provided function once per element present in this queue in 
 no particular order.</div>
 							</td>
 						</tr>
@@ -413,7 +413,7 @@ no particular order.</div>
 								<span class="light fixedFont">{function(Object|Object):number=}</span>  <b>compareFunction</b>
 								
 							</dt>
-								<dd>optional
+								<dd>Optional
 function used to compare two element priorities. Must return a negative integer,
 zero, or a positive integer as the first argument is less than, equal to,
 or greater than the second.</dd>
@@ -443,11 +443,11 @@ or greater than the second.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(element)
+					<b>add</b>(Element)
 					
 					</div>
 					<div class="description">
-						Inserts the specified element into this priority queue.
+						Inserts the specified element into this priority queue, it is equivalent to enqueue.
 						
 						
 					</div>
@@ -459,7 +459,7 @@ or greater than the second.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
+									<span class="light fixedFont">{Object}</span> <b>Element</b>
 									
 								</dt>
 								<dd>the element to insert.</dd>
@@ -473,7 +473,7 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the element was inserted, or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it is undefined.</dd>
 							
 							</dl>
 						
@@ -490,7 +490,7 @@ or greater than the second.</dd>
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this priority queue.
+						Removes all elements from this priority queue.
 						
 						
 					</div>
@@ -530,7 +530,7 @@ or greater than the second.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>element to search for.</dd>
+								<dd>Element to search for.</dd>
 							
 							</dl>
 						
@@ -541,7 +541,7 @@ or greater than the second.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if this priority queue contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> True if this priority queue contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
@@ -574,7 +574,7 @@ false otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the the highest priority element of this queue, 
+								<dd><span class="light fixedFont">{*}</span> The highest priority element of this queue, 
 or undefined if this queue is empty.</dd>
 							
 							</dl>
@@ -607,7 +607,7 @@ or undefined if this queue is empty.</dd>
 									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
-								<dd>the element to insert.</dd>
+								<dd>The element to insert.</dd>
 							
 							</dl>
 						
@@ -618,7 +618,7 @@ or undefined if this queue is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if the element was inserted, or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it is undefined.</dd>
 							
 							</dl>
 						
@@ -635,7 +635,7 @@ or undefined if this queue is empty.</dd>
 					
 					</div>
 					<div class="description">
-						Executes the provided function once for each element present in this queue in 
+						Executes the provided function once per element present in this queue in 
 no particular order.
 						
 						
@@ -651,9 +651,9 @@ no particular order.
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is
+								<dd>Function to execute, it is
 invoked with one argument: the element value, to break the iteration you can 
-optionally return false.</dd>
+optionally return false inside the callback.</dd>
 							
 							</dl>
 						
@@ -689,7 +689,7 @@ optionally return false.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true if and only if this priority queue contains no items; false
+								<dd><span class="light fixedFont">{boolean}</span> True if and only if this priority queue contains no items; false
 otherwise.</dd>
 							
 							</dl>
@@ -722,7 +722,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> the highest priority element of this queue, or undefined if this queue is empty.</dd>
+								<dd><span class="light fixedFont">{*}</span> The highest priority element of this queue, or undefined if this queue is empty.</dd>
 							
 							</dl>
 						
@@ -754,7 +754,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> the number of elements in this priority queue.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in this priority queue.</dd>
 							
 							</dl>
 						
@@ -775,7 +775,7 @@ otherwise.</dd>
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 20:48:23 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:02 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

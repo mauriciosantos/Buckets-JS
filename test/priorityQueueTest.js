@@ -21,7 +21,7 @@ function() {
         queue.enqueue(0);
         queue.enqueue(2);
         return queue;
-    }
+    };
 
     it('Gives the right size',
     function() {

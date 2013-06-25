@@ -7,18 +7,18 @@ Buckets is a complete, fully tested and documented data structure library writte
 Included data structures
 ---------------------
 
-- [Linked List](http://mauriciosantos.github.com/buckets/symbols/buckets.LinkedList.html)
-- [Dictionary](http://mauriciosantos.github.com/buckets/symbols/buckets.Dictionary.html)
-- [Multi Dictionary](http://mauriciosantos.github.com/buckets/symbols/buckets.MultiDictionary.html)
-- [Binary Search Tree](http://mauriciosantos.github.com/buckets/symbols/buckets.BSTree.html)
-- [Stack](http://mauriciosantos.github.com/buckets/symbols/buckets.Stack.html)
-- [Queue](http://mauriciosantos.github.com/buckets/symbols/buckets.Queue.html)
-- [Set](http://mauriciosantos.github.com/buckets/symbols/buckets.Set.html)
-- [Bag](http://mauriciosantos.github.com/buckets/symbols/buckets.Bag.html)
-- [Binary Heap](http://mauriciosantos.github.com/buckets/symbols/buckets.Heap.html)
-- [Priority Queue](http://mauriciosantos.github.com/buckets/symbols/buckets.PriorityQueue.html)
+- [Linked List](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.LinkedList.html)
+- [Dictionary](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.Dictionary.html)
+- [Multi Dictionary](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.MultiDictionary.html)
+- [Binary Search Tree](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.BSTree.html)
+- [Stack](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.Stack.html)
+- [Queue](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.Queue.html)
+- [Set](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.Set.html)
+- [Bag](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.Bag.html)
+- [Binary Heap](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.Heap.html)
+- [Priority Queue](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.PriorityQueue.html)
 
-Buckets also includes several functions for manipulating [arrays](http://mauriciosantos.github.com/buckets/symbols/buckets.arrays.html).
+Buckets also includes several functions for manipulating [arrays](http://htmlpreview.github.io/?https://raw.github.com/mauriciosantos/buckets/master/doc/symbols/buckets.arrays.html).
 
 Supported platforms
 --------------------

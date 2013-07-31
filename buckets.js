@@ -1938,6 +1938,135 @@ var buckets = {};
         this.dictionary.clear();
     };
 
+    buckets.MultiBag = function(toStrFunction, valuesEqualsFunction) {
+        this.toStrF = toStrFunction || buckets.defaultToString;
+        this.equalsF = valuesEqualsFunction || buckets.defaultEquals;
+        this.dictionary = new buckets.Dictionary(this.toStrF);
+        this.nElements = 0;
+    };
+
+    buckets.MultiBag.prototype.add = function(element, nCopies) {
+
+        if (isNaN(nCopies) || buckets.isUndefined(nCopies)) {
+            nCopies = 1;
+        }
+        if (buckets.isUndefined(element) || nCopies <= 0) {
+            return false;
+        }
+
+        if (!this.contains(element)) {
+            var node = [];
+            for (var i = 0; i < nCopies; i++) {
+                node.push(element);
+            }
+            this.dictionary.set(element, node);
+        } else {
+            this.dictionary.get(element).push(element);
+        }
+        this.nElements += nCopies;
+        return true;
+    };
+
+    buckets.MultiBag.prototype.count = function(element) {
+
+        if (!this.contains(element)) {
+            return 0;
+        } else {
+            return this.dictionary.get(element).length;
+        }
+    };
+
+    buckets.MultiBag.prototype.contains = function(element) {
+        return this.dictionary.containsKey(element);
+    };
+
+    buckets.MultiBag.prototype.remove = function(element, nCopies) {
+
+        if (isNaN(nCopies) || buckets.isUndefined(nCopies)) {
+            nCopies = 1;
+        }
+        if (buckets.isUndefined(element) || nCopies <= 0) {
+            return false;
+        }
+
+        if (!this.contains(element)) {
+            return false;
+        } else {
+            var node = this.dictionary.get(element);
+            var toBeRemoved = nCopies;
+            while (toBeRemoved > 0 &&
+                   buckets.arrays.remove(node, element, this.equalsF)) {
+                toBeRemoved--;
+            }
+
+            var removed = nCopies - toBeRemoved;
+            this.nElements -= removed;
+            if (node.length === 0) {
+                this.dictionary.remove(element);
+            }
+            return removed > 0;
+        }
+    };
+
+    buckets.MultiBag.prototype.toArray = function() {
+        var a = [];
+        var values = this.dictionary.values();
+        var vl = values.length;
+        for (var i = 0; i < vl; i++) {
+            var node = values[i];
+            var nl = node.length;
+            for (var j = 0; j < nl; j++) {
+                a.push(node[j]);
+            }
+        }
+        return a;
+    };
+
+    buckets.MultiBag.prototype.toSet = function() {
+        var set = new buckets.Set(this.toStrF);
+        var elements = this.dictionary.values();
+        var l = elements.length;
+        for (var i = 0; i < l; i++) {
+            var value = elements[i][0];
+            set.add(value);
+        }
+        return set;
+    };
+
+    buckets.MultiBag.prototype.forEach = function(callback) {
+        this.dictionary.forEach(function(k, v) {
+            var len = v.length;
+            for (var i = 0; i < len; i++) {
+                if (callback(v[i]) === false) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    };
+
+    buckets.MultiBag.prototype.size = function() {
+        return this.nElements;
+    };
+
+    buckets.MultiBag.prototype.isEmpty = function() {
+        return this.nElements === 0;
+    };
+
+    buckets.MultiBag.prototype.clear = function() {
+        this.nElements = 0;
+        this.dictionary.clear();
+    };
+
+    buckets.MultiBag.prototype.normalize = function() {
+        this.dictionary.forEach(function(k, v) {
+            if (v.length > 1) {
+                v.splice(1, v.length);
+            }
+        });
+    };
+
+
     /**
      * Creates an empty binary search tree.
      * @class <p>Formally, a binary search tree is a node-based binary tree data structure which

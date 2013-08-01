@@ -1938,6 +1938,103 @@ var buckets = {};
         this.dictionary.clear();
     };
 
+    buckets.MultiBag = function(toStrFunction, toStrValue) {
+        this.toStrF = toStrFunction || buckets.defaultToString;
+        this.toStrV = toStrValue || buckets.defaultToString;
+        this.dictionary = new buckets.Dictionary(this.toStrF);
+        this.nElements = 0;
+    };
+
+    buckets.MultiBag.prototype.add = function(element) {
+        if (buckets.isUndefined(element)) {
+            return false;
+        }
+
+        if (!this.dictionary.containsKey(element)) {
+            this.dictionary.set(element, new buckets.Set(this.toStrV));
+        }
+
+        if (this.dictionary.get(element).add(element)) {
+            this.nElements ++;
+            return true;
+        }
+        return false;
+    };
+
+    buckets.MultiBag.prototype.contains = function(element) {
+        return this.dictionary.containsKey(element) &&
+               this.dictionary.get(element).contains(element);
+    };
+
+    buckets.MultiBag.prototype.remove = function(element) {
+        if (buckets.isUndefined(element)) {
+            return false;
+        }
+
+        if (!this.contains(element)) {
+            return false;
+        } else {
+            var set = this.dictionary.get(element);
+            if (set.remove(element)) {
+                this.nElements --;
+                return true;
+            }
+            return false;
+        }
+    };
+
+    buckets.MultiBag.prototype.toArray = function() {
+        var a = [];
+        this.dictionary.values().forEach(function(e) {
+            e.forEach(function(v) {
+                a.push(v);
+            });
+        });
+        return a;
+    };
+
+    buckets.MultiBag.prototype.forEach = function(callback) {
+        this.dictionary.forEach(function(k, v) {
+            var toContinue = true;
+            v.forEach(function(element) {
+                if (callback(element) === false) {
+                    toContinue = false;
+                    return false;
+                }
+            });
+            return toContinue;
+        });
+    };
+
+    buckets.MultiBag.prototype.size = function() {
+        return this.nElements;
+    };
+
+    buckets.MultiBag.prototype.isEmpty = function() {
+        return this.nElements === 0;
+    };
+
+    buckets.MultiBag.prototype.clear = function() {
+        this.nElements = 0;
+        this.dictionary.clear();
+    };
+
+    buckets.MultiBag.prototype.normalize = function() {
+        this.dictionary.forEach(function(k, v) {
+            var first = null;
+            v.forEach(function(el) {
+                first = el;
+                return false;
+            });
+            
+            this.nElements -= v.size()-1;
+
+            v.clear();
+            v.add(first);
+        }.bind(this));
+    };
+
+
     /**
      * Creates an empty binary search tree.
      * @class <p>Formally, a binary search tree is a node-based binary tree data structure which

@@ -1938,110 +1938,71 @@ var buckets = {};
         this.dictionary.clear();
     };
 
-    buckets.MultiBag = function(toStrFunction, valuesEqualsFunction) {
+    buckets.MultiBag = function(toStrFunction, toStrValue) {
         this.toStrF = toStrFunction || buckets.defaultToString;
-        this.equalsF = valuesEqualsFunction || buckets.defaultEquals;
+        this.toStrV = toStrValue || buckets.defaultToString;
         this.dictionary = new buckets.Dictionary(this.toStrF);
         this.nElements = 0;
     };
 
-    buckets.MultiBag.prototype.add = function(element, nCopies) {
-
-        if (isNaN(nCopies) || buckets.isUndefined(nCopies)) {
-            nCopies = 1;
-        }
-        if (buckets.isUndefined(element) || nCopies <= 0) {
+    buckets.MultiBag.prototype.add = function(element) {
+        if (buckets.isUndefined(element)) {
             return false;
         }
 
-        if (!this.contains(element)) {
-            var node = [];
-            for (var i = 0; i < nCopies; i++) {
-                node.push(element);
-            }
-            this.dictionary.set(element, node);
-        } else {
-            this.dictionary.get(element).push(element);
+        if (!this.dictionary.containsKey(element)) {
+            this.dictionary.set(element, new buckets.Set(this.toStrV));
         }
-        this.nElements += nCopies;
-        return true;
-    };
 
-    buckets.MultiBag.prototype.count = function(element) {
-
-        if (!this.contains(element)) {
-            return 0;
-        } else {
-            return this.dictionary.get(element).length;
+        if (this.dictionary.get(element).add(element)) {
+            this.nElements ++;
+            return true;
         }
+        return false;
     };
 
     buckets.MultiBag.prototype.contains = function(element) {
-        return this.dictionary.containsKey(element);
+        return this.dictionary.containsKey(element) &&
+               this.dictionary.get(element).contains(element);
     };
 
-    buckets.MultiBag.prototype.remove = function(element, nCopies) {
-
-        if (isNaN(nCopies) || buckets.isUndefined(nCopies)) {
-            nCopies = 1;
-        }
-        if (buckets.isUndefined(element) || nCopies <= 0) {
+    buckets.MultiBag.prototype.remove = function(element) {
+        if (buckets.isUndefined(element)) {
             return false;
         }
 
         if (!this.contains(element)) {
             return false;
         } else {
-            var node = this.dictionary.get(element);
-            var toBeRemoved = nCopies;
-            while (toBeRemoved > 0 &&
-                   buckets.arrays.remove(node, element, this.equalsF)) {
-                toBeRemoved--;
+            var set = this.dictionary.get(element);
+            if (set.remove(element)) {
+                this.nElements --;
+                return true;
             }
-
-            var removed = nCopies - toBeRemoved;
-            this.nElements -= removed;
-            if (node.length === 0) {
-                this.dictionary.remove(element);
-            }
-            return removed > 0;
+            return false;
         }
     };
 
     buckets.MultiBag.prototype.toArray = function() {
         var a = [];
-        var values = this.dictionary.values();
-        var vl = values.length;
-        for (var i = 0; i < vl; i++) {
-            var node = values[i];
-            var nl = node.length;
-            for (var j = 0; j < nl; j++) {
-                a.push(node[j]);
-            }
-        }
+        this.dictionary.values().forEach(function(e) {
+            e.forEach(function(v) {
+                a.push(v);
+            });
+        });
         return a;
-    };
-
-    buckets.MultiBag.prototype.toSet = function() {
-        var set = new buckets.Set(this.toStrF);
-        var elements = this.dictionary.values();
-        var l = elements.length;
-        for (var i = 0; i < l; i++) {
-            var value = elements[i][0];
-            set.add(value);
-        }
-        return set;
     };
 
     buckets.MultiBag.prototype.forEach = function(callback) {
         this.dictionary.forEach(function(k, v) {
-            var len = v.length;
-            for (var i = 0; i < len; i++) {
-                if (callback(v[i]) === false) {
+            var toContinue = true;
+            v.forEach(function(element) {
+                if (callback(element) === false) {
+                    toContinue = false;
                     return false;
                 }
-            }
-            return true;
+            });
+            return toContinue;
         });
     };
 
@@ -2060,10 +2021,17 @@ var buckets = {};
 
     buckets.MultiBag.prototype.normalize = function() {
         this.dictionary.forEach(function(k, v) {
-            if (v.length > 1) {
-                v.splice(1, v.length);
-            }
-        });
+            var first = null;
+            v.forEach(function(el) {
+                first = el;
+                return false;
+            });
+            
+            this.nElements -= v.size()-1;
+
+            v.clear();
+            v.add(first);
+        }.bind(this));
     };
 
 

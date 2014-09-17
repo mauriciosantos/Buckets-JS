@@ -6,7 +6,8 @@
 // Some documentation is borrowed from the official Java API
 // as it serves the same porpose.
 /**
- * @namespace Top level namespace for Buckets, a JavaScript data structure library.
+ * Top level namespace for Buckets, a JavaScript data structure library.
+ * @namespace buckets
  */
 var buckets = {};
 (function() {
@@ -26,6 +27,7 @@ var buckets = {};
         }
         return 1;
     };
+
     /**
      * Default function to test equality.
      * @function
@@ -115,7 +117,8 @@ var buckets = {};
     };
 
     /**
-     * @namespace Contains various functions for manipulating arrays.
+	 * Contains various functions for manipulating arrays.
+     * @namespace buckets.arrays
      */
     buckets.arrays = {};
 
@@ -123,7 +126,7 @@ var buckets = {};
      * Returns the index of the first occurrence of the specified item
      * within the specified array.
      * @param {*} array The array to search.
-     * @param {Object} item The array in which to search the element.
+     * @param {*} item The array in which to search the element.
      * @param {function(Object,Object):boolean=} equalsFunction Optional function to
      * check equality between two elements. Receives two arguments and returns true if they are equal.
      * @return {number} The index of the first occurrence of the specified element
@@ -177,7 +180,7 @@ var buckets = {};
     /**
      * Removes the first ocurrence of the specified element from the specified array.
      * @param {*} array The array in which to remove the element.
-     * @param {Object} item The element to remove.
+     * @param {*} item The element to remove.
      * @param {function(Object,Object):boolean=} equalsFunction Optional function to
      * check equality between two elements. Receives two arguments and returns true if they are equal.
      * @return {boolean} True If the array changed after this call.
@@ -268,7 +271,7 @@ var buckets = {};
     /**
      * Executes a provided function once per array element.
      * @param {Array} array The array in which to iterate.
-     * @param {function(Object):*} Callback function to execute, it is
+     * @param {function(Object):*} callback function to execute, it is
      * invoked with one argument: the element value. To break the iteration you can
      * optionally return false inside the callback.
      */
@@ -805,7 +808,7 @@ var buckets = {};
     /**
      * Executes the provided function once per key-value pair
      * present in this dictionary.
-     * @param {function(Object,Object):*} Callback function to execute, it is
+     * @param {function(Object,Object):*} callback function to execute, it is
      * invoked with two arguments: key and value. To break the iteration you can
      * optionally return false inside the callback.
      */
@@ -1509,7 +1512,7 @@ var buckets = {};
 
     /**
      * Inserts the specified element into this priority queue, it is equivalent to enqueue.
-     * @param {Object} Element the element to insert.
+     * @param {Object} element the element to insert.
      * @return {boolean} True if the element was inserted, or false if it is undefined.
      */
     buckets.PriorityQueue.prototype.add = function(element) {
@@ -1977,7 +1980,7 @@ var buckets = {};
 
     /**
      * Adds the specified element to this tree if it is not already present.
-     * @param {Object} Element the element to insert.
+     * @param {Object} element the element to insert.
      * @return {boolean} true If this tree did not already contain the specified element.
      */
     buckets.BSTree.prototype.add = function(element) {
@@ -2045,7 +2048,7 @@ var buckets = {};
 
     /**
      * Executes the provided function once per element present in this tree in in-order.
-     * @param {function(Object):*} Callback function to execute, it is invoked with one
+     * @param {function(Object):*} callback function to execute, it is invoked with one
      * argument: the element value, to break the iteration you can optionally return false inside the calback.
      */
     buckets.BSTree.prototype.inorderTraversal = function(callback) {
@@ -2067,7 +2070,7 @@ var buckets = {};
 
     /**
      * Executes the provided function once per element present in this tree in post-order.
-     * @param {function(Object):*} Callback function to execute, it is invoked with one
+     * @param {function(Object):*} callback function to execute, it is invoked with one
      * argument: the element value, to break the iteration you can optionally return false.
      */
     buckets.BSTree.prototype.postorderTraversal = function(callback) {
@@ -2079,7 +2082,7 @@ var buckets = {};
     /**
      * Executes the provided function once per element present in this tree in
      * level-order.
-     * @param {function(Object):*} Callback function to execute, it is invoked with one
+     * @param {function(Object):*} callback function to execute, it is invoked with one
      * argument: the element value, to break the iteration you can optionally return false inside the calback..
      */
     buckets.BSTree.prototype.levelTraversal = function(callback) {
@@ -2113,7 +2116,7 @@ var buckets = {};
     /**
      * Executes the provided function once per element present in this tree in in-order.
      * Equivalent to inorderTraversal.
-     * @param {function(Object):*} Callback function to execute, it is
+     * @param {function(Object):*} callback function to execute, it is
      * invoked with one argument: the element value, to break the iteration you can
      * optionally return false.
      */
@@ -2315,7 +2318,7 @@ var buckets = {};
         return Math.max(this.heightAux(node.leftCh), this.heightAux(node.rightCh)) + 1;
     };
 
-    /*
+    /**
      * @private
      */
     buckets.BSTree.prototype.insertNode = function(node) {

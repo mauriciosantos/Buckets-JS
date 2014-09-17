@@ -10,7 +10,7 @@ print "\nReading source file"
 text_file = open("../buckets.js", "r")
 whole_thing = text_file.read()
 
-print "\nCommunicating with Google"
+print "\nCompiling with Google Closure API"
 
 params = urllib.urlencode([
     ('js_code', whole_thing),

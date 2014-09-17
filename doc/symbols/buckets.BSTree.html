@@ -232,17 +232,17 @@ ul.inheritsList
 				
 				
 			
-				<p>Formally, a binary search tree is a node-based binary tree data structure which 
+				<p>Formally, a binary search tree is a node-based binary tree data structure which
 has the following properties:</p>
 <ul>
-<li>The left subtree of a node contains only nodes with elements less 
+<li>The left subtree of a node contains only nodes with elements less
 than the node's element.</li>
-<li>The right subtree of a node contains only nodes with elements greater 
+<li>The right subtree of a node contains only nodes with elements greater
 than the node's element.</li>
 <li>Both the left and right subtrees must also be binary search trees.</li>
 </ul>
-<p>If the inserted elements are custom objects a compare function must 
-be provided at construction time, otherwise the <=, === and >= operators are 
+<p>If the inserted elements are custom objects a compare function must
+be provided at construction time, otherwise the <=, === and >= operators are
 used to compare elements. Example:</p>
 <pre>
 function compare(a, b) {
@@ -250,7 +250,7 @@ function compare(a, b) {
     return -1;
  } if (a is greater than b by the ordering criterion) {
     return 1;
- } 
+ }
  // a must be equal to b
  return 0;
 }
@@ -305,7 +305,7 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#add">add</a></b>(Element)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#add">add</a></b>(element)
 								</div>
 								<div class="description">Adds the specified element to this tree if it is not already present.</div>
 							</td>
@@ -332,7 +332,7 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#forEach">forEach</a></b>(Callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#forEach">forEach</a></b>(callback)
 								</div>
 								<div class="description">Executes the provided function once per element present in this tree in in-order.</div>
 							</td>
@@ -350,7 +350,7 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#inorderTraversal">inorderTraversal</a></b>(Callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#inorderTraversal">inorderTraversal</a></b>(callback)
 								</div>
 								<div class="description">Executes the provided function once per element present in this tree in in-order.</div>
 							</td>
@@ -368,9 +368,9 @@ function compare(a, b) {
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#levelTraversal">levelTraversal</a></b>(Callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#levelTraversal">levelTraversal</a></b>(callback)
 								</div>
-								<div class="description">Executes the provided function once per element present in this tree in 
+								<div class="description">Executes the provided function once per element present in this tree in
 level-order.</div>
 							</td>
 						</tr>
@@ -396,7 +396,7 @@ level-order.</div>
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#postorderTraversal">postorderTraversal</a></b>(Callback)
+								<div class="fixedFont"><b><a href="../symbols/buckets.BSTree.html#postorderTraversal">postorderTraversal</a></b>(callback)
 								</div>
 								<div class="description">Executes the provided function once per element present in this tree in post-order.</div>
 							</td>
@@ -504,7 +504,7 @@ or greater than the second.</dd>
 					<div class="fixedFont">
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(Element)
+					<b>add</b>(element)
 					
 					</div>
 					<div class="description">
@@ -520,7 +520,7 @@ or greater than the second.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>Element</b>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
 									
 								</dt>
 								<dd>the element to insert.</dd>
@@ -616,7 +616,7 @@ false otherwise.</dd>
 					<div class="fixedFont">
 					
 					
-					<b>forEach</b>(Callback)
+					<b>forEach</b>(callback)
 					
 					</div>
 					<div class="description">
@@ -633,11 +633,11 @@ Equivalent to inorderTraversal.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
 								<dd>function to execute, it is
-invoked with one argument: the element value, to break the iteration you can 
+invoked with one argument: the element value, to break the iteration you can
 optionally return false.</dd>
 							
 							</dl>
@@ -687,7 +687,7 @@ optionally return false.</dd>
 					<div class="fixedFont">
 					
 					
-					<b>inorderTraversal</b>(Callback)
+					<b>inorderTraversal</b>(callback)
 					
 					</div>
 					<div class="description">
@@ -703,10 +703,10 @@ optionally return false.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is invoked with one 
+								<dd>function to execute, it is invoked with one
 argument: the element value, to break the iteration you can optionally return false inside the calback.</dd>
 							
 							</dl>
@@ -756,11 +756,11 @@ argument: the element value, to break the iteration you can optionally return fa
 					<div class="fixedFont">
 					
 					
-					<b>levelTraversal</b>(Callback)
+					<b>levelTraversal</b>(callback)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once per element present in this tree in 
+						Executes the provided function once per element present in this tree in
 level-order.
 						
 						
@@ -773,10 +773,10 @@ level-order.
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is invoked with one 
+								<dd>function to execute, it is invoked with one
 argument: the element value, to break the iteration you can optionally return false inside the calback..</dd>
 							
 							</dl>
@@ -860,7 +860,7 @@ is empty.</dd>
 					<div class="fixedFont">
 					
 					
-					<b>postorderTraversal</b>(Callback)
+					<b>postorderTraversal</b>(callback)
 					
 					</div>
 					<div class="description">
@@ -876,10 +876,10 @@ is empty.</dd>
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{function(Object):*}</span> <b>Callback</b>
+									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is invoked with one 
+								<dd>function to execute, it is invoked with one
 argument: the element value, to break the iteration you can optionally return false.</dd>
 							
 							</dl>
@@ -916,7 +916,7 @@ argument: the element value, to break the iteration you can optionally return fa
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>function to execute, it is invoked with one 
+								<dd>function to execute, it is invoked with one
 argument: the element value, to break the iteration you can optionally return false inside the calback.</dd>
 							
 							</dl>
@@ -1049,7 +1049,7 @@ argument: the element value, to break the iteration you can optionally return fa
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 17 2013 23:40:01 GMT-0500 (COT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed Sep 17 2014 02:43:23 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

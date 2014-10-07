@@ -20,6 +20,7 @@
     }
 }(this, function() {
     'use strict';
+    var buckets = {};
 
     /**
      * Default function to compare element order.
@@ -2370,8 +2371,5 @@
         };
     };
 
-    // Make it a NodeJS module.
-    if (typeof module !== 'undefined') {
-        module.exports = buckets;
-    }
+    return buckets;
 }));

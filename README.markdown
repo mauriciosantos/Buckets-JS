@@ -31,12 +31,43 @@ If it supports JavaScript, it probably supports buckets.
 How to use?
 --------------------
 
-Download
+Install `bucketsjs` using npm
+
+```shell
+npm install bucketsjs
+```
+
+In NodeJS: `var buckets = require('bucketsjs')`.
+
+### Browser
+
+Install `bucketsjs` using bower
+
+```shell
+bower install bucketsjs
+```
+
+Or download directly
 
 - [buckets.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets.js) (for development) or
 - [buckets-minified.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets-minified.js) (for production)
 
-Include the script and start coding. For NodeJS: `var buckets = require('buckets.js')`.
+Then, add it as a script tag to your page:
+
+```html
+<script src="buckets.js"></script>
+<script>
+  var aSet = new buckets.Set();
+</script>
+```
+
+Or use an AMD loader
+
+```javascript
+require(["./bower/bucketsjs/buckets.js"], function(buckets) {
+  var hm = new buckets.Dictionary()
+});
+```
 
 Example
 

@@ -16,7 +16,7 @@
     } else if (typeof exports === "object") {
         module.exports = factory();
     } else {
-        root.Requester = factory();
+        root.buckets = factory();
     }
 }(this, function() {
     'use strict';

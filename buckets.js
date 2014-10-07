@@ -9,9 +9,18 @@
  * Top level namespace for Buckets, a JavaScript data structure library.
  * @namespace buckets
  */
-var buckets = {};
-(function() {
+
+(function (root, factory) {
+    if (typeof define === "function" && define.amd) {
+        define([], factory);
+    } else if (typeof exports === "object") {
+        module.exports = factory();
+    } else {
+        root.buckets = factory();
+    }
+}(this, function() {
     'use strict';
+    var buckets = {};
 
     /**
      * Default function to compare element order.
@@ -2362,8 +2371,5 @@ var buckets = {};
         };
     };
 
-    // Make it a NodeJS module.
-    if (typeof module !== 'undefined') {
-        module.exports = buckets;
-    }
-}());
+    return buckets;
+}));

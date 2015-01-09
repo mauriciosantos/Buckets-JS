@@ -1,0 +1,16 @@
+{
+  "name": "bucketsjs",
+  "description": "Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.",
+  "version": "1.81.0",
+  "license": "APL-2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mauriciosantos/buckets.git"
+  },
+  "dependencies": {},
+  "files": [
+    "buckets.js",
+    "buckets-minified.js"
+  ],
+  "main": "buckets.js"
+}

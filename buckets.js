@@ -3,8 +3,9 @@
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 //
-// Some documentation is borrowed from the official Java API
+// Some documentation is based on the official Java API
 // as it serves the same porpose.
+
 /**
  * Top level namespace for Buckets, a JavaScript data structure library.
  * @namespace buckets
@@ -226,7 +227,7 @@
     };
 
     /**
-     * Returns true if the two arrays are equal to one another.
+     * Returns true if the arrays are equal to one another.
      * Two arrays are considered equal if both arrays contain the same number
      * of elements, all corresponding pairs of elements in the two
      * arrays are equal and are in the same order.
@@ -722,7 +723,25 @@
          * @private
          */
         this.toStr = toStrFunction || buckets.defaultToString;
+		
     };
+	
+  	/**
+ 	* Special string to prefix keys and avoid name collisions with existing properties.
+    * @type {string}
+    * @private
+   */
+	buckets.Dictionary.prototype.keyPrefix = '/$\ ';
+	
+  	/**
+ 	* Checks if the table inside this dictionary contains the provided key.
+	* @param {*} key key to check.
+    * @return {boolean}
+	* @private
+   */
+	buckets.Dictionary.prototype.hasKey = function(key) {
+    	return Object.prototype.hasOwnProperty.call(this.table, key);
+	};
 
     /**
      * Returns the value to which this dictionary maps the specified key.
@@ -732,8 +751,7 @@
      * undefined if the map contains no mapping for this key.
      */
     buckets.Dictionary.prototype.get = function(key) {
-
-        var pair = this.table[this.toStr(key)];
+        var pair = this.table[this.keyPrefix + this.toStr(key)];
         if (buckets.isUndefined(pair)) {
             return undefined;
         }
@@ -747,7 +765,7 @@
      * associated.
      * @param {Object} value Value to be associated with the specified key.
      * @return {*} Previous value associated with the specified key, or undefined if
-     * there was no mapping for the key or if the key/value are undefined.
+     * there was no mapping for the key or the key/value is undefined.
      */
     buckets.Dictionary.prototype.set = function(key, value) {
 
@@ -756,7 +774,7 @@
         }
 
         var ret;
-        var k = this.toStr(key);
+        var k = this.keyPrefix + this.toStr(key);
         var previousElement = this.table[k];
         if (buckets.isUndefined(previousElement)) {
             this.nElements++;
@@ -778,7 +796,7 @@
      * there was no mapping for key.
      */
     buckets.Dictionary.prototype.remove = function(key) {
-        var k = this.toStr(key);
+        var k = this.keyPrefix + this.toStr(key);
         var previousElement = this.table[k];
         if (!buckets.isUndefined(previousElement)) {
             delete this.table[k];
@@ -794,7 +812,7 @@
     buckets.Dictionary.prototype.keys = function() {
         var array = [];
         for (var name in this.table) {
-            if (this.table.hasOwnProperty(name)) {
+            if (this.hasKey(name)) {
                 array.push(this.table[name].key);
             }
         }
@@ -807,7 +825,7 @@
     buckets.Dictionary.prototype.values = function() {
         var array = [];
         for (var name in this.table) {
-            if (this.table.hasOwnProperty(name)) {
+            if (this.hasKey(name)) {
                 array.push(this.table[name].value);
             }
         }
@@ -823,7 +841,7 @@
      */
     buckets.Dictionary.prototype.forEach = function(callback) {
         for (var name in this.table) {
-            if (this.table.hasOwnProperty(name)) {
+            if (this.hasKey(name)) {
                 var pair = this.table[name];
                 var ret = callback(pair.key, pair.value);
                 if (ret === false) {
@@ -876,7 +894,7 @@
      * holding all of the values set to that key.
      * This implementation accepts any kind of objects as keys.</p>
      *
-     * <p>If the keys are custom objects a function which converts keys to unique strings must be
+     * <p>If the keys are custom objects, a function which converts keys to unique strings must be
      * provided. Example:</p>
      *
      * <pre>
@@ -924,11 +942,11 @@
     };
 
     /**
-     * Adds the value to an array associated with the specified key, if
+     * Adds the value to an array associated with the specified key if
      * it is not already present.
-     * @param {Object} key Key which the specified value is to be
+     * @param {Object} key Key to which the specified value is to be
      * associated.
-     * @param {Object} value The value to add to the array at the key.
+     * @param {Object} value The value to associate.
      * @return {boolean} True if the value was not already associated with that key.
      */
     buckets.MultiDictionary.prototype.set = function(key, value) {
@@ -1002,7 +1020,7 @@
     };
 
     /**
-     * Returns true if this dictionary has at least one value associatted the specified key.
+     * Returns true if this dictionary has at least one value associatted with the specified key.
      * @param {Object} key Key whose presence in this dictionary is to be
      * tested.
      * @return {boolean} True if this dictionary has at least one value associatted
@@ -1041,8 +1059,8 @@
      * <p>A heap is a binary tree, where the nodes maintain the heap property:
      * each node is smaller than each of its children.
      * This implementation uses an array to store elements.</p>
-     * <p>If the inserted elements are custom objects a compare function must be provided,
-     *  at construction time, otherwise the <=, === and >= operators are
+     * <p>If the inserted elements are custom objects a compare function must be provided 
+     * at construction time, otherwise the <=, === and >= operators are
      * used to compare elements. Example:</p>
      *
      * <pre>
@@ -1435,7 +1453,7 @@
 
     /**
      * Returns true if this queue contains the specified element.
-     * <p>If the elements inside this stack are
+     * <p>If the elements inside this queue are
      * not comparable with the === operator, a custom equals function should be
      * provided to perform searches, the function must receive two arguments and
      * return true if they are equal, false otherwise. Example:</p>
@@ -1472,7 +1490,7 @@
     };
 
     /**
-     * Executes the provided function once for each element present in this queue in
+     * Executes the provided function once per each element present in this queue in
      * FIFO order.
      * @param {function(Object):*} callback Function to execute, it is
      * invoked with one argument: the element value, to break the iteration you can
@@ -1486,7 +1504,7 @@
      * Creates an empty priority queue.
      * @class <p>In a priority queue each element is associated with a "priority",
      * elements are dequeued in highest-priority-first order (the elements with the
-     * highest priority are dequeued first). Priority Queues are implemented as heaps.
+     * highest priority are dequeued first). Priority queues are implemented as heaps.
      * If the inserted elements are custom objects a compare function must be provided,
      * otherwise the <=, === and >= operators are used to compare object priority.</p>
      * <pre>
@@ -1520,7 +1538,7 @@
     };
 
     /**
-     * Inserts the specified element into this priority queue, it is equivalent to enqueue.
+     * Inserts the specified element into this priority queue. It is equivalent to enqueue.
      * @param {Object} element the element to insert.
      * @return {boolean} True if the element was inserted, or false if it is undefined.
      */
@@ -1612,7 +1630,7 @@
      * @constructor
      * @param {function(Object):string=} toStringFunction Optional function used
      * to convert elements to unique strings. If the elements aren't strings or if toString()
-     * is not appropriate, a custom function which receives a onject and returns a
+     * is not appropriate, a custom function which receives an object and returns a
      * unique string must be provided.
      */
     buckets.Set = function(toStringFunction) {
@@ -1829,7 +1847,7 @@
 
     /**
      * Returns true if this bag contains the specified element.
-     * @param {Object} element Rlement to search for.
+     * @param {Object} element Element to search for.
      * @return {boolean} True if this bag contains the specified element,
      * false otherwise.
      */
@@ -1955,13 +1973,13 @@
      * @class <p>Formally, a binary search tree is a node-based binary tree data structure which
      * has the following properties:</p>
      * <ul>
-     * <li>The left subtree of a node contains only nodes with elements less
+     * <li>The left subtree of a node contains only elements less
      * than the node's element.</li>
-     * <li>The right subtree of a node contains only nodes with elements greater
+     * <li>The right subtree of a node contains only elements greater
      * than the node's element.</li>
      * <li>Both the left and right subtrees must also be binary search trees.</li>
      * </ul>
-     * <p>If the inserted elements are custom objects a compare function must
+     * <p>If the inserted elements are custom objects, a compare function must
      * be provided at construction time, otherwise the <=, === and >= operators are
      * used to compare elements. Example:</p>
      * <pre>
@@ -2092,7 +2110,7 @@
      * Executes the provided function once per element present in this tree in
      * level-order.
      * @param {function(Object):*} callback function to execute, it is invoked with one
-     * argument: the element value, to break the iteration you can optionally return false inside the calback..
+     * argument: the element value, to break the iteration you can optionally return false inside the calback.
      */
     buckets.BSTree.prototype.levelTraversal = function(callback) {
         this.levelTraversalAux(this.root, callback);
@@ -2100,8 +2118,8 @@
 
     /**
      * Returns the minimum element of this tree.
-     * @return {*} The minimum element of this tree or undefined if this tree is
-     * is empty.
+     * @return {*} The minimum element of this tree or undefined if this tree
+     * it' empty.
      */
     buckets.BSTree.prototype.minimum = function() {
         if (this.isEmpty()) {
@@ -2112,8 +2130,8 @@
 
     /**
      * Returns the maximum element of this tree.
-     * @return {*} The maximum element of this tree or undefined if this tree is
-     * is empty.
+     * @return {*} The maximum element of this tree or undefined if this tree
+     * it's empty.
      */
     buckets.BSTree.prototype.maximum = function() {
         if (this.isEmpty()) {
@@ -2147,7 +2165,7 @@
 
     /**
      * Returns the height of this tree.
-     * @return {number} The height of this tree or -1 if is empty.
+     * @return {number} The height of this tree or -1 if it's empty.
      */
     buckets.BSTree.prototype.height = function() {
         return this.heightAux(this.root);

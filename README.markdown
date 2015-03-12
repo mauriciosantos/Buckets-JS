@@ -28,26 +28,10 @@ Supported platforms
 
 If it supports JavaScript, it probably supports buckets.
 
-How to use?
+Downloading Buckets
 --------------------
 
-Install `bucketsjs` using npm
-
-```shell
-npm install bucketsjs
-```
-
-In NodeJS: `var buckets = require('bucketsjs')`.
-
-### Browser
-
-Install `bucketsjs` using bower
-
-```shell
-bower install bucketsjs
-```
-
-Or download directly
+Download directly
 
 - [buckets.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets.js) (for development) or
 - [buckets-minified.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets-minified.js) (for production)
@@ -61,6 +45,12 @@ Then, add it as a script tag to your page:
 </script>
 ```
 
+Or install `bucketsjs` using bower
+
+```shell
+bower install bucketsjs
+```
+
 Or use an AMD loader
 
 ```javascript
@@ -69,7 +59,16 @@ require(["./bower/bucketsjs/buckets.js"], function(buckets) {
 });
 ```
 
-Example
+Or install `bucketsjs` using npm
+
+```shell
+npm install buckets-js
+```
+
+In Node.js: `var buckets = require('bucketsjs')`.
+
+Usage
+--------------------
 
 ```javascript
 var setA = new buckets.Set();

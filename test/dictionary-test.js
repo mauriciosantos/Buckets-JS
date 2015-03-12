@@ -65,7 +65,48 @@ function() {
             expect(dict.get(d)).toEqual(i + 1);
         }
     });
+	
+    it('Sets value with toString key',
+    function() {
 
+		var dict = new buckets.Dictionary();
+
+		dict.set("toString", 42);
+		expect(dict.size()).toEqual(1);
+		dict.remove("toString");
+		expect(dict.size()).toEqual(0);
+
+		dict.set("hasOwnProperty", "foo");
+		try {
+		    dict.keys(); // throws an error trying to invoke "foo" as a function
+		} catch(e) {
+		    dict.remove("hasOwnProperty");
+		}
+
+		dict.set("__proto__", {value: 123});
+		dict.get("value") === 123; // wrong, should be undefined
+    });
+	
+    it('Sets and removes key with special keywords',
+    function() {
+
+		var dict = new buckets.Dictionary();
+		dict.set('toString', 42);
+		expect(dict.size()).toEqual(1);
+		dict.remove('toString');
+		expect(dict.size()).toEqual(0);
+		
+		dict = new buckets.Dictionary();
+		dict.set('hasOwnProperty', 'foo');
+		expect(dict.size()).toEqual(1);
+		dict.remove('hasOwnProperty');
+		expect(dict.size()).toEqual(0);
+
+		dict = new buckets.Dictionary();
+		dict.set('__proto__', 123);
+		expect(dict.get('__proto__')).toEqual(123);
+    });
+	
     it('Removes existing elements from the dictionary',
     function() {
 

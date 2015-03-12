@@ -59,13 +59,13 @@ require(["./bower/bucketsjs/buckets.js"], function(buckets) {
 });
 ```
 
-Or install `bucketsjs` using npm
+Or install `buckets-js` using npm
 
 ```shell
 npm install buckets-js
 ```
 
-In Node.js: `var buckets = require('bucketsjs')`.
+In Node.js: `var buckets = require('buckets-js')`.
 
 Usage
 --------------------

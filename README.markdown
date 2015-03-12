@@ -1,4 +1,4 @@
-[Buckets](github.com/mauriciosantos/buckets/)
+[Buckets](https://github.com/mauriciosantos/buckets/)
 ====================
 **A JavaScript Data Structure Library**
 

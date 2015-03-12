@@ -1,6 +1,6 @@
 {
   "name": "bucketsjs",
-  "version": "1.85.1",
+  "version": "1.85.2",
   "dependencies": {},
   "main": "buckets.js"
 }

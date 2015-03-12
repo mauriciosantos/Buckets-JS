@@ -1,10 +1,10 @@
-// Copyright 2013 Mauricio Santos. All Rights Reserved.
+// Created by Mauricio Santos on 2013.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 //
 // Some documentation is based on the official Java API
-// as it serves the same porpose.
+// as it serves the same purpose.
 
 /**
  * Top level namespace for Buckets, a JavaScript data structure library.

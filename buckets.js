@@ -1,8 +1,5 @@
 // Created by Mauricio Santos in 2013.
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-//
 // Some documentation is based on the official Java API
 // as it serves the same purpose.
 

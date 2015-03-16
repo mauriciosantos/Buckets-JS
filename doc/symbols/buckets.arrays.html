@@ -11,65 +11,45 @@
 			/* default.css */
 body
 {
-	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
-	width: 800px;
+	font: 13.5px sans-serif;
+	line-height: 20px;
+	max-width: 950px;
+	-webkit-font-smoothing: antialiased;
+	text-align: justify;
 }
 
-.header
-{
-	clear: both;
-	background-color: #ccc;
-	padding: 8px;
-}
 
 h1
 {
-	font-size: 150%;
-	font-weight: bold;
 	padding: 0;
-	margin: 1em 0 0 .3em;
-}
-
-hr
-{
-	border: none 0;
-	border-top: 1px solid #7F8FB1;
-	height: 1px;
-}
-
-pre.code
-{
-	display: block;
-	padding: 8px;
-	border: 1px dashed #ccc;
+    color: rgb(65, 131, 196);
+    margin: 0 auto;
+	padding-top: 18px;
 }
 
 #index
 {
-	margin-top: 24px;
-	float: left;
-	width: 160px;
-	position: absolute;
-	left: 8px;
-	background-color: #F3F3F3;
-	padding: 8px;
+    margin-top: 15px;
+	margin-left: 15px;
+    width: 160px;
+    position: absolute;
+    left: 8px;
+    padding: 8px;
+    background: #fafafa;
+    padding-top: 12px;
+    padding-left: 6px;
+	padding-right: 12px;
+	padding-bottom: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+	
 }
 
 #content
 {
-	margin-left: 190px;
-	width: 600px;
+	margin-left: 220px;
 }
 
-.classList
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0 0 0 8px;
-	font-family: arial, sans-serif;
-	font-size: 1em;
-	overflow: auto;
-}
+
 
 .classList li
 {
@@ -77,23 +57,26 @@ pre.code
 	margin: 0 0 8px 0;
 }
 
-.summaryTable { width: 100%; }
-
-h1.classTitle
-{
-	font-size:170%;
-	line-height:130%;
+.summaryTable { 
+	width: 100%; 
 }
+
 
 h2 { font-size: 110%; }
 caption, div.sectionTitle
 {
-	background-color: #7F8FB1;
-	color: #fff;
-	font-size:130%;
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    background-color: #fafafa;
+    line-height: 25px;
+    font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
 	text-align: left;
 	padding: 2px 6px 2px 6px;
-	border: 1px #7F8FB1 solid;
+	border: 1px rgb(216, 216, 216) solid;
 }
 
 div.sectionTitle { margin-bottom: 8px; }
@@ -103,54 +86,34 @@ div.sectionTitle { margin-bottom: 8px; }
 {
 	vertical-align: top;
 	padding: 4px;
-	border-bottom: 1px #7F8FB1 solid;
-	border-right: 1px #7F8FB1 solid;
+	border-bottom: 1px rgb(216, 216, 216) solid;
+	border-right: 1px rgb(216, 216, 216) solid;
+	border-left: 1px rgb(216, 216, 216) solid;
 }
 
 /*col#summaryAttributes {}*/
 .summaryTable td.attributes
 {
-	border-left: 1px #7F8FB1 solid;
+	border-left: 1px;
 	width: 140px;
 	text-align: right;
+	
 }
 
 td.attributes, .fixedFont
 {
-	line-height: 15px;
-	color: #002EBE;
-	font-family: "Courier New",Courier,monospace;
-	font-size: 13px;
+	color: rgb(2, 74, 8);
+	font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
 
 .summaryTable td.nameDescription
 {
 	text-align: left;
-	font-size: 13px;
-	line-height: 15px;
-}
-
-.summaryTable td.nameDescription, .description
-{
-	line-height: 15px;
-	padding: 4px;
-	padding-left: 4px;
 }
 
 .summaryTable { margin-bottom: 8px; }
 
-ul.inheritsList
-{
-	list-style: square;
-	margin-left: 20px;
-	padding-left: 0;
-}
 
-.detailList {
-	margin-left: 20px; 
-	line-height: 15px;
-}
-.detailList dt { margin-left: 20px; }
 
 .detailList .heading
 {
@@ -159,16 +122,50 @@ ul.inheritsList
 	margin-left: 0;
 }
 
-.light, td.attributes, .light a:link, .light a:visited
-{
-	color: #777;
-	font-style: italic;
+
+.classList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 0 8px;
+  font-family: sans-serif;
+  font-size: 1em;
+  overflow: auto;
 }
 
-.fineprint
-{
-	text-align: right;
-	font-size: 10px;
+
+a { color:#4285f4;
+	text-decoration: none;
+} 
+
+hr {
+  border: 0;
+  border-top: 1px solid rgb(216, 216, 216);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+td.nameDescription.fixedFont {
+	color: rgb(0, 0, 0);
+	
+}
+
+span.light {
+  color: rgb(148, 149, 155);
+  font-weight: bold;
+}
+
+pre {
+  background: #fafafa;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  /* border: 1px solid rgba(0, 0, 0, 0.1);  */
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgb(124, 19, 0);
 }
 		</style>
 	</head>
@@ -183,13 +180,7 @@ ul.inheritsList
 <!-- ============================== classes index ============================ -->
 		<div id="index">
 			<!-- begin publish.classesIndex -->
-			<div align="center"><a href="../index.html">Class Index</a>
-| <a href="../files.html">File Index</a></div>
-<hr />
-<h2>Classes</h2>
-<ul class="classList">
-	
-	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+			<ul class="classList">
 	
 	<li><a href="../symbols/buckets.arrays.html">buckets.arrays</a></li>
 	
@@ -214,7 +205,6 @@ ul.inheritsList
 	<li><a href="../symbols/buckets.Stack.html">buckets.Stack</a></li>
 	
 </ul>
-<hr />
 			<!-- end publish.classesIndex -->
 		</div>
 		
@@ -230,10 +220,7 @@ ul.inheritsList
 				
 				
 			
-				buckets.arrays
-				
-				
-					<br /><i>Defined in: </i> &lt;../buckets.js&gt;.
+				Contains various functions for manipulating arrays.
 				
 			</p>
 
@@ -243,18 +230,16 @@ ul.inheritsList
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
-						<th scope="col">Constructor Attributes</th>
 						<th scope="col">Constructor Name and Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
 								<b><a href="../symbols/buckets.arrays.html#constructor">buckets.arrays</a></b>
 							</div>
-							<div class="description">Contains various functions for manipulating arrays.</div>
+							<div class="description"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -272,14 +257,12 @@ ul.inheritsList
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
-							<th scope="col">Method Attributes</th>
 							<th scope="col">Method Name and Description</th>
 						</tr>
 					</thead>
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.contains">contains</a></b>(array, item, equalsFunction)
 								</div>
@@ -288,7 +271,6 @@ ul.inheritsList
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.copy">copy</a></b>(array)
 								</div>
@@ -297,7 +279,6 @@ ul.inheritsList
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.equals">equals</a></b>(array1, array2, equalsFunction)
 								</div>
@@ -306,7 +287,6 @@ ul.inheritsList
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.forEach">forEach</a></b>(array, callback)
 								</div>
@@ -315,7 +295,6 @@ ul.inheritsList
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.frequency">frequency</a></b>(array, item, equalsFunction)
 								</div>
@@ -325,7 +304,6 @@ to the specified item.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.indexOf">indexOf</a></b>(array, item, equalsFunction)
 								</div>
@@ -335,7 +313,6 @@ within the specified array.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.lastIndexOf">lastIndexOf</a></b>(array, item, equalsFunction)
 								</div>
@@ -345,7 +322,6 @@ within the specified array.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.remove">remove</a></b>(array, item, equalsFunction)
 								</div>
@@ -354,7 +330,6 @@ within the specified array.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">buckets.arrays.<b><a href="../symbols/buckets.arrays.html#.swap">swap</a></b>(array, i, j)
 								</div>
@@ -383,7 +358,7 @@ within the specified array.</div>
 				</div>
 				
 				<div class="description">
-					Contains various functions for manipulating arrays.
+					
 					
 				</div>
 				
@@ -419,7 +394,6 @@ within the specified array.</div>
 					</div>
 					<div class="description">
 						Returns true if the array contains the specified element.
-						
 						
 					</div>
 					
@@ -476,7 +450,6 @@ check equality between two elements. Receives two arguments and returns true if 
 					<div class="description">
 						Returns a shallow copy of the specified array.
 						
-						
 					</div>
 					
 					
@@ -521,7 +494,6 @@ check equality between two elements. Receives two arguments and returns true if 
 Two arrays are considered equal if both arrays contain the same number
 of elements, all corresponding pairs of elements in the two
 arrays are equal and are in the same order.
-						
 						
 					</div>
 					
@@ -578,7 +550,6 @@ check equality between two elements. Receives two arguments and returns true if 
 					<div class="description">
 						Executes a provided function once per array element.
 						
-						
 					</div>
 					
 					
@@ -622,7 +593,6 @@ optionally return false inside the callback.</dd>
 					<div class="description">
 						Returns the number of elements in the array equal
 to the specified item.
-						
 						
 					</div>
 					
@@ -681,7 +651,6 @@ equal to the specified object.</dd>
 						Returns the index of the first occurrence of the specified item
 within the specified array.
 						
-						
 					</div>
 					
 					
@@ -739,7 +708,6 @@ or -1 if not found.</dd>
 						Returns the index of the last occurrence of the specified element
 within the specified array.
 						
-						
 					</div>
 					
 					
@@ -796,7 +764,6 @@ within the specified array or -1 if not found.</dd>
 					<div class="description">
 						Removes the first ocurrence of the specified element from the specified array.
 						
-						
 					</div>
 					
 					
@@ -852,7 +819,6 @@ check equality between two elements. Receives two arguments and returns true if 
 					<div class="description">
 						Swaps the elements at the specified positions in the specified array.
 						
-						
 					</div>
 					
 					
@@ -903,13 +869,6 @@ check equality between two elements. Receives two arguments and returns true if 
 			
 			
 			<hr />
-		</div>
-
-		
-<!-- ============================== footer ================================= -->
-		<div class="fineprint" style="clear:both">
-			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Mar 12 2015 00:38:48 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

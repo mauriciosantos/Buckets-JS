@@ -11,65 +11,45 @@
 			/* default.css */
 body
 {
-	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
-	width: 800px;
+	font: 13.5px sans-serif;
+	line-height: 20px;
+	max-width: 950px;
+	-webkit-font-smoothing: antialiased;
+	text-align: justify;
 }
 
-.header
-{
-	clear: both;
-	background-color: #ccc;
-	padding: 8px;
-}
 
 h1
 {
-	font-size: 150%;
-	font-weight: bold;
 	padding: 0;
-	margin: 1em 0 0 .3em;
-}
-
-hr
-{
-	border: none 0;
-	border-top: 1px solid #7F8FB1;
-	height: 1px;
-}
-
-pre.code
-{
-	display: block;
-	padding: 8px;
-	border: 1px dashed #ccc;
+    color: rgb(65, 131, 196);
+    margin: 0 auto;
+	padding-top: 18px;
 }
 
 #index
 {
-	margin-top: 24px;
-	float: left;
-	width: 160px;
-	position: absolute;
-	left: 8px;
-	background-color: #F3F3F3;
-	padding: 8px;
+    margin-top: 15px;
+	margin-left: 15px;
+    width: 160px;
+    position: absolute;
+    left: 8px;
+    padding: 8px;
+    background: #fafafa;
+    padding-top: 12px;
+    padding-left: 6px;
+	padding-right: 12px;
+	padding-bottom: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+	
 }
 
 #content
 {
-	margin-left: 190px;
-	width: 600px;
+	margin-left: 220px;
 }
 
-.classList
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0 0 0 8px;
-	font-family: arial, sans-serif;
-	font-size: 1em;
-	overflow: auto;
-}
+
 
 .classList li
 {
@@ -77,23 +57,26 @@ pre.code
 	margin: 0 0 8px 0;
 }
 
-.summaryTable { width: 100%; }
-
-h1.classTitle
-{
-	font-size:170%;
-	line-height:130%;
+.summaryTable { 
+	width: 100%; 
 }
+
 
 h2 { font-size: 110%; }
 caption, div.sectionTitle
 {
-	background-color: #7F8FB1;
-	color: #fff;
-	font-size:130%;
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    background-color: #fafafa;
+    line-height: 25px;
+    font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
 	text-align: left;
 	padding: 2px 6px 2px 6px;
-	border: 1px #7F8FB1 solid;
+	border: 1px rgb(216, 216, 216) solid;
 }
 
 div.sectionTitle { margin-bottom: 8px; }
@@ -103,54 +86,34 @@ div.sectionTitle { margin-bottom: 8px; }
 {
 	vertical-align: top;
 	padding: 4px;
-	border-bottom: 1px #7F8FB1 solid;
-	border-right: 1px #7F8FB1 solid;
+	border-bottom: 1px rgb(216, 216, 216) solid;
+	border-right: 1px rgb(216, 216, 216) solid;
+	border-left: 1px rgb(216, 216, 216) solid;
 }
 
 /*col#summaryAttributes {}*/
 .summaryTable td.attributes
 {
-	border-left: 1px #7F8FB1 solid;
+	border-left: 1px;
 	width: 140px;
 	text-align: right;
+	
 }
 
 td.attributes, .fixedFont
 {
-	line-height: 15px;
-	color: #002EBE;
-	font-family: "Courier New",Courier,monospace;
-	font-size: 13px;
+	color: rgb(2, 74, 8);
+	font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
 
 .summaryTable td.nameDescription
 {
 	text-align: left;
-	font-size: 13px;
-	line-height: 15px;
-}
-
-.summaryTable td.nameDescription, .description
-{
-	line-height: 15px;
-	padding: 4px;
-	padding-left: 4px;
 }
 
 .summaryTable { margin-bottom: 8px; }
 
-ul.inheritsList
-{
-	list-style: square;
-	margin-left: 20px;
-	padding-left: 0;
-}
 
-.detailList {
-	margin-left: 20px; 
-	line-height: 15px;
-}
-.detailList dt { margin-left: 20px; }
 
 .detailList .heading
 {
@@ -159,16 +122,50 @@ ul.inheritsList
 	margin-left: 0;
 }
 
-.light, td.attributes, .light a:link, .light a:visited
-{
-	color: #777;
-	font-style: italic;
+
+.classList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 0 8px;
+  font-family: sans-serif;
+  font-size: 1em;
+  overflow: auto;
 }
 
-.fineprint
-{
-	text-align: right;
-	font-size: 10px;
+
+a { color:#4285f4;
+	text-decoration: none;
+} 
+
+hr {
+  border: 0;
+  border-top: 1px solid rgb(216, 216, 216);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+td.nameDescription.fixedFont {
+	color: rgb(0, 0, 0);
+	
+}
+
+span.light {
+  color: rgb(148, 149, 155);
+  font-weight: bold;
+}
+
+pre {
+  background: #fafafa;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  /* border: 1px solid rgba(0, 0, 0, 0.1);  */
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgb(124, 19, 0);
 }
 		</style>
 	</head>
@@ -183,13 +180,7 @@ ul.inheritsList
 <!-- ============================== classes index ============================ -->
 		<div id="index">
 			<!-- begin publish.classesIndex -->
-			<div align="center"><a href="../index.html">Class Index</a>
-| <a href="../files.html">File Index</a></div>
-<hr />
-<h2>Classes</h2>
-<ul class="classList">
-	
-	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+			<ul class="classList">
 	
 	<li><a href="../symbols/buckets.arrays.html">buckets.arrays</a></li>
 	
@@ -214,7 +205,6 @@ ul.inheritsList
 	<li><a href="../symbols/buckets.Stack.html">buckets.Stack</a></li>
 	
 </ul>
-<hr />
 			<!-- end publish.classesIndex -->
 		</div>
 		
@@ -233,28 +223,25 @@ ul.inheritsList
 				<p>A multi dictionary is a special kind of dictionary that holds
 multiple values against each key. Setting a value into the dictionary will
 add the value to an array at that key. Getting a key will return an array
-holding all of the values set to that key.
+holding all the values set to that key.
 This implementation accepts any kind of objects as keys.</p>
 
-<p>If the keys are custom objects, a function which converts keys to unique strings must be
-provided. Example:</p>
-
+<p>If the keys are custom objects, a function that converts keys to unique strings must be
+provided at construction time.</p>
+<p>Example:</p>
 <pre>
 function petToString(pet) {
  return pet.type + ' ' + pet.name;
 }
 </pre>
-<p>If the values are custom objects a function to check equality between values
-must be provided. Example:</p>
-
+<p>If the values are custom objects, a function to check equality between values
+must be provided.</p>
+<p>Example:</p>
 <pre>
 function petsAreEqualByAge(pet1,pet2) {
  return pet1.age===pet2.age;
 }
 </pre>
-				
-				
-					<br /><i>Defined in: </i> &lt;../buckets.js&gt;.
 				
 			</p>
 
@@ -264,13 +251,11 @@ function petsAreEqualByAge(pet1,pet2) {
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
-						<th scope="col">Constructor Attributes</th>
 						<th scope="col">Constructor Name and Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
 								<b><a href="../symbols/buckets.MultiDictionary.html#constructor">buckets.MultiDictionary</a></b>(toStrFunction, valuesEqualsFunction)
@@ -293,14 +278,12 @@ function petsAreEqualByAge(pet1,pet2) {
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
-							<th scope="col">Method Attributes</th>
 							<th scope="col">Method Name and Description</th>
 						</tr>
 					</thead>
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#clear">clear</a></b>()
 								</div>
@@ -309,7 +292,6 @@ function petsAreEqualByAge(pet1,pet2) {
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#containsKey">containsKey</a></b>(key)
 								</div>
@@ -318,7 +300,6 @@ function petsAreEqualByAge(pet1,pet2) {
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#get">get</a></b>(key)
 								</div>
@@ -328,7 +309,6 @@ the specified key.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#isEmpty">isEmpty</a></b>()
 								</div>
@@ -337,7 +317,6 @@ the specified key.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#keys">keys</a></b>()
 								</div>
@@ -346,7 +325,6 @@ the specified key.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#remove">remove</a></b>(key, value)
 								</div>
@@ -356,7 +334,6 @@ specified key.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#set">set</a></b>(key, value)
 								</div>
@@ -366,7 +343,6 @@ it is not already present.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#size">size</a></b>()
 								</div>
@@ -375,7 +351,6 @@ it is not already present.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#values">values</a></b>()
 								</div>
@@ -462,7 +437,6 @@ function to check if two values are equal.</dd>
 					<div class="description">
 						Removes all mappings from this dictionary.
 						
-						
 					</div>
 					
 					
@@ -486,7 +460,6 @@ function to check if two values are equal.</dd>
 					</div>
 					<div class="description">
 						Returns true if this dictionary has at least one value associatted with the specified key.
-						
 						
 					</div>
 					
@@ -534,7 +507,6 @@ the specified key.</dd>
 the specified key.
 Returns an empty array if this dictionary contains no mappings for this key.
 						
-						
 					</div>
 					
 					
@@ -578,7 +550,6 @@ the specified key.</dd>
 					<div class="description">
 						Returns true if this dictionary contains no mappings.
 						
-						
 					</div>
 					
 					
@@ -609,7 +580,6 @@ the specified key.</dd>
 					</div>
 					<div class="description">
 						Returns an array containing all of the keys in this dictionary.
-						
 						
 					</div>
 					
@@ -643,7 +613,6 @@ the specified key.</dd>
 						Removes the specified value from the array of values associated with the
 specified key. If a value isn't given, all values associated with the specified
 key are removed.
-						
 						
 					</div>
 					
@@ -697,7 +666,6 @@ if the specified value isn't associated with the specified key.</dd>
 						Adds the value to an array associated with the specified key if
 it is not already present.
 						
-						
 					</div>
 					
 					
@@ -747,7 +715,6 @@ associated.</dd>
 					<div class="description">
 						Returns the number of keys in this dictionary.
 						
-						
 					</div>
 					
 					
@@ -779,7 +746,6 @@ associated.</dd>
 					<div class="description">
 						Returns an array containing all of the values in this dictionary.
 						
-						
 					</div>
 					
 					
@@ -807,13 +773,6 @@ associated.</dd>
 			
 			
 			<hr />
-		</div>
-
-		
-<!-- ============================== footer ================================= -->
-		<div class="fineprint" style="clear:both">
-			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Mar 12 2015 00:38:48 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

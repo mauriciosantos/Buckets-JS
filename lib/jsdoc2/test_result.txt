@@ -1,0 +1,3 @@
+Time spent running the test cases 50 times
+	Node:  10847 ms
+	Rhino: 18276 ms

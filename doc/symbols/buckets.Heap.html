@@ -11,65 +11,45 @@
 			/* default.css */
 body
 {
-	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
-	width: 800px;
+	font: 13.5px sans-serif;
+	line-height: 20px;
+	max-width: 950px;
+	-webkit-font-smoothing: antialiased;
+	text-align: justify;
 }
 
-.header
-{
-	clear: both;
-	background-color: #ccc;
-	padding: 8px;
-}
 
 h1
 {
-	font-size: 150%;
-	font-weight: bold;
 	padding: 0;
-	margin: 1em 0 0 .3em;
-}
-
-hr
-{
-	border: none 0;
-	border-top: 1px solid #7F8FB1;
-	height: 1px;
-}
-
-pre.code
-{
-	display: block;
-	padding: 8px;
-	border: 1px dashed #ccc;
+    color: rgb(65, 131, 196);
+    margin: 0 auto;
+	padding-top: 18px;
 }
 
 #index
 {
-	margin-top: 24px;
-	float: left;
-	width: 160px;
-	position: absolute;
-	left: 8px;
-	background-color: #F3F3F3;
-	padding: 8px;
+    margin-top: 15px;
+	margin-left: 15px;
+    width: 160px;
+    position: absolute;
+    left: 8px;
+    padding: 8px;
+    background: #fafafa;
+    padding-top: 12px;
+    padding-left: 6px;
+	padding-right: 12px;
+	padding-bottom: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+	
 }
 
 #content
 {
-	margin-left: 190px;
-	width: 600px;
+	margin-left: 220px;
 }
 
-.classList
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 0 0 0 8px;
-	font-family: arial, sans-serif;
-	font-size: 1em;
-	overflow: auto;
-}
+
 
 .classList li
 {
@@ -77,23 +57,26 @@ pre.code
 	margin: 0 0 8px 0;
 }
 
-.summaryTable { width: 100%; }
-
-h1.classTitle
-{
-	font-size:170%;
-	line-height:130%;
+.summaryTable { 
+	width: 100%; 
 }
+
 
 h2 { font-size: 110%; }
 caption, div.sectionTitle
 {
-	background-color: #7F8FB1;
-	color: #fff;
-	font-size:130%;
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    background-color: #fafafa;
+    line-height: 25px;
+    font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
 	text-align: left;
 	padding: 2px 6px 2px 6px;
-	border: 1px #7F8FB1 solid;
+	border: 1px rgb(216, 216, 216) solid;
 }
 
 div.sectionTitle { margin-bottom: 8px; }
@@ -103,54 +86,34 @@ div.sectionTitle { margin-bottom: 8px; }
 {
 	vertical-align: top;
 	padding: 4px;
-	border-bottom: 1px #7F8FB1 solid;
-	border-right: 1px #7F8FB1 solid;
+	border-bottom: 1px rgb(216, 216, 216) solid;
+	border-right: 1px rgb(216, 216, 216) solid;
+	border-left: 1px rgb(216, 216, 216) solid;
 }
 
 /*col#summaryAttributes {}*/
 .summaryTable td.attributes
 {
-	border-left: 1px #7F8FB1 solid;
+	border-left: 1px;
 	width: 140px;
 	text-align: right;
+	
 }
 
 td.attributes, .fixedFont
 {
-	line-height: 15px;
-	color: #002EBE;
-	font-family: "Courier New",Courier,monospace;
-	font-size: 13px;
+	color: rgb(2, 74, 8);
+	font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
 
 .summaryTable td.nameDescription
 {
 	text-align: left;
-	font-size: 13px;
-	line-height: 15px;
-}
-
-.summaryTable td.nameDescription, .description
-{
-	line-height: 15px;
-	padding: 4px;
-	padding-left: 4px;
 }
 
 .summaryTable { margin-bottom: 8px; }
 
-ul.inheritsList
-{
-	list-style: square;
-	margin-left: 20px;
-	padding-left: 0;
-}
 
-.detailList {
-	margin-left: 20px; 
-	line-height: 15px;
-}
-.detailList dt { margin-left: 20px; }
 
 .detailList .heading
 {
@@ -159,16 +122,50 @@ ul.inheritsList
 	margin-left: 0;
 }
 
-.light, td.attributes, .light a:link, .light a:visited
-{
-	color: #777;
-	font-style: italic;
+
+.classList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 0 8px;
+  font-family: sans-serif;
+  font-size: 1em;
+  overflow: auto;
 }
 
-.fineprint
-{
-	text-align: right;
-	font-size: 10px;
+
+a { color:#4285f4;
+	text-decoration: none;
+} 
+
+hr {
+  border: 0;
+  border-top: 1px solid rgb(216, 216, 216);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+td.nameDescription.fixedFont {
+	color: rgb(0, 0, 0);
+	
+}
+
+span.light {
+  color: rgb(148, 149, 155);
+  font-weight: bold;
+}
+
+pre {
+  background: #fafafa;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  /* border: 1px solid rgba(0, 0, 0, 0.1);  */
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgb(124, 19, 0);
 }
 		</style>
 	</head>
@@ -183,13 +180,7 @@ ul.inheritsList
 <!-- ============================== classes index ============================ -->
 		<div id="index">
 			<!-- begin publish.classesIndex -->
-			<div align="center"><a href="../index.html">Class Index</a>
-| <a href="../files.html">File Index</a></div>
-<hr />
-<h2>Classes</h2>
-<ul class="classList">
-	
-	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+			<ul class="classList">
 	
 	<li><a href="../symbols/buckets.arrays.html">buckets.arrays</a></li>
 	
@@ -214,7 +205,6 @@ ul.inheritsList
 	<li><a href="../symbols/buckets.Stack.html">buckets.Stack</a></li>
 	
 </ul>
-<hr />
 			<!-- end publish.classesIndex -->
 		</div>
 		
@@ -230,13 +220,13 @@ ul.inheritsList
 				
 				
 			
-				<p>A heap is a binary tree, where the nodes maintain the heap property:
-each node is smaller than each of its children.
+				<p>A heap is a binary tree that maintains the heap property:
+Every node is less than or equal to each of its children. 
 This implementation uses an array to store elements.</p>
-<p>If the inserted elements are custom objects a compare function must be provided 
+<p>If the inserted elements are custom objects, a compare function must be provided 
 at construction time, otherwise the <=, === and >= operators are
-used to compare elements. Example:</p>
-
+used to compare elements.</p>
+<p>Example:</p>
 <pre>
 function compare(a, b) {
  if (a is less than b by some ordering criterion) {
@@ -249,8 +239,9 @@ function compare(a, b) {
 }
 </pre>
 
-<p>If a Max-Heap is wanted (greater elements on top) you can a provide a
-reverse compare function to accomplish that behavior. Example:</p>
+<p>To create a Max-Heap (greater elements on top) you can a provide a
+reverse compare function.</p>
+<p>Example:</p>
 
 <pre>
 function reverseCompare(a, b) {
@@ -264,9 +255,6 @@ function reverseCompare(a, b) {
 }
 </pre>
 				
-				
-					<br /><i>Defined in: </i> &lt;../buckets.js&gt;.
-				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
@@ -275,13 +263,11 @@ function reverseCompare(a, b) {
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
-						<th scope="col">Constructor Attributes</th>
 						<th scope="col">Constructor Name and Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
 								<b><a href="../symbols/buckets.Heap.html#constructor">buckets.Heap</a></b>(compareFunction)
@@ -304,14 +290,12 @@ function reverseCompare(a, b) {
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
-							<th scope="col">Method Attributes</th>
 							<th scope="col">Method Name and Description</th>
 						</tr>
 					</thead>
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#add">add</a></b>(element)
 								</div>
@@ -320,7 +304,6 @@ function reverseCompare(a, b) {
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#clear">clear</a></b>()
 								</div>
@@ -329,7 +312,6 @@ function reverseCompare(a, b) {
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#contains">contains</a></b>(element)
 								</div>
@@ -338,7 +320,6 @@ function reverseCompare(a, b) {
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#forEach">forEach</a></b>(callback)
 								</div>
@@ -348,7 +329,6 @@ no particular order.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#isEmpty">isEmpty</a></b>()
 								</div>
@@ -357,7 +337,6 @@ no particular order.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#peek">peek</a></b>()
 								</div>
@@ -366,7 +345,6 @@ no particular order.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#removeRoot">removeRoot</a></b>()
 								</div>
@@ -375,7 +353,6 @@ no particular order.</div>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/buckets.Heap.html#size">size</a></b>()
 								</div>
@@ -455,7 +432,6 @@ or greater than the second.</dd>
 					<div class="description">
 						Adds the given element into the heap.
 						
-						
 					</div>
 					
 					
@@ -498,7 +474,6 @@ or greater than the second.</dd>
 					<div class="description">
 						Removes all of the elements from this heap.
 						
-						
 					</div>
 					
 					
@@ -522,7 +497,6 @@ or greater than the second.</dd>
 					</div>
 					<div class="description">
 						Returns true if this heap contains the specified element.
-						
 						
 					</div>
 					
@@ -568,7 +542,6 @@ otherwise.</dd>
 						Executes the provided function once per element present in this heap in
 no particular order.
 						
-						
 					</div>
 					
 					
@@ -606,7 +579,6 @@ optionally return false.</dd>
 					<div class="description">
 						Checks if this heap is empty.
 						
-						
 					</div>
 					
 					
@@ -638,7 +610,6 @@ otherwise.</dd>
 					</div>
 					<div class="description">
 						Retrieves but does not remove the root element of this heap.
-						
 						
 					</div>
 					
@@ -672,7 +643,6 @@ heap is empty.</dd>
 					<div class="description">
 						Retrieves and removes the root element of this heap.
 						
-						
 					</div>
 					
 					
@@ -705,7 +675,6 @@ undefined if the heap is empty.</dd>
 					<div class="description">
 						Returns the number of elements in this heap.
 						
-						
 					</div>
 					
 					
@@ -733,13 +702,6 @@ undefined if the heap is empty.</dd>
 			
 			
 			<hr />
-		</div>
-
-		
-<!-- ============================== footer ================================= -->
-		<div class="fineprint" style="clear:both">
-			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Mar 12 2015 00:38:48 GMT-0500 (COT)
 		</div>
 	</body>
 </html>

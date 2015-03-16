@@ -3,11 +3,6 @@
 // Some documentation is based on the official Java API
 // as it serves the same purpose.
 
-/**
- * Top level namespace for Buckets, a JavaScript data structure library.
- * @namespace buckets
- */
-
 (function (root, factory) {
     if (typeof define === "function" && define.amd) {
         define([], factory);
@@ -18,6 +13,12 @@
     }
 }(this, function() {
     'use strict';
+	
+	/**
+	* Top level namespace for Buckets, 
+	* a JavaScript data structure library.
+	* @name buckets
+ 	*/
     var buckets = {};
 
     /**
@@ -124,8 +125,7 @@
     };
 
     /**
-	 * Contains various functions for manipulating arrays.
-     * @namespace buckets.arrays
+     * @namespace Contains various functions for manipulating arrays.
      */
     buckets.arrays = {};
 
@@ -685,8 +685,9 @@
      * @class <p>Dictionaries map keys to values; each key can map to at most one value.
      * This implementation accepts any kind of objects as keys.</p>
      *
-     * <p>If the keys are custom objects a function which converts keys to unique
-     * strings must be provided. Example:</p>
+     * <p>If the keys are custom objects, a function that converts keys to unique
+     * strings must be provided at construction time.</p>
+	 * <p>Example:</p>
      * <pre>
      * function petToString(pet) {
      *  return pet.name;
@@ -888,20 +889,20 @@
      * @class <p>A multi dictionary is a special kind of dictionary that holds
      * multiple values against each key. Setting a value into the dictionary will
      * add the value to an array at that key. Getting a key will return an array
-     * holding all of the values set to that key.
+     * holding all the values set to that key.
      * This implementation accepts any kind of objects as keys.</p>
      *
-     * <p>If the keys are custom objects, a function which converts keys to unique strings must be
-     * provided. Example:</p>
-     *
+     * <p>If the keys are custom objects, a function that converts keys to unique strings must be
+     * provided at construction time.</p>
+     * <p>Example:</p>
      * <pre>
      * function petToString(pet) {
      *  return pet.type + ' ' + pet.name;
      * }
      * </pre>
-     * <p>If the values are custom objects a function to check equality between values
-     * must be provided. Example:</p>
-     *
+     * <p>If the values are custom objects, a function to check equality between values
+     * must be provided.</p>
+     * <p>Example:</p>
      * <pre>
      * function petsAreEqualByAge(pet1,pet2) {
      *  return pet1.age===pet2.age;
@@ -1053,13 +1054,13 @@
     /**
      * Creates an empty Heap.
      * @class
-     * <p>A heap is a binary tree, where the nodes maintain the heap property:
-     * each node is smaller than each of its children.
+     * <p>A heap is a binary tree that maintains the heap property:
+     * Every node is less than or equal to each of its children. 
      * This implementation uses an array to store elements.</p>
-     * <p>If the inserted elements are custom objects a compare function must be provided 
+     * <p>If the inserted elements are custom objects, a compare function must be provided 
      * at construction time, otherwise the <=, === and >= operators are
-     * used to compare elements. Example:</p>
-     *
+     * used to compare elements.</p>
+     * <p>Example:</p>
      * <pre>
      * function compare(a, b) {
      *  if (a is less than b by some ordering criterion) {
@@ -1072,8 +1073,9 @@
      * }
      * </pre>
      *
-     * <p>If a Max-Heap is wanted (greater elements on top) you can a provide a
-     * reverse compare function to accomplish that behavior. Example:</p>
+     * <p>To create a Max-Heap (greater elements on top) you can a provide a
+     * reverse compare function.</p>
+	 * <p>Example:</p>
      *
      * <pre>
      * function reverseCompare(a, b) {
@@ -1501,9 +1503,11 @@
      * Creates an empty priority queue.
      * @class <p>In a priority queue each element is associated with a "priority",
      * elements are dequeued in highest-priority-first order (the elements with the
-     * highest priority are dequeued first). Priority queues are implemented as heaps.
-     * If the inserted elements are custom objects a compare function must be provided,
+     * highest priority are dequeued first). Priority queues are implemented as binary heaps.</p>
+	 *
+     * <p>If the inserted elements are custom objects, a compare function must be provided,
      * otherwise the <=, === and >= operators are used to compare object priority.</p>
+	 * <p>Example:</p>
      * <pre>
      * function compare(a, b) {
      *  if (a is less than b by some ordering criterion) {
@@ -1615,16 +1619,15 @@
     /**
      * Creates an empty set.
      * @class <p>A set is a data structure that contains no duplicate items.</p>
-     * <p>If the inserted elements are custom objects a function
-     * which converts elements to unique strings must be provided. Example:</p>
-     *
+     * <p>If the inserted elements are custom objects, a function
+     * that converts elements to unique strings must be provided at construction time. 
+	 * <p>Example:</p>
      * <pre>
      * function petToString(pet) {
      *  return pet.type + ' ' + pet.name;
      * }
      * </pre>
      *
-     * @constructor
      * @param {function(Object):string=} toStringFunction Optional function used
      * to convert elements to unique strings. If the elements aren't strings or if toString()
      * is not appropriate, a custom function which receives an object and returns a
@@ -1778,9 +1781,9 @@
      * Creates an empty bag.
      * @class <p>A bag is a special kind of set in which members are
      * allowed to appear more than once.</p>
-     * <p>If the inserted elements are custom objects a function
-     * that maps elements to unique strings must be provided at construction time. Example:</p>
-     *
+     * <p>If the inserted elements are custom objects, a function
+     * that maps elements to unique strings must be provided at construction time.</p>
+	 * <p>Example:</p>
      * <pre>
      * function petToUniqueString(pet) {
      *  return pet.type + ' ' + pet.name;
@@ -1967,18 +1970,14 @@
 
     /**
      * Creates an empty binary search tree.
-     * @class <p>Formally, a binary search tree is a node-based binary tree data structure which
-     * has the following properties:</p>
-     * <ul>
-     * <li>The left subtree of a node contains only elements less
-     * than the node's element.</li>
-     * <li>The right subtree of a node contains only elements greater
-     * than the node's element.</li>
-     * <li>Both the left and right subtrees must also be binary search trees.</li>
-     * </ul>
+     * @class <p> A binary search tree is a node-based binary tree data structure 
+	 * where each node has a comparable key (and an associated value) and satisfies the 
+	 * restriction that the key in any node is larger than the keys in all nodes in that node's 
+	 * left sub-tree and smaller than the keys in all nodes in that node's right sub-tree.</p>
      * <p>If the inserted elements are custom objects, a compare function must
      * be provided at construction time, otherwise the <=, === and >= operators are
-     * used to compare elements. Example:</p>
+     * used to compare elements. 
+	 * <p>Example:</p>
      * <pre>
      * function compare(a, b) {
      *  if (a is less than b by some ordering criterion) {

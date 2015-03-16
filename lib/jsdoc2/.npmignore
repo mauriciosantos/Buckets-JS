@@ -1,0 +1,10 @@
+.git/
+.backup/
+node_modules/
+doc/
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+.gitattributes
+*.bat

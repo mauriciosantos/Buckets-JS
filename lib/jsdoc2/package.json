@@ -1,0 +1,68 @@
+{
+  "author": {
+    "name": "Michael Mathews",
+    "email": "micmath@gmail.com"
+  },
+  "name": "jsdoc2",
+  "description": "A port of JSDoc2 Toolkit that runs on Node",
+  "version": "2.4.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wronex/node-jsdoc2.git"
+  },
+  "homepage": "http://wronex.github.com/node-jsdoc2",
+  "contributors": [
+    {
+      "name": "wronex",
+      "email": "code@wronex.com"
+    }
+  ],
+  "keywords": [
+    "jsdoc2",
+    "jsdoc2-toolkit",
+    "toolkit",
+    "documentation",
+    "generate",
+    "doc"
+  ],
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/wronex/node-jsdoc2/issues"
+  },
+  "bin": {
+    "jsdoc2": "./app/run.js"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/wronex/node-jsdoc2/LICENSE"
+    }
+  ],
+  "preferGlobal": "true",
+  "readme": "JSDOC FOR NODEJS\r\n======================================================================\r\n\r\nThis version of JsDoc have been modified to run on NodeJs instead of\r\nRhino. The reason is simple: performance. NodeJs uses Google's V8 \r\nJavaScript engine with far better performance than Mozilla's Rhino.\r\n\r\nUsers have reported that it is possible to compile documentation in\r\nabout 10 seconds running NodeJs instead of 250 seconds running Rhino.\r\nSee test_result.txt for more details.\r\n\r\nUtilizing NodeJs brings another advantage: there is no need for Java\r\nnor the Java runtime. Which means less to download and less to \r\ndistribute. It also decreases the startup time of JsDoc which means\r\nthat the documentation for small project can now be generated much \r\nfaster than before.\r\n\r\nThis is not an official JsDoc release. For the official version of \r\nJsDoc that runs ontop of Rhino, please visit\r\nhttp://code.google.com/p/jsdoc-toolkit/\r\n\r\n\r\nDESCRIPTION\r\n======================================================================\r\n\r\nThis is the source code for JsDoc Toolkit, an automatic documentation\r\ngeneration tool for JavaScript. It is written in JavaScript and is run\r\nfrom a command line (or terminal) using NodeJS.\r\n\r\nUsing this tool you can automatically turn JavaDoc-like comments in\r\nyour JavaScript source code into published output files, such as HTML\r\nor XML.\r\n\r\nFor more information, to report a bug, or to browse the technical\r\ndocumentation for this tool please visit the official JsDoc Toolkit\r\nproject homepage at http://code.google.com/p/jsdoc-toolkit/\r\n\r\nFor the most up-to-date documentation on JsDoc Toolkit see the \r\nofficial wiki at http://code.google.com/p/jsdoc-toolkit/w/list\r\n\r\n\r\nREQUIREMENTS\r\n======================================================================\r\n\r\nRunning JsDoc Toolkit requires you to have NodeJS installed on your\r\ncomputer. For more information see http://nodejs.org/\r\n\r\n * NodeJS http://nodejs.org/\r\n\r\n\r\nINSTALLATION\r\n======================================================================\r\n\r\nUse NPM to download and install the page\r\n\r\n\t$ [sudo] npm install -g jsdoc2\r\n\r\nUSAGE\r\n======================================================================\r\n\r\nOn a computer running Windows a valid command line to run JsDoc\r\nToolkit might look like this:\r\n\r\n\t$ jsdoc2 -a -t=templates/jsdoc mycode.js\r\n\r\nIf you have manually downloaded and installed JsDoc instead of using\r\nNPM, the same command might look like this:\r\n\r\n\t$ node app/run.js -a -t=templates/jsdoc mycode.js\r\n\r\nThe above assumes your current working directory contains the\r\n\"templates\" subdirectories from the standard JsDoc Toolkit\r\ndistribution and that the relative path to the code you wish to\r\ndocument is \"mycode.js\".\r\n\r\nThe output documentation files will be saved to a new directory named\r\n\"out\" (by default) in the current directory, or if you specify a\r\n-d=somewhere_else option, to the somewhere_else directory.\r\n\r\nFor help (usage notes) enter this on the command line:\r\n\r\n\t$ jsdoc2 --help\r\n\r\nMore information about the various command line options used by JsDoc\r\nToolkit are available on the project wiki.\r\n\r\n\r\nTESTING\r\n======================================================================\r\n\r\nTo run the suite of unit tests included with JsDoc Toolkit enter this\r\non the command line:\r\n\r\n\t$ jsdoc2 -T\r\n\r\nTo see a dump of the internal data structure that JsDoc Toolkit has\r\nbuilt from your source files use this command:\r\n\r\n\t$ jsdoc2 mycode.js -Z\r\n\r\n\r\nLICENSE\r\n======================================================================\r\n\r\nJSDoc.pm\r\n----------------------------------------------------------------------\r\n\r\nThis project is based on the JSDoc.pm tool, created by Michael\r\nMathews and Gabriel Reid. More information on JsDoc.pm can\r\nbe found on the JSDoc.pm homepage: http://jsdoc.sourceforge.net/\r\n\r\nComplete documentation on JsDoc Toolkit can be found on the project\r\nwiki at http://code.google.com/p/jsdoc-toolkit/w/list\r\n\r\n\r\nJsDoc Toolkit\r\n----------------------------------------------------------------------\r\n\r\nAll code specific to JsDoc Toolkit are free, open source and licensed\r\nfor use under the X11/MIT License.\r\n\r\nJsDoc Toolkit is Copyright (c)2009 Michael Mathews <micmath@gmail.com>\r\n\r\nThis program is free software; you can redistribute it and/or\r\nmodify it under the terms below.\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining\r\na copy of this software and associated documentation files (the\r\n\"Software\"), to deal in the Software without restriction, including\r\nwithout limitation the rights to use, copy, modify, merge, publish,\r\ndistribute, sublicense, and/or sell copies of the Software, and to\r\npermit persons to whom the Software is furnished to do so, subject to\r\nthe following conditions: The above copyright notice and this\r\npermission notice must be included in all copies or substantial\r\nportions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\r\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\r\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\r\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\r\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\r\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\r\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\r\n",
+  "readmeFilename": "README.md",
+  "_id": "jsdoc2@2.4.0",
+  "dist": {
+    "shasum": "81ba85f4f2434ff86fd5bf75f028cfb3c2e8fbef",
+    "tarball": "http://registry.npmjs.org/jsdoc2/-/jsdoc2-2.4.0.tgz"
+  },
+  "_npmVersion": "1.1.69",
+  "_npmUser": {
+    "name": "wronex",
+    "email": "wronex@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "wronex",
+      "email": "wronex@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "81ba85f4f2434ff86fd5bf75f028cfb3c2e8fbef",
+  "_from": "jsdoc2@",
+  "_resolved": "https://registry.npmjs.org/jsdoc2/-/jsdoc2-2.4.0.tgz"
+}

@@ -80,7 +80,7 @@ a.union(b); // {1,2}
 ```
 Read the [documentation](https://rawgithub.com/mauriciosantos/buckets/master/doc/index.html).
 
-Building guide
+Building Buckets
 --------------------
 
 There's nothing else you need to use buckets. However, this [guide](./BUILD.md) may help you if you wish to contribute to the project or modify it.

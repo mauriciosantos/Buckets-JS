@@ -33,8 +33,8 @@ Downloading Buckets
 
 Download directly
 
-- [buckets.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets.js) (for development) or
-- [buckets.min.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets.min.js) (for production)
+- [buckets.js](https://github.com/mauriciosantos/Buckets-JS/releases/download/1.90.0/buckets.js) (for development) or
+- [buckets.min.js](https://github.com/mauriciosantos/Buckets-JS/releases/download/1.90.0/buckets.min.js) (for production)
 
 Then, add it as a script tag to your page:
 

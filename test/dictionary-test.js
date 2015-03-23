@@ -1,226 +1,210 @@
-describe('Dictionary',
-function() {
+describe('Dictionary', function () {
+    var elems = 100,
+        dict;
 
-    var dict = null;
-    var elems = 100;
-
-    beforeEach(function() {
+    beforeEach(function () {
         dict = new buckets.Dictionary();
     });
 
-    it('Maps keys to values with string keys',
-    function() {
-
-        expect(dict.get("sd")).toBeUndefined();
+    it('set and get value with string key', function () {
+        var i;
+        expect(dict.get('sd')).toBeUndefined();
 
         // test with string keys
-        for (var i = 0; i < elems; i++) {
-            expect(dict.set("" + i, i + 1)).toBeUndefined();
+        for (i = 0; i < elems; i += 1) {
+            expect(dict.set('' + i, i + 1)).toBeUndefined();
         }
         expect(dict.size()).toEqual(elems);
 
-        for (var i = 0; i < elems; i++) {
-            expect(dict.get("" + i)).toEqual(i + 1);
+        for (i = 0; i < elems; i += 1) {
+            expect(dict.get('' + i)).toEqual(i + 1);
         }
 
-        dict.set("a", 5);
-        expect(dict.get("a")).toEqual(5);
-        expect(dict.set("a", 21)).toEqual(5);
+        dict.set('a', 5);
+        expect(dict.get('a')).toEqual(5);
+        expect(dict.set('a', 21)).toEqual(5);
         expect(dict.size()).toEqual(elems + 1);
-        expect(dict.get("a")).toEqual(21);
+        expect(dict.get('a')).toEqual(21);
 
     });
 
-    it('Maps keys to values with number keys',
-    function() {
-
+    it('set and get value with number key', function () {
+        var i;
         // test with number keys
-        for (var i = 0; i < elems; i++) {
+        for (i = 0; i < elems; i += 1) {
             expect(dict.set(i, i + 1)).toBeUndefined();
         }
 
-        for (var i = 0; i < elems; i++) {
+        for (i = 0; i < elems; i += 1) {
             expect(dict.get(i)).toEqual(i + 1);
         }
     });
 
-    it('Maps keys to values with custom keys',
-    function() {
+    it('set and get value with custom key', function () {
 
-        var ts = function(obj) {
-            return obj.s;
-        };
+        var ts = function (obj) {
+                return obj.s;
+            },
+            i;
         dict = new buckets.Dictionary(ts);
-        expect(dict.get("sd")).toBeUndefined();
+        expect(dict.get('sd')).toBeUndefined();
 
-        for (var i = 0; i < elems; i++) {
+        for (i = 0; i < elems; i += 1) {
             var o = {};
-            o.s = "" + i;
+            o.s = '' + i;
             expect(dict.set(o, i + 1)).toBeUndefined();
         }
 
-        for (var i = 0; i < elems; i++) {
+        for (i = 0; i < elems; i += 1) {
             var d = {};
-            d.s = "" + i;
+            d.s = '' + i;
             expect(dict.get(d)).toEqual(i + 1);
         }
     });
-	
-    it('Sets value with toString key',
-    function() {
 
-		var dict = new buckets.Dictionary();
+    it('set keys with special keywords', function () {
 
-		dict.set("toString", 42);
-		expect(dict.size()).toEqual(1);
-		dict.remove("toString");
-		expect(dict.size()).toEqual(0);
+        var dict = new buckets.Dictionary();
 
-		dict.set("hasOwnProperty", "foo");
-		try {
-		    dict.keys(); // throws an error trying to invoke "foo" as a function
-		} catch(e) {
-		    dict.remove("hasOwnProperty");
-		}
+        dict.set('toString', 42);
+        expect(dict.size()).toEqual(1);
+        dict.remove('toString');
+        expect(dict.size()).toEqual(0);
 
-		dict.set("__proto__", {value: 123});
-		dict.get("value") === 123; // wrong, should be undefined
+        dict.set('hasOwnProperty', 'foo');
+        try {
+            dict.keys();
+        } catch (e) {
+            dict.remove('hasOwnProperty');
+        }
+
+        dict.set('__proto__', {
+            value: 123
+        });
     });
-	
-    it('Sets and removes key with special keywords',
-    function() {
 
-		var dict = new buckets.Dictionary();
-		dict.set('toString', 42);
-		expect(dict.size()).toEqual(1);
-		dict.remove('toString');
-		expect(dict.size()).toEqual(0);
-		
-		dict = new buckets.Dictionary();
-		dict.set('hasOwnProperty', 'foo');
-		expect(dict.size()).toEqual(1);
-		dict.remove('hasOwnProperty');
-		expect(dict.size()).toEqual(0);
-
-		dict = new buckets.Dictionary();
-		dict.set('__proto__', 123);
-		expect(dict.get('__proto__')).toEqual(123);
-    });
-	
-    it('Removes existing elements from the dictionary',
-    function() {
-
-        expect(dict.remove("1")).toBeUndefined();
-        for (var i = 0; i < elems; i++) {
-            expect(dict.set("" + i, i + 1)).toBeUndefined();
+    it('remove deletes existing key from the dictionary', function () {
+        var i;
+        expect(dict.remove('1')).toBeUndefined();
+        for (i = 0; i < elems; i += 1) {
+            expect(dict.set('' + i, i + 1)).toBeUndefined();
         }
         expect(dict.size()).toEqual(elems);
 
-        for (var i = 0; i < elems; i++) {
-            expect(dict.remove("" + i)).toEqual(i + 1);
-            expect(dict.get("" + i)).toBeUndefined();
-            expect(dict.remove("" + i)).toBeUndefined();
+        for (i = 0; i < elems; i += 1) {
+            expect(dict.remove('' + i)).toEqual(i + 1);
+            expect(dict.get('' + i)).toBeUndefined();
+            expect(dict.remove('' + i)).toBeUndefined();
         }
         expect(dict.size()).toEqual(0);
     });
 
-    it('An empty dictionary is empty',
-    function() {
-
+    it('isEmpty returns true only if the dictionary contains no keys', function () {
         expect(dict.isEmpty()).toBeTruthy();
-        dict.set("1", 1);
+        dict.set('1', 1);
         expect(dict.isEmpty()).toBeFalsy();
-        dict.remove("1");
+        dict.remove('1');
         expect(dict.isEmpty()).toBeTruthy();
     });
 
-	it('Clear removes all elements',
-    function() {
-		dict.clear();
-		dict.set(1,1);
-		dict.clear();
-		expect(dict.isEmpty()).toBeTruthy();
-		expect(dict.get(1)).toBeUndefined();
+    it('clear removes all key-value pairs', function () {
+        dict.clear();
+        dict.set(1, 1);
+        dict.clear();
+        expect(dict.isEmpty()).toBeTruthy();
+        expect(dict.get(1)).toBeUndefined();
     });
 
-    it('Contains existing keys',
-    function() {
-
+    it('contains returns true for existing keys', function () {
+        var i;
         expect(dict.containsKey(0)).toBeFalsy();
-        for (var i = 0; i < 10; i++) {
+        for (i = 0; i < 10; i += 1) {
             dict.set(i, i);
             expect(dict.containsKey(i)).toBeTruthy();
-        };
-        for (var i = 0; i < 10; i++) {
+        }
+        for (i = 0; i < 10; i += 1) {
             dict.remove(i);
             expect(dict.containsKey(i)).toBeFalsy();
-        };
+        }
     });
 
-    it('Gives the right size',
-    function() {
-
+    it('size gives the right value', function () {
+        var i;
         expect(dict.size()).toEqual(0);
-        for (var i = 0; i < 10; i++) {
+        for (i = 0; i < 10; i += 1) {
             dict.set(i, i);
             expect(dict.size()).toEqual(i + 1);
-        };
-
+        }
     });
 
-    it('Gives all the stored keys',
-    function() {
-        var k = [];
-        for (var i = 0; i < elems; i++) {
-            var keys = dict.keys();
+    it('keys returns all the stored keys', function () {
+        var k = [],
+            i, keys;
+        for (i = 0; i < elems; i += 1) {
+            keys = dict.keys();
             k.sort();
             keys.sort();
             expect(buckets.arrays.equals(k, keys)).toBeTruthy();
-            dict.set("" + i, i);
-            k.push("" + i);
+            dict.set('' + i, i);
+            k.push('' + i);
         }
     });
 
-    it('Gives all the stored values',
-    function() {
-        var v = [];
-        for (var i = 0; i < elems; i++) {
-            var values = dict.values();
+    it('values returns all the stored values', function () {
+        var v = [],
+            i, values;
+        for (i = 0; i < elems; i += 1) {
+            values = dict.values();
             v.sort();
             values.sort();
             expect(buckets.arrays.equals(v, values)).toBeTruthy();
-            dict.set("" + i, i);
+            dict.set('' + i, i);
             v.push(i);
         }
     });
-	
-	it('For each gives all the pairs',
-    function() {
-        for (var i = 0; i < elems; i++) {
-            dict.set("" + i, i);
+
+    it('forEeach gives all key-value pairs', function () {
+        var keys, values, i;
+        for (i = 0; i < elems; i += 1) {
+            dict.set('' + i, i);
         }
-		var keys = dict.keys();
-		var values = dict.values();
-		dict.forEach(function(k,v) {
-			expect(buckets.arrays.remove(keys, k)).toBeTruthy();
-			expect(buckets.arrays.remove(values, v)).toBeTruthy();
-		});
-		expect(keys.length).toEqual(0);
-		expect(values.length).toEqual(0);
-    });
-	
-	
-	it('For each can be interrupted',
-    function() {
-        for (var i = 0; i < elems; i++) {
-            dict.set("" + i, i);
-        }
-		var t = 0;
-		dict.forEach(function(k,v) {
-			t++;
-			return false;
-		});
-		expect(t).toEqual(1);
+        keys = dict.keys();
+        values = dict.values();
+        dict.forEach(function (k, v) {
+            expect(buckets.arrays.remove(keys, k)).toBeTruthy();
+            expect(buckets.arrays.remove(values, v)).toBeTruthy();
+        });
+        expect(keys.length).toEqual(0);
+        expect(values.length).toEqual(0);
     });
 
+    it('forEeach can be interrupted', function () {
+        var t = 0,
+            i;
+        for (i = 0; i < elems; i += 1) {
+            dict.set('' + i, i);
+        }
+        dict.forEach(function (k, v) {
+            t += 1;
+            return false;
+        });
+        expect(t).toEqual(1);
+    });
+
+    it('equals returns true only if they have the same key-values pairs', function () {
+        var dict2 = new buckets.Dictionary();
+
+        dict.set('1', 1);
+        dict.set('2', 2);
+
+        dict2.set('2', 2);
+        dict2.set('1', 1);
+
+        expect(dict.equals(dict2)).toBeTruthy();
+        dict2.clear();
+        dict2.set(1, '1');
+        dict2.set(2, '2');
+        expect(dict.equals(dict2)).toBeFalsy();
+        expect(dict.equals([1, 2])).toBeFalsy();
+    });
 });

@@ -1,0 +1,27 @@
+{
+	"name": "bucketsjs",
+	"version": "<%= pkg.version %>",
+	"main": ["<%= pkg.simpleName %>.js", "<%= pkg.simpleName %>.min.js"],
+	"license": "<%= pkg.license %>",
+	"authors": ["<%= pkg.author %>"],
+	"repository": {
+	  "type": "git",
+	  "url": "<%= pkg.repository.url %>"
+	},
+    "keywords": [
+      "buckets",
+      "data",
+      "structure",
+      "linked",
+      "list",
+      "heap",
+      "stack",
+      "queue",
+      "priority",
+      "binary",
+      "tree",
+      "set",
+      "dictionary",
+      "map"
+    ]
+}

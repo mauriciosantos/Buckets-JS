@@ -212,7 +212,7 @@ pre {
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.MultiDictionary
+				Object buckets.MultiDictionary
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -222,8 +222,8 @@ pre {
 			
 				<p>A multi dictionary is a special kind of dictionary that holds
 multiple values against each key. Setting a value into the dictionary will
-add the value to an array at that key. Getting a key will return an array
-holding all the values set to that key.
+add the value to a list at that key. Getting a key will return a list
+holding all the values associated with that key.
 This implementation accepts any kind of objects as keys.</p>
 
 <p>If the keys are custom objects, a function that converts keys to unique strings must be
@@ -248,7 +248,7 @@ function petsAreEqualByAge(pet1,pet2) {
 <!-- ============================== constructor summary ==================== -->			
 			
 			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.MultiDictionary.">
-				<caption>Class Summary</caption>
+				<caption>Object Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Name and Description</th>
@@ -285,76 +285,93 @@ function petsAreEqualByAge(pet1,pet2) {
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#clear">clear</a></b>()
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all mappings from this dictionary.</div>
+								<div class="description">Removes all keys and values from the dictionary.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#containsKey">containsKey</a></b>(key)
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.containsKey">containsKey</a></b>(key)
 								</div>
-								<div class="description">Returns true if this dictionary has at least one value associatted with the specified key.</div>
+								<div class="description">Returns true if the dictionary has at least one value associatted with the specified key.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#get">get</a></b>(key)
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.equals">equals</a></b>(other)
 								</div>
-								<div class="description">Returns an array holding the values to which this dictionary maps
+								<div class="description">Returns true if the multi dictionary is equal to another multi dictionary.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.forEach">forEach</a></b>(callback)
+								</div>
+								<div class="description">Executes the provided function once per key
+present in the multi dictionary.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.get">get</a></b>(key)
+								</div>
+								<div class="description">Returns an array holding the values associated with
 the specified key.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Returns true if this dictionary contains no mappings.</div>
+								<div class="description">Returns true if the dictionary contains no mappings.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#keys">keys</a></b>()
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.keys">keys</a></b>()
 								</div>
-								<div class="description">Returns an array containing all of the keys in this dictionary.</div>
+								<div class="description">Returns an array containing all the keys in the dictionary.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#remove">remove</a></b>(key, value)
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.remove">remove</a></b>(key, value)
 								</div>
-								<div class="description">Removes the specified value from the array of values associated with the
-specified key.</div>
+								<div class="description">Removes the specified value from the list of values associated with the
+provided key.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#set">set</a></b>(key, value)
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.set">set</a></b>(key, value)
 								</div>
-								<div class="description">Adds the value to an array associated with the specified key if
-it is not already present.</div>
+								<div class="description">Associates the specified value with the specified key if
+it's not already present.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#size">size</a></b>()
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.size">size</a></b>()
 								</div>
-								<div class="description">Returns the number of keys in this dictionary.</div>
+								<div class="description">Returns the number of keys in the dictionary.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.MultiDictionary.html#values">values</a></b>()
+								<div class="fixedFont">buckets.MultiDictionary.<b><a href="../symbols/buckets.MultiDictionary.html#.values">values</a></b>()
 								</div>
-								<div class="description">Returns an array containing all of the values in this dictionary.</div>
+								<div class="description">Returns an array containing all the values in the dictionary.</div>
 							</td>
 						</tr>
 					
@@ -371,7 +388,7 @@ it is not already present.</div>
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Class Detail
+					Object Detail
 				</div>
 				
 				<div class="fixedFont">
@@ -427,15 +444,15 @@ function to check if two values are equal.</dd>
 					Method Detail
 				</div>
 				
-					<a name="clear"> </a>
-					<div class="fixedFont">
+					<a name=".clear"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<b>clear</b>()
+					<span class="light">buckets.MultiDictionary.</span><b>clear</b>()
 					
 					</div>
 					<div class="description">
-						Removes all mappings from this dictionary.
+						Removes all keys and values from the dictionary.
 						
 					</div>
 					
@@ -451,15 +468,15 @@ function to check if two values are equal.</dd>
 
 					<hr />
 				
-					<a name="containsKey"> </a>
-					<div class="fixedFont">
+					<a name=".containsKey"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>containsKey</b>(key)
+					<span class="light">buckets.MultiDictionary.</span><b>containsKey</b>(key)
 					
 					</div>
 					<div class="description">
-						Returns true if this dictionary has at least one value associatted with the specified key.
+						Returns true if the dictionary has at least one value associatted with the specified key.
 						
 					</div>
 					
@@ -473,8 +490,7 @@ function to check if two values are equal.</dd>
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>Key whose presence in this dictionary is to be
-tested.</dd>
+								<dd>The key.</dd>
 							
 							</dl>
 						
@@ -485,7 +501,7 @@ tested.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if this dictionary has at least one value associatted
+								<dd><span class="light fixedFont">{boolean}</span> True if the dictionary has at least one value associatted
 the specified key.</dd>
 							
 							</dl>
@@ -495,17 +511,97 @@ the specified key.</dd>
 
 					<hr />
 				
-					<a name="get"> </a>
-					<div class="fixedFont">
+					<a name=".equals"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Array}</span>
-					<b>get</b>(key)
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.MultiDictionary.</span><b>equals</b>(other)
 					
 					</div>
 					<div class="description">
-						Returns an array holding the values to which this dictionary maps
+						Returns true if the multi dictionary is equal to another multi dictionary.
+Two dictionaries are equal if they have the same keys and the same values per key.
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/buckets.MultiDictionary.html">buckets.MultiDictionary</a>}</span> <b>other</b>
+									
+								</dt>
+								<dd>The other dictionary.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> True if the dictionary is equal to the given dictionary.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".forEach"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">buckets.MultiDictionary.</span><b>forEach</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once per key
+present in the multi dictionary.
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object|Array):*}</span> <b>callback</b>
+									
+								</dt>
+								<dd>Function to execute. Receives
+2 arguments: key and an array of values. To break the iteration you can
+optionally return false inside the callback.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".get"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Array}</span>
+					<span class="light">buckets.MultiDictionary.</span><b>get</b>(key)
+					
+					</div>
+					<div class="description">
+						Returns an array holding the values associated with
 the specified key.
-Returns an empty array if this dictionary contains no mappings for this key.
 						
 					</div>
 					
@@ -519,7 +615,7 @@ Returns an empty array if this dictionary contains no mappings for this key.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>Key whose associated values are to be returned.</dd>
+								<dd>The key.</dd>
 							
 							</dl>
 						
@@ -530,8 +626,9 @@ Returns an empty array if this dictionary contains no mappings for this key.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> An array holding the values to which this dictionary maps
-the specified key.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array holding the values or an 
+empty array if the dictionary contains no 
+mappings for the provided key.</dd>
 							
 							</dl>
 						
@@ -540,15 +637,15 @@ the specified key.</dd>
 
 					<hr />
 				
-					<a name="isEmpty"> </a>
-					<div class="fixedFont">
+					<a name=".isEmpty"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>isEmpty</b>()
+					<span class="light">buckets.MultiDictionary.</span><b>isEmpty</b>()
 					
 					</div>
 					<div class="description">
-						Returns true if this dictionary contains no mappings.
+						Returns true if the dictionary contains no mappings.
 						
 					</div>
 					
@@ -562,7 +659,7 @@ the specified key.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if this dictionary contains no mappings.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the dictionary contains no mappings.</dd>
 							
 							</dl>
 						
@@ -571,15 +668,15 @@ the specified key.</dd>
 
 					<hr />
 				
-					<a name="keys"> </a>
-					<div class="fixedFont">
+					<a name=".keys"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Array}</span>
-					<b>keys</b>()
+					<span class="light">buckets.MultiDictionary.</span><b>keys</b>()
 					
 					</div>
 					<div class="description">
-						Returns an array containing all of the keys in this dictionary.
+						Returns an array containing all the keys in the dictionary.
 						
 					</div>
 					
@@ -593,7 +690,7 @@ the specified key.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> an array containing all of the keys in this dictionary.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all the keys in the dictionary.</dd>
 							
 							</dl>
 						
@@ -602,16 +699,16 @@ the specified key.</dd>
 
 					<hr />
 				
-					<a name="remove"> </a>
-					<div class="fixedFont">
+					<a name=".remove"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{*}</span>
-					<b>remove</b>(key, value)
+					<span class="light">buckets.MultiDictionary.</span><b>remove</b>(key, value)
 					
 					</div>
 					<div class="description">
-						Removes the specified value from the array of values associated with the
-specified key. If a value isn't given, all values associated with the specified
+						Removes the specified value from the list of values associated with the
+provided key. If a value isn't given, all values associated with the specified
 key are removed.
 						
 					</div>
@@ -626,15 +723,14 @@ key are removed.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>Key whose mapping is to be removed from the
-dictionary.</dd>
+								<dd>The key.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Object=}</span> <b>value</b>
 									
 								</dt>
-								<dd>Optional argument to specify the value to remove
-from the array associated with the specified key.</dd>
+								<dd>Optional argument to specify the element to remove
+from the list of values associated with the given key.</dd>
 							
 							</dl>
 						
@@ -646,7 +742,7 @@ from the array associated with the specified key.</dd>
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{*}</span> True if the dictionary changed, false if the key doesn't exist or
-if the specified value isn't associated with the specified key.</dd>
+if the specified value isn't associated with the given key.</dd>
 							
 							</dl>
 						
@@ -655,16 +751,16 @@ if the specified value isn't associated with the specified key.</dd>
 
 					<hr />
 				
-					<a name="set"> </a>
-					<div class="fixedFont">
+					<a name=".set"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>set</b>(key, value)
+					<span class="light">buckets.MultiDictionary.</span><b>set</b>(key, value)
 					
 					</div>
 					<div class="description">
-						Adds the value to an array associated with the specified key if
-it is not already present.
+						Associates the specified value with the specified key if
+it's not already present.
 						
 					</div>
 					
@@ -678,8 +774,7 @@ it is not already present.
 									<span class="light fixedFont">{Object}</span> <b>key</b>
 									
 								</dt>
-								<dd>Key to which the specified value is to be
-associated.</dd>
+								<dd>The Key.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{Object}</span> <b>value</b>
@@ -705,15 +800,15 @@ associated.</dd>
 
 					<hr />
 				
-					<a name="size"> </a>
-					<div class="fixedFont">
+					<a name=".size"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{number}</span>
-					<b>size</b>()
+					<span class="light">buckets.MultiDictionary.</span><b>size</b>()
 					
 					</div>
 					<div class="description">
-						Returns the number of keys in this dictionary.
+						Returns the number of keys in the dictionary.
 						
 					</div>
 					
@@ -727,7 +822,7 @@ associated.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> The number of key-value mappings in this dictionary.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of keys in the dictionary.</dd>
 							
 							</dl>
 						
@@ -736,15 +831,15 @@ associated.</dd>
 
 					<hr />
 				
-					<a name="values"> </a>
-					<div class="fixedFont">
+					<a name=".values"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Array}</span>
-					<b>values</b>()
+					<span class="light">buckets.MultiDictionary.</span><b>values</b>()
 					
 					</div>
 					<div class="description">
-						Returns an array containing all of the values in this dictionary.
+						Returns an array containing all the values in the dictionary.
 						
 					</div>
 					
@@ -758,7 +853,7 @@ associated.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Array}</span> An array containing all of the values in this dictionary.</dd>
+								<dd><span class="light fixedFont">{Array}</span> An array containing all the values in the dictionary.</dd>
 							
 							</dl>
 						

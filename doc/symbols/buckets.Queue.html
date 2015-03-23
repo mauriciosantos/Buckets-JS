@@ -212,7 +212,7 @@ pre {
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.Queue
+				Object buckets.Queue
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -222,14 +222,14 @@ pre {
 			
 				A queue is a First-In-First-Out (FIFO) data structure, the first
 element added to the queue will be the first one to be removed. This
-implementation uses a linked list as a container.
+implementation uses a linked list as the underlying storage.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
 			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Queue.">
-				<caption>Class Summary</caption>
+				<caption>Object Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Name and Description</th>
@@ -266,74 +266,91 @@ implementation uses a linked list as a container.
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#add">add</a></b>(elem)
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.add">add</a></b>(elem)
 								</div>
-								<div class="description">Inserts the specified element into the end of this queue.</div>
+								<div class="description">Inserts the specified element into the end of the queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#clear">clear</a></b>()
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all the elements from this queue.</div>
+								<div class="description">Removes all the elements from the queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#contains">contains</a></b>(elem, equalsFunction)
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.contains">contains</a></b>(elem, equalsFunction)
 								</div>
-								<div class="description">Returns true if this queue contains the specified element.</div>
+								<div class="description">Returns true if the queue contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#dequeue">dequeue</a></b>()
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.dequeue">dequeue</a></b>()
 								</div>
-								<div class="description">Retrieves and removes the head of this queue.</div>
+								<div class="description">Retrieves and removes the head of the queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#enqueue">enqueue</a></b>(elem)
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.enqueue">enqueue</a></b>(elem)
 								</div>
-								<div class="description">Inserts the specified element into the end of this queue.</div>
+								<div class="description">Inserts the specified element into the end of the queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#forEach">forEach</a></b>(callback)
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.equals">equals</a></b>(other, equalsFunction)
 								</div>
-								<div class="description">Executes the provided function once per each element present in this queue in
+								<div class="description">Returns true if the queue is equal to another queue.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.forEach">forEach</a></b>(callback)
+								</div>
+								<div class="description">Executes the provided function once per each element present in the queue in
 FIFO order.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Checks if this queue is empty.</div>
+								<div class="description">Checks if the queue is empty.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#peek">peek</a></b>()
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.peek">peek</a></b>()
 								</div>
-								<div class="description">Retrieves, but does not remove, the head of this queue.</div>
+								<div class="description">Retrieves, but does not remove, the head of the queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Queue.html#size">size</a></b>()
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.size">size</a></b>()
 								</div>
-								<div class="description">Returns the number of elements in this queue.</div>
+								<div class="description">Returns the number of elements in the queue.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.Queue.<b><a href="../symbols/buckets.Queue.html#.toArray">toArray</a></b>()
+								</div>
+								<div class="description">Returns an array containing all the elements in the queue in FIFO
+order.</div>
 							</td>
 						</tr>
 					
@@ -350,7 +367,7 @@ FIFO order.</div>
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Class Detail
+					Object Detail
 				</div>
 				
 				<div class="fixedFont">
@@ -385,15 +402,15 @@ FIFO order.</div>
 					Method Detail
 				</div>
 				
-					<a name="add"> </a>
-					<div class="fixedFont">
+					<a name=".add"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(elem)
+					<span class="light">buckets.Queue.</span><b>add</b>(elem)
 					
 					</div>
 					<div class="description">
-						Inserts the specified element into the end of this queue. Equivalent to enqueue.
+						Inserts the specified element into the end of the queue. Equivalent to enqueue.
 						
 					</div>
 					
@@ -418,7 +435,7 @@ FIFO order.</div>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it's undefined.</dd>
 							
 							</dl>
 						
@@ -427,15 +444,15 @@ FIFO order.</div>
 
 					<hr />
 				
-					<a name="clear"> </a>
-					<div class="fixedFont">
+					<a name=".clear"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<b>clear</b>()
+					<span class="light">buckets.Queue.</span><b>clear</b>()
 					
 					</div>
 					<div class="description">
-						Removes all the elements from this queue.
+						Removes all the elements from the queue.
 						
 					</div>
 					
@@ -451,16 +468,16 @@ FIFO order.</div>
 
 					<hr />
 				
-					<a name="contains"> </a>
-					<div class="fixedFont">
+					<a name=".contains"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>contains</b>(elem, equalsFunction)
+					<span class="light">buckets.Queue.</span><b>contains</b>(elem, equalsFunction)
 					
 					</div>
 					<div class="description">
-						Returns true if this queue contains the specified element.
-<p>If the elements inside this queue are
+						Returns true if the queue contains the specified element.
+<p>If the elements inside the queue are
 not comparable with the === operator, a custom equals function should be
 provided to perform searches, the function must receive two arguments and
 return true if they are equal, false otherwise. Example:</p>
@@ -501,7 +518,7 @@ function to check if two elements are equal.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if this queue contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> True if the queue contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
@@ -511,15 +528,15 @@ false otherwise.</dd>
 
 					<hr />
 				
-					<a name="dequeue"> </a>
-					<div class="fixedFont">
+					<a name=".dequeue"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{*}</span>
-					<b>dequeue</b>()
+					<span class="light">buckets.Queue.</span><b>dequeue</b>()
 					
 					</div>
 					<div class="description">
-						Retrieves and removes the head of this queue.
+						Retrieves and removes the head of the queue.
 						
 					</div>
 					
@@ -533,7 +550,7 @@ false otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The head of this queue, or undefined if this queue is empty.</dd>
+								<dd><span class="light fixedFont">{*}</span> The head of the queue, or undefined if the queue is empty.</dd>
 							
 							</dl>
 						
@@ -542,15 +559,15 @@ false otherwise.</dd>
 
 					<hr />
 				
-					<a name="enqueue"> </a>
-					<div class="fixedFont">
+					<a name=".enqueue"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>enqueue</b>(elem)
+					<span class="light">buckets.Queue.</span><b>enqueue</b>(elem)
 					
 					</div>
 					<div class="description">
-						Inserts the specified element into the end of this queue.
+						Inserts the specified element into the end of the queue.
 						
 					</div>
 					
@@ -575,7 +592,7 @@ false otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it's undefined.</dd>
 							
 							</dl>
 						
@@ -584,15 +601,67 @@ false otherwise.</dd>
 
 					<hr />
 				
-					<a name="forEach"> </a>
-					<div class="fixedFont">
+					<a name=".equals"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>forEach</b>(callback)
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.Queue.</span><b>equals</b>(other, equalsFunction)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once per each element present in this queue in
+						Returns true if the queue is equal to another queue.
+Two queues are equal if they have the same elements in the same order.
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/buckets.Queue.html">buckets.Queue</a>}</span> <b>other</b>
+									
+								</dt>
+								<dd>The other queue.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>Optional
+function to check if two elements are equal. If the elements in the queues
+are custom objects you should provide a custom equals function, otherwise
+the === operator is used to check equality between elements.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> True if the queue is equal to the given queue.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".forEach"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">buckets.Queue.</span><b>forEach</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once per each element present in the queue in
 FIFO order.
 						
 					</div>
@@ -607,8 +676,8 @@ FIFO order.
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>Function to execute, it is
-invoked with one argument: the element value, to break the iteration you can
+								<dd>Function to execute, it's
+invoked an element as argument, to break the iteration you can
 optionally return false inside the callback.</dd>
 							
 							</dl>
@@ -622,15 +691,15 @@ optionally return false inside the callback.</dd>
 
 					<hr />
 				
-					<a name="isEmpty"> </a>
-					<div class="fixedFont">
+					<a name=".isEmpty"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>isEmpty</b>()
+					<span class="light">buckets.Queue.</span><b>isEmpty</b>()
 					
 					</div>
 					<div class="description">
-						Checks if this queue is empty.
+						Checks if the queue is empty.
 						
 					</div>
 					
@@ -644,8 +713,7 @@ optionally return false inside the callback.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if and only if this queue contains no items; false
-otherwise.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if and only if the queue contains no items.</dd>
 							
 							</dl>
 						
@@ -654,15 +722,15 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="peek"> </a>
-					<div class="fixedFont">
+					<a name=".peek"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{*}</span>
-					<b>peek</b>()
+					<span class="light">buckets.Queue.</span><b>peek</b>()
 					
 					</div>
 					<div class="description">
-						Retrieves, but does not remove, the head of this queue.
+						Retrieves, but does not remove, the head of the queue.
 						
 					</div>
 					
@@ -676,7 +744,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The head of this queue, or undefined if this queue is empty.</dd>
+								<dd><span class="light fixedFont">{*}</span> The head of the queue, or undefined if the queue is empty.</dd>
 							
 							</dl>
 						
@@ -685,15 +753,15 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="size"> </a>
-					<div class="fixedFont">
+					<a name=".size"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{number}</span>
-					<b>size</b>()
+					<span class="light">buckets.Queue.</span><b>size</b>()
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this queue.
+						Returns the number of elements in the queue.
 						
 					</div>
 					
@@ -707,7 +775,40 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> The number of elements in this queue.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in the queue.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".toArray"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Array.<*>}</span>
+					<span class="light">buckets.Queue.</span><b>toArray</b>()
+					
+					</div>
+					<div class="description">
+						Returns an array containing all the elements in the queue in FIFO
+order.
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array.<*>}</span> An array containing all the elements in the queue
+in FIFO order.</dd>
 							
 							</dl>
 						

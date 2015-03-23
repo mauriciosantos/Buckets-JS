@@ -34,7 +34,7 @@ Downloading Buckets
 Download directly
 
 - [buckets.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets.js) (for development) or
-- [buckets-minified.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets-minified.js) (for production)
+- [buckets.min.js](https://rawgithub.com/mauriciosantos/buckets/master/buckets.min.js) (for production)
 
 Then, add it as a script tag to your page:
 
@@ -45,13 +45,13 @@ Then, add it as a script tag to your page:
 </script>
 ```
 
-Or install `bucketsjs` using bower
+Or install `bucketsjs` using [bower](http://bower.io/)
 
 ```shell
 bower install bucketsjs
 ```
 
-Or use an AMD loader
+Or use an [AMD](https://github.com/amdjs/amdjs-api) loader
 
 ```javascript
 require(["./bower/bucketsjs/buckets.js"], function(buckets) {
@@ -59,25 +59,31 @@ require(["./bower/bucketsjs/buckets.js"], function(buckets) {
 });
 ```
 
-Or install `buckets-js` using npm
+Or install `buckets-js` using [npm](https://www.npmjs.com/)
 
 ```shell
 npm install buckets-js
 ```
 
-In Node.js: `var buckets = require('buckets-js')`.
+In [Node.js](https://nodejs.org/): `var buckets = require('buckets-js');`.
 
 Usage
 --------------------
 
 ```javascript
-var setA = new buckets.Set();
-var setB = new buckets.Set();
-setA.add(1);
-setB.add(2);
-setA.union(setB); // {1,2}
+var a = new buckets.Set();
+var b = new buckets.Set();
+a.add(1);
+a.add(2);
+b.add(2);
+a.union(b); // {1,2}
 ```
 Read the [documentation](https://rawgithub.com/mauriciosantos/buckets/master/doc/index.html).
+
+Building guide
+--------------------
+
+There's nothing else you need to use buckets. However, this [guide](./BUILD.md) may help you if you wish to contribute to the project or modify it.
 
 Support
 --------------------

@@ -1,308 +1,251 @@
-describe('Arrays',
-function() {
+describe('Arrays', function () {
 
-    it('IndexOf returns the right position',
-    function() {
-        var a = [1, 8, 10];
-        expect(buckets.arrays.indexOf(a, 1)).toEqual(0);
-        expect(buckets.arrays.indexOf(a, 8)).toEqual(1);
-        expect(buckets.arrays.indexOf(a, 10)).toEqual(2);
-        expect(buckets.arrays.indexOf(a, 11)).toEqual( - 1);
-        expect(buckets.arrays.indexOf([], 8)).toEqual( - 1);
-    });
-
-    it('IndexOf with custom equals function returns the right position',
-    function() {
-        var b = {
-            val: 1
-        };
-        var c = {
-            val: 8
-        };
-        var d = {
-            val: 10
-        };
-        var e = {
-            val: 11
-        };
-        var a = [b, c, d];
-
-        var eq = function(arg1, arg2) {
+    var eq = function (arg1, arg2) {
             return arg1.val === arg2.val;
-        };
+        },
+        customObjectArray, numberArray;
 
-        expect(buckets.arrays.indexOf(a, {
-            val: 1
-        })).toEqual( - 1);
-        expect(buckets.arrays.indexOf(a, {
-            val: 1
-        },
-        eq)).toEqual(0);
-        expect(buckets.arrays.indexOf(a, c, eq)).toEqual(1);
-        expect(buckets.arrays.indexOf(a, {
-            val: 10
-        },
-        eq)).toEqual(2);
-        expect(buckets.arrays.indexOf(a, e, eq)).toEqual( - 1);
-        expect(buckets.arrays.indexOf([], b)).toEqual( - 1);
+    beforeEach(function () {
+        var a = {
+                val: 1
+            },
+            b = {
+                val: 8
+            },
+            c = {
+                val: 10
+            };
+        customObjectArray = [a, a, b, c];
+        numberArray = [1, 8, 8, 8, 10, 10];
     });
 
-    it('lastIndexOf returns the right position',
-    function() {
-        var a = [1, 8, 8, 8, 10, 10];
-        expect(buckets.arrays.lastIndexOf(a, 1)).toEqual(0);
-        expect(buckets.arrays.lastIndexOf(a, 8)).toEqual(3);
-        expect(buckets.arrays.lastIndexOf(a, 10)).toEqual(5);
-        expect(buckets.arrays.lastIndexOf(a, 11)).toEqual( - 1);
-        expect(buckets.arrays.lastIndexOf([], 8)).toEqual( - 1);
+    it('indexOf gives the right index for valid numbers', function () {
+        expect(buckets.arrays.indexOf(numberArray, 1)).toEqual(0);
+        expect(buckets.arrays.indexOf(numberArray, 8)).toEqual(1);
+        expect(buckets.arrays.indexOf(numberArray, 10)).toEqual(4);
     });
 
-    it('lastIndexOf with custom equals function returns the right position',
-    function() {
-        var b = {
-            val: 1
-        };
-        var c = {
-            val: 8
-        };
-        var d = {
-            val: 10
-        };
-        var e = {
-            val: 11
-        };
-        var a = [b, b, c, d];
-
-        var eq = function(arg1, arg2) {
-            return arg1.val === arg2.val;
-        };
-
-        expect(buckets.arrays.lastIndexOf(a, {
-            val: 1
-        })).toEqual( - 1);
-        expect(buckets.arrays.lastIndexOf(a, {
-            val: 1
-        },
-        eq)).toEqual(1);
+    it('indexOf returns -1 when not found in number array', function () {
+        expect(buckets.arrays.indexOf(numberArray, 11)).toEqual(-1);
+        expect(buckets.arrays.indexOf([], 8)).toEqual(-1);
     });
 
-    it('Contains existing elements',
-    function() {
-        var a = [1, 8, 8, 8, 10, 10];
-        expect(buckets.arrays.contains(a, 1)).toBeTruthy();
-        expect(buckets.arrays.contains(a, 8)).toBeTruthy();
-        expect(buckets.arrays.contains(a, 10)).toBeTruthy();
-        expect(buckets.arrays.contains(a, 11)).toBeFalsy();
+    it('indexOf with custom equals gives the right index for valid objects', function () {
+        var test = {
+            val: 1
+        };
+
+        expect(buckets.arrays.indexOf(customObjectArray, test, eq)).toEqual(0);
+        test.val = 8;
+        expect(buckets.arrays.indexOf(customObjectArray, test, eq)).toEqual(2);
+        test.val = 10;
+        expect(buckets.arrays.indexOf(customObjectArray, test, eq)).toEqual(3);
+    });
+
+    it('indexOf with custom equals returns -1 when not found', function () {
+        var test = {
+            val: -1000
+        };
+        expect(buckets.arrays.indexOf(customObjectArray, test)).toEqual(-1);
+        expect(buckets.arrays.indexOf(customObjectArray, test, eq)).toEqual(-1);
+        expect(buckets.arrays.indexOf([], test)).toEqual(-1);
+    });
+
+    it('lastIndexOf returns the right position using numbers', function () {
+        expect(buckets.arrays.lastIndexOf(numberArray, 1)).toEqual(0);
+        expect(buckets.arrays.lastIndexOf(numberArray, 8)).toEqual(3);
+        expect(buckets.arrays.lastIndexOf(numberArray, 10)).toEqual(5);
+        expect(buckets.arrays.lastIndexOf(numberArray, 11)).toEqual(-1);
+        expect(buckets.arrays.lastIndexOf([], 8)).toEqual(-1);
+    });
+
+    it('lastIndexOf with custom equals returns the right position', function () {
+        var test = {
+            val: 1
+        };
+        expect(buckets.arrays.lastIndexOf(customObjectArray, test, eq)).toEqual(1);
+    });
+
+    it('lastIndexOf with custom equals returns -1 when not found', function () {
+        var test = {
+            val: -1000
+        };
+        expect(buckets.arrays.lastIndexOf(customObjectArray, test)).toEqual(-1);
+    });
+
+    it('contains returns true for existing numbers', function () {
+        expect(buckets.arrays.contains(numberArray, 1)).toBeTruthy();
+        expect(buckets.arrays.contains(numberArray, 8)).toBeTruthy();
+        expect(buckets.arrays.contains(numberArray, 10)).toBeTruthy();
+    });
+
+    it('contains returns false for non exixsting numbers', function () {
+        expect(buckets.arrays.contains(numberArray, 11)).toBeFalsy();
         expect(buckets.arrays.contains([], 8)).toBeFalsy();
     });
 
-    it('Contains existing elements with custom equals function',
-    function() {
-        var b = {
+    it('contains returns true for existing objects with custom equals', function () {
+        var test = {
             val: 1
-        };
-        var c = {
-            val: 8
-        };
-        var d = {
-            val: 10
-        };
-        var e = {
-            val: 11
-        };
-        var a = [b, b, c, d];
-
-        var eq = function(arg1, arg2) {
-            return arg1.val === arg2.val;
         };
 
-        expect(buckets.arrays.contains(a, {
-            val: 1
-        })).toBeFalsy();
-        expect(buckets.arrays.contains(a, {
-            val: 1
-        },
-        eq)).toBeTruthy();
-        expect(buckets.arrays.contains(a, {
-            val: 8
-        },
-        eq)).toBeTruthy();
-        expect(buckets.arrays.contains(a, {
-            val: 10
-        },
-        eq)).toBeTruthy();
-        expect(buckets.arrays.contains(a, {
-            val: 11
-        },
-        eq)).toBeFalsy();
-        expect(buckets.arrays.contains([], {
-            val: 11
-        },
-        eq)).toBeFalsy();
+        expect(buckets.arrays.contains(customObjectArray, test, eq)).toBeTruthy();
+        test.val = 8;
+        expect(buckets.arrays.contains(customObjectArray, test, eq)).toBeTruthy();
     });
 
-    it('Gives the right frequency',
-    function() {
-        var a = [1, 8, 8, 8, 10, 10];
-        expect(buckets.arrays.frequency(a, 1)).toEqual(1);
-        expect(buckets.arrays.frequency(a, 8)).toEqual(3);
-        expect(buckets.arrays.frequency(a, 10)).toEqual(2);
-        expect(buckets.arrays.frequency(a, 11)).toEqual(0);
+    it('contains returns false for non existing objects with custom equals', function () {
+        var test = {
+            val: 1
+        };
+
+        expect(buckets.arrays.contains(customObjectArray, test)).toBeFalsy();
+        test.val = 1000;
+        expect(buckets.arrays.contains(customObjectArray, test, eq)).toBeFalsy();
+        expect(buckets.arrays.contains([], test, eq)).toBeFalsy();
     });
 
-    it('Gives the right frequency with custom equals',
-    function() {
-        var b = {
-            val: 1
-        };
-        var c = {
-            val: 8
-        };
-        var d = {
-            val: 10
-        };
-        var e = {
-            val: 11
-        };
-        var a = [b, b, c, d];
-
-        var eq = function(arg1, arg2) {
-            return arg1.val === arg2.val;
-        };
-        expect(buckets.arrays.frequency(a, {
-            val: 1
-        })).toEqual(0);
-        expect(buckets.arrays.frequency(a, {
-            val: 1
-        },
-        eq)).toEqual(2);
-        expect(buckets.arrays.frequency(a, {
-            val: 8
-        },
-        eq)).toEqual(1);
+    it('frequency returns the right value with number array', function () {
+        expect(buckets.arrays.frequency(numberArray, 1)).toEqual(1);
+        expect(buckets.arrays.frequency(numberArray, 8)).toEqual(3);
+        expect(buckets.arrays.frequency(numberArray, 10)).toEqual(2);
+        expect(buckets.arrays.frequency(numberArray, 11)).toEqual(0);
     });
 
-    it('Equal arrays are equal',
-    function() {
-        var a = [1, 8, 8, 8, 10, 10];
-        var b = [1, 8, 8, 8, 10, 10];
-        var c = [1, 8, 5, 8, 10, 10];
-        var d = [1, 8, 8, 8, 10];
+    it('frequency returns the right value with custom equals function', function () {
+        var test = {
+            val: 1000
+        };
+        expect(buckets.arrays.frequency(customObjectArray, test)).toEqual(0);
+        test.val = 1;
+        expect(buckets.arrays.frequency(customObjectArray, test, eq)).toEqual(2);
+        test.val = 8;
+        expect(buckets.arrays.frequency(customObjectArray, test, eq)).toEqual(1);
+    });
+
+    it('equals returns true for matching number arrays', function () {
+        var a = [1, 8, 8, 8, 10, 10],
+            b = [1, 8, 8, 8, 10, 10];
 
         expect(buckets.arrays.equals(a, a)).toBeTruthy();
-        expect(buckets.arrays.equals(a, b)).toBeTruthy();
+        expect(buckets.arrays.equals(a, b)).toBeTruthy();;
+    });
+
+    it('equals returns false for non-matching number arrays', function () {
+        var a = [1, 8, 8, 8, 10, 10],
+            c = [1, 8, 5, 8, 10, 10],
+            d = [1, 8, 8, 8, 10];
+
         expect(buckets.arrays.equals(a, [])).toBeFalsy();
         expect(buckets.arrays.equals(a, c)).toBeFalsy();
         expect(buckets.arrays.equals(a, d)).toBeFalsy();
         expect(buckets.arrays.equals(a, [])).toBeFalsy();
     });
 
-    it('Equal arrays are equal with custom equals function',
-    function() {
+    it('equals returns true for matching object arrays using custom equals', function () {
         var a = [{
-            val: 8
-        }];
-        var b = [{
-            val: 8
-        }];
-
-        var eq = function(arg1, arg2) {
-            return arg1.val === arg2.val;
-        };
+                val: 8
+            }],
+            b = [{
+                val: 8
+            }];
 
         expect(buckets.arrays.equals(a, a)).toBeTruthy();
         expect(buckets.arrays.equals(a, a, eq)).toBeTruthy();
         expect(buckets.arrays.equals(a, b, eq)).toBeTruthy();
-        expect(buckets.arrays.equals(a, b)).toBeFalsy();
     });
 
-    it('Removes elements',
-    function() {
+    it('equals returns false for non-matching arrays using custom equals', function () {
+        var a = [{
+                val: 10
+            }],
+            b = [{
+                val: 8
+            }];
+        expect(buckets.arrays.equals(a, b)).toBeFalsy();
+        expect(buckets.arrays.equals(a, [])).toBeFalsy();
+    });
+
+    it('remove can delete existing elements from number array', function () {
+        var a = [4, 9, 9, 10];
+        expect(buckets.arrays.remove(a, 9)).toBeTruthy();
+        expect(buckets.arrays.indexOf(a, 9)).toEqual(1);
+        expect(buckets.arrays.indexOf(a, 10)).toEqual(2);
+    });
+
+    it('remove can not delete non-existing elements from number array', function () {
         var a = [];
         expect(buckets.arrays.remove(a, 1)).toBeFalsy();
         a = [4, 9, 9, 10];
         expect(buckets.arrays.remove(a, 9)).toBeTruthy();
-        expect(buckets.arrays.indexOf(a, 9)).toEqual(1);
-        expect(buckets.arrays.indexOf(a, 10)).toEqual(2);
         expect(buckets.arrays.remove(a, 9)).toBeTruthy();
         expect(buckets.arrays.remove(a, 9)).toBeFalsy();
-        expect(buckets.arrays.remove(a, 9)).toBeFalsy();
     });
 
-    it('Removes elements with custom equals function',
-    function() {
+    it('remove can delete existing elements using custom equals', function () {
         var c = {
-            val: 8
-        };
-        var d = {
-            val: 10
-        };
-        var eq = function(arg1, arg2) {
-            return arg1.val === arg2.val;
-        };
+                val: 8
+            },
+            d = {
+                val: 10
+            },
+            a = [c, d],
+            test = {
+                val: 10
+            };
 
-        var a = [c, d];
-        expect(buckets.arrays.remove(a, {
-            val: 10
-        })).toBeFalsy();																															
-        expect(buckets.arrays.remove(a, {
-            val: 10
-        },
-        eq)).toBeTruthy();
+        expect(buckets.arrays.remove(a, test)).toBeFalsy();
+        expect(buckets.arrays.remove(a, test, eq)).toBeTruthy();
     });
 
-	it('For each gives the right ordering',
-    function() {
-		var a = [];
-        buckets.arrays.forEach(a,function(e) {
-			expect(true).toEqual(false); // should not enter here
-		});
+    it('forEach returns elements in the right order', function () {
+        var a = [],
+            i;
 
-        for (var i = 0; i < 10; i++) {
+        buckets.arrays.forEach(a, function (e) {
+            expect(true).toEqual(false); // should not enter here
+        });
+
+        for (i = 0; i < 10; i += 1) {
             a.push(i);
         }
 
-        var i = 0;
-		 buckets.arrays.forEach(a,function(e) {
-			expect(e).toEqual(i);
-            i++;
-		});
+        i = 0;
+        buckets.arrays.forEach(a, function (e) {
+            expect(e).toEqual(i);
+            i += 1;
+        });
     });
 
-	it('For each can be interrupted',
-    function() {
-		var a = [];
-		var b = [];
-        for (var i = 0; i < 5; i++) {
-	            a.push(i);
-	    }
-		buckets.arrays.forEach(a,function(e) {
-			b.push(e);
-            if(e===3){
-				return false;
-			}
-		});
-		
-     	expect([0,1,2,3]).toEqual(b);
+    it('forEach can be interrupted', function () {
+        var a = [],
+            b = [],
+            i;
+        for (i = 0; i < 5; i += 1) {
+            a.push(i);
+        }
+        buckets.arrays.forEach(a, function (e) {
+            b.push(e);
+            if (e === 3) {
+                return false;
+            }
+        });
+
+        expect([0, 1, 2, 3]).toEqual(b);
     });
 
-    it('Copies existing arrays',
-    function() {
-        var a = [1, 8, 8, 8, 10, 10];
-        var b = buckets.arrays.copy(a);
-        expect(buckets.arrays.equals(a, b)).toBeTruthy();
-        expect(a === b).toBeFalsy();
+    it('copy creates a new array', function () {
+        var a = buckets.arrays.copy(numberArray);
+        expect(a).toEqual(numberArray);
+        expect(a).not.toBe(numberArray);
     });
 
-    it('Swaps elements',
-    function() {
-        var a = [1, 8, 8, 8, 10, 10];
-        expect(buckets.arrays.swap(a, 0, 5)).toEqual(true);
-        expect(a[0]).toEqual(10);
-        expect(a[5]).toEqual(1);
-        expect(buckets.arrays.swap(a, 0, 6)).toEqual(false);
-        expect(buckets.arrays.swap(a, 7, 2)).toEqual(false);
-        expect(buckets.arrays.swap(a, -1, 9)).toEqual(false);
+    it('swap only accepts valid positions', function () {
+        expect(buckets.arrays.swap(numberArray, 0, 5)).toEqual(true);
+        expect(numberArray[0]).toEqual(10);
+        expect(numberArray[5]).toEqual(1);
+        expect(buckets.arrays.swap(numberArray, 0, 6)).toEqual(false);
+        expect(buckets.arrays.swap(numberArray, 7, 2)).toEqual(false);
+        expect(buckets.arrays.swap(numberArray, -1, 9)).toEqual(false);
     });
-
 });

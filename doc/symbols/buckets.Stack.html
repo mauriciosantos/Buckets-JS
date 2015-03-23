@@ -212,7 +212,7 @@ pre {
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.Stack
+				Object buckets.Stack
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -222,14 +222,14 @@ pre {
 			
 				A Stack is a Last-In-First-Out (LIFO) data structure, the last
 element added to the stack will be the first one to be removed. This
-implementation uses a linked list as a container.
+implementation uses a linked list as the underlying storage.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
 			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.Stack.">
-				<caption>Class Summary</caption>
+				<caption>Object Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Name and Description</th>
@@ -266,75 +266,91 @@ implementation uses a linked list as a container.
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#add">add</a></b>(elem)
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.add">add</a></b>(elem)
 								</div>
-								<div class="description">Pushes an item onto the top of this stack.</div>
+								<div class="description">Pushes an element onto the top of the stack.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#clear">clear</a></b>()
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all of the elements from this stack.</div>
+								<div class="description">Removes all the elements from the stack.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#contains">contains</a></b>(elem, equalsFunction)
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.contains">contains</a></b>(elem, equalsFunction)
 								</div>
-								<div class="description">Returns true if this stack contains the specified element.</div>
+								<div class="description">Returns true if the stack contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#forEach">forEach</a></b>(callback)
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.equals">equals</a></b>(other, equalsFunction)
 								</div>
-								<div class="description">Executes the provided function once per element present in this stack in
+								<div class="description">Returns true if the stack is equal to another stack.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.forEach">forEach</a></b>(callback)
+								</div>
+								<div class="description">Executes the provided function once per element present in the stack in
 LIFO order.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Checks if this stack is empty.</div>
+								<div class="description">Checks if the stack is empty.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#peek">peek</a></b>()
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.peek">peek</a></b>()
 								</div>
-								<div class="description">Looks at the object at the top of this stack without removing it from the
-stack.</div>
+								<div class="description">Returns the element at the top of the stack without removing it.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#pop">pop</a></b>()
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.pop">pop</a></b>()
 								</div>
-								<div class="description">Removes the object at the top of this stack and returns that object.</div>
+								<div class="description">Removes the element at the top of the stack and returns it.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#push">push</a></b>(elem)
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.push">push</a></b>(elem)
 								</div>
-								<div class="description">Pushes an item onto the top of this stack.</div>
+								<div class="description">Pushes an element onto the top of the stack.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.Stack.html#size">size</a></b>()
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.size">size</a></b>()
 								</div>
-								<div class="description">Returns the number of elements in this stack.</div>
+								<div class="description">Returns the number of elements in the stack.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.Stack.<b><a href="../symbols/buckets.Stack.html#.toArray">toArray</a></b>()
+								</div>
+								<div class="description">Returns an array containing all the elements in the stack in LIFO
+order.</div>
 							</td>
 						</tr>
 					
@@ -351,7 +367,7 @@ stack.</div>
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Class Detail
+					Object Detail
 				</div>
 				
 				<div class="fixedFont">
@@ -386,15 +402,15 @@ stack.</div>
 					Method Detail
 				</div>
 				
-					<a name="add"> </a>
-					<div class="fixedFont">
+					<a name=".add"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(elem)
+					<span class="light">buckets.Stack.</span><b>add</b>(elem)
 					
 					</div>
 					<div class="description">
-						Pushes an item onto the top of this stack.
+						Pushes an element onto the top of the stack. Equivalent to push.
 						
 					</div>
 					
@@ -408,7 +424,7 @@ stack.</div>
 									<span class="light fixedFont">{Object}</span> <b>elem</b>
 									
 								</dt>
-								<dd>The element to be pushed onto this stack.</dd>
+								<dd>The element.</dd>
 							
 							</dl>
 						
@@ -419,7 +435,7 @@ stack.</div>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> true If the element was pushed or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> true If the element was pushed or false if it's undefined.</dd>
 							
 							</dl>
 						
@@ -428,15 +444,15 @@ stack.</div>
 
 					<hr />
 				
-					<a name="clear"> </a>
-					<div class="fixedFont">
+					<a name=".clear"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<b>clear</b>()
+					<span class="light">buckets.Stack.</span><b>clear</b>()
 					
 					</div>
 					<div class="description">
-						Removes all of the elements from this stack.
+						Removes all the elements from the stack.
 						
 					</div>
 					
@@ -452,18 +468,18 @@ stack.</div>
 
 					<hr />
 				
-					<a name="contains"> </a>
-					<div class="fixedFont">
+					<a name=".contains"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>contains</b>(elem, equalsFunction)
+					<span class="light">buckets.Stack.</span><b>contains</b>(elem, equalsFunction)
 					
 					</div>
 					<div class="description">
-						Returns true if this stack contains the specified element.
-<p>If the elements inside this stack are
+						Returns true if the stack contains the specified element.
+<p>If the elements inside the stack are
 not comparable with the === operator, a custom equals function must be
-provided to perform searches, the function must receive two arguments and
+provided to perform searches, that function must receive two arguments and
 return true if they are equal, false otherwise. Example:</p>
 
 <pre>
@@ -491,7 +507,7 @@ var petsAreEqualByName = function(pet1, pet2) {
 									
 								</dt>
 								<dd>Optional
-function to check if two elements are equal.</dd>
+function used to check if two elements are equal.</dd>
 							
 							</dl>
 						
@@ -502,7 +518,7 @@ function to check if two elements are equal.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if this stack contains the specified element,
+								<dd><span class="light fixedFont">{boolean}</span> True if the stack contains the specified element,
 false otherwise.</dd>
 							
 							</dl>
@@ -512,15 +528,67 @@ false otherwise.</dd>
 
 					<hr />
 				
-					<a name="forEach"> </a>
-					<div class="fixedFont">
+					<a name=".equals"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<b>forEach</b>(callback)
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.Stack.</span><b>equals</b>(other, equalsFunction)
 					
 					</div>
 					<div class="description">
-						Executes the provided function once per element present in this stack in
+						Returns true if the stack is equal to another stack.
+Two stacks are equal if they have the same elements in the same order.
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/buckets.Stack.html">buckets.Stack</a>}</span> <b>other</b>
+									
+								</dt>
+								<dd>The other stack.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function(Object|Object):boolean=}</span> <b>equalsFunction</b>
+									
+								</dt>
+								<dd>Optional
+function to check if two elements are equal. If the elements in the stacks
+are custom objects you should provide a custom equals function, otherwise
+the === operator is used to check equality between elements.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> True if the stack is equal to the given stack.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".forEach"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">buckets.Stack.</span><b>forEach</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once per element present in the stack in
 LIFO order.
 						
 					</div>
@@ -535,8 +603,8 @@ LIFO order.
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>Function to execute, it is
-invoked with one argument: the element value, to break the iteration you can
+								<dd>Function to execute, it's
+invoked with an element as argument. To break the iteration you can
 optionally return false inside the callback.</dd>
 							
 							</dl>
@@ -550,15 +618,15 @@ optionally return false inside the callback.</dd>
 
 					<hr />
 				
-					<a name="isEmpty"> </a>
-					<div class="fixedFont">
+					<a name=".isEmpty"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>isEmpty</b>()
+					<span class="light">buckets.Stack.</span><b>isEmpty</b>()
 					
 					</div>
 					<div class="description">
-						Checks if this stack is empty.
+						Checks if the stack is empty.
 						
 					</div>
 					
@@ -572,7 +640,7 @@ optionally return false inside the callback.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if and only if this stack contains no items; false
+								<dd><span class="light fixedFont">{boolean}</span> True if and only if this stack contains no elements, false
 otherwise.</dd>
 							
 							</dl>
@@ -582,16 +650,15 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="peek"> </a>
-					<div class="fixedFont">
+					<a name=".peek"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{*}</span>
-					<b>peek</b>()
+					<span class="light">buckets.Stack.</span><b>peek</b>()
 					
 					</div>
 					<div class="description">
-						Looks at the object at the top of this stack without removing it from the
-stack.
+						Returns the element at the top of the stack without removing it.
 						
 					</div>
 					
@@ -605,7 +672,7 @@ stack.
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The object at the top of this stack or undefined if the
+								<dd><span class="light fixedFont">{*}</span> The element at the top of the stack or undefined if the
 stack is empty.</dd>
 							
 							</dl>
@@ -615,15 +682,15 @@ stack is empty.</dd>
 
 					<hr />
 				
-					<a name="pop"> </a>
-					<div class="fixedFont">
+					<a name=".pop"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{*}</span>
-					<b>pop</b>()
+					<span class="light">buckets.Stack.</span><b>pop</b>()
 					
 					</div>
 					<div class="description">
-						Removes the object at the top of this stack and returns that object.
+						Removes the element at the top of the stack and returns it.
 						
 					</div>
 					
@@ -637,7 +704,7 @@ stack is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The object at the top of this stack or undefined if the
+								<dd><span class="light fixedFont">{*}</span> The element at the top of the stack or undefined if the
 stack is empty.</dd>
 							
 							</dl>
@@ -647,15 +714,15 @@ stack is empty.</dd>
 
 					<hr />
 				
-					<a name="push"> </a>
-					<div class="fixedFont">
+					<a name=".push"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>push</b>(elem)
+					<span class="light">buckets.Stack.</span><b>push</b>(elem)
 					
 					</div>
 					<div class="description">
-						Pushes an item onto the top of this stack.
+						Pushes an element onto the top of the stack.
 						
 					</div>
 					
@@ -669,7 +736,7 @@ stack is empty.</dd>
 									<span class="light fixedFont">{Object}</span> <b>elem</b>
 									
 								</dt>
-								<dd>The element to be pushed onto this stack.</dd>
+								<dd>The element.</dd>
 							
 							</dl>
 						
@@ -680,7 +747,7 @@ stack is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if the element was pushed or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was pushed or false if it's undefined.</dd>
 							
 							</dl>
 						
@@ -689,15 +756,15 @@ stack is empty.</dd>
 
 					<hr />
 				
-					<a name="size"> </a>
-					<div class="fixedFont">
+					<a name=".size"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{number}</span>
-					<b>size</b>()
+					<span class="light">buckets.Stack.</span><b>size</b>()
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this stack.
+						Returns the number of elements in the stack.
 						
 					</div>
 					
@@ -711,7 +778,40 @@ stack is empty.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> The number of elements in this stack.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in the stack.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".toArray"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Array.<*>}</span>
+					<span class="light">buckets.Stack.</span><b>toArray</b>()
+					
+					</div>
+					<div class="description">
+						Returns an array containing all the elements in the stack in LIFO
+order.
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array.<*>}</span> An array containing all the elements in the stack
+in LIFO order.</dd>
 							
 							</dl>
 						

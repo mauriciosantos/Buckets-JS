@@ -1,6 +1,32 @@
 {
   "name": "bucketsjs",
-  "version": "1.85.3",
-  "dependencies": {},
-  "main": "buckets.js"
+  "version": "1.90.0",
+  "main": [
+    "buckets.js",
+    "buckets.min.js"
+  ],
+  "license": "MIT",
+  "authors": [
+    "Mauricio Santos <mauriciosantoss@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mauriciosantos/buckets.git"
+  },
+  "keywords": [
+    "buckets",
+    "data",
+    "structure",
+    "linked",
+    "list",
+    "heap",
+    "stack",
+    "queue",
+    "priority",
+    "binary",
+    "tree",
+    "set",
+    "dictionary",
+    "map"
+  ]
 }

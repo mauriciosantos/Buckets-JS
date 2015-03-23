@@ -1,96 +1,65 @@
-describe('Multi Dictionary',
-function() {
+describe('Multi Dictionary', function () {
 
-   	var dict = null;
-    var elems = 100;
+    var elems = 100,
+        dict;
 
-    beforeEach(function() {
+    beforeEach(function () {
         dict = new buckets.MultiDictionary();
     });
 
-    it('Maps keys to values with string keys',
-    function() {
+    it('set and get value with string key', function () {
 
         expect(dict.get("sd")).toEqual([]);
-
-        // test with string keys
-        for (var i = 0; i < elems; i++) {
-            expect(dict.set("" + i, i + 1)).toBeTruthy();
-        }
-        expect(dict.size()).toEqual(elems);
-
-        for (var i = 0; i < elems; i++) {
-            expect(dict.get("" + i)).toEqual([i + 1]);
-        }
-
         dict.set("a", 5);
         expect(dict.get("a")).toEqual([5]);
         expect(dict.set("a", 21)).toBeTruthy();
-        expect(dict.size()).toEqual(elems + 1);
-        expect(dict.get("a")).toEqual([5,21]);
+        expect(dict.size()).toEqual(1);
+        expect(dict.get("a")).toEqual([5, 21]);
 
     });
 
- 	it('Maps keys to values with number keys',
-    function() {
-
-        // test with number keys
-        for (var i = 0; i < elems; i++) {
-            expect(dict.set(i, i + 1)).toBeTruthy();
-        }
-
-        for (var i = 0; i < elems; i++) {
-            expect(dict.get(i)).toEqual([i + 1]);
-        }
+    it('set and get value with number key', function () {
+        expect(dict.get(1)).toEqual([]);
+        dict.set(1, 5);
+        expect(dict.get(1)).toEqual([5]);
     });
 
-	it('Maps keys to values with custom keys',
-    function() {
-
-        var ts = function(obj) {
-            return obj.s;
-        };
+    it('set and get value with custom key', function () {
+        var ts = function (obj) {
+                return obj.s;
+            },
+            o;
         dict = new buckets.MultiDictionary(ts);
-        expect(dict.get("sd")).toEqual([]);
-
-        for (var i = 0; i < elems; i++) {
-            var o = {};
-            o.s = "" + i;
-            expect(dict.set(o, i + 1)).toBeTruthy();
-        }
-
-        for (var i = 0; i < elems; i++) {
-            var d = {};
-            d.s = "" + i;
-            expect(dict.get(d)).toEqual([i + 1]);
-        }
+        o = {
+            s: "1"
+        };
+        expect(dict.set(o, 2)).toBeTruthy();
+        expect(dict.get(o)).toEqual([2]);
     });
 
-	it('Maps multiple values',
-    function() {
+    it('set associates multiple values with single key', function () {
         dict.set("a", 5);
         expect(dict.get("a")).toEqual([5]);
         expect(dict.set("a", 21)).toBeTruthy();
         expect(dict.size()).toEqual(1);
-        expect(dict.get("a")).toEqual([5,21]);
-		expect(dict.size()).toEqual(1);
-		expect(dict.set("a", 31)).toBeTruthy();
+        expect(dict.get("a")).toEqual([5, 21]);
         expect(dict.size()).toEqual(1);
-        expect(dict.get("a")).toEqual([5,21,31]);
-		expect(dict.size()).toEqual(1);
+        expect(dict.set("a", 31)).toBeTruthy();
+        expect(dict.size()).toEqual(1);
+        expect(dict.get("a")).toEqual([5, 21, 31]);
+        expect(dict.size()).toEqual(1);
 
     });
 
-	it('Removes existing elements from the dictionary',
-    function() {
-
+    it('remove deletes existing keys', function () {
+        var i;
         expect(dict.remove("1")).toBeFalsy();
-        for (var i = 0; i < elems; i++) {
+        for (i = 0; i < elems; i += 1) {
             expect(dict.set("" + i, i + 1)).toBeTruthy();
         }
         expect(dict.size()).toEqual(elems);
 
-        for (var i = 0; i < elems; i++) {
+        for (i = 0; i < elems; i += 1) {
             expect(dict.remove("" + i)).toBeTruthy();
             expect(dict.get("" + i)).toEqual([]);
             expect(dict.remove("" + i)).toBeFalsy();
@@ -98,38 +67,34 @@ function() {
         expect(dict.size()).toEqual(0);
     });
 
-	it('Removes all values from a key',
-    function() {
-		dict.set("a",1);
-		dict.remove("a");
-		expect(dict.containsKey("a")).toBeFalsy();
-		expect(dict.get("a")).toEqual([]);
-		dict.set("a",2);
-		dict.set("a",3);
-		dict.remove("a");
-		expect(dict.containsKey("a")).toBeFalsy();
-		expect(dict.get("a")).toEqual([]);
+    it('remove deletes multiple values per key', function () {
+        dict.set("a", 1);
+        dict.remove("a");
+        expect(dict.containsKey("a")).toBeFalsy();
+        expect(dict.get("a")).toEqual([]);
+        dict.set("a", 2);
+        dict.set("a", 3);
+        dict.remove("a");
+        expect(dict.containsKey("a")).toBeFalsy();
+        expect(dict.get("a")).toEqual([]);
     });
 
-	it('Removes a single value from a key',
-    function() {
-		dict.set("a",1);
-		dict.remove("a",1);
-		expect(dict.containsKey("a")).toBeFalsy();
-		expect(dict.get("a")).toEqual([]);
-		dict.set("a",2);
-		dict.set("a",3);
-		dict.remove("a",3);
-		expect(dict.containsKey("a")).toBeTruthy();
-		expect(dict.get("a")).toEqual([2]);
-		dict.remove("a",2);
-		expect(dict.containsKey("a")).toBeFalsy();
-		expect(dict.get("a")).toEqual([]);
+    it('remove deletes a single value from key', function () {
+        dict.set("a", 1);
+        dict.remove("a", 1);
+        expect(dict.containsKey("a")).toBeFalsy();
+        expect(dict.get("a")).toEqual([]);
+        dict.set("a", 2);
+        dict.set("a", 3);
+        dict.remove("a", 3);
+        expect(dict.containsKey("a")).toBeTruthy();
+        expect(dict.get("a")).toEqual([2]);
+        dict.remove("a", 2);
+        expect(dict.containsKey("a")).toBeFalsy();
+        expect(dict.get("a")).toEqual([]);
     });
 
-	it('An empty dictionary is empty',
-    function() {
-
+    it('isEmpty returns true only if there are no key-value pairs', function () {
         expect(dict.isEmpty()).toBeTruthy();
         dict.set("1", 1);
         expect(dict.isEmpty()).toBeFalsy();
@@ -137,63 +102,105 @@ function() {
         expect(dict.isEmpty()).toBeTruthy();
     });
 
-	it('Clear removes all elements',
-    function() {
-		dict.clear();
-		dict.set(1,1);
-		dict.clear();
-		expect(dict.isEmpty()).toBeTruthy();
-		expect(dict.get(1)).toEqual([]);
+    it('clear removes all elements', function () {
+        dict.clear();
+        dict.set(1, 1);
+        dict.clear();
+        expect(dict.isEmpty()).toBeTruthy();
+        expect(dict.get(1)).toEqual([]);
     });
 
-    it('Contains existing keys',
-    function() {
-
+    it('contains returns true for existing keys', function () {
+        var i;
         expect(dict.containsKey(0)).toBeFalsy();
-        for (var i = 0; i < 10; i++) {
+        for (i = 0; i < 10; i += 1) {
             dict.set(i, i);
             expect(dict.containsKey(i)).toBeTruthy();
         }
-        for (var i = 0; i < 10; i++) {
+        for (i = 0; i < 10; i += 1) {
             dict.remove(i);
             expect(dict.containsKey(i)).toBeFalsy();
         }
     });
 
-    it('Gives the right size',
-    function() {
-
+    it('size gives the right value', function () {
+        var i;
         expect(dict.size()).toEqual(0);
-        for (var i = 0; i < 10; i++) {
+        for (i = 0; i < 10; i += 1) {
             dict.set(i, i);
             expect(dict.size()).toEqual(i + 1);
         }
     });
 
-    it('Gives all the stored keys',
-    function() {
-        var k = [];
-        for (var i = 0; i < elems; i++) {
-            var keys = dict.keys();
+    it('keys returns all inserted keys', function () {
+        var k = [],
+            i, keys;
+        for (i = 0; i < elems; i += 1) {
+            keys = dict.keys();
             k.sort();
             keys.sort();
-			expect(k).toEqual(keys);
+            expect(k).toEqual(keys);
             dict.set("" + i, i);
             k.push("" + i);
         }
     });
 
-    it('Gives all the stored values',
-    function() {
-        var v = [];
-        for (var i = 0; i < elems; i++) {
-            var values = dict.values();
+    it('values returns all inserted values', function () {
+        var v = [],
+            i, values;
+        for (i = 0; i < elems; i += 1) {
+            values = dict.values();
             v.sort();
             values.sort();
-			expect(v).toEqual(values);
+            expect(v).toEqual(values);
             dict.set("" + i, i);
             v.push(i);
         }
     });
 
+    it('forEeach returns all the key value pairs', function () {
+        var i;
+        dict.forEach(function (e) {
+            expect(false).toBeTruthy();
+        });
+
+        for (i = 0; i < elems; i += 1) {
+            dict.set(i, i);
+            dict.set(i, i + 1);
+        }
+        i = 0;
+        dict.forEach(function (k, v) {
+            expect(dict.get(k)).toEqual([k, k + 1]);
+            i += 1
+        });
+        expect(i).toEqual(elems);
+    });
+
+    it('forEeach can be interrupted', function () {
+        var i = 0;
+        dict.set(1, 1);
+        dict.set(2, 1);
+        dict.forEach(function (key, values) {
+            i += 1;
+            return false;
+        });
+        expect(i).toEqual(1);
+    });
+
+    it('equals returns true only if they have the same key-values pairs', function () {
+        var dict2 = new buckets.MultiDictionary();
+        dict.set('a', 1);
+        dict.set('b', 2);
+
+        dict2.set('a', 1);
+        dict2.set('b', 2);
+
+        expect(dict.equals(dict2)).toBeTruthy();
+        dict2.clear();
+        dict2.set('a', 1);
+        dict2.set('b', 2);
+        dict2.set('b', 3);
+        expect(dict.equals(dict2)).toBeFalsy();
+        expect(dict.equals([1, 2])).toBeFalsy();
+    });
 });

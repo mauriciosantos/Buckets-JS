@@ -1,16 +1,47 @@
 {
   "name": "buckets-js",
+  "simpleName": "buckets",
   "description": "Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.",
-  "version": "1.85.3",
+  "version": "1.90.0",
+  "author": "Mauricio Santos <mauriciosantoss@gmail.com>",
+  "keywords": [
+    "buckets",
+    "data",
+    "structure",
+    "linked",
+    "list",
+    "heap",
+    "stack",
+    "queue",
+    "priority",
+    "binary",
+    "tree",
+    "set",
+    "dictionary",
+    "map"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/mauriciosantos/buckets.git"
   },
+  "homepage": "https://github.com/mauriciosantos/Buckets-JS",
   "dependencies": {},
   "files": [
     "buckets.js",
-    "buckets-minified.js"
+    "buckets.min.js"
   ],
-  "main": "buckets.js"
+  "main": "buckets.js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jasmine": "^0.8.2",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-jsbeautifier": "^0.2.10",
+    "grunt-shell": "^1.1.2",
+    "grunt-umd": "^2.3.3",
+    "grunt-write-bower-json": "0.0.1",
+    "jsdoc2": "^2.4.0",
+    "load-grunt-tasks": "^3.1.0"
+  }
 }

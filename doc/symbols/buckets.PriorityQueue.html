@@ -212,7 +212,7 @@ pre {
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class buckets.PriorityQueue
+				Object buckets.PriorityQueue
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -222,7 +222,8 @@ pre {
 			
 				<p>In a priority queue each element is associated with a "priority",
 elements are dequeued in highest-priority-first order (the elements with the
-highest priority are dequeued first). Priority queues are implemented as binary heaps.</p>
+highest priority are dequeued first). This implementation uses a binary 
+heap as the underlying storage.</p>
 
 <p>If the inserted elements are custom objects, a compare function must be provided,
 otherwise the <=, === and >= operators are used to compare object priority.</p>
@@ -244,7 +245,7 @@ function compare(a, b) {
 <!-- ============================== constructor summary ==================== -->			
 			
 			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class buckets.PriorityQueue.">
-				<caption>Class Summary</caption>
+				<caption>Object Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Name and Description</th>
@@ -281,74 +282,91 @@ function compare(a, b) {
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#add">add</a></b>(element)
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.add">add</a></b>(element)
 								</div>
-								<div class="description">Inserts the specified element into this priority queue.</div>
+								<div class="description">Inserts the specified element into the priority queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#clear">clear</a></b>()
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.clear">clear</a></b>()
 								</div>
-								<div class="description">Removes all elements from this priority queue.</div>
+								<div class="description">Removes all elements from the priority queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#contains">contains</a></b>(element)
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.contains">contains</a></b>(element)
 								</div>
-								<div class="description">Returns true if this priority queue contains the specified element.</div>
+								<div class="description">Returns true if the priority queue contains the specified element.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#dequeue">dequeue</a></b>()
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.dequeue">dequeue</a></b>()
 								</div>
-								<div class="description">Retrieves and removes the highest priority element of this queue.</div>
+								<div class="description">Retrieves and removes the highest priority element of the queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#enqueue">enqueue</a></b>(element)
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.enqueue">enqueue</a></b>(element)
 								</div>
-								<div class="description">Inserts the specified element into this priority queue.</div>
+								<div class="description">Inserts the specified element into the priority queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#forEach">forEach</a></b>(callback)
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.equals">equals</a></b>(other)
 								</div>
-								<div class="description">Executes the provided function once per element present in this queue in
+								<div class="description">Returns true if the queue is equal to another queue.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.forEach">forEach</a></b>(callback)
+								</div>
+								<div class="description">Executes the provided function once per element present in the queue in
 no particular order.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#isEmpty">isEmpty</a></b>()
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.isEmpty">isEmpty</a></b>()
 								</div>
-								<div class="description">Checks if this priority queue is empty.</div>
+								<div class="description">Checks if the priority queue is empty.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#peek">peek</a></b>()
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.peek">peek</a></b>()
 								</div>
-								<div class="description">Retrieves, but does not remove, the highest priority element of this queue.</div>
+								<div class="description">Retrieves, but does not remove, the highest priority element of the queue.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/buckets.PriorityQueue.html#size">size</a></b>()
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.size">size</a></b>()
 								</div>
-								<div class="description">Returns the number of elements in this priority queue.</div>
+								<div class="description">Returns the number of elements in the priority queue.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="nameDescription">
+								<div class="fixedFont">buckets.PriorityQueue.<b><a href="../symbols/buckets.PriorityQueue.html#.toArray">toArray</a></b>()
+								</div>
+								<div class="description">Returns an array containing all the elements in the queue in no
+particular order.</div>
 							</td>
 						</tr>
 					
@@ -365,7 +383,7 @@ no particular order.</div>
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Class Detail
+					Object Detail
 				</div>
 				
 				<div class="fixedFont">
@@ -414,156 +432,15 @@ or greater than the second.</dd>
 					Method Detail
 				</div>
 				
-					<a name="add"> </a>
-					<div class="fixedFont">
+					<a name=".add"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>add</b>(element)
+					<span class="light">buckets.PriorityQueue.</span><b>add</b>(element)
 					
 					</div>
 					<div class="description">
-						Inserts the specified element into this priority queue. It is equivalent to enqueue.
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
-									
-								</dt>
-								<dd>the element to insert.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it is undefined.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="clear"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>clear</b>()
-					
-					</div>
-					<div class="description">
-						Removes all elements from this priority queue.
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="contains"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{boolean}</span>
-					<b>contains</b>(element)
-					
-					</div>
-					<div class="description">
-						Returns true if this priority queue contains the specified element.
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>element</b>
-									
-								</dt>
-								<dd>Element to search for.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{boolean}</span> True if this priority queue contains the specified element,
-false otherwise.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="dequeue"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{*}</span>
-					<b>dequeue</b>()
-					
-					</div>
-					<div class="description">
-						Retrieves and removes the highest priority element of this queue.
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{*}</span> The highest priority element of this queue,
-    or undefined if this queue is empty.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="enqueue"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{boolean}</span>
-					<b>enqueue</b>(element)
-					
-					</div>
-					<div class="description">
-						Inserts the specified element into this priority queue.
+						Inserts the specified element into the priority queue. It's equivalent to enqueue.
 						
 					</div>
 					
@@ -588,7 +465,7 @@ false otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it is undefined.</dd>
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it's undefined.</dd>
 							
 							</dl>
 						
@@ -597,15 +474,199 @@ false otherwise.</dd>
 
 					<hr />
 				
-					<a name="forEach"> </a>
-					<div class="fixedFont">
+					<a name=".clear"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<b>forEach</b>(callback)
+					<span class="light">buckets.PriorityQueue.</span><b>clear</b>()
 					
 					</div>
 					<div class="description">
-						Executes the provided function once per element present in this queue in
+						Removes all elements from the priority queue.
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".contains"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.PriorityQueue.</span><b>contains</b>(element)
+					
+					</div>
+					<div class="description">
+						Returns true if the priority queue contains the specified element.
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>Element to search for.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> True if the priority queue contains the specified element,
+false otherwise.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".dequeue"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{*}</span>
+					<span class="light">buckets.PriorityQueue.</span><b>dequeue</b>()
+					
+					</div>
+					<div class="description">
+						Retrieves and removes the highest priority element of the queue.
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{*}</span> The highest priority element of the queue,
+or undefined if the queue is empty.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".enqueue"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.PriorityQueue.</span><b>enqueue</b>(element)
+					
+					</div>
+					<div class="description">
+						Inserts the specified element into the priority queue.
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>element</b>
+									
+								</dt>
+								<dd>The element to insert.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> True if the element was inserted, or false if it's undefined.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".equals"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{boolean}</span>
+					<span class="light">buckets.PriorityQueue.</span><b>equals</b>(other)
+					
+					</div>
+					<div class="description">
+						Returns true if the queue is equal to another queue.
+Two priority queues are equal if they have the same elements.
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/buckets.PriorityQueue.html">buckets.PriorityQueue</a>}</span> <b>other</b>
+									
+								</dt>
+								<dd>The other queue.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> True if the queue is equal to the given queue.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".forEach"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">buckets.PriorityQueue.</span><b>forEach</b>(callback)
+					
+					</div>
+					<div class="description">
+						Executes the provided function once per element present in the queue in
 no particular order.
 						
 					</div>
@@ -620,8 +681,8 @@ no particular order.
 									<span class="light fixedFont">{function(Object):*}</span> <b>callback</b>
 									
 								</dt>
-								<dd>Function to execute, it is
-invoked with one argument: the element value, to break the iteration you can
+								<dd>Function to execute, it's
+invoked one element as argument. To break the iteration you can
 optionally return false inside the callback.</dd>
 							
 							</dl>
@@ -635,15 +696,15 @@ optionally return false inside the callback.</dd>
 
 					<hr />
 				
-					<a name="isEmpty"> </a>
-					<div class="fixedFont">
+					<a name=".isEmpty"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{boolean}</span>
-					<b>isEmpty</b>()
+					<span class="light">buckets.PriorityQueue.</span><b>isEmpty</b>()
 					
 					</div>
 					<div class="description">
-						Checks if this priority queue is empty.
+						Checks if the priority queue is empty.
 						
 					</div>
 					
@@ -657,7 +718,7 @@ optionally return false inside the callback.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{boolean}</span> True if and only if this priority queue contains no items; false
+								<dd><span class="light fixedFont">{boolean}</span> True if and only if the priority queue contains no items, false
 otherwise.</dd>
 							
 							</dl>
@@ -667,15 +728,15 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="peek"> </a>
-					<div class="fixedFont">
+					<a name=".peek"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{*}</span>
-					<b>peek</b>()
+					<span class="light">buckets.PriorityQueue.</span><b>peek</b>()
 					
 					</div>
 					<div class="description">
-						Retrieves, but does not remove, the highest priority element of this queue.
+						Retrieves, but does not remove, the highest priority element of the queue.
 						
 					</div>
 					
@@ -689,7 +750,7 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{*}</span> The highest priority element of this queue, or undefined if this queue is empty.</dd>
+								<dd><span class="light fixedFont">{*}</span> The highest priority element of the queue, or undefined if the queue is empty.</dd>
 							
 							</dl>
 						
@@ -698,15 +759,15 @@ otherwise.</dd>
 
 					<hr />
 				
-					<a name="size"> </a>
-					<div class="fixedFont">
+					<a name=".size"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{number}</span>
-					<b>size</b>()
+					<span class="light">buckets.PriorityQueue.</span><b>size</b>()
 					
 					</div>
 					<div class="description">
-						Returns the number of elements in this priority queue.
+						Returns the number of elements in the priority queue.
 						
 					</div>
 					
@@ -720,7 +781,40 @@ otherwise.</dd>
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{number}</span> The number of elements in this priority queue.</dd>
+								<dd><span class="light fixedFont">{number}</span> The number of elements in the priority queue.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".toArray"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Array.<*>}</span>
+					<span class="light">buckets.PriorityQueue.</span><b>toArray</b>()
+					
+					</div>
+					<div class="description">
+						Returns an array containing all the elements in the queue in no
+particular order.
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array.<*>}</span> An array containing all the elements in the queue
+in no particular order.</dd>
 							
 							</dl>
 						

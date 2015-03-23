@@ -1,17 +1,16 @@
-describe('Binary Search Tree',
-function() {
+describe('Binary Search Tree', function () {
 
-    var tree = null;
+    var tree;
 
-    beforeEach(function() {
+    function createTree1() {
         tree = new buckets.BSTree();
-    });
-    var createTree1 = function() {
-        tree.add("b");
-        tree.add("a");
-        tree.add("c");
-    };
-    var createTree2 = function() {
+        tree.add('b');
+        tree.add('a');
+        tree.add('c');
+    }
+
+    function createTree2() {
+        tree = new buckets.BSTree();
         tree.add('f');
         tree.add('b');
         tree.add('a');
@@ -21,10 +20,14 @@ function() {
         tree.add('g');
         tree.add('i');
         tree.add('h');
-    };
+    }
 
-    it('Gives the right size',
-    function() {
+    beforeEach(function () {
+        tree = new buckets.BSTree();
+    });
+
+
+    it('size gives the right value', function () {
         createTree1();
         expect(tree.size()).toEqual(3);
         tree.add('d');
@@ -50,95 +53,68 @@ function() {
         expect(tree.size()).toEqual(4);
         tree.remove('d');
         expect(tree.size()).toEqual(3);
-        tree.add("c");
+        tree.add('c');
         expect(tree.size()).toEqual(3);
     });
 
-    it('Clears removes all elements',
-    function() {
+    it('clear removes all elements', function () {
         createTree1();
         tree.clear();
         expect(tree.contains('a')).toBeFalsy();
     });
 
-    it('Gives the right height',
-    function() {
+    it('height gives the right value', function () {
         createTree1();
         expect(tree.height()).toEqual(1);
-    });
-
-    it('Gives the right height 2',
-    function() {
         createTree2();
         expect(tree.height()).toEqual(3);
     });
 
-    it('Gives the right height on empty tree',
-    function() {
-        expect(tree.height()).toEqual( - 1);
+    it('height returns -1 for empty tree', function () {
+        expect(tree.height()).toEqual(-1);
     });
 
-    it('Gives the maximum element 1',
-    function() {
+    it('maximum returns the right value', function () {
         createTree1();
         expect(tree.maximum()).toEqual('c');
-    });
-
-    it('Gives the maximum element 2',
-    function() {
         createTree2();
         expect(tree.maximum()).toEqual('i');
     });
 
-    it('Gives the maximum element on empty tree',
-    function() {
+    it('maximum returns undefined for empty tree', function () {
         expect(tree.maximum()).toBeUndefined();
     });
 
-    it('Gives the minimum element 1',
-    function() {
+    it('minimum returns the right value', function () {
         createTree1();
         expect(tree.minimum()).toEqual('a');
-    });
-
-    it('Gives the minimum element 2',
-    function() {
         createTree2();
         expect(tree.minimum()).toEqual('a');
     });
 
-    it('Gives the minimum element on empty tree',
-    function() {
+    it('minimum returns undefined for empty tree', function () {
         expect(tree.minimum()).toBeUndefined();
     });
 
-    it('Contains existing elements',
-    function() {
+    it('contains returns true for existing elements', function () {
         createTree1();
 
         expect(tree.contains('a')).toBeTruthy();
         expect(tree.contains('b')).toBeTruthy();
         expect(tree.contains('c')).toBeTruthy();
+        tree.remove('a');
+        expect(tree.contains('b')).toBeTruthy();
+        expect(tree.contains('c')).toBeTruthy();
+    });
+
+    it('contains returns false for non-existing elements', function () {
+        createTree1();
         expect(tree.contains('e')).toBeFalsy();
         tree.remove('a');
         expect(tree.contains('a')).toBeFalsy();
-        expect(tree.contains('b')).toBeTruthy();
-        expect(tree.contains('c')).toBeTruthy();
-
-        tree.clear();
-        tree.add(3);
-        tree.add(2);
-        tree.add(4);
-        tree.add(1);
-        expect(tree.contains(1)).toBeTruthy();
-        expect(tree.contains(2)).toBeTruthy();
-        expect(tree.contains(3)).toBeTruthy();
-        expect(tree.contains(4)).toBeTruthy();
-        expect(tree.contains(5)).toBeFalsy();
     });
 
-    it('An empty tree is empty',
-    function() {
+    it('isEmpty returns true only if the tree contains no elements', function () {
         expect(tree.isEmpty()).toBeTruthy();
         tree.add(1);
         expect(tree.isEmpty()).toBeFalsy();
@@ -146,87 +122,89 @@ function() {
         expect(tree.isEmpty()).toBeTruthy();
     });
 
-    it('Adds',
-    function() {
+
+    it('add inserts non-existing elements into the tree', function () {
         expect(tree.add('b')).toBeTruthy();
         expect(tree.add('a')).toBeTruthy();
         expect(tree.contains('a')).toBeTruthy();
         expect(tree.contains('b')).toBeTruthy();
-        expect(tree.add('b')).toBeFalsy();
-        expect(tree.contains('b')).toBeTruthy();
         expect(tree.add(null)).toBeTruthy();
         expect(tree.contains(null)).toBeTruthy();
-        expect(tree.add(null)).toBeFalsy();
-        expect(tree.contains(undefined)).toBeFalsy();
+    });
+
+    it('add can not insert existing elements into the tree', function () {
+        expect(tree.add('b')).toBeTruthy();
+        expect(tree.add('b')).toBeFalsy();
+    });
+
+    it('add can not insert undefined', function () {
         expect(tree.add(undefined)).toBeFalsy();
         expect(tree.contains(undefined)).toBeFalsy();
     });
 
-    it('Removes a leaf',
-    function() {
+    it('remove deletes leaf element', function () {
+        var array = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i'],
+            b = [];
         createTree2();
         tree.remove('c');
-        var array = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i'];
-        var b = [];
-        tree.inorderTraversal(function(element) {
+
+        tree.inorderTraversal(function (element) {
             b.push(element);
         });
-		expect(array).toEqual(b);
+        expect(array).toEqual(b);
     });
 
-    it('Removes a node with one children',
-    function() {
+    it('remove deletes a node with one child', function () {
+        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
+            b = [];
         createTree2();
         tree.remove('i');
-        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-        var b = [];
-        tree.inorderTraversal(function(element) {
+        tree.inorderTraversal(function (element) {
             b.push(element);
         });
-		expect(array).toEqual(b);
+        expect(array).toEqual(b);
     });
 
-    it('Removes a node with two children',
-    function() {
+    it('remove deletes a node with two children', function () {
+        var array = ['a', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
+            b = [];
+
         createTree2();
         tree.remove('b');
-        var array = ['a', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
-        var b = [];
-        tree.inorderTraversal(function(element) {
+
+        tree.inorderTraversal(function (element) {
             b.push(element);
         });
         expect(array).toEqual(b);
     });
 
-    it('Removes root',
-    function() {
+    it('remove deletes root node', function () {
+        var array = ['a', 'b', 'c', 'd', 'e', 'g', 'h', 'i'],
+            b = [];
         createTree2();
         tree.remove('f');
-        var array = ['a', 'b', 'c', 'd', 'e', 'g', 'h', 'i'];
-        var b = [];
-        tree.inorderTraversal(function(element) {
+
+        tree.inorderTraversal(function (element) {
             b.push(element);
         });
         expect(array).toEqual(b);
     });
 
-    it('Inorder traversal gives the right ordering',
-    function() {
+    it('inorderTraversal returns elements in the right order', function () {
+        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
+            b = [];
         createTree2();
-        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
-        var b = [];
-        tree.inorderTraversal(function(element) {
+        tree.inorderTraversal(function (element) {
             b.push(element);
         });
         expect(array).toEqual(b);
     });
 
-    it('Inorder traversal cen be interrupted',
-    function() {
+    it('inorderTraversal can be interrupted', function () {
+        var array = ['a', 'b', 'c', 'd'],
+            b = [];
         createTree2();
-        var array = ['a', 'b', 'c', 'd'];
-        var b = [];
-        tree.inorderTraversal(function(element) {
+        tree.inorderTraversal(function (element) {
             b.push(element);
             if (element === 'd') {
                 return false;
@@ -235,23 +213,22 @@ function() {
         expect(array).toEqual(b);
     });
 
-    it('Preorder traversal gives the right ordering',
-    function() {
+    it('preorderTraversal returns elements in the right order', function () {
+        var array = ['f', 'b', 'a', 'd', 'c', 'e', 'g', 'i', 'h'],
+            b = [];
         createTree2();
-        var array = ['f', 'b', 'a', 'd', 'c', 'e', 'g', 'i', 'h'];
-        var b = [];
-        tree.preorderTraversal(function(element) {
+
+        tree.preorderTraversal(function (element) {
             b.push(element);
         });
         expect(array).toEqual(b);
     });
 
-    it('Preorder traversal can be interrupted',
-    function() {
+    it('preorderTraversal can be interrupted', function () {
+        var array = ['f', 'b', 'a'],
+            b = [];
         createTree2();
-        var array = ['f', 'b', 'a'];
-        var b = [];
-        tree.preorderTraversal(function(element) {
+        tree.preorderTraversal(function (element) {
             b.push(element);
             if (element === 'a') {
                 return false;
@@ -260,23 +237,22 @@ function() {
         expect(array).toEqual(b);
     });
 
-	it('Level traversal gives the right ordering',
-    function() {
+    it('levelTraversal returns elements in the right order', function () {
+        var array = ['f', 'b', 'g', 'a', 'd', 'i', 'c', 'e', 'h'],
+            b = [];
         createTree2();
-        var array = ['f', 'b', 'g', 'a', 'd', 'i', 'c', 'e', 'h'];
-        var b = [];
-        tree.levelTraversal(function(element) {
+        tree.levelTraversal(function (element) {
             b.push(element);
         });
         expect(array).toEqual(b);
     });
 
-    it('Level traversal can be interrupted',
-    function() {
+    it('levelTraversal can be interrupted', function () {
+        var array = ['f', 'b', 'g', 'a', 'd', 'i'],
+            b = [];
         createTree2();
-        var array = ['f', 'b', 'g', 'a', 'd', 'i'];
-        var b = [];
-        tree.levelTraversal(function(element) {
+
+        tree.levelTraversal(function (element) {
             b.push(element);
             if (element === 'i') {
                 return false;
@@ -285,23 +261,22 @@ function() {
         expect(array).toEqual(b);
     });
 
-    it('Postorter traversal gives the right ordering',
-    function() {
+    it('postorderTraversal returns elements in the right order', function () {
+        var array = ['a', 'c', 'e', 'd', 'b', 'h', 'i', 'g', 'f'],
+            b = [];
         createTree2();
-        var array = ['a', 'c', 'e', 'd', 'b', 'h', 'i', 'g', 'f'];
-        var b = [];
-        tree.postorderTraversal(function(element) {
+
+        tree.postorderTraversal(function (element) {
             b.push(element);
         });
         expect(array).toEqual(b);
     });
 
-    it('Postorter traversal can be interrupted',
-    function() {
+    it('postorderTraversal can be interrupted', function () {
+        var array = ['a', 'c', 'e', 'd', 'b'],
+            b = [];
         createTree2();
-        var array = ['a', 'c', 'e', 'd', 'b'];
-        var b = [];
-        tree.postorderTraversal(function(element) {
+        tree.postorderTraversal(function (element) {
             b.push(element);
             if (element === 'b') {
                 return false;
@@ -310,23 +285,21 @@ function() {
         expect(array).toEqual(b);
     });
 
-    it('For each gives the right ordering',
-    function() {
+    it('forEach returns elements in the right order', function () {
+        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
+            b = [];
         createTree2();
-        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
-        var b = [];
-        tree.forEach(function(element) {
+        tree.forEach(function (element) {
             b.push(element);
         });
         expect(array).toEqual(b);
     });
 
-    it('For each can be interrupted',
-    function() {
+    it('forEach can be interrupted', function () {
+        var array = ['a', 'b', 'c', 'd'],
+            b = [];
         createTree2();
-        var array = ['a', 'b', 'c', 'd'];
-        var b = [];
-        tree.forEach(function(element) {
+        tree.forEach(function (element) {
             b.push(element);
             if (element === 'd') {
                 return false;
@@ -335,17 +308,31 @@ function() {
         expect(array).toEqual(b);
     });
 
-    it('toArray gives the right ordering',
-    function() {
+    it('toArray gives a new in-order array', function () {
+        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
+            b;
         createTree2();
-        var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
-        var b = tree.toArray();
+        b = tree.toArray();
         expect(array).toEqual(b);
     });
 
-    it('Empty tree returns an empty array',
-    function() {
-		expect(tree.toArray()).toEqual([]);
+    it('toArray returns an empty array for empty tree', function () {
+        expect(tree.toArray()).toEqual([]);
     });
 
+    it('equals returns true only if trees have the same elements', function () {
+        var tree2 = new buckets.BSTree();
+        tree.add(1);
+        tree.add(2);
+
+        tree2.add(2);
+        tree2.add(1);
+
+        expect(tree.equals(tree2)).toBeTruthy();
+        tree2.clear();
+        tree2.add(3);
+        tree2.add(1);
+        expect(tree.equals(tree2)).toBeFalsy();
+        expect(tree.equals([1, 2])).toBeFalsy();
+    });
 });

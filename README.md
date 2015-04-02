@@ -55,7 +55,7 @@ Or use an [AMD](https://github.com/amdjs/amdjs-api) loader
 
 ```javascript
 require(["./bower/bucketsjs/buckets.js"], function(buckets) {
-  var hm = new buckets.Dictionary()
+  var hm = new buckets.Dictionary();
 });
 ```
 

@@ -27,11 +27,10 @@
   },
   "homepage": "https://github.com/mauriciosantos/Buckets-JS",
   "dependencies": {},
-  "files": [
-    "buckets.js",
-    "buckets.min.js"
-  ],
-  "main": "buckets.js",
+  "main": "dist/buckets.min.js",
+  "scripts": {
+      "test": "grunt test"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",

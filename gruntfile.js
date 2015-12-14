@@ -7,38 +7,39 @@ module.exports = function(grunt) {
 			},
 			preUMD: {
 				src: 'src/*.js',
-				dest: '<%= pkg.simpleName %>.js',
+				dest: 'dist/<%= pkg.simpleName %>.js',
 			},
 			postUMD: {
 				options: {
 					banner: '// <%= pkg.simpleName %> <%= pkg.version %> <%= grunt.util.linefeed %>// (c) 2013, <%= grunt.template.today("yyyy")%> <%= pkg.author %> <%= grunt.util.linefeed %>// <%= pkg.homepage %><%= grunt.util.linefeed %><%= grunt.util.linefeed %>'
 				},
-				src: '<%= pkg.simpleName %>.js',
-				dest: '<%= pkg.simpleName %>.js',
+				src: 'dist/<%= pkg.simpleName %>.js',
+				dest: 'dist/<%= pkg.simpleName %>.js',
 			},
 		},
 		umd: {
 			all: {
 				options: {
 					template: 'templates/umd-buckets.hbs',
-					src: '<%= pkg.simpleName %>.js',
+					src: 'dist/<%= pkg.simpleName %>.js',
 					objectToExport: '<%= pkg.simpleName %>', // optional, internal object that will be exported
 				}
 			}
 		},
 		uglify: {
 			options: {
-				banner: '// <%= pkg.simpleName %> <%= pkg.version %> <%= grunt.util.linefeed %>// (c) 2013, <%= grunt.template.today("yyyy")%> <%= pkg.author %> <%= grunt.util.linefeed %>// <%= pkg.homepage %><%= grunt.util.linefeed %>'
+				banner: '// <%= pkg.simpleName %> <%= pkg.version %> <%= grunt.util.linefeed %>// (c) 2013, <%= grunt.template.today("yyyy")%> <%= pkg.author %> <%= grunt.util.linefeed %>// <%= pkg.homepage %><%= grunt.util.linefeed %>',
+				sourceMap: true
 			},
 			dist: {
 				files: {
-					'<%= pkg.simpleName %>.min.js': ['<%= pkg.simpleName %>.js']
+					'dist/<%= pkg.simpleName %>.min.js': ['dist/<%= pkg.simpleName %>.js']
 				}
 			}
 		},
 		jasmine: {
 			pivotal: {
-				src: '<%= pkg.simpleName %>.min.js',
+				src: 'dist/<%= pkg.simpleName %>.min.js',
 				options: {
 					specs: 'test/*.js',
 					summary: true,
@@ -47,15 +48,15 @@ module.exports = function(grunt) {
 		},
 		shell: {
 			jsdoc: {
-				command: 'node node_modules/jsdoc2/app/run.js <%= pkg.simpleName %>.js -d=doc/ -s -D=\"noGlobal:true\" -D=\"title:Buckets\" -t=templates/jsdoc-buckets'
+				command: 'node node_modules/jsdoc2/app/run.js dist/<%= pkg.simpleName %>.js -d=doc/ -s -D=\"noGlobal:true\" -D=\"title:Buckets\" -t=templates/jsdoc-buckets'
 			}
 		},
 		jsbeautifier: {
-			files: ['<%= pkg.simpleName %>.js', 'src/*.js', 'test/*.js'],
+			files: ['dist/<%= pkg.simpleName %>.js', 'src/*.js', 'test/*.js'],
 			options: {
-			          js: {
-			              jslintHappy: true,
-			          }
+				js: {
+					jslintHappy: true,
+				}
 			 }
 		},
 		writeBowerJson: {

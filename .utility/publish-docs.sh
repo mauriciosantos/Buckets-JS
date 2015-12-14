@@ -9,7 +9,7 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
 	git config --global user.email "travis@travis-ci.org"
 	git config --global user.name "travis-ci"
 	
-	cd $TRAVIS_BUILD_DIR/docs
+	cd $TRAVIS_BUILD_DIR/doc
 	git init
 	git add .
 	git commit -m "Lastest jsdoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"

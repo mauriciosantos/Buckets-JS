@@ -15,7 +15,7 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
 	cp -Rf $TRAVIS_BUILD_DIR/doc/ $TRAVIS_BUILD_DIR/gh-pages # copy the contents of doc 
 	
 	cd $TRAVIS_BUILD_DIR/gh-pages
-	git add -f .
+	git add -A
 	git commit -m "Lastest jsdoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
 	git push -fq origin gh-pages > /dev/null
 	

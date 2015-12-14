@@ -12,10 +12,11 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
 	git clone --quiet --branch=gh-pages https://${GH_TOKEN}@${GH_REF} gh-pages > /dev/null
 	
 	rm -rf ./gh-pages/*
-	cp -Rf ./doc ./gh-pages
+	cp -Rf ./doc/ ./gh-pages # copy the contents of doc 
+	
 	cd gh-pages
 	git add -f .
-	git commit -m "Lastest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
+	git commit -m "Lastest jsdoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
 	git push -fq origin gh-pages > /dev/null
 	
 fi

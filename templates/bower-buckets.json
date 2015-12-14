@@ -1,9 +1,17 @@
 {
 	"name": "bucketsjs",
 	"version": "<%= pkg.version %>",
-	"main": ["<%= pkg.simpleName %>.js", "<%= pkg.simpleName %>.min.js"],
+	"main": "dist/<%= pkg.simpleName %>.js",
 	"license": "<%= pkg.license %>",
 	"authors": ["<%= pkg.author %>"],
+	"ignore": [
+      "**/.*",
+	  "test",
+	  "doc",
+	  "templates",
+	  "gruntfile.js",
+	  "package.json"  
+	],
 	"repository": {
 	  "type": "git",
 	  "url": "<%= pkg.repository.url %>"

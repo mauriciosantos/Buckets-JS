@@ -7,12 +7,12 @@
     "Mauricio Santos <mauriciosantoss@gmail.com>"
   ],
   "ignore": [
-	  "**/.*",
-      "test",
-	  "doc",
-	  "templates",
-      "gruntfile.js",
-      "package.json"  
+    "**/.*",
+    "test",
+    "doc",
+    "templates",
+    "gruntfile.js",
+    "package.json"
   ],
   "repository": {
     "type": "git",

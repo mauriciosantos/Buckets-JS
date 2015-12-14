@@ -1,13 +1,18 @@
 {
   "name": "bucketsjs",
   "version": "1.90.0",
-  "main": [
-    "buckets.js",
-    "buckets.min.js"
-  ],
+  "main": "dist/buckets.js",
   "license": "MIT",
   "authors": [
     "Mauricio Santos <mauriciosantoss@gmail.com>"
+  ],
+  "ignore": [
+	  "**/.*",
+      "test",
+	  "doc",
+	  "templates",
+      "gruntfile.js",
+      "package.json"  
   ],
   "repository": {
     "type": "git",

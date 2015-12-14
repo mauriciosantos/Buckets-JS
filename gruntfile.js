@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 		},
 		shell: {
 			jsdoc: {
-				command: 'node node_modules/jsdoc2/app/run.js dist/<%= pkg.simpleName %>.js -d=doc/ -s -D=\"noGlobal:true\" -D=\"title:Buckets\" -t=templates/jsdoc-buckets'
+				command: 'node node_modules/jsdoc2/app/run.js ./dist/<%= pkg.simpleName %>.js -d=doc/ -s -D=\"noGlobal:true\" -D=\"title:Buckets\" -t=templates/jsdoc-buckets'
 			}
 		},
 		jsbeautifier: {

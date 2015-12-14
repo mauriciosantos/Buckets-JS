@@ -1,8 +1,8 @@
-# !/bin/bash
+#!/bin/bash
 # This script publishes JS-DOC documentation to the gh-pages branch
 
-if [ "$TRAVIS_BRANCH" == "master" ]
-then
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+	
 	set -e # exit with nonzero exit code if anything fails
 	echo -e "Publishing documentation...\n"
 	
@@ -17,4 +17,5 @@ then
 	git add -f .
 	git commit -m "Lastest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
 	git push -fq origin gh-pages > /dev/null
+	
 fi

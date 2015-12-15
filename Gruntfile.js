@@ -82,7 +82,7 @@ module.exports = function(grunt) {
             options: {
                 base: 'doc',
                 repo: 'https://' + process.env.GH_TOKEN + '@' + process.env.GH_REF,
-                message: 'Lastest jsdoc on successful travis build ' + process.env.$TRAVIS_BUILD_NUMBER + 'auto-pushed to gh-pages',
+                message: 'Lastest jsdoc on successful travis build ' + process.env.TRAVIS_BUILD_NUMBER + ' auto-pushed to gh-pages',
                 silent: true, // Hide GH_TOKEN from log messages
                 user: {
                     name: 'travis-ci',

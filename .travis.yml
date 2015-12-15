@@ -10,9 +10,9 @@ after_success: grunt doc && .scripts/publish-docs.sh
 before_deploy: git reset --hard HEAD # Clean generated files before publishing to NPM
 deploy:
 - provider: npm
-  email: mauriciosantoss@gmail.com
   api_key:
     secure: SvFlQ0QLDPSwvfjBHs/ZoAdKsuhh2ZDdL6D62WlAshIIwJoEPubnH6U9eItzZbcW/OpD2MT75GcQVyXjY/4Q/HY+JOAonQJrsfqDTOrcBuGUk0+Ch/X669qEmXss6lmqnSfFo7dhSRgoJFot6Y9n4+WGH0B8z64J0oMQpQSJikh2DHXkSuJMjEOMZbIhH9p5YhyVXYPVQ90sPCdteL6V0F6aQfAUFS95M+sYIM9mxPfvp3b5t1if8g8Ej+cHf3oPr/hVoKp8RsM7KLTPaj+0ZjZTeR8KJ/NrtnDUyVldC6ICVD/Ves4q3bCDHmgBQCBDuqUjG6WTXJrHYSwdfiy6vP8msSewbTyx5KRlZz9373oFcAznAFW439PXXK7hvaSl/8xGb5QX00aXFXz9lQZzbgWTnx2nX44a+CWEkfIZwSRtqhfyDBjSDdUdJ/8qKisaJ+jvKHiu7EDONwo2hotepTC6u+yuQiy5v43FfrATokvR9/Q0PWQcm7pwgObPcoLijHil5ZrqTiEhOjN5lX5mh6OTgK+dU7dgjfsw5KTnr3tJ6Fiy11F0gfKrjuEW0AE1KGt/Vqv2Es9SQCsjThK4RzhDH7YvqgleBWyu1ghBmceYEOL/wJfgobr2FxNL79nTTBp2ij031BbM1lDwjXMP5Fb2C9ul0dMLxz/0o4HLFC8=
+  on:
     tags: true
     repo: mauriciosantos/Buckets-JS
     all_branches: true # Bug workaround, See http://bit.ly/1YbwLuA

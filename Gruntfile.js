@@ -100,7 +100,7 @@ module.exports = function(grunt) {
     //////////////////////////
     
     grunt.registerTask('publish-docs', function() {
-        this.requires(['doc']);
+        grunt.task.run('doc');
         
         // Only publish under these conditions
         if (process.env.TRAVIS === 'true' && 
@@ -110,7 +110,7 @@ module.exports = function(grunt) {
             grunt.task.run('gh-pages');
         }
         else {
-            grunt.log.writeln('Skipped deployment');
+            grunt.log.writeln('Skipped doc publishing');
         }
     });
 

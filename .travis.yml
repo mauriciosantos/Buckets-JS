@@ -1,12 +1,13 @@
 language: node_js
 node_js: stable
-before_install: npm install -g grunt-cli
-before_script: grunt test && grunt build # Test both uploaded dist and generated dist
-after_success: grunt doc && .scripts/publish-docs.sh
 env:
   global:
   - GH_REF: github.com/mauriciosantos/Buckets-JS.git
   - secure: QfIjKGlZ7cvDZSITpr8q72+tGdYa1uSb3HwTprM1orhNbrYSAt1+fnXppMLxeTL6mgk7VTnokMJ/WRLHgrsfqaIPQ0ic9NapDE0fId0b6whG4iCJy1iDDm0vmdiGEQeVIXd+cJ700mYuxeBgSdQvr4roBHeoXWmRH7zot0mVM/pAa/fG7gVGGJ5EC8gVmtoMBFxHBDSu+HKXRbiwBRA3un3D/tf3hs2l3frwUmy5fBllAi3fe2ruQ4uQjLIOcn/l7S2HvAIRcjLr+Nxtvz7jRZqi/fY4FuLNG8dPqR9lxIRqkYZYj5EJij1ssfiNZpMEZwfF033wxRPV6q4cdau9gw2EGtF5GUksLQXJyWzij+hox5Gfyy9oiMRI9vS9l1uiOT+x09TKsFoPRkIQG89e+JLSKLinqK4niHRpnNCJfDiENLPa50Ulf8DA9esG5SHuorh5J9zsjLc2Gm5sp8E43Oz/gskGZcSLGswjuKO/jxQ0LmKSqeQAbiB4sVN9IyeNJGZDzK5qCooy5jUmRG4MrY8cKqAvOivsvXNdvxt7q3sadb+kLGJy/AWZUg442muFEv0yOyyrSqUElriQGJ44ejKkh6SgXN8qz1mayMPPJYG9fbC7YC3/3x6iRQkxO3u+5CeoKfab8I6XqqwEcNCr3+IYlaGCnO4VPhbvvDeOgv4=
+before_install: npm install -g grunt-cli
+before_script: grunt test && grunt build # Test both uploaded dist and generated dist
+after_success: grunt doc && .scripts/publish-docs.sh
+before_deploy: git reset --hard HEAD # Clean generated files before publishing to NPM
 deploy:
 - provider: npm
   email: mauriciosantoss@gmail.com
@@ -25,3 +26,4 @@ deploy:
   on:
     tags: true
     repo: mauriciosantos/Buckets-JS
+	all_branches: true

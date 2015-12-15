@@ -26,4 +26,4 @@ deploy:
   on:
     tags: true
     repo: mauriciosantos/Buckets-JS
-	all_branches: true
+    all_branches: true

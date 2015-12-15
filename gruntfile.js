@@ -59,17 +59,30 @@ module.exports = function(grunt) {
 				}
 			 }
 		},
-		writeBowerJson: {
-			options: {
-				bowerJsonTemplate: 'templates/bower-buckets.json'
-			}
-		}
+		bump: {
+		    options: {
+		      files: ['package.json', 'bower.json'],
+		      updateConfigs: [],
+		      commit: true,
+		      commitMessage: 'Release v%VERSION%',
+		      commitFiles: ['package.json', 'bower.json'],
+		      createTag: true,
+		      tagName: 'v%VERSION%',
+		      tagMessage: 'Version %VERSION%',
+		      push: true,
+		      pushTo: 'upstream',
+		      gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+		      globalReplace: false,
+		      prereleaseName: false,
+		      metadata: '',
+		      regExp: false
+		    }
+		},
 	});
 
 	require("load-grunt-tasks")(grunt);
 
-	grunt.registerTask('reformat', ['jsbeautifier']);
-	grunt.registerTask('build', ['concat:preUMD', 'umd:all', 'concat:postUMD', 'uglify', 'reformat', 'writeBowerJson']);
+	grunt.registerTask('build', ['concat:preUMD', 'umd:all', 'concat:postUMD', 'uglify', 'jsbeautifier']);
 	grunt.registerTask('test', ['jasmine']);
 	grunt.registerTask('doc', ['shell:jsdoc']);
 	grunt.registerTask('default', ['build', 'test', 'doc']);

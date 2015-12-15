@@ -1,6 +1,7 @@
 # [Buckets](https://github.com/mauriciosantos/buckets/)
 
 [![Build Status](https://travis-ci.org/mauriciosantos/Buckets-JS.svg?branch=master)](https://travis-ci.org/mauriciosantos/Buckets-JS)
+[![NPM Version](https://img.shields.io/npm/v/buckets-js.svg)](https://img.shields.io/npm/v/buckets-js.svg)
 
 **A JavaScript Data Structure Library**
 

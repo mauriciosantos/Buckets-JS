@@ -1,10 +1,29 @@
 language: node_js
-node_js:
-  - node
+node_js: stable
 before_install: npm install -g grunt-cli
 before_script: grunt test && grunt build
-after_success: grunt doc && .utility/publish-docs.sh
+after_success: grunt doc && .scripts/publish-docs.sh
 env:
   global:
   - GH_REF: github.com/mauriciosantos/Buckets-JS.git
-  - secure: "QfIjKGlZ7cvDZSITpr8q72+tGdYa1uSb3HwTprM1orhNbrYSAt1+fnXppMLxeTL6mgk7VTnokMJ/WRLHgrsfqaIPQ0ic9NapDE0fId0b6whG4iCJy1iDDm0vmdiGEQeVIXd+cJ700mYuxeBgSdQvr4roBHeoXWmRH7zot0mVM/pAa/fG7gVGGJ5EC8gVmtoMBFxHBDSu+HKXRbiwBRA3un3D/tf3hs2l3frwUmy5fBllAi3fe2ruQ4uQjLIOcn/l7S2HvAIRcjLr+Nxtvz7jRZqi/fY4FuLNG8dPqR9lxIRqkYZYj5EJij1ssfiNZpMEZwfF033wxRPV6q4cdau9gw2EGtF5GUksLQXJyWzij+hox5Gfyy9oiMRI9vS9l1uiOT+x09TKsFoPRkIQG89e+JLSKLinqK4niHRpnNCJfDiENLPa50Ulf8DA9esG5SHuorh5J9zsjLc2Gm5sp8E43Oz/gskGZcSLGswjuKO/jxQ0LmKSqeQAbiB4sVN9IyeNJGZDzK5qCooy5jUmRG4MrY8cKqAvOivsvXNdvxt7q3sadb+kLGJy/AWZUg442muFEv0yOyyrSqUElriQGJ44ejKkh6SgXN8qz1mayMPPJYG9fbC7YC3/3x6iRQkxO3u+5CeoKfab8I6XqqwEcNCr3+IYlaGCnO4VPhbvvDeOgv4="
+  - secure: QfIjKGlZ7cvDZSITpr8q72+tGdYa1uSb3HwTprM1orhNbrYSAt1+fnXppMLxeTL6mgk7VTnokMJ/WRLHgrsfqaIPQ0ic9NapDE0fId0b6whG4iCJy1iDDm0vmdiGEQeVIXd+cJ700mYuxeBgSdQvr4roBHeoXWmRH7zot0mVM/pAa/fG7gVGGJ5EC8gVmtoMBFxHBDSu+HKXRbiwBRA3un3D/tf3hs2l3frwUmy5fBllAi3fe2ruQ4uQjLIOcn/l7S2HvAIRcjLr+Nxtvz7jRZqi/fY4FuLNG8dPqR9lxIRqkYZYj5EJij1ssfiNZpMEZwfF033wxRPV6q4cdau9gw2EGtF5GUksLQXJyWzij+hox5Gfyy9oiMRI9vS9l1uiOT+x09TKsFoPRkIQG89e+JLSKLinqK4niHRpnNCJfDiENLPa50Ulf8DA9esG5SHuorh5J9zsjLc2Gm5sp8E43Oz/gskGZcSLGswjuKO/jxQ0LmKSqeQAbiB4sVN9IyeNJGZDzK5qCooy5jUmRG4MrY8cKqAvOivsvXNdvxt7q3sadb+kLGJy/AWZUg442muFEv0yOyyrSqUElriQGJ44ejKkh6SgXN8qz1mayMPPJYG9fbC7YC3/3x6iRQkxO3u+5CeoKfab8I6XqqwEcNCr3+IYlaGCnO4VPhbvvDeOgv4=
+deploy:
+- provider: npm
+  email: mauriciosantoss@gmail.com
+  api_key:
+    secure: Y+Ef+9IRP3FuYBUBTDbx1HMWjGZPQTap4iHWDqtg+1VnBaXuwISrelR+8LIdZD4LZ2fUdVtAJRnSfkS5rDLvdybh1NA26bBSuiYc5UA4+lwrbgVsaQ7agZVPN1H+HvJhjxEzNDDxw3W3RL6nFowuSnOxq9tfKWTGh8BVw6/7S8Ce9bnBrI6EouzMHHaryjaptP/0RdavwuIOViFjKAOmn975B/q+hI3ifzhb/6llALPcCBIQGsLpBzFfWYYnLpDSPE4i39eIP272rWErZNZyzYr+lN4AzPsCjyKprgDoepeaRbefBxWFydGNPBA1f9ktIe1YNV3SWm2BBdSQiIoFTMkjyC2IYxclZEnycIs0c1vReuLV/ielXwC8e0iDXa5lR9LBkMrjCMavk87smlgOz4X7roigfeuj7ox0MxvSnmFBqOAG44SzYTXLwmRO7kZcZxl7GwGQryORA6hleUZ4xetFQ4/o6A+q20kPW8jFJDQPIg0GZ7XuAheFp93y4/f3gD2LsozsKoF6xu1j9KpMya6Gvz39YdunhfT0/O10v+BN/xzvFxtV4EYLdHARTWyN5YcEVZmNgNE6DtaLCnKi1LTudLPFhIfeU1dO881r/pgpJT5btmYWwEB+jd05OWXb776XKMbtT7bCiyMOdw0Wg52UpsNtu4mqTOOJvK0Oas0=
+  on:
+    tags: true
+    repo: mauriciosantos/Buckets-JS
+    branch: master
+- provider: releases
+  api_key:
+    secure: cRXlKAtpDxBXf5IbkdzviQzdS9A1K8i0JgB0VSUSlIPjbaLGGUH0yqi1Jjl8zOn2uBJZmkYOMWFfR54dlXIakmoDkJadloaHdplaannOIDUwdn6LfaPqB6XGMIxe+NIZZVWLpvcjhaWnoJPnJZIUPgVS7bCx35WkGn3xCxcVjuDO4glVDrUb7ZnDAim48Pn2UJOzDEiYFuj+fsu9svV5TSC1fQEVtjG49q2VDNzuAtCWukBJKQ1jscws1q/1AeLHQgeBPXiGWUfhpRpiqaUA4pXKmfWe5/hpprOdzMi82DTPx5GuHXnw2/d/U52DEi4gfQyd3LKlKVuxkASXDgIsPpr9JMUD1KHpGTpFYOGGYs6qxBqdlal/3Sy8nCNphKRk+e4aRMdXnMDyQkFOOOlOPkuDfHjFjdKcjQj3lwez0GKbkK8j5SNEgXdoDxyv1xJkv2QGkv3+OztWp6JFb9idGJ9xjADwpX2TGHP70Focx5nnGM93azqTUU3nH7eMJdMRjoOqGopqXuXt6bub3jttmosyclF3zk5b8VpGpt3/71sNAURop/F96n3t5Yd0paoDF2TYR6z+qNRFOjzjYfoVNkaJRoY96w7WTxbcZnAQTKjooophN/Nc8/8VodKNhqE8LXmzRvHhkigxA5xXJUgj3ilQOVca0mKfpd6xRFcjW20=
+  file: 
+    - "dist/buckets.js"
+    - "dist/buckets.min.js"
+    - "dist/buckets.min.js.map"
+  on:
+    tags: true
+    repo: mauriciosantos/Buckets-JS
+    branch: master

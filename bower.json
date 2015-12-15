@@ -1,6 +1,6 @@
 {
   "name": "bucketsjs",
-  "version": "1.90.0",
+  "version": "1.91.0",
   "main": "dist/buckets.js",
   "license": "MIT",
   "authors": [

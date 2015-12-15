@@ -33,8 +33,8 @@ If it supports JavaScript, it probably supports buckets.
 
 Download directly
 
-- [buckets.js](https://github.com/mauriciosantos/Buckets-JS/releases/download/1.90.0/buckets.js) (for development) or
-- [buckets.min.js](https://github.com/mauriciosantos/Buckets-JS/releases/download/1.90.0/buckets.min.js) (for production)
+- [buckets.js](https://github.com/mauriciosantos/Buckets-JS/releases/latest) (for development) or
+- [buckets.min.js](https://github.com/mauriciosantos/Buckets-JS/releases/latest) (for production)
 
 Then, add it as a script tag to your page:
 

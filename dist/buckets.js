@@ -1,5 +1,5 @@
 // buckets
-// version: 1.98.1
+// version: 1.98.2
 // (c) 2013 - 2016 Mauricio Santos 
 // https://github.com/mauriciosantos/Buckets-JS 
 (function (root, factory) {

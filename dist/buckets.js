@@ -1,7 +1,7 @@
-// buckets 1.90.0 
-// (c) 2013, 2015 Mauricio Santos <mauriciosantoss@gmail.com> 
-// https://github.com/mauriciosantos/Buckets-JS
-
+// buckets
+// version: 1.98.1
+// (c) 2013 - 2016 Mauricio Santos 
+// https://github.com/mauriciosantos/Buckets-JS 
 (function (root, factory) {
     // UMD (Universal Module Definition) https://github.com/umdjs/umd
 

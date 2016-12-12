@@ -11,7 +11,7 @@ module.exports = function(grunt) {
             },
             postUMD: {
                 options: {
-                    banner: '// <%= pkg.simpleName %> <%= pkg.version %> <%= grunt.util.linefeed %>// (c) 2013, <%= grunt.template.today("yyyy")%> <%= pkg.author %> <%= grunt.util.linefeed %>// <%= pkg.homepage %><%= grunt.util.linefeed %><%= grunt.util.linefeed %>'
+                    banner: '// <%= pkg.simpleName %><%= grunt.util.linefeed %>// version: <%= pkg.version %><%= grunt.util.linefeed %>// (c) 2013 - <%= grunt.template.today("yyyy")%> <%= pkg.author.name %> <%= grunt.util.linefeed %>// <%= pkg.homepage %> <%= grunt.util.linefeed %>',
                 },
                 src: 'dist/<%= pkg.simpleName %>.js',
                 dest: 'dist/<%= pkg.simpleName %>.js',
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                banner: '// <%= pkg.simpleName %> <%= pkg.version %> <%= grunt.util.linefeed %>// (c) 2013, <%= grunt.template.today("yyyy")%> <%= pkg.author %> <%= grunt.util.linefeed %>// <%= pkg.homepage %><%= grunt.util.linefeed %>',
+              banner: '/*! <%= pkg.simpleName %> - version: <%= pkg.version %> - (c) 2013 - <%= grunt.template.today("yyyy")%> <%= pkg.author.name %> - <%= pkg.homepage %>*/',
                 sourceMap: true
             },
             dist: {
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
         },
         bump: {
             options: {
-              files: ['package.json', 'bower.json'],
+              files: ['package.json', 'bower.json', 'dist/buckets.js', 'dist/buckets.min.js'],
               updateConfigs: [],
               commit: true,
               commitMessage: 'Release v%VERSION%',
@@ -92,19 +92,19 @@ module.exports = function(grunt) {
             src: ['**/*']
         }
     });
-    
+
     require("load-grunt-tasks")(grunt);
-    
+
     //////////////////////////
     // Declare all the available tasks
     //////////////////////////
-    
+
     grunt.registerTask('publish-docs', function() {
         grunt.task.run('doc');
-        
+
         // Only publish under these conditions
-        if (process.env.TRAVIS === 'true' && 
-        process.env.TRAVIS_SECURE_ENV_VARS === 'true' && 
+        if (process.env.TRAVIS === 'true' &&
+        process.env.TRAVIS_SECURE_ENV_VARS === 'true' &&
         process.env.TRAVIS_PULL_REQUEST === 'false') {
             grunt.log.writeln('Publishing documentation...');
             grunt.task.run('gh-pages');

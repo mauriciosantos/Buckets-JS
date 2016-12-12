@@ -3,7 +3,10 @@
   "simpleName": "buckets",
   "description": "Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.",
   "version": "1.98.1",
-  "author": "Mauricio Santos <mauriciosantoss@gmail.com>",
+  "author": {
+    "name" : "Mauricio Santos",
+    "url" : "https://github.com/mauriciosantos"
+  },
   "keywords": [
     "buckets",
     "data",
@@ -32,16 +35,16 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-bump": "^0.7.0",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-jasmine": "^0.9.2",
+    "grunt": "^1.0.1",
+    "grunt-bump": "^0.8.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jasmine": "^1.0.3",
     "grunt-contrib-uglify": "^0.11.0",
-    "grunt-gh-pages": "^1.0.0",
-    "grunt-jsbeautifier": "^0.2.10",
+    "grunt-gh-pages": "^1.2.0",
+    "grunt-jsbeautifier": "^0.2.13",
     "grunt-shell": "^1.1.2",
-    "grunt-umd": "^2.3.5",
+    "grunt-umd": "^2.4.0",
     "jsdoc2": "^2.4.0",
-    "load-grunt-tasks": "^3.3.0"
+    "load-grunt-tasks": "^3.5.2"
   }
 }

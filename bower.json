@@ -4,7 +4,7 @@
   "main": "dist/buckets.js",
   "license": "MIT",
   "authors": [
-    "Mauricio Santos <mauriciosantoss@gmail.com>"
+    { "name": "Mauricio Santos", "homepage": "https://github.com/mauriciosantos" }
   ],
   "ignore": [
     "**/.*",

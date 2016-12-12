@@ -2,7 +2,7 @@
   "name": "buckets-js",
   "simpleName": "buckets",
   "description": "Buckets is a complete, fully tested and documented data structure library written in pure JavaScript.",
-  "version": "1.98.1",
+  "version": "1.98.2",
   "author": {
     "name" : "Mauricio Santos",
     "url" : "https://github.com/mauriciosantos"

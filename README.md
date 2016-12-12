@@ -82,7 +82,3 @@ Read the [documentation](http://mauriciosantos.github.io/Buckets-JS/).
 ## Building Buckets
 
 There's nothing else you need to use buckets. However, this [guide](./BUILD.md) may help you if you wish to contribute to the project or modify it.
-
-## Support
-
-Mauricio Santos, [mauriciosantoss@gmail.com](mailto:mauriciosantoss@gmail.com)

@@ -233,5 +233,35 @@ buckets.Heap = function (compareFunction) {
         return buckets.arrays.equals(thisArray, otherArray, eqF);
     };
 
+    /**
+     * Decrease node and move it to proper place in the heap.
+     */
+    heap.decreaseKey = function (element) {
+        var equF = buckets.compareToEquals(compare);
+        var index = buckets.arrays.indexOf(data, element, equF);
+		if(index !== -1){
+			data[index].decrease();
+			//Min-Heap
+			siftUp(index);
+			//Max-Heap
+			//siftDown(index);
+		}
+    };
+
+    /**
+     * Increase node and move it to proper place in the heap.
+     */
+    heap.increaseKey = function (element) {
+        var equF = buckets.compareToEquals(compare);
+        var index = buckets.arrays.indexOf(data, element, equF);
+		if(index !== -1){
+			data[index].increase();
+			//Min-Heap
+			siftDown(index);
+			//Max-Heap
+			//siftUp(index);
+		}
+    };
+
     return heap;
 };

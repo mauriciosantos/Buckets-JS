@@ -239,11 +239,13 @@ buckets.Heap = function (compareFunction) {
     heap.decreaseKey = function (element) {
         var equF = buckets.compareToEquals(compare);
         var index = buckets.arrays.indexOf(data, element, equF);
-		data[index].decrease();
-		//Min-Heap
-		siftUp(index);
-		//Max-Heap
-		//siftDown(index);
+		if(index !== -1){
+			data[index].decrease();
+			//Min-Heap
+			siftUp(index);
+			//Max-Heap
+			//siftDown(index);
+		}
     };
 
     /**
@@ -252,11 +254,13 @@ buckets.Heap = function (compareFunction) {
     heap.increaseKey = function (element) {
         var equF = buckets.compareToEquals(compare);
         var index = buckets.arrays.indexOf(data, element, equF);
-		data[index].increase();
-		//Min-Heap
-		siftDown(index);
-		//Max-Heap
-		//siftUp(index);
+		if(index !== -1){
+			data[index].increase();
+			//Min-Heap
+			siftDown(index);
+			//Max-Heap
+			//siftUp(index);
+		}
     };
 
     return heap;

@@ -94,6 +94,12 @@ describe('Multi Dictionary', function () {
         expect(dict.get("a")).toEqual([]);
     });
 
+    it('remove returns false for missing keys', function () {
+        dict.set("a", 1);
+        dict.remove("a", 1);
+        expect(dict.remove("a", 1)).toBeFalsy();
+    });
+
     it('isEmpty returns true only if there are no key-value pairs', function () {
         expect(dict.isEmpty()).toBeTruthy();
         dict.set("1", 1);

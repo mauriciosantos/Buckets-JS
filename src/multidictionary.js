@@ -102,6 +102,9 @@ buckets.MultiDictionary = function (toStrFunction, valuesEqualsFunction) {
             return true;
         }
         array = parent.get(key);
+        if (buckets.isUndefined(array)) {
+            return false;
+        }
         if (buckets.arrays.remove(array, value, equalsF)) {
             if (array.length === 0) {
                 parent.remove(key);

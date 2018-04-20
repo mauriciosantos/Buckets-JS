@@ -1,6 +1,6 @@
 // buckets
 // version: 1.98.2
-// (c) 2013 - 2016 Mauricio Santos 
+// (c) 2013 - 2018 Mauricio Santos 
 // https://github.com/mauriciosantos/Buckets-JS 
 (function (root, factory) {
     // UMD (Universal Module Definition) https://github.com/umdjs/umd
@@ -1890,6 +1890,9 @@
                 return true;
             }
             array = parent.get(key);
+            if (buckets.isUndefined(array)) {
+                return false;
+            }
             if (buckets.arrays.remove(array, value, equalsF)) {
                 if (array.length === 0) {
                     parent.remove(key);

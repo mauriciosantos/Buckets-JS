@@ -164,7 +164,7 @@ buckets.Dictionary = function (toStrFunction) {
     };
 
     /**
-     * Returns the number of key-value pais in the dictionary.
+     * Returns the number of key-value pairs in the dictionary.
      * @return {number} The number of key-value mappings in the dictionary.
      */
     dictionary.size = function () {

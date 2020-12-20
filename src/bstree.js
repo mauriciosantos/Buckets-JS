@@ -208,7 +208,7 @@ buckets.BSTree = function (compareFunction) {
      * @param {function(Object):*} callback Function to execute, invoked with an element as 
      * argument. To break the iteration you can optionally return false in the callback.
      */
-    tree.inorderTraversal = function (callback) {
+    tree.inorderTraversal = function (callback, element = undefined) {
 
         function inorderRecursive(node, callback, signal) {
             if (node === undefined || signal.stop) {
@@ -224,10 +224,22 @@ buckets.BSTree = function (compareFunction) {
             }
             inorderRecursive(node.rightCh, callback, signal);
         }
-
-        inorderRecursive(root, callback, {
-            stop: false
-        });
+        if (element===undefined){
+            inorderRecursive(root, callback, {
+                stop: false
+            });
+        }else{
+            var node = searchNode(root, element);
+            if (node === undefined){
+                return node;
+            }
+            else {
+                return inorderRecursive(node, callback, {
+                    stop: false
+                });
+            }
+        }
+        
     };
 
     /**

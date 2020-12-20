@@ -213,7 +213,6 @@ buckets.LinkedList = function () {
                     }
                 } else if (currentNode === lastNode) {
                     lastNode = previous;
-                    previous.next = currentNode.next;
                     currentNode.next = undefined;
                 } else {
                     previous.next = currentNode.next;

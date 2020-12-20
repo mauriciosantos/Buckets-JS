@@ -207,6 +207,8 @@ buckets.BSTree = function (compareFunction) {
      * Executes the provided function once per element present in the tree in in-order.
      * @param {function(Object):*} callback Function to execute, invoked with an element as 
      * argument. To break the iteration you can optionally return false in the callback.
+     * @param {Object} element Indicates the node to start traversing from. If is undefined, 
+     * the function starts traversing from the root
      */
     tree.inorderTraversal = function (callback, element = undefined) {
 

@@ -224,22 +224,22 @@ buckets.BSTree = function (compareFunction) {
             }
             inorderRecursive(node.rightCh, callback, signal);
         }
-        if (element===undefined){
+
+        if (element === undefined) {
             inorderRecursive(root, callback, {
                 stop: false
             });
-        }else{
+        } else {
             var node = searchNode(root, element);
-            if (node === undefined){
+            if (node === undefined) {
                 return node;
-            }
-            else {
+            } else {
                 return inorderRecursive(node, callback, {
                     stop: false
                 });
             }
         }
-        
+
     };
 
     /**

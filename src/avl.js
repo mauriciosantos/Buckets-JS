@@ -103,6 +103,9 @@ buckets.AVL = function (compareFunction) {
             } else {
                 parent.rightCh = node;
             }
+
+            node = balanceTree(node);
+            
             return node;
         }
 
@@ -206,17 +209,18 @@ buckets.AVL = function (compareFunction) {
 
     tree.balance = function(){
 
-        function balanceTree () {
+        function balanceTree (root) {
             if(isLeftHeavy(root)){
                 if(balanceFactor(root.leftCh) > 0)
-                    rotateLeft(root.leftCh);
-                rotateRight(root);
+                   root.leftCh = rotateLeft(root.leftCh);
+                return rotateRight(root);
             }
             else if (isRightHeavy(root)){
                 if(balanceFactor(root.rightCh) > 0)
-                    rotateRight(root.rightCh);
-                rotateLeft(root);
+                    root.rightCh = rotateRight(root.rightCh);
+                return rotateLeft(root);
             }
+            return root;
         }
 
         function isLeftHeavy(node){

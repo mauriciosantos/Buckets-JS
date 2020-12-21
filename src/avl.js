@@ -25,10 +25,10 @@
  * zero, or a positive integer as the first argument is less than, equal to,
  * or greater than the second.
  */
-buckets.BSTree = function (compareFunction) {
+buckets.AVL = function (compareFunction) {
 
     /** 
-     * @exports tree as buckets.BSTree
+     * @exports tree as buckets.AVL
      * @private
      */
     var tree = {},
@@ -396,7 +396,7 @@ buckets.BSTree = function (compareFunction) {
     /**
      * Returns true if the tree is equal to another tree.
      * Two trees are equal if they have the same elements.
-     * @param {buckets.BSTree} other The other tree.
+     * @param {buckets.AVL} other The other tree.
      * @return {boolean} True if the tree is equal to the given tree.
      */
     tree.equals = function (other) {

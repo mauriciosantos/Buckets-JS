@@ -203,6 +203,44 @@ buckets.AVL = function (compareFunction) {
         return true;
     };
 
+
+    tree.balance = function(){
+
+        function balanceTree () {
+            if(isLeftHeavy(root)){
+                if(balanceFactor(root.leftCh) > 0)
+                    rotateLeft(root.leftCh);
+                rotateRight(root);
+            }
+            else if (isRightHeavy(root)){
+                if(balanceFactor(root.rightCh) > 0)
+                    rotateRight(root.rightCh);
+                rotateLeft(root);
+            }
+        }
+
+        function isLeftHeavy(node){
+            return balanceFactor(node) > 1 ;
+        }
+
+        function isRightHeavy(node){
+            return balanceFactor(node) < -1 ;
+        }
+
+        function balanceFactor(node){
+            return node.leftCh.height - node.rightCh.height;
+        }
+
+        function rotateLeft(node){
+
+        }
+
+        function rotateRight(node){
+            
+        }
+
+    }
+
     /**
      * Executes the provided function once per element present in the tree in in-order.
      * @param {function(Object):*} callback Function to execute, invoked with an element as 

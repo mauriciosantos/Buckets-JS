@@ -232,11 +232,19 @@ buckets.AVL = function (compareFunction) {
         }
 
         function rotateLeft(node){
+            var newNode = node.rightCh;
+            node.rightCh = newNode.leftCh;
+            newNode.leftCh = node;
 
+            return newNode;
         }
 
         function rotateRight(node){
-            
+            var newNode = node.leftCh;
+            node.leftCh = newNode.rightCh;
+            newNode.rightCh = node;
+
+            return newNode;
         }
 
     }
